@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            transition: background-color 0.3s, color 0.3s;
         }
         header {
             background-color: #d32f2f;
@@ -74,36 +73,6 @@
             width: 100%;
         }
         
-        /* Dark Mode */
-        .dark-mode {
-            background-color: #121212;
-            color: white;
-        }
-        .dark-mode header, .dark-mode footer {
-            background-color: #333;
-        }
-        .dark-mode nav ul {
-            background-color: #444;
-        }
-        
-        /* Dark Mode Toggle Button */
-        .toggle-container {
-            text-align: center;
-            margin: 10px;
-        }
-        .toggle-btn {
-            padding: 10px;
-            background: #d32f2f;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        .toggle-btn:hover {
-            background: #b71c1c;
-        }
-        
         /* Responsive Design */
         @media (max-width: 600px) {
             nav ul {
@@ -131,10 +100,6 @@
         </nav>
     </header>
     
-    <div class="toggle-container">
-        <button class="toggle-btn" onclick="toggleDarkMode()">🌙 డార్క్ మోడ్</button>
-    </div>
-    
     <main>
         <section class="news">
             <article>
@@ -156,11 +121,5 @@
     <footer>
         <p>&copy; 2025 తెలుగు న్యూస్. అన్ని హక్కులూ కలదు.</p>
     </footer>
-    
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-    </script>
 </body>
 </html>
