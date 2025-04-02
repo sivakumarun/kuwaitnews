@@ -21,21 +21,16 @@
             top: 0;
             z-index: 1000;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
+        nav {
             background-color: #b71c1c;
-            flex-wrap: wrap;
+            padding: 10px;
+            text-align: center;
         }
-        nav ul li {
-            margin: 10px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
+        nav select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
         }
         .news {
             display: flex;
@@ -51,6 +46,7 @@
             max-width: 400px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: block;
         }
         article img {
             max-width: 100%;
@@ -75,10 +71,6 @@
         
         /* Responsive Design */
         @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
             .news {
                 flex-direction: column;
                 align-items: center;
@@ -89,37 +81,29 @@
 <body>
     <header>
         <h1>తెలుగు న్యూస్</h1>
-        <nav>
-            <ul>
-                <li><a href="#">హోమ్</a></li>
-                <li><a href="#">రాజకీయం</a></li>
-                <li><a href="#">సినిమా</a></li>
-                <li><a href="#">క్రీడలు</a></li>
-                <li><a href="#">సంప్రదించండి</a></li>
-            </ul>
-        </nav>
     </header>
+    
+    <nav>
+        <select id="categoryFilter" onchange="filterNews()">
+            <option value="all">అన్ని</option>
+            <option value="politics">రాజకీయం</option>
+            <option value="cinema">సినిమా</option>
+            <option value="sports">క్రీడలు</option>
+        </select>
+    </nav>
     
     <main>
         <section class="news">
-            <article>
+            <article class="news-item politics">
                 <img src="news1.jpg" alt="News Image">
-                <h2>తాజా వార్త శీర్షిక</h2>
-                <p>ఇక్కడ తాజా వార్తల వివరణ ఉంటుంది...</p>
+                <h2>రాజకీయ వార్త</h2>
+                <p>ఇక్కడ తాజా రాజకీయ వార్తల వివరణ ఉంటుంది...</p>
                 <a href="news1.html">ఇంకా చదవండి</a>
             </article>
             
-            <article>
+            <article class="news-item cinema">
                 <img src="news2.jpg" alt="News Image">
-                <h2>ఇంకొక ముఖ్యమైన వార్త</h2>
-                <p>ఇక్కడ మరింత సమాచారం...</p>
+                <h2>సినిమా వార్త</h2>
+                <p>ఇక్కడ తాజా సినిమా వార్తల వివరణ ఉంటుంది...</p>
                 <a href="news2.html">ఇంకా చదవండి</a>
             </article>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 తెలుగు న్యూస్. అన్ని హక్కులూ కలదు.</p>
-    </footer>
-</body>
-</html>
