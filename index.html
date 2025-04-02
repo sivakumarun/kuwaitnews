@@ -4,50 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telugu News</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Noto Sans Telugu', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+        }
+        @font-face {
+            font-family: 'Noto Sans Telugu';
+            src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap');
         }
         header {
             background-color: #d32f2f;
             color: white;
             display: flex;
             align-items: center;
-            justify-content: space-between;
             padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        nav {
+        .nav-container {
             display: flex;
             align-items: center;
+            width: 100%;
         }
-        nav ul {
+        .categories-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-right: 1rem;
+        }
+        .categories-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #c12727;
+            padding-top: 60px;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+        .categories-sidebar.active {
+            left: 0;
+        }
+        .categories-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex;
-            align-items: center;
         }
-        nav ul li {
-            margin-right: 15px;
+        .categories-list li {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        nav ul li a {
+        .categories-list li a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            display: block;
+        }
+        .categories-list li:hover {
+            background-color: rgba(0,0,0,0.1);
         }
         .title-container {
             flex-grow: 1;
             text-align: center;
+            position: relative;
         }
         h1 {
             margin: 0;
+            font-size: 1.5rem;
+        }
+        .main-nav {
+            margin-left: auto;
+        }
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .main-nav ul li {
+            margin-left: 15px;
+        }
+        .main-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
         .news {
             display: flex;
@@ -77,38 +126,75 @@
         }
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             background: #d32f2f;
             color: white;
-            position: relative;
-            bottom: 0;
             width: 100%;
         }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            display: none;
+        }
+        .overlay.active {
+            display: block;
+        }
         /* Responsive Design */
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+        @media (max-width: 768px) {
+            .main-nav ul li {
+                margin-left: 10px;
             }
-            nav ul {
-                flex-direction: row;
-                justify-content: center;
-                padding-top: 10px;
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-nav {
+                display: none;
+            }
+            .title-container {
+                text-align: center;
+                margin-left: -40px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="categories-sidebar" id="categoriesSidebar">
+        <ul class="categories-list">
+            <li><a href="#"><i class="fas fa-home"></i> ముఖ్య వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-city"></i> రాష్ట్ర వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-cricket"></i> క్రీడలు</a></li>
+            <li><a href="#"><i class="fas fa-film"></i> సినిమా వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-rupee-sign"></i> వ్యాపారం</a></li>
+        </ul>
+    </div>
+    
     <header>
-        <nav>
-            <ul>
-                <li><a href="#">హోమ్</a></li>
-                <li><a href="#">సంప్రదించండి</a></li>
-            </ul>
-        </nav>
-        <div class="title-container">
-            <h1>తెలుగు న్యూస్</h1>
+        <div class="nav-container">
+            <button class="categories-btn" id="categoriesBtn">
+                <i class="fas fa-bars"></i> వర్గాలు
+            </button>
+            
+            <div class="title-container">
+                <h1>తెలుగు న్యూస్</h1>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">హోమ్</a></li>
+                    <li><a href="#">సంప్రదించండి</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     
@@ -133,5 +219,21 @@
     <footer>
         <p>&copy; 2025 తెలుగు న్యూస్. అన్ని హక్కులూ కలదు.</p>
     </footer>
+
+    <script>
+        const categoriesBtn = document.getElementById('categoriesBtn');
+        const categoriesSidebar = document.getElementById('categoriesSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        categoriesBtn.addEventListener('click', () => {
+            categoriesSidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            categoriesSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
