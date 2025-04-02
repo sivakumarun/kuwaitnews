@@ -16,28 +16,26 @@
             background-color: #d32f2f;
             color: white;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         nav {
-            background-color: #b71c1c;
-            padding: 10px;
-            width: 100%;
+            display: flex;
+            align-items: center;
         }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin: 0;
         }
         nav ul li {
-            margin: 0 15px;
+            margin-right: 15px;
         }
         nav ul li a {
             color: white;
@@ -45,11 +43,11 @@
             font-weight: bold;
         }
         .title-container {
+            flex-grow: 1;
             text-align: center;
-            width: 100%;
         }
         h1 {
-            margin: 10px 0;
+            margin: 0;
         }
         .news {
             display: flex;
@@ -88,13 +86,15 @@
         }
         /* Responsive Design */
         @media (max-width: 600px) {
-            .news {
+            header {
                 flex-direction: column;
                 align-items: center;
+                text-align: center;
             }
             nav ul {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                padding-top: 10px;
             }
         }
     </style>
@@ -107,31 +107,4 @@
                 <li><a href="#">సంప్రదించండి</a></li>
             </ul>
         </nav>
-        <div class="title-container">
-            <h1>తెలుగు న్యూస్</h1>
-        </div>
-    </header>
-    
-    <main>
-        <section class="news">
-            <article class="news-item all">
-                <img src="news1.jpg" alt="News Image">
-                <h2>తాజా వార్త</h2>
-                <p>ఇక్కడ తాజా వార్తల వివరణ ఉంటుంది...</p>
-                <a href="news1.html">ఇంకా చదవండి</a>
-            </article>
-            
-            <article class="news-item all">
-                <img src="news2.jpg" alt="News Image">
-                <h2>ఇంకొక ముఖ్యమైన వార్త</h2>
-                <p>ఇక్కడ మరింత సమాచారం...</p>
-                <a href="news2.html">ఇంకా చదవండి</a>
-            </article>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 తెలుగు న్యూస్. అన్ని హక్కులూ కలదు.</p>
-    </footer>
-</body>
-</html>
+        <div class="title-con
