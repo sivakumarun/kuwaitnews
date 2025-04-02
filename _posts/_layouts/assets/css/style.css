@@ -1,0 +1,51 @@
+body {
+  font-family: 'Noto Sans Telugu', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.site-header {
+  background-color: #e74c3c;
+  color: white;
+  padding: 20px 0;
+}
+
+.site-title {
+  color: white;
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  margin-bottom: 30px;
+}
+
+.post-link {
+  color: #e74c3c;
+  font-size: 1.4rem;
+}
+
+.post-meta {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 20px 0;
+  margin-top: 40px;
+}
