@@ -1,19 +1,70 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>కువైట్ తెలుగు వార్తలు | Kuwait Telugu News</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Paste the CSS above here */
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">
+        <a href="/">కువైట్ తెలుగు వార్తలు</a>
+      </h1>
+    </div>
+  </header>
 
-<div class="home">
-  <h1 class="page-heading">తాజా వార్తలు</h1>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="/">ముఖ్య వార్తలు</a></li>
+      <li><a href="#">కువైట్ వార్తలు</a></li>
+      <li><a href="#">జాతీయ వార్తలు</a></li>
+      <li><a href="#">అంతర్జాతీయ వార్తలు</a></li>
+    </ul>
+  </nav>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-    <li>
-      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-      <div class="post-excerpt">{{ post.excerpt }}</div>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+  <main class="container">
+    <div class="news-grid">
+      <!-- News Article 1 -->
+      <article class="news-card">
+        <img src="news-image1.jpg" alt="News" class="news-image">
+        <div class="news-content">
+          <h2 class="news-title">కువైట్‌లో తెలుగు సంఘం కార్యక్రమం</h2>
+          <div class="news-date">మార్చి 15, 2024</div>
+          <p class="news-desc">కువైట్‌లోని తెలుగు సంఘం విజయవంతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
+        </div>
+      </article>
+
+      <!-- News Article 2 -->
+      <article class="news-card">
+        <img src="news-image2.jpg" alt="News" class="news-image">
+        <div class="news-content">
+          <h2 class="news-title">కువైట్‌లో ఉపాధి అవకాశాలు పెరుగుతున్నాయి</h2>
+          <div class="news-date">మార్చి 14, 2024</div>
+          <p class="news-desc">కువైట్‌లో ఇటీవలి కాలంలో వివిధ రంగాల్లో ఉపాధి అవకాశాలు గణనీయంగా పెరిగాయి...</p>
+        </div>
+      </article>
+      
+      <!-- Add more news articles as needed -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>© 2024 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు సంరక్షించబడ్డాయి.</p>
+      <p>సంప్రదింపు: info@kuwaittelugunews.com</p>
+    </div>
+  </footer>
+</body>
+</html>
