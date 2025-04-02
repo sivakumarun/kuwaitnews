@@ -1,134 +1,19 @@
-<!DOCTYPE html>
-<html lang="te">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>కువైట్ తెలుగు దినపత్రిక - Telugu Daily News</title>
-    <style>
-        body {
-            font-family: 'Noto Sans Telugu', 'Gautami', 'Lohit Telugu', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #e74c3c;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav {
-            background-color: #c0392b;
-            padding: 0.5rem;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav li {
-            margin: 0 1rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .news-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .news-card {
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .news-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .news-content {
-            padding: 1rem;
-        }
-        .news-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #e74c3c;
-        }
-        .news-date {
-            color: #777;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-        @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav li {
-                margin: 0.3rem 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>కువైట్ తెలుగు దినపత్రిక</h1>
-        <p>తాజా వార్తలు మరియు సమాచారం</p>
+---
+layout: default
+---
 
-    </nav>
-    
-            <div class="news-card">
-                <img src="https://via.placeholder.com/300x180?text=News+Image+1" alt="News Image 1">
-                <div class="news-content">
-                    <div class="news-date">జూన్ 15, 2023</div>
-                    <h3 class="news-title">రాష్ట్రంలో భారీ వర్షాలు: అనేక ప్రాంతాల్లో అలర్ట్</h3>
-                    <p>రాష్ట్రంలో కొనసాగుతున్న భారీ వర్షాల వల్ల అనేక ప్రాంతాల్లో నదులు, కాలువలు పొంగి ప్రవాహం స్థాయిలో నీరు పెరిగింది.</p>
-                </div>
-            </div>
-            
-            <div class="news-card">
-                <img src="https://via.placeholder.com/300x180?text=News+Image+2" alt="News Image 2">
-                <div class="news-content">
-                    <div class="news-date">జూన్ 15, 2023</div>
-                    <h3 class="news-title">కేంద్ర మంత్రి విశేషాధికారుల సమావేశం ఈ రోజు</h3>
-                    <p>ప్రధానమంత్రి నేతృత్వంలో కేంద్ర మంత్రివర్గం యొక్క విశేష సమావేశం ఈ రోజు న్యూఢిల్లీలో జరుగుతుంది.</p>
-                </div>
-            </div>
-            
-            <div class="news-card">
-                <img src="https://via.placeholder.com/300x180?text=News+Image+3" alt="News Image 3">
-                <div class="news-content">
-                    <div class="news-date">జూన్ 15, 2023</div>
-                    <h3 class="news-title">ఆంధ్రప్రదేశ్ లో కొత్త ఐటీ పార్క్ ప్రారంభం</h3>
-                    <p>ఆంధ్రప్రదేశ్ లో విశాఖపట్నం సమీపంలో కొత్త ఐటీ పార్క్ ప్రారంభించబడింది. దీనితో రాష్ట్రంలో 5000 కి పైగా ఉద్యోగాల అవకాశాలు కల్పించబడతాయి.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-        <p>సంప్రదింపు: contact@telugudailypatrika.com</p>
-    </footer>
-</body>
-</html>
+<div class="home">
+  <h1 class="page-heading">తాజా వార్తలు</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      <div class="post-excerpt">{{ post.excerpt }}</div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
