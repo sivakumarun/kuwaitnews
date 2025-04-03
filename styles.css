@@ -22,12 +22,12 @@ body {
 header {
     background-color: #d32f2f;
     color: white;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem; /* Reduced bottom padding to connect with nav */
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0; /* Rounded top only */
 }
 
 .nav-container {
@@ -72,7 +72,11 @@ header p {
 }
 
 .main-nav {
-    margin-top: 10px;
+    background-color: #333; /* New background color for categories */
+    padding: 10px;
+    width: 100%;
+    border-radius: 0 0 5px 5px; /* Rounded bottom only */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .main-nav ul {
@@ -152,11 +156,11 @@ header p {
 
     /* Header */
     header {
-        padding: 15px;
+        padding: 15px 15px 0 15px;
     }
 
     .nav-container {
-        gap: 10px;
+        gap: 0; /* Remove gap for tighter mobile layout */
     }
 
     .header-top {
@@ -176,6 +180,10 @@ header p {
 
     header p {
         font-size: 0.9em;
+    }
+
+    .main-nav {
+        padding: 8px;
     }
 
     .main-nav ul {
