@@ -11,20 +11,20 @@
     <div class="container">
         <!-- Sidebar with Hamburger Menu -->
         <div class="sidebar">
-            <button class="categories-btn" onclick="toggleMenu()">
+            <button class="categories-btn" id="menuToggle" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="menu" id="menu">
-                <button class="nav-button" onclick="window.location.href='news-local.html'">
+                <button class="nav-button" onclick="navigateTo('news-local.html')">
                     <i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు
                 </button>
-                <button class="nav-button" onclick="window.location.href='#'">
+                <button class="nav-button" onclick="navigateTo('#')">
                     <i class="fas fa-flag"></i> జాతీయ వార్తలు
                 </button>
-                <button class="nav-button" onclick="window.location.href='#'">
+                <button class="nav-button" onclick="navigateTo('#')">
                     <i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు
                 </button>
-                <button class="nav-button" onclick="window.location.href='#'">
+                <button class="nav-button" onclick="navigateTo('#')">
                     <i class="fas fa-futbol"></i> క్రీడలు
                 </button>
             </div>
@@ -55,8 +55,38 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
+            const menuToggle = document.getElementById('menuToggle');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menuToggle.classList.toggle('active');
+            
+            // Add active class to current page button
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('onclick').includes(currentPage)) {
+                    button.classList.add('active');
+                }
+            });
         }
+
+        function navigateTo(url) {
+            // Add active class to clicked button
+            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Navigate after slight delay for visual feedback
+            setTimeout(() => {
+                window.location.href = url;
+            }, 200);
+        }
+
+        // Initialize menu on load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleMenu(); // Show menu by default on desktop
+            if (window.innerWidth <= 768) {
+                document.getElementById('menu').style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
