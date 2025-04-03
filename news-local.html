@@ -8,47 +8,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Main Content -->
-        <div class="main-content">
-            <header>
-                <div class="nav-container">
-                    <div class="header-top">
-                        <button class="menu-btn" onclick="toggleMenu()">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                        <div class="title-container">
-                            <h1>కువైట్ తెలుగు వార్తలు</h1>
-                            <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+    <div class="header-bg">
+        <header>
+            <div class="nav-container">
+                <div class="header-top">
+                    <button class="menu-btn" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="category-bg">
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+                <li><a href="news-local.html"><i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు</a></li>
+                <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
+                <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
+                <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content-bg">
+        <div class="container">
+            <div class="main-content">
+                <!-- News Section -->
+                <div class="news-section">
+                    <!-- News Sample 1 -->
+                    <div class="news-item">
+                        <img src="images/news1.jpg" alt="News Image">
+                        <div class="news-text">
+                            <p>పబ్లిక్ అథారిటీ ఫర్ అగ్రికల్చర్ అఫైర్స్ అండ్ ఫిష్ రిసోర్సెస్ (పిఎఎఎఫ్ఆర్) ఈద్ మొదటి మరియు రెండవ రోజులలో తన పర్యవేక్షణ ప్రయత్నాలను ముమ్మరం చేసింది, ఇది నిషేధిత చేపల వలలను ఉపయోగించి అనేక పడవలను స్వాధీనం చేసుకోవడానికి దారితీసింది. ఈ చర్యలు కువైట్ లో సముద్ర జీవులను రక్షించడానికి చేపలు పట్టే పద్ధతులను నియంత్రించే తీర్మానం 2004/8 ను నేరుగా ఉల్లంఘించాయి.</p>
                         </div>
                     </div>
-                    <nav class="main-nav" id="main-nav">
-                        <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-                            <li><a href="news-local.html"><i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు</a></li>
-                            <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
-                            <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
-                            <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
 
-            <!-- News Section -->
-            <div class="news-section">
-                <!-- News Sample 1 -->
-                <div class="news-item">
-                    <img src="images/news1.jpg" alt="News Image">
-                    <div class="news-text">
-                        <p>పబ్లిక్ అథారిటీ ఫర్ అగ్రికల్చర్ అఫైర్స్ అండ్ ఫిష్ రిసోర్సెస్ (పిఎఎఎఫ్ఆర్) ఈద్ మొదటి మరియు రెండవ రోజులలో తన పర్యవేక్షణ ప్రయత్నాలను ముమ్మరం చేసింది, ఇది నిషేధిత చేపల వలలను ఉపయోగించి అనేక పడవలను స్వాధీనం చేసుకోవడానికి దారితీసింది. ఈ చర్యలు కువైట్ లో సముద్ర జీవులను రక్షించడానికి చేపలు పట్టే పద్ధతులను నియంత్రించే తీర్మానం 2004/8 ను నేరుగా ఉల్లంఘించాయి.</p>
-                    </div>
-                </div>
-
-                <!-- News Sample 2 -->
-                <div class="news-item">
-                    <img src="images/news2.jpg" alt="News Image">
-                    <div class="news-text">
-                        <p>20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది. అసలు తీర్పు సరిపోదని వాదిస్తూ అధిక భరణం, నష్టపరిహారం చెల్లించాలని కోరుతూ మహిళ తరఫు న్యాయవాది సారా బాదర్ దాఖలు చేసిన అప్పీల్ తర్వాత ఈ నిర్ణయం తీసుకున్నారు.</p>
+                    <!-- News Sample 2 -->
+                    <div class="news-item">
+                        <img src="images/news2.jpg" alt="News Image">
+                        <div class="news-text">
+                            <p>20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది. అసలు తీర్పు సరిపోదని వాదిస్తూ అధిక భరణం, నష్టపరిహారం చెల్లించాలని కోరుతూ మహిళ తరఫు న్యాయవాది సారా బాదర్ దాఖలు చేసిన అప్పీల్ తర్వాత ఈ నిర్ణయం తీసుకున్నారు.</p>
+                        </div>
                     </div>
                 </div>
             </div>
