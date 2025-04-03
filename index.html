@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>కువైట్ తెలుగు వార్తలు</title>
+    <title>కువైట్ తెలుగు వశర్తలు</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar with Navigation Buttons -->
+        <!-- Sidebar with Hamburger Menu -->
         <div class="sidebar">
-            <button class="nav-button" onclick="window.location.href='news-local.html'">స్థానిక వార్తలు</button>
-            <button class="nav-button" onclick="window.location.href='#'">జాతీయ వార్తలు</button>
-            <button class="nav-button" onclick="window.location.href='#'">అంతర్జాతీయ వార్తలు</button>
-            <button class="nav-button" onclick="window.location.href='#'">క్రీడలు</button>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <div class="menu" id="menu">
+                <button class="nav-button" onclick="window.location.href='news-local.html'">స్థానిక వార్తలు</button>
+                <button class="nav-button" onclick="window.location.href='#'">జాతీయ వార్తలు</button>
+                <button class="nav-button" onclick="window.location.href='#'">అంతర్జాతీయ వార్తలు</button>
+                <button class="nav-button" onclick="window.location.href='#'">క్రీడలు</button>
+            </div>
         </div>
 
         <!-- Main Content -->
@@ -27,5 +30,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
