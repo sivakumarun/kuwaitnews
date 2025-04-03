@@ -2,8 +2,9 @@ body {
     font-family: 'Noto Sans Telugu', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: #f5f5f5;
     color: #333;
+    line-height: 1.6;
 }
 
 .container {
@@ -15,10 +16,10 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 20%;
-    background-color: #333;
+    width: 250px;
+    background-color: #2c3e50;
     color: white;
-    padding: 15px;
+    padding: 20px;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -26,25 +27,27 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Categories Button (Hamburger) */
 .categories-btn {
-    background-color: #d32f2f;
+    background-color: #e74c3c;
     color: white;
     border: none;
-    padding: 12px;
-    font-size: 1.5em;
+    padding: 12px 15px;
+    font-size: 1.2em;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 4px;
     width: 100%;
-    max-width: 50px;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .categories-btn:hover {
-    background-color: #b71c1c;
+    background-color: #c0392b;
+    transform: translateY(-2px);
 }
 
 /* Menu (Hidden by Default) */
@@ -52,55 +55,51 @@ body {
     display: none;
     flex-direction: column;
     width: 100%;
-    margin-top: 15px;
     gap: 10px;
-    align-items: center;
 }
 
 /* Navigation Buttons */
 .nav-button {
-    background-color: #d32f2f;
+    background-color: #3498db;
     color: white;
     border: none;
-    padding: 10px;
-    font-size: 1.1em;
+    padding: 12px 15px;
+    font-size: 1em;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 4px;
     width: 100%;
-    max-width: 200px;
-    text-align: center;
-    transition: background-color 0.3s;
+    text-align: left;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px; /* Space between icon and text */
+    gap: 10px;
 }
 
 .nav-button i {
-    font-size: 1em;
+    width: 20px;
+    text-align: center;
 }
 
 .nav-button:hover {
-    background-color: #b71c1c;
+    background-color: #2980b9;
+    transform: translateX(5px);
 }
 
 /* Main Content */
 .main-content {
-    width: 80%;
-    margin-left: 20%;
+    width: calc(100% - 250px);
+    margin-left: 250px;
     padding: 20px;
 }
 
 /* Header */
 header {
-    background-color: #d32f2f;
+    background-color: #e74c3c;
     color: white;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
     border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -110,18 +109,19 @@ header {
 }
 
 .title-container {
-    text-align: center;
-    flex-grow: 1;
+    text-align: left;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2em;
+    color: #fff;
 }
 
 header p {
     margin: 5px 0 0;
-    font-size: 1.2em;
+    font-size: 1em;
+    color: #ecf0f1;
 }
 
 .main-nav ul {
@@ -129,29 +129,30 @@ header p {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
-}
-
-.main-nav li {
-    display: inline;
+    gap: 20px;
 }
 
 .main-nav a {
     color: white;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.2em;
     transition: color 0.3s;
 }
 
 .main-nav a:hover {
-    color: #ffc107; /* Yellow hover effect from provided code */
+    color: #f1c40f;
 }
 
 /* Intro Section (Homepage) */
 .intro {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
     margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    color: #555;
 }
 
 /* News Section */
@@ -161,84 +162,78 @@ header p {
 
 .news-item {
     display: flex;
-    align-items: center;
     background-color: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
 }
 
 .news-item img {
-    width: 150px;
+    width: 200px;
     height: auto;
-    margin-right: 15px;
+    margin-right: 20px;
     border-radius: 5px;
+    object-fit: cover;
 }
 
 .news-text p {
     margin: 0;
-    font-size: 1.1em;
-    line-height: 1.5;
+    font-size: 1em;
+    color: #555;
+    text-align: justify;
 }
 
-/* Mobile View (screen width ≤ 600px) */
-@media only screen and (max-width: 600px) {
+/* Mobile View (screen width ≤ 768px) */
+@media only screen and (max-width: 768px) {
     .container {
         flex-direction: column;
     }
 
-    /* Sidebar */
     .sidebar {
         width: 100%;
         height: auto;
         position: static;
-        padding: 10px;
-        align-items: flex-start;
-    }
-
-    .categories-btn {
-        font-size: 1.2em;
-        padding: 10px;
-        max-width: 40px;
-        margin: 0 auto;
-    }
-
-    .menu {
-        width: 100%;
-        margin-top: 10px;
+        padding: 15px;
+        flex-direction: row;
         align-items: center;
     }
 
-    .nav-button {
-        font-size: 0.9em;
-        padding: 8px;
-        max-width: 90%;
+    .categories-btn {
+        margin-bottom: 0;
+        width: auto;
+        margin-right: 15px;
     }
 
-    /* Main Content */
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 15px;
+        z-index: 1000;
+    }
+
     .main-content {
         width: 100%;
         margin-left: 0;
-        padding: 10px;
-    }
-
-    /* Header */
-    header {
         padding: 15px;
     }
 
-    .nav-container {
+    .news-item {
         flex-direction: column;
-        gap: 10px;
     }
 
-    .title-container {
-        order: 1;
-    }
-
-    .main-nav {
-        order: 2;
+    .news-item img {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
     }
 
     header h1 {
@@ -248,40 +243,16 @@ header p {
     header p {
         font-size: 0.9em;
     }
+}
 
-    .main-nav ul {
-        justify-content: center;
+/* Tablet View (screen width 769px to 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
     }
 
-    .main-nav a {
-        font-size: 1.2em;
-    }
-
-    /* Intro Section */
-    .intro {
-        font-size: 1em;
-        padding: 0 10px;
-    }
-
-    /* News Section */
-    .news-section {
-        margin-top: 10px;
-    }
-
-    .news-item {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-
-    .news-item img {
-        width: 100%;
-        max-width: 250px;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .news-text p {
-        font-size: 0.95em;
+    .main-content {
+        width: calc(100% - 200px);
+        margin-left: 200px;
     }
 }
