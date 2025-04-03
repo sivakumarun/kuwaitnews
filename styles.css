@@ -202,15 +202,15 @@ header p {
     .menu-btn {
         display: block;
         z-index: 1001;
-        font-size: 1.3625em; /* Increased from 1.3em by ~1px */
+        font-size: 1.5em; /* Standard size ≈ 24px */
     }
 
     header h1 {
-        font-size: 1.3625em; /* Increased from 1.3em by ~1px */
+        font-size: 1.5em; /* Standard size ≈ 24px */
     }
 
     header p {
-        font-size: 0.8625em; /* Increased from 0.8em by ~1px */
+        font-size: 1em; /* Standard size ≈ 16px */
     }
 
     .main-nav {
@@ -247,7 +247,7 @@ header p {
     }
 
     .main-nav a {
-        font-size: 0.9625em; /* Increased from 0.9em by ~1px */
+        font-size: 1em; /* Standard size ≈ 16px */
         padding: 5px 10px;
         width: 100%;
         justify-content: flex-start;
@@ -255,7 +255,7 @@ header p {
 
     /* Intro Section */
     .intro {
-        font-size: 0.9625em; /* Increased from 0.9em by ~1px */
+        font-size: 1em; /* Standard size ≈ 16px */
         padding: 0 10px;
     }
 
@@ -279,6 +279,6 @@ header p {
     }
 
     .news-text p {
-        font-size: 0.9125em; /* Increased from 0.85em by ~1px */
+        font-size: 1em; /* Standard size ≈ 16px */
     }
 }
