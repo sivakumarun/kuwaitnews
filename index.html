@@ -1,7 +1,76 @@
-telugu-news/
-├── index.html          # Homepage (unchanged)
-├── news-local.html     # News page (unchanged)
-├── styles.css          # Updated mobile font sizes
-└── images/
-    ├── news1.jpg
-    └── news2.jpg
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header-bg">
+        <header>
+            <div class="nav-container">
+                <div class="header-top">
+                    <button class="menu-btn" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="category-bg">
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+                <li><a href="news-local.html"><i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు</a></li>
+                <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
+                <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
+                <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content-bg">
+        <div class="container">
+            <div class="main-content">
+                <div class="intro">
+                    <p>మా వెబ్‌సైట్‌లో కువైట్‌లోని తాజా వార్తలను చదవండి. విభాగాలను ఎంచుకోండి మరియు సరికొత్త సమాచారాన్ని పొందండి。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+            }
+        }
+
+        // Ensure nav is visible on desktop by default
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            }
+        });
+
+        // Set initial state based on screen size
+        window.addEventListener('load', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
