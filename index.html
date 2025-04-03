@@ -9,98 +9,54 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="header-content">
-                <div class="title-container">
-                    <h1>కువైట్ తెలుగు వార్తలు</h1>
-                    <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
-                </div>
-                
-                <div class="nav-bar">
-                    <button class="categories-btn" id="menuToggle">
-                        <span>వర్గాలు</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    
-                    <div class="nav-icons">
-                        <a href="index.html"><i class="fas fa-home"></i></a>
-                        <a href="#feedback"><i class="fas fa-comment-alt"></i></a>
-                    </div>
-                </div>
-                
-                <div class="categories-menu" id="categoriesMenu">
-                    <div class="menu-items">
-                        <a href="index.html" class="nav-item active">
-                            <i class="fas fa-home"></i>
-                            <span>మొదటి పేజీ</span>
-                        </a>
-                        <a href="news-local.html" class="nav-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>స్థానిక వార్తలు</span>
-                        </a>
-                        <a href="#" class="nav-item">
-                            <i class="fas fa-flag"></i>
-                            <span>జాతీయ వార్తలు</span>
-                        </a>
-                        <a href="#" class="nav-item">
-                            <i class="fas fa-globe"></i>
-                            <span>అంతర్జాతీయ వార్తలు</span>
-                        </a>
-                        <a href="#" class="nav-item">
-                            <i class="fas fa-futbol"></i>
-                            <span>క్రీడలు</span>
-                        </a>
-                    </div>
-                </div>
+        <!-- Sidebar with Hamburger Menu -->
+        <div class="sidebar">
+            <button class="categories-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="menu" id="menu">
+                <button class="nav-button" onclick="window.location.href='news-local.html'">
+                    <i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు
+                </button>
+                <button class="nav-button" onclick="window.location.href='#'">
+                    <i class="fas fa-flag"></i> జాతీయ వార్తలు
+                </button>
+                <button class="nav-button" onclick="window.location.href='#'">
+                    <i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు
+                </button>
+                <button class="nav-button" onclick="window.location.href='#'">
+                    <i class="fas fa-futbol"></i> క్రీడలు
+                </button>
             </div>
-        </header>
+        </div>
 
         <!-- Main Content -->
         <div class="main-content">
-            <p class="intro-text">మా వెబ్‌సైట్‌లో కువైట్‌లోని తాజా వార్తలను చదవండి. విభాగాలను ఎంచుకోండి మరియు సరికొత్త సమాచారాన్ని పొందండి.</p>
-            
-            <div class="news-grid">
-                <!-- News items will go here -->
+            <header>
+                <div class="nav-container">
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                    </div>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                            <li><a href="#feedback"><i class="fas fa-comment-alt"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="intro">
+                <p>మా వెబ్‌సైట్‌లో కువైట్‌లోని తాజా వార్తలను చదవండి. విభాగాలను ఎంచుకోండి మరియు సరికొత్త సమాచారాన్ని పొందండి.</p>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const categoriesMenu = document.getElementById('categoriesMenu');
-            
-            // Toggle menu function
-            menuToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                categoriesMenu.classList.toggle('open');
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function() {
-                if (categoriesMenu.classList.contains('open')) {
-                    menuToggle.classList.remove('active');
-                    categoriesMenu.classList.remove('open');
-                }
-            });
-            
-            // Prevent menu from closing when clicking inside
-            categoriesMenu.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-            
-            // Update active nav item
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-item').forEach(item => {
-                if (item.getAttribute('href') === currentPage) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        });
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
     </script>
 </body>
 </html>
