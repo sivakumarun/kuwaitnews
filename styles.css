@@ -183,7 +183,7 @@ header p {
 
     /* Header */
     header {
-        padding: 10px 0 0 0;
+        padding: 10px 0 0 0; /* Ensure no extra bottom padding */
     }
 
     .nav-container {
@@ -200,7 +200,7 @@ header p {
 
     .menu-btn {
         display: block;
-        z-index: 1001; /* Ensure button is above nav */
+        z-index: 1001;
     }
 
     header h1 {
@@ -215,13 +215,18 @@ header p {
         display: none; /* Hidden by default */
         width: 200px;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 0px); /* Align directly below header */
         left: 0;
         padding: 10px;
-        background-color: #333; /* Explicit background for mobile */
+        background-color: #333;
         border-radius: 0 0 5px 0;
-        z-index: 1000; /* Ensure nav is below button but above content */
+        z-index: 1000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        margin: 0; /* Remove any margin */
+    }
+
+    .category-bg {
+        padding-bottom: 0; /* Remove any padding that might cause a gap */
     }
 
     .main-nav ul {
@@ -229,6 +234,8 @@ header p {
         gap: 15px;
         align-items: flex-start;
         justify-content: flex-start;
+        margin: 0;
+        padding: 0;
     }
 
     .main-nav li {
