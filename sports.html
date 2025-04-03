@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header-bg">
+        <header>
+            <div class="nav-container">
+                <div class="header-top">
+                    <button class="menu-btn" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="category-bg">
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+                <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
+                <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
+                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content-bg">
+        <div class="container">
+            <div class="main-content">
+                <!-- Sports Section -->
+                <div class="news-section">
+                    <!-- IPL Match 1 -->
+                    <div class="news-item">
+                        <img src="images/ipl1.jpg" alt="IPL Match Image">
+                        <div class="news-text">
+                            <h2>CSK vs MI - IPL 2025</h2>
+                            <span class="news-meta">తేదీ: 2025-04-05 | సమయం: 07:30 PM</span>
+                            <p>చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది. ధోని అద్భుతమైన ఫినిషింగ్‌తో అభిమానులను అలరించాడు.</p>
+                        </div>
+                    </div>
+
+                    <!-- IPL Match 2 -->
+                    <div class="news-item">
+                        <img src="images/ipl2.jpg" alt="IPL Match Image">
+                        <div class="news-text">
+                            <h2>RCB vs SRH - IPL 2025</h2>
+                            <span class="news-meta">తేదీ: 2025-04-06 | సమయం: 07:30 PM</span>
+                            <p>రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది. SRH 189/6తో పోరాడినా ఓటమి చెందింది. కోహ్లీ సెంచరీ అద్భుతంగా నిలిచింది.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu(event) {
+            event.stopPropagation();
+            const nav = document.getElementById('main-nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Default navigation behavior
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else if (nav.style.display === 'block') {
+                // Keep visible if toggled
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
