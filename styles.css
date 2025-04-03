@@ -22,12 +22,12 @@ body {
 header {
     background-color: #d32f2f;
     color: white;
-    padding: 1rem 1rem 0 1rem; /* Reduced bottom padding to connect with nav */
+    padding: 1rem 1rem 0 1rem;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 5px 5px 0 0; /* Rounded top only */
+    border-radius: 5px 5px 0 0;
 }
 
 .nav-container {
@@ -39,21 +39,24 @@ header {
 .header-top {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     max-width: 1200px;
 }
 
-.home-icon {
+.menu-btn {
+    background-color: #d32f2f;
     color: white;
-    text-decoration: none;
-    font-size: 1.8em;
-    margin-right: 15px;
-    transition: color 0.3s;
+    border: none;
+    padding: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+    transition: background-color 0.3s;
 }
 
-.home-icon:hover {
-    color: #ffc107;
+.menu-btn:hover {
+    background-color: #b71c1c;
 }
 
 .title-container {
@@ -72,10 +75,10 @@ header p {
 }
 
 .main-nav {
-    background-color: #333; /* New background color for categories */
+    background-color: #333;
     padding: 10px;
     width: 100%;
-    border-radius: 0 0 5px 5px; /* Rounded bottom only */
+    border-radius: 0 0 5px 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -100,7 +103,7 @@ header p {
     transition: color 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px; /* Space between icon and text */
+    gap: 8px;
 }
 
 .main-nav a:hover {
@@ -160,18 +163,16 @@ header p {
     }
 
     .nav-container {
-        gap: 0; /* Remove gap for tighter mobile layout */
+        gap: 0;
     }
 
     .header-top {
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
     }
 
-    .home-icon {
-        font-size: 1.5em;
-        margin-right: 0;
-        margin-bottom: 10px;
+    .menu-btn {
+        display: block; /* Show hamburger menu on mobile */
     }
 
     header h1 {
@@ -183,16 +184,25 @@ header p {
     }
 
     .main-nav {
-        padding: 8px;
+        display: none; /* Hidden by default on mobile */
+        padding: 10px;
     }
 
     .main-nav ul {
-        flex-wrap: wrap;
-        gap: 10px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav li {
+        display: block;
+        width: 100%;
     }
 
     .main-nav a {
-        font-size: 0.9em;
+        font-size: 1em;
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
     }
 
     /* Intro Section */
