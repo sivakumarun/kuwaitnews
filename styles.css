@@ -118,7 +118,7 @@ header p {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: #222; /* Darker for mobile distinction */
+        background-color: #222;
     }
 
     .nav-button {
