@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>మనీ ఎక్స్ఛేంజ్ రేటు - కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header-bg">
+        <header>
+            <div class="nav-container">
+                <div class="header-top">
+                    <button class="menu-btn" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="category-bg">
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+                <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
+                <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
+                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+                <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content-bg">
+        <div class="container">
+            <div class="main-content">
+                <!-- Exchange Rate Section -->
+                <div class="news-section">
+                    <h2>తాజా మనీ ఎక్స్ఛేంజ్ రేట్లు</h2>
+                    <span class="news-meta">నవీకరణ తేదీ: 2025-04-03 | సమయం: 08:00 AM</span>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>కరెన్సీ</th>
+                                <th>రేటు (KWD)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>భారతీయ రూపాయి (INR)</td>
+                                <td>0.0037</td>
+                            </tr>
+                            <tr>
+                                <td>యూఎస్ డాలర్ (USD)</td>
+                                <td>0.307</td>
+                            </tr>
+                            <tr>
+                                <td>యూరో (EUR)</td>
+                                <td>0.330</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
