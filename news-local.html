@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>స్థానిక వార్తలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <!-- Sidebar with Hamburger Menu -->
         <div class="sidebar">
-            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <button class="categories-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="menu" id="menu">
                 <button class="nav-button" onclick="window.location.href='news-local.html'">స్థానిక వార్తలు</button>
                 <button class="nav-button" onclick="window.location.href='#'">జాతీయ వార్తలు</button>
