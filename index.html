@@ -6,9 +6,69 @@
     <title>కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* [Previous CSS styles remain exactly the same] */
+        /* ===== HEADER STYLES ===== */
+        body {
+            font-family: 'Noto Sans Telugu', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
         
-        /* Added News Grid Styles */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #d32f2f;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header-center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .site-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .site-caption {
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+        
+        .logo-container {
+            margin-left: auto;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .categories-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-right: 10px;
+        }
+
+        /* ===== NEWS CONTENT STYLES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -65,17 +125,42 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        /* ===== FOOTER STYLES ===== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #d32f2f;
+            color: white;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
-    <!-- [Previous header and sidebar code remains exactly the same] -->
-    
-    <!-- Updated News Section -->
+    <!-- HEADER SECTION -->
+    <header>
+        <div class="header-container">
+            <button class="categories-btn" id="categoriesBtn" aria-label="Categories">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="header-center">
+                <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                <div class="site-caption">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</div>
+            </div>
+            
+            <div class="logo-container">
+                <img src="images/logo.png" alt="News Logo" class="logo">
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN NEWS CONTENT -->
     <main class="container">
         <div class="news-grid">
             <!-- News Item 1 -->
             <article class="news-card">
-                <img src="images/news1.jpg" alt="News Image" class="news-image">
+                <img src="images/news1.jpg" alt="Cultural Event" class="news-image">
                 <div class="news-content">
                     <div class="news-date">జూలై 15, 2024</div>
                     <h3 class="news-title">కువైట్‌లో తెలుగు సంఘం విజయవంతమైన కార్యక్రమం</h3>
@@ -86,7 +171,7 @@
             
             <!-- News Item 2 -->
             <article class="news-card">
-                <img src="images/news2.jpg" alt="News Image" class="news-image">
+                <img src="images/news2.jpg" alt="Employment News" class="news-image">
                 <div class="news-content">
                     <div class="news-date">జూలై 14, 2024</div>
                     <h3 class="news-title">కువైట్‌లో ఉపాధి అవకాశాలు పెరుగుదల</h3>
@@ -97,7 +182,7 @@
             
             <!-- News Item 3 -->
             <article class="news-card">
-                <img src="images/news3.jpg" alt="News Image" class="news-image">
+                <img src="images/news3.jpg" alt="Movie News" class="news-image">
                 <div class="news-content">
                     <div class="news-date">జూలై 13, 2024</div>
                     <h3 class="news-title">కువైట్‌లో తెలుగు సినిమా ప్రదర్శన</h3>
@@ -107,9 +192,17 @@
             </article>
         </div>
     </main>
-    
-    <!-- [Footer code remains the same] -->
 
-    <!-- [JavaScript code remains the same] -->
+    <!-- FOOTER SECTION -->
+    <footer>
+        <p>&copy; 2024 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు సంరక్షించబడ్డాయి.</p>
+    </footer>
+
+    <script>
+        // Simple JavaScript for sidebar toggle (can be expanded)
+        document.getElementById('categoriesBtn').addEventListener('click', function() {
+            alert('Categories sidebar would open here - implement as needed');
+        });
+    </script>
 </body>
 </html>
