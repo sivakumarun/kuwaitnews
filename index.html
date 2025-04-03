@@ -3,81 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>కువైట్ తెలుగు వార్తలు | Kuwait Telugu News</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+    <title>కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Noto Sans Telugu', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        @font-face {
+            font-family: 'Noto Sans Telugu';
+            src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap');
+        }
+        
+        /* New Header Layout */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #d32f2f;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header-center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .site-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .logo-container {
+            order: 3; /* Moves logo to right */
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        /* Categories Button */
+        .categories-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            order: 1; /* Moves button to left */
+        }
+        
+        /* Categories Sidebar */
+        .categories-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #c12727;
+            padding-top: 70px;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+        
+        .categories-sidebar.active {
+            left: 0;
+        }
+        
+        .categories-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .categories-list li {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .categories-list li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* News Content (existing styles) */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .news-item {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #d32f2f;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 1.3rem;
+            }
+            .logo {
+                height: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Categories Sidebar -->
+    <div class="overlay" id="overlay"></div>
+    <div class="categories-sidebar" id="categoriesSidebar">
+        <ul class="categories-list">
+            <li><a href="#"><i class="fas fa-home"></i> ముఖ్య వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-city"></i> రాష్ట్ర వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-cricket"></i> క్రీడలు</a></li>
+        </ul>
+    </div>
+    
+    <!-- Updated Header -->
     <header>
         <div class="header-container">
-            <div class="logo">
-                <img src="images/header-logo.png" alt="Kuwait Telugu News Logo">
-                <h1>కువైట్ తెలుగు వార్తలు</h1>
+            <button class="categories-btn" id="categoriesBtn">
+                <i class="fas fa-bars"></i> వర్గాలు
+            </button>
+            
+            <div class="header-center">
+                <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
             </div>
-            <nav>
-                <a href="index.html"><i class="fas fa-home"></i> ముఖ్య వార్తలు</a>
-                <a href="gallery.html"><i class="fas fa-images"></i> ఫోటో గ్యాలరీ</a>
-                <a href="about.html"><i class="fas fa-info-circle"></i> మా గురించి</a>
-            </nav>
+            
+            <div class="logo-container">
+                <img src="images/logo.png" alt="News Logo" class="logo">
+            </div>
         </div>
     </header>
-
+    
+    <!-- Main Content -->
     <main class="container">
-        <section class="breaking-news">
-            <h2>బ్రేకింగ్ న్యూస్</h2>
-            <div class="breaking-content">
-                <p>కువైట్‌లో తెలుగు సంఘం ప్రత్యేక కార్యక్రమం - మరిన్ని వివరాలకు చదవండి...</p>
-            </div>
-        </section>
-
-        <section class="news-grid">
-            <article class="news-card">
-                <img src="images/news1.jpg" alt="News Image 1" class="news-image">
+        <div class="news-list">
+            <article class="news-item">
+                <img src="images/news1.jpg" alt="News" class="news-image">
                 <div class="news-content">
-                    <span class="news-date">జూన్ 28, 2024</span>
-                    <h3 class="news-title">కువైట్‌లో తెలుగు సంఘం విజయవంతమైన కార్యక్రమం</h3>
-                    <p class="news-excerpt">కువైట్‌లోని తెలుగు సంఘం ఈ వారం అద్భుతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
-                    <a href="news/article1.html" class="read-more">మరింత చదవండి <i class="fas fa-arrow-right"></i></a>
+                    <h2 class="news-title">కువైట్‌లో తెలుగు సంఘం కార్యక్రమం</h2>
+                    <p class="news-excerpt">కువైట్‌లోని తెలుగు సంఘం విజయవంతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
+                    <a href="#" class="read-more">ఇంకా చదవండి</a>
                 </div>
             </article>
-
-            <article class="news-card">
-                <img src="images/news2.jpg" alt="News Image 2" class="news-image">
-                <div class="news-content">
-                    <span class="news-date">జూన్ 27, 2024</span>
-                    <h3 class="news-title">కువైట్‌లో ఉపాధి అవకాశాలు పెరుగుదల</h3>
-                    <p class="news-excerpt">కువైట్‌లో ఇటీవలి కాలంలో వివిధ రంగాల్లో ఉపాధి అవకాశాలు గణనీయంగా పెరిగాయి...</p>
-                    <a href="news/article2.html" class="read-more">మరింత చదవండి <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-        </section>
+            <!-- More news items -->
+        </div>
     </main>
-
+    
     <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="images/header-logo.png" alt="Kuwait Telugu News Logo">
-                <h3>కువైట్ తెలుగు వార్తలు</h3>
-            </div>
-            <div class="footer-links">
-                <a href="index.html">ముఖ్య వార్తలు</a>
-                <a href="gallery.html">ఫోటోలు</a>
-                <a href="about.html">మా గురించి</a>
-                <a href="contact.html">సంప్రదించండి</a>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు సంరక్షించబడ్డాయి.</p>
-        </div>
+        <p>&copy; 2024 కువైట్ తెలుగు వార్తలు</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Categories Sidebar Toggle
+        const categoriesBtn = document.getElementById('categoriesBtn');
+        const categoriesSidebar = document.getElementById('categoriesSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        categoriesBtn.addEventListener('click', () => {
+            categoriesSidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            categoriesSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
