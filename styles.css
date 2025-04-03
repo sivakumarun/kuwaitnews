@@ -32,8 +32,28 @@ header {
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.home-icon {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8em;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.home-icon:hover {
+    color: #ffc107;
 }
 
 .title-container {
@@ -51,13 +71,18 @@ header p {
     font-size: 1.2em;
 }
 
+.main-nav {
+    margin-top: 10px;
+}
+
 .main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 .main-nav li {
@@ -75,7 +100,7 @@ header p {
 }
 
 .main-nav a:hover {
-    color: #ffc107; /* Yellow hover effect */
+    color: #ffc107;
 }
 
 /* Intro Section (Homepage) */
@@ -131,16 +156,18 @@ header p {
     }
 
     .nav-container {
-        flex-direction: column;
         gap: 10px;
     }
 
-    .title-container {
-        order: 1;
+    .header-top {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .main-nav {
-        order: 2;
+    .home-icon {
+        font-size: 1.5em;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 
     header h1 {
@@ -153,7 +180,6 @@ header p {
 
     .main-nav ul {
         flex-wrap: wrap;
-        justify-content: center;
         gap: 10px;
     }
 
