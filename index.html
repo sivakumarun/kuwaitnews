@@ -14,14 +14,17 @@
             <header>
                 <div class="nav-container">
                     <div class="header-top">
-                        <a href="index.html" class="home-icon"><i class="fas fa-home"></i></a>
+                        <button class="menu-btn" onclick="toggleMenu()">
+                            <i class="fas fa-bars"></i>
+                        </button>
                         <div class="title-container">
                             <h1>కువైట్ తెలుగు వార్తలు</h1>
                             <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                         </div>
                     </div>
-                    <nav class="main-nav">
+                    <nav class="main-nav" id="main-nav">
                         <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                             <li><a href="news-local.html"><i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు</a></li>
                             <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
                             <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
@@ -35,5 +38,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
