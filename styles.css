@@ -22,9 +22,32 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
+}
+
+/* Hamburger Button */
+.hamburger {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.hamburger:hover {
+    background-color: #0056b3;
+}
+
+/* Menu (Hidden by Default) */
+.menu {
+    display: none; /* Hidden initially */
     flex-direction: column;
     gap: 10px;
+    margin-top: 10px;
 }
 
 /* Navigation Buttons */
@@ -115,17 +138,22 @@ header p {
         height: auto;
         position: static;
         padding: 10px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        background-color: #222;
+    }
+
+    .hamburger {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 5px;
     }
 
     .nav-button {
         font-size: 0.9em;
         padding: 8px;
-        min-width: 90px;
-        margin: 5px;
     }
 
     /* Main Content */
