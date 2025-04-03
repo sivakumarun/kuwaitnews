@@ -37,6 +37,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+    transition: background-color 0.3s;
 }
 
 .nav-button:hover {
@@ -117,7 +118,7 @@ header p {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: #222; /* Slightly darker to distinguish on mobile */
+        background-color: #222; /* Darker for mobile distinction */
     }
 
     .nav-button {
@@ -140,7 +141,7 @@ header p {
     }
 
     header h1 {
-        font-size: 1.5em; /* Smaller for mobile */
+        font-size: 1.5em;
     }
 
     header p {
