@@ -15,14 +15,14 @@ body {
 /* Main Content */
 .main-content {
     width: 100%;
-    padding: 20px;
+    padding: 20px 0; /* Reduced padding to remove vertical space */
 }
 
 /* Header */
 header {
     background-color: #d32f2f;
     color: white;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 0 0 0; /* No side or bottom padding */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -34,6 +34,9 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .header-top {
@@ -41,7 +44,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1200px;
+    padding: 0 15px; /* Minimal padding for content */
 }
 
 .menu-btn {
@@ -76,7 +79,7 @@ header p {
 
 .main-nav {
     background-color: #333;
-    padding: 10px;
+    padding: 10px 15px; /* Consistent padding */
     width: 100%;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -115,11 +118,13 @@ header p {
     margin-top: 20px;
     text-align: center;
     font-size: 1.2em;
+    padding: 0 15px;
 }
 
 /* News Section */
 .news-section {
     margin-top: 20px;
+    padding: 0 15px;
 }
 
 .news-item {
@@ -153,13 +158,12 @@ header p {
 
     /* Main Content */
     .main-content {
-        width: 100%;
-        padding: 10px;
+        padding: 10px 0;
     }
 
     /* Header */
     header {
-        padding: 15px 15px 0 15px;
+        padding: 10px 0 0 0;
     }
 
     .nav-container {
@@ -169,6 +173,7 @@ header p {
     .header-top {
         justify-content: space-between;
         align-items: center;
+        padding: 0 10px;
     }
 
     .menu-btn {
@@ -185,12 +190,19 @@ header p {
 
     .main-nav {
         display: none; /* Hidden by default on mobile */
+        width: 200px; /* Reduced width */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
         padding: 10px;
+        border-radius: 0 0 5px 0; /* Rounded bottom-right only */
     }
 
     .main-nav ul {
         flex-direction: column;
         gap: 15px;
+        align-items: flex-start; /* Align left */
+        justify-content: flex-start;
     }
 
     .main-nav li {
@@ -200,9 +212,9 @@ header p {
 
     .main-nav a {
         font-size: 1em;
-        padding: 10px;
+        padding: 5px 10px;
         width: 100%;
-        justify-content: center;
+        justify-content: flex-start; /* Align text and icon left */
     }
 
     /* Intro Section */
@@ -214,6 +226,7 @@ header p {
     /* News Section */
     .news-section {
         margin-top: 10px;
+        padding: 0 10px;
     }
 
     .news-item {
