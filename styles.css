@@ -2,13 +2,30 @@ body {
     font-family: 'Noto Sans Telugu', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: transparent; /* No body background */
     color: #333;
+}
+
+/* Full-width Backgrounds */
+.header-bg {
+    background-color: #d32f2f;
+    width: 100%;
+}
+
+.category-bg {
+    background-color: #333;
+    width: 100%;
+}
+
+.content-bg {
+    background-color: #f8f8f8;
+    width: 100%;
 }
 
 .container {
     width: 100%;
-    margin: 0; /* Removed auto margin */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Main Content */
@@ -19,14 +36,12 @@ body {
 
 /* Header */
 header {
-    background-color: #d32f2f;
     color: white;
     padding: 1rem 0 0 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 0; /* Full-width, no rounding */
 }
 
 .nav-container {
@@ -34,7 +49,7 @@ header {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px; /* Content width constrained */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -43,7 +58,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1200px; /* Content width constrained */
+    max-width: 1200px;
     padding: 0 15px;
 }
 
@@ -78,10 +93,10 @@ header p {
 }
 
 .main-nav {
-    background-color: #333;
     padding: 10px 15px;
     width: 100%;
-    border-radius: 0; /* Full-width, no rounding */
+    max-width: 1200px;
+    margin: 0 auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,8 +108,6 @@ header p {
     gap: 20px;
     align-items: center;
     justify-content: center;
-    max-width: 1200px; /* Content width constrained */
-    margin: 0 auto;
 }
 
 .main-nav li {
@@ -121,18 +134,12 @@ header p {
     text-align: center;
     font-size: 1.2em;
     padding: 0 15px;
-    max-width: 1200px; /* Content width constrained */
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* News Section */
 .news-section {
     margin-top: 20px;
     padding: 0 15px;
-    max-width: 1200px; /* Content width constrained */
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .news-item {
@@ -160,6 +167,10 @@ header p {
 
 /* Mobile View (screen width ≤ 600px) */
 @media only screen and (max-width: 600px) {
+    .header-bg, .category-bg, .content-bg {
+        width: 100%;
+    }
+
     .container {
         flex-direction: column;
     }
@@ -198,12 +209,13 @@ header p {
 
     .main-nav {
         display: none; /* Hidden by default on mobile */
-        width: 200px; /* Fixed width */
+        width: 200px;
         position: absolute;
         top: 100%;
         left: 0;
         padding: 10px;
         border-radius: 0 0 5px 0;
+        box-shadow: none; /* Remove shadow in mobile */
     }
 
     .main-nav ul {
@@ -211,8 +223,6 @@ header p {
         gap: 15px;
         align-items: flex-start;
         justify-content: flex-start;
-        max-width: none; /* Full width of container */
-        margin: 0;
     }
 
     .main-nav li {
@@ -231,14 +241,12 @@ header p {
     .intro {
         font-size: 1em;
         padding: 0 10px;
-        max-width: none; /* Full width */
     }
 
     /* News Section */
     .news-section {
         margin-top: 10px;
         padding: 0 10px;
-        max-width: none; /* Full width */
     }
 
     .news-item {
