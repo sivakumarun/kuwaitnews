@@ -1,25 +1,83 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>కువైట్ తెలుగు వార్తలు | Kuwait Telugu News</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
     <header>
         <div class="header-container">
-            <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+            <div class="logo">
+                <img src="images/header-logo.png" alt="Kuwait Telugu News Logo">
+                <h1>కువైట్ తెలుగు వార్తలు</h1>
+            </div>
             <nav>
-                <a href="index.html"><i class="fas fa-home"></i> ముఖ్యమైనవి</a>
-                <a href="gallery.html"><i class="fas fa-images"></i> ఫోటోలు</a>
-                <a href="feedback.html"><i class="fas fa-comment-alt"></i> ప్రతిస్పందన</a>
+                <a href="index.html"><i class="fas fa-home"></i> ముఖ్య వార్తలు</a>
+                <a href="gallery.html"><i class="fas fa-images"></i> ఫోటో గ్యాలరీ</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> మా గురించి</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <!-- Your news content goes here -->
-        <section class="news-section">
+        <section class="breaking-news">
+            <h2>బ్రేకింగ్ న్యూస్</h2>
+            <div class="breaking-content">
+                <p>కువైట్‌లో తెలుగు సంఘం ప్రత్యేక కార్యక్రమం - మరిన్ని వివరాలకు చదవండి...</p>
+            </div>
+        </section>
+
+        <section class="news-grid">
             <article class="news-card">
-                <!-- News content -->
+                <img src="images/news1.jpg" alt="News Image 1" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">జూన్ 28, 2024</span>
+                    <h3 class="news-title">కువైట్‌లో తెలుగు సంఘం విజయవంతమైన కార్యక్రమం</h3>
+                    <p class="news-excerpt">కువైట్‌లోని తెలుగు సంఘం ఈ వారం అద్భుతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
+                    <a href="news/article1.html" class="read-more">మరింత చదవండి <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="images/news2.jpg" alt="News Image 2" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">జూన్ 27, 2024</span>
+                    <h3 class="news-title">కువైట్‌లో ఉపాధి అవకాశాలు పెరుగుదల</h3>
+                    <p class="news-excerpt">కువైట్‌లో ఇటీవలి కాలంలో వివిధ రంగాల్లో ఉపాధి అవకాశాలు గణనీయంగా పెరిగాయి...</p>
+                    <a href="news/article2.html" class="read-more">మరింత చదవండి <i class="fas fa-arrow-right"></i></a>
+                </div>
             </article>
         </section>
     </main>
 
     <footer>
-        <!-- Footer content -->
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/header-logo.png" alt="Kuwait Telugu News Logo">
+                <h3>కువైట్ తెలుగు వార్తలు</h3>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">ముఖ్య వార్తలు</a>
+                <a href="gallery.html">ఫోటోలు</a>
+                <a href="about.html">మా గురించి</a>
+                <a href="contact.html">సంప్రదించండి</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు సంరక్షించబడ్డాయి.</p>
+        </div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
+</html>
