@@ -22,28 +22,25 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.sidebar h3 {
-    margin-top: 0;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin: 15px 0;
-}
-
-.sidebar ul li a {
+/* Navigation Buttons */
+.nav-button {
+    background-color: #007bff;
     color: white;
-    text-decoration: none;
+    border: none;
+    padding: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.sidebar ul li a:hover {
-    text-decoration: underline;
+.nav-button:hover {
+    background-color: #0056b3;
 }
 
 /* Main Content */
