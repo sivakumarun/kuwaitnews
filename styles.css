@@ -2,7 +2,7 @@ body {
     font-family: 'Noto Sans Telugu', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: transparent; /* No body background */
+    background-color: transparent;
     color: #333;
 }
 
@@ -24,7 +24,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px; /* Increased from 1200px */
     margin: 0 auto;
 }
 
@@ -49,7 +49,7 @@ header {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; /* Header content remains 1200px */
     margin: 0 auto;
 }
 
@@ -67,9 +67,9 @@ header {
     color: white;
     border: none;
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1.3em; /* Reduced from 1.5em */
     cursor: pointer;
-    display: none; /* Hidden on desktop */
+    display: none;
     transition: background-color 0.3s;
 }
 
@@ -84,18 +84,18 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2em; /* Reduced from 2.5em */
 }
 
 header p {
     margin: 5px 0 0;
-    font-size: 1.2em;
+    font-size: 1em; /* Reduced from 1.2em */
 }
 
 .main-nav {
     padding: 10px 15px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; /* Category content remains 1200px */
     margin: 0 auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -117,7 +117,7 @@ header p {
 .main-nav a {
     color: white;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1em; /* Reduced from 1.1em */
     transition: color 0.3s;
     display: flex;
     align-items: center;
@@ -132,7 +132,7 @@ header p {
 .intro {
     margin-top: 20px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em; /* Reduced from 1.2em */
     padding: 0 15px;
 }
 
@@ -161,7 +161,7 @@ header p {
 
 .news-text p {
     margin: 0;
-    font-size: 1.1em;
+    font-size: 0.95em; /* Reduced from 1.1em */
     line-height: 1.5;
 }
 
@@ -173,6 +173,7 @@ header p {
 
     .container {
         flex-direction: column;
+        max-width: none; /* Reset for mobile */
     }
 
     /* Main Content */
@@ -187,35 +188,38 @@ header p {
 
     .nav-container {
         gap: 0;
+        max-width: none; /* Full width for mobile */
     }
 
     .header-top {
         justify-content: space-between;
         align-items: center;
         padding: 0 10px;
+        max-width: none;
     }
 
     .menu-btn {
-        display: block; /* Show hamburger menu on mobile */
+        display: block;
     }
 
     header h1 {
-        font-size: 1.5em;
+        font-size: 1.3em; /* Reduced from 1.5em */
     }
 
     header p {
-        font-size: 0.9em;
+        font-size: 0.8em; /* Reduced from 0.9em */
     }
 
     .main-nav {
-        display: none; /* Hidden by default on mobile */
+        display: none;
         width: 200px;
         position: absolute;
         top: 100%;
         left: 0;
         padding: 10px;
         border-radius: 0 0 5px 0;
-        box-shadow: none; /* Remove shadow in mobile */
+        box-shadow: none;
+        max-width: none; /* Full width for mobile */
     }
 
     .main-nav ul {
@@ -231,7 +235,7 @@ header p {
     }
 
     .main-nav a {
-        font-size: 1em;
+        font-size: 0.9em; /* Reduced from 1em */
         padding: 5px 10px;
         width: 100%;
         justify-content: flex-start;
@@ -239,7 +243,7 @@ header p {
 
     /* Intro Section */
     .intro {
-        font-size: 1em;
+        font-size: 0.9em; /* Reduced from 1em */
         padding: 0 10px;
     }
 
@@ -263,6 +267,6 @@ header p {
     }
 
     .news-text p {
-        font-size: 0.95em;
+        font-size: 0.85em; /* Reduced from 0.95em */
     }
 }
