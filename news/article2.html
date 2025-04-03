@@ -2,27 +2,286 @@
 <html lang="te">
 <head>
     <meta charset="UTF-8">
-    <title>వార్త శీర్షిక - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Noto Sans Telugu', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #d32f2f;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header-center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .site-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .site-caption {
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+        
+        .logo-container {
+            margin-left: auto;
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .categories-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-right: 10px;
+        }
+
+        /* ===== CATEGORIES SIDEBAR ===== */
+        .categories-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #c12727;
+            padding-top: 70px;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+        
+        .categories-sidebar.active {
+            left: 0;
+        }
+        
+        .categories-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .categories-list li {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .categories-list li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+
+        /* ===== NEWS CONTENT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 15px;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .news-title {
+            color: #d32f2f;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .news-excerpt {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background: #d32f2f;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #d32f2f;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
+    <!-- CATEGORIES SIDEBAR -->
+    <div class="overlay" id="overlay"></div>
+    <div class="categories-sidebar" id="categoriesSidebar">
+        <ul class="categories-list">
+            <li><a href="#"><i class="fas fa-home"></i> ముఖ్య వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-city"></i> రాష్ట్ర వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
+            <li><a href="#"><i class="fas fa-cricket"></i> క్రీడలు</a></li>
+        </ul>
+    </div>
+
+    <!-- HEADER -->
     <header>
-        <div class="logo">కువైట్ తెలుగు వార్తలు</div>
-        <nav>
-            <a href="../index.html">హోమ్</a>
-            <a href="../gallery.html">ఫోటోలు</a>
-        </nav>
+        <div class="header-container">
+            <button class="categories-btn" id="categoriesBtn" aria-label="Categories">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="header-center">
+                <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                <div class="site-caption">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</div>
+            </div>
+            
+            <div class="logo-container">
+                <img src="images/logo.png" alt="News Logo" class="logo">
+            </div>
+        </div>
     </header>
 
-    <main class="article-container">
-        <article>
-            <h1>వార్త శీర్షిక</h1>
-            <img src="../images/news1.jpg" alt="News Image">
-            <div class="article-content">
-                <p>పబ్లిక్ అథారిటీ ఫర్ అగ్రికల్చర్ అఫైర్స్ అండ్ ఫిష్ రిసోర్సెస్ (పిఎఎఎఎఫ్ఆర్) ఈద్ మొదటి మరియు రెండవ రోజులలో తన పర్యవేక్షణ ప్రయత్నాలను ముమ్మరం చేసింది, ఇది నిషేధిత చేపల వలలను ఉపయోగించి అనేక పడవలను స్వాధీనం చేసుకోవడానికి దారితీసింది. ఈ చర్యలు కువైట్ లో సముద్ర జీవులను రక్షించడానికి చేపలు పట్టే పద్ధతులను నియంత్రించే తీర్మానం 2004/8 ను నేరుగా ఉల్లంఘించాయి..</p>
-                <a href="../index.html" class="read-more">తిరిగి వెళ్ళండి</a>
-            </div>
-        </article>
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <div class="news-grid">
+            <!-- News Item 1 - Links to article page -->
+            <article class="news-card">
+                <a href="news/article1.html">
+                    <img src="images/news1.jpg" alt="Cultural Event" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">జూలై 15, 2024</div>
+                        <h3 class="news-title">కువైట్‌లో తెలుగు సంఘం విజయవంతమైన కార్యక్రమం</h3>
+                        <p class="news-excerpt">కువైట్‌లోని తెలుగు సంఘం ఈ వారం అద్భుతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
+                        <span class="read-more">మరింత చదవండి</span>
+                    </div>
+                </a>
+            </article>
+            
+            <!-- News Item 2 - Links to article page -->
+            <article class="news-card">
+                <a href="news/article2.html">
+                    <img src="images/news2.jpg" alt="Employment News" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">జూలై 14, 2024</div>
+                        <h3 class="news-title">కువైట్‌లో ఉపాధి అవకాశాలు పెరుగుదల</h3>
+                        <p class="news-excerpt">కువైట్‌లో ఇటీవలి కాలంలో వివిధ రంగాల్లో ఉపాధి అవకాశాలు గణనీయంగా పెరిగాయి...</p>
+                        <span class="read-more">మరింత చదవండి</span>
+                    </div>
+                </a>
+            </article>
+            
+            <!-- News Item 3 - Links to article page -->
+            <article class="news-card">
+                <a href="news/article3.html">
+                    <img src="images/news3.jpg" alt="Movie News" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">జూలై 13, 2024</div>
+                        <h3 class="news-title">కువైట్‌లో తెలుగు సినిమా ప్రదర్శన</h3>
+                        <p class="news-excerpt">ఈ వారాంతం కువైట్‌లో ప్రత్యేక తెలుగు సినిమా ప్రదర్శన ఏర్పాటు చేయబడింది...</p>
+                        <span class="read-more">మరింత చదవండి</span>
+                    </div>
+                </a>
+            </article>
+        </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు సంరక్షించబడ్డాయి.</p>
+    </footer>
+
+    <script>
+        // Categories Sidebar Functionality
+        const categoriesBtn = document.getElementById('categoriesBtn');
+        const categoriesSidebar = document.getElementById('categoriesSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        categoriesBtn.addEventListener('click', () => {
+            categoriesSidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            categoriesSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
