@@ -17,11 +17,14 @@ body {
     width: 20%;
     background-color: #333;
     color: white;
-    padding: 20px;
+    padding: 15px;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
 }
 
 /* Hamburger Button */
@@ -29,11 +32,12 @@ body {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     font-size: 1.5em;
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
+    max-width: 50px; /* Fixed width for consistency */
     text-align: center;
     transition: background-color 0.3s;
 }
@@ -46,8 +50,10 @@ body {
 .menu {
     display: none; /* Hidden initially */
     flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
     gap: 10px;
-    margin-top: 10px;
+    align-items: center; /* Center menu items */
 }
 
 /* Navigation Buttons */
@@ -59,6 +65,8 @@ body {
     font-size: 1.1em;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
+    max-width: 200px; /* Fixed width for uniformity */
     text-align: center;
     transition: background-color 0.3s;
 }
@@ -80,6 +88,7 @@ header {
     background-color: #007bff;
     color: white;
     padding: 20px;
+    border-radius: 5px;
 }
 
 header h1 {
@@ -118,6 +127,7 @@ header p {
     width: 150px;
     height: auto;
     margin-right: 15px;
+    border-radius: 5px;
 }
 
 .news-text p {
@@ -138,22 +148,26 @@ header p {
         height: auto;
         position: static;
         padding: 10px;
+        align-items: flex-start; /* Align to left for mobile */
     }
 
     .hamburger {
         font-size: 1.2em;
-        padding: 8px;
+        padding: 10px;
+        max-width: 40px;
+        margin: 0 auto; /* Center hamburger on mobile */
     }
 
     .menu {
-        flex-direction: column;
-        gap: 5px;
-        margin-top: 5px;
+        width: 100%;
+        margin-top: 10px;
+        align-items: center; /* Center menu items */
     }
 
     .nav-button {
         font-size: 0.9em;
         padding: 8px;
+        max-width: 90%; /* Slightly narrower for mobile */
     }
 
     /* Main Content */
