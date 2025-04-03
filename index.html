@@ -9,27 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar with Hamburger Menu -->
-        <div class="sidebar">
-            <button class="categories-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="menu" id="menu">
-                <button class="nav-button" onclick="window.location.href='news-local.html'">
-                    <i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు
-                </button>
-                <button class="nav-button" onclick="window.location.href='#'">
-                    <i class="fas fa-flag"></i> జాతీయ వార్తలు
-                </button>
-                <button class="nav-button" onclick="window.location.href='#'">
-                    <i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు
-                </button>
-                <button class="nav-button" onclick="window.location.href='#'">
-                    <i class="fas fa-futbol"></i> క్రీడలు
-                </button>
-            </div>
-        </div>
-
         <!-- Main Content -->
         <div class="main-content">
             <header>
@@ -40,6 +19,10 @@
                     </div>
                     <nav class="main-nav">
                         <ul>
+                            <li><a href="news-local.html"><i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు</a></li>
+                            <li><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
+                            <li><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
+                            <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
                             <li><a href="index.html"><i class="fas fa-home"></i></a></li>
                             <li><a href="#feedback"><i class="fas fa-comment-alt"></i></a></li>
                         </ul>
@@ -51,12 +34,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
 </body>
 </html>
