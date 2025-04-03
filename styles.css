@@ -2,7 +2,7 @@ body {
     font-family: 'Noto Sans Telugu', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8; /* Light gray background */
+    background-color: #f8f8f8;
     color: #333;
 }
 
@@ -30,7 +30,7 @@ body {
 
 /* Categories Button (Hamburger) */
 .categories-btn {
-    background-color: #d32f2f; /* Red from provided code */
+    background-color: #d32f2f;
     color: white;
     border: none;
     padding: 12px;
@@ -44,7 +44,7 @@ body {
 }
 
 .categories-btn:hover {
-    background-color: #b71c1c; /* Darker red on hover */
+    background-color: #b71c1c;
 }
 
 /* Menu (Hidden by Default) */
@@ -59,7 +59,7 @@ body {
 
 /* Navigation Buttons */
 .nav-button {
-    background-color: #d32f2f; /* Red from provided code */
+    background-color: #d32f2f;
     color: white;
     border: none;
     padding: 10px;
@@ -70,10 +70,18 @@ body {
     max-width: 200px;
     text-align: center;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.nav-button i {
+    font-size: 1em;
 }
 
 .nav-button:hover {
-    background-color: #b71c1c; /* Darker red on hover */
+    background-color: #b71c1c;
 }
 
 /* Main Content */
@@ -85,12 +93,25 @@ body {
 
 /* Header */
 header {
-    text-align: center;
-    background-color: #d32f2f; /* Red from provided code */
+    background-color: #d32f2f;
     color: white;
-    padding: 20px;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow from provided code */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-container {
+    text-align: center;
+    flex-grow: 1;
 }
 
 header h1 {
@@ -101,6 +122,29 @@ header h1 {
 header p {
     margin: 5px 0 0;
     font-size: 1.2em;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.main-nav li {
+    display: inline;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #ffc107; /* Yellow hover effect from provided code */
 }
 
 /* Intro Section (Homepage) */
@@ -121,7 +165,7 @@ header p {
     background-color: white;
     padding: 15px;
     margin-bottom: 15px;
-    border-radius: 8px; /* Slightly larger radius from provided code */
+    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -184,12 +228,33 @@ header p {
         padding: 15px;
     }
 
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .title-container {
+        order: 1;
+    }
+
+    .main-nav {
+        order: 2;
+    }
+
     header h1 {
         font-size: 1.5em;
     }
 
     header p {
         font-size: 0.9em;
+    }
+
+    .main-nav ul {
+        justify-content: center;
+    }
+
+    .main-nav a {
+        font-size: 1.2em;
     }
 
     /* Intro Section */
