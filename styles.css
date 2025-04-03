@@ -12,6 +12,11 @@ body {
     width: 100%;
 }
 
+.category-bg {
+    background-color: #333;
+    width: 100%;
+}
+
 .content-bg {
     background-color: #f8f8f8;
     width: 100%;
@@ -45,7 +50,6 @@ header {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #d32f2f; /* Header background */
     padding: 1rem 0 0 0; /* Padding only at top */
 }
 
@@ -93,7 +97,6 @@ header p {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #333; /* Category background */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -164,7 +167,7 @@ header p {
 
 /* Mobile View (screen width ≤ 600px) */
 @media only screen and (max-width: 600px) {
-    .header-bg, .content-bg {
+    .header-bg, .category-bg, .content-bg {
         width: 100%;
     }
 
@@ -180,13 +183,13 @@ header p {
 
     /* Header */
     header {
-        padding: 0; /* Remove padding from header */
+        padding: 0;
     }
 
     .nav-container {
         gap: 0;
         max-width: none;
-        padding: 10px 0 0 0; /* Minimal padding */
+        padding: 10px 0 0 0;
     }
 
     .header-top {
@@ -212,8 +215,8 @@ header p {
     .main-nav {
         display: none; /* Hidden by default */
         width: 200px;
-        position: absolute;
-        top: 100%; /* Directly below nav-container */
+        position: fixed; /* Changed to fixed for consistent positioning */
+        top: 60px; /* Adjust based on header height; tweak if needed */
         left: 0;
         padding: 10px;
         background-color: #333;
