@@ -43,29 +43,29 @@
         }
         
         .logo-container {
-            margin-left: auto; /* Pushes logo to right */
+            margin-left: auto;
         }
         
         .logo {
             height: 50px;
         }
         
-        /* Categories Button - Now on LEFT side */
+        /* Categories Button - Icon only */
         .categories-btn {
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
             padding: 0.5rem;
-            margin-right: auto; /* Keeps button on left */
+            margin-right: 10px;
         }
         
-        /* Categories Sidebar - Appears from LEFT */
+        /* Categories Sidebar */
         .categories-sidebar {
             position: fixed;
             top: 0;
-            left: -250px; /* Starts hidden on left */
+            left: -250px;
             width: 250px;
             height: 100vh;
             background-color: #c12727;
@@ -75,7 +75,7 @@
         }
         
         .categories-sidebar.active {
-            left: 0; /* Slides in from left */
+            left: 0;
         }
         
         .categories-list {
@@ -93,6 +93,7 @@
             color: white;
             text-decoration: none;
             display: block;
+            font-size: 1.1rem;
         }
         
         /* Overlay */
@@ -129,7 +130,7 @@
     </style>
 </head>
 <body>
-    <!-- Categories Sidebar - LEFT SIDE -->
+    <!-- Categories Sidebar -->
     <div class="overlay" id="overlay"></div>
     <div class="categories-sidebar" id="categoriesSidebar">
         <ul class="categories-list">
@@ -144,9 +145,9 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <!-- Categories Button - LEFT SIDE -->
-            <button class="categories-btn" id="categoriesBtn">
-                <i class="fas fa-bars"></i> వర్గాలు
+            <!-- Categories Button - Icon only -->
+            <button class="categories-btn" id="categoriesBtn" aria-label="Categories">
+                <i class="fas fa-bars"></i>
             </button>
             
             <!-- Centered Title -->
@@ -154,7 +155,7 @@
                 <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
             </div>
             
-            <!-- Logo - RIGHT SIDE -->
+            <!-- Logo -->
             <div class="logo-container">
                 <img src="images/logo.png" alt="News Logo" class="logo">
             </div>
@@ -172,7 +173,7 @@
     </footer>
 
     <script>
-        // Categories Sidebar Toggle - Opens from LEFT
+        // Categories Sidebar Toggle
         const categoriesBtn = document.getElementById('categoriesBtn');
         const categoriesSidebar = document.getElementById('categoriesSidebar');
         const overlay = document.getElementById('overlay');
