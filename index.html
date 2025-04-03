@@ -18,7 +18,7 @@
             src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap');
         }
         
-        /* New Header Layout */
+        /* Header Layout */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -43,14 +43,14 @@
         }
         
         .logo-container {
-            order: 3; /* Moves logo to right */
+            margin-left: auto; /* Pushes logo to right */
         }
         
         .logo {
             height: 50px;
         }
         
-        /* Categories Button */
+        /* Categories Button - Now on LEFT side */
         .categories-btn {
             background: none;
             border: none;
@@ -58,14 +58,14 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
-            order: 1; /* Moves button to left */
+            margin-right: auto; /* Keeps button on left */
         }
         
-        /* Categories Sidebar */
+        /* Categories Sidebar - Appears from LEFT */
         .categories-sidebar {
             position: fixed;
             top: 0;
-            left: -250px;
+            left: -250px; /* Starts hidden on left */
             width: 250px;
             height: 100vh;
             background-color: #c12727;
@@ -75,7 +75,7 @@
         }
         
         .categories-sidebar.active {
-            left: 0;
+            left: 0; /* Slides in from left */
         }
         
         .categories-list {
@@ -111,26 +111,11 @@
             display: block;
         }
         
-        /* News Content (existing styles) */
+        /* Main Content */
         .container {
             max-width: 1000px;
             margin: 20px auto;
             padding: 0 20px;
-        }
-        
-        .news-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .news-item {
-            display: flex;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
         
         /* Footer */
@@ -141,20 +126,10 @@
             color: white;
             margin-top: 40px;
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .site-title {
-                font-size: 1.3rem;
-            }
-            .logo {
-                height: 40px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Categories Sidebar -->
+    <!-- Categories Sidebar - LEFT SIDE -->
     <div class="overlay" id="overlay"></div>
     <div class="categories-sidebar" id="categoriesSidebar">
         <ul class="categories-list">
@@ -166,17 +141,20 @@
         </ul>
     </div>
     
-    <!-- Updated Header -->
+    <!-- Header -->
     <header>
         <div class="header-container">
+            <!-- Categories Button - LEFT SIDE -->
             <button class="categories-btn" id="categoriesBtn">
                 <i class="fas fa-bars"></i> వర్గాలు
             </button>
             
+            <!-- Centered Title -->
             <div class="header-center">
                 <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
             </div>
             
+            <!-- Logo - RIGHT SIDE -->
             <div class="logo-container">
                 <img src="images/logo.png" alt="News Logo" class="logo">
             </div>
@@ -185,17 +163,8 @@
     
     <!-- Main Content -->
     <main class="container">
-        <div class="news-list">
-            <article class="news-item">
-                <img src="images/news1.jpg" alt="News" class="news-image">
-                <div class="news-content">
-                    <h2 class="news-title">కువైట్‌లో తెలుగు సంఘం కార్యక్రమం</h2>
-                    <p class="news-excerpt">కువైట్‌లోని తెలుగు సంఘం విజయవంతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
-                    <a href="#" class="read-more">ఇంకా చదవండి</a>
-                </div>
-            </article>
-            <!-- More news items -->
-        </div>
+        <!-- Your news content here -->
+        <p>వార్తా విషయాలు ఇక్కడ కనిపిస్తాయి...</p>
     </main>
     
     <footer>
@@ -203,7 +172,7 @@
     </footer>
 
     <script>
-        // Categories Sidebar Toggle
+        // Categories Sidebar Toggle - Opens from LEFT
         const categoriesBtn = document.getElementById('categoriesBtn');
         const categoriesSidebar = document.getElementById('categoriesSidebar');
         const overlay = document.getElementById('overlay');
