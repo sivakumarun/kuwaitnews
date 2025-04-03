@@ -215,8 +215,8 @@ header p {
     .main-nav {
         display: none; /* Hidden by default */
         width: 200px;
-        position: fixed; /* Changed to fixed for consistent positioning */
-        top: 60px; /* Adjust based on header height; tweak if needed */
+        position: fixed; /* Fixed to stay below header */
+        top: 60px; /* Adjust based on header height */
         left: 0;
         padding: 10px;
         background-color: #333;
@@ -224,6 +224,11 @@ header p {
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         margin: 0;
+    }
+
+    .category-bg {
+        position: static; /* Prevent interference with fixed nav */
+        height: 0; /* Collapse in mobile since nav is fixed */
     }
 
     .main-nav ul {
