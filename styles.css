@@ -1,8 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Noto Sans Telugu', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f8f8f8; /* Light gray background */
+    color: #333;
 }
 
 .container {
@@ -24,12 +25,12 @@ body {
     left: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    align-items: center;
 }
 
-/* Hamburger Button */
-.hamburger {
-    background-color: #007bff;
+/* Categories Button (Hamburger) */
+.categories-btn {
+    background-color: #d32f2f; /* Red from provided code */
     color: white;
     border: none;
     padding: 12px;
@@ -37,28 +38,28 @@ body {
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
-    max-width: 50px; /* Fixed width for consistency */
+    max-width: 50px;
     text-align: center;
     transition: background-color 0.3s;
 }
 
-.hamburger:hover {
-    background-color: #0056b3;
+.categories-btn:hover {
+    background-color: #b71c1c; /* Darker red on hover */
 }
 
 /* Menu (Hidden by Default) */
 .menu {
-    display: none; /* Hidden initially */
+    display: none;
     flex-direction: column;
     width: 100%;
     margin-top: 15px;
     gap: 10px;
-    align-items: center; /* Center menu items */
+    align-items: center;
 }
 
 /* Navigation Buttons */
 .nav-button {
-    background-color: #007bff;
+    background-color: #d32f2f; /* Red from provided code */
     color: white;
     border: none;
     padding: 10px;
@@ -66,13 +67,13 @@ body {
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
-    max-width: 200px; /* Fixed width for uniformity */
+    max-width: 200px;
     text-align: center;
     transition: background-color 0.3s;
 }
 
 .nav-button:hover {
-    background-color: #0056b3;
+    background-color: #b71c1c; /* Darker red on hover */
 }
 
 /* Main Content */
@@ -85,10 +86,11 @@ body {
 /* Header */
 header {
     text-align: center;
-    background-color: #007bff;
+    background-color: #d32f2f; /* Red from provided code */
     color: white;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow from provided code */
 }
 
 header h1 {
@@ -119,7 +121,7 @@ header p {
     background-color: white;
     padding: 15px;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 8px; /* Slightly larger radius from provided code */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -148,26 +150,26 @@ header p {
         height: auto;
         position: static;
         padding: 10px;
-        align-items: flex-start; /* Align to left for mobile */
+        align-items: flex-start;
     }
 
-    .hamburger {
+    .categories-btn {
         font-size: 1.2em;
         padding: 10px;
         max-width: 40px;
-        margin: 0 auto; /* Center hamburger on mobile */
+        margin: 0 auto;
     }
 
     .menu {
         width: 100%;
         margin-top: 10px;
-        align-items: center; /* Center menu items */
+        align-items: center;
     }
 
     .nav-button {
         font-size: 0.9em;
         padding: 8px;
-        max-width: 90%; /* Slightly narrower for mobile */
+        max-width: 90%;
     }
 
     /* Main Content */
