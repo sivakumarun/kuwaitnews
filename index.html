@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>కువైట్ తెలుగు వార్తలు</title>
+    <title>కువైట్ తెలుగు వార్తలు | Kuwait Telugu News</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">కువైట్ తెలుగు వార్తలు</div>
-        <nav>
-            <a href="index.html">ముఖ్యమైనవి</a>
-            <a href="gallery.html">ఫోటోలు</a>
-            <a href="feedback.html">ప్రతిస్పందన</a>
-        </nav>
+        <div class="header-container">
+            <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+            <nav>
+                <a href="index.html"><i class="fas fa-home"></i> ముఖ్యమైనవి</a>
+                <a href="gallery.html"><i class="fas fa-images"></i> ఫోటోలు</a>
+                <a href="feedback.html"><i class="fas fa-comment-alt"></i> ప్రతిస్పందన</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="news-container">
+    <main class="container">
+        <section class="news-section">
             <article class="news-card">
-                <img src="images/news1.jpg" alt="News Image">
+                <img src="images/news1.jpg" alt="News Image" class="news-image">
                 <div class="news-content">
-                    <h2>కువైట్‌లో తెలుగు సంఘం కార్యక్రమం</h2>
-                    <p>వివరణ: ఇక్కడ వార్త వివరాలు...</p>
-                    <a href="news/article1.html" class="read-more">చదవండి</a>
+                    <span class="news-date">జూన్ 25, 2024</span>
+                    <h2 class="news-title">కువైట్‌లో తెలుగు సంఘం విజయవంతమైన కార్యక్రమం</h2>
+                    <p class="news-excerpt">కువైట్‌లోని తెలుగు సంఘం ఈ వారం అద్భుతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది...</p>
+                    <a href="news/article1.html" class="read-more">మరింత చదవండి</a>
                 </div>
             </article>
             
-            <!-- More news articles -->
+            <!-- Add more news cards as needed -->
         </section>
     </main>
 
     <footer>
-        <p>© 2024 కువైట్ తెలుగు వార్తలు</p>
+        <p>&copy; 2024 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు సంరక్షించబడినవి.</p>
     </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>
