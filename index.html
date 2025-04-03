@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>తెలుగు న్యూస్</title>
+    <title>తెలుగు న్యూస్ - ప్రతిస్పందన</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Base styles from previous code */
         body {
             font-family: 'Noto Sans Telugu', Arial, sans-serif;
             margin: 0;
@@ -13,216 +14,147 @@
             background-color: #f8f8f8;
             color: #333;
         }
-        @font-face {
-            font-family: 'Noto Sans Telugu';
-            src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap');
-        }
+        
+        /* Header styles (same as before) */
         header {
             background-color: #d32f2f;
             color: white;
-            display: flex;
-            align-items: center;
             padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .nav-container {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-        .categories-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            margin-right: 1rem;
-        }
-        .categories-sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100vh;
-            background-color: #c12727;
-            padding-top: 60px;
-            transition: left 0.3s ease;
-            z-index: 999;
-        }
-        .categories-sidebar.active {
-            left: 0;
-        }
-        .categories-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .categories-list li {
-            padding: 0.8rem 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .categories-list li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-        }
-        .categories-list li.active {
-            background-color: rgba(0,0,0,0.2);
-        }
-        .categories-list li:hover {
-            background-color: rgba(0,0,0,0.1);
-        }
-        .title-container {
-            flex-grow: 1;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .main-nav {
-            margin-left: auto;
-        }
-        .main-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-        .main-nav ul li {
-            margin-left: 15px;
-        }
-        .main-nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .news-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .news-item {
-            display: flex;
+        
+        /* Feedback specific styles */
+        .feedback-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 20px;
             background: white;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .news-item:hover {
-            transform: translateY(-3px);
+        
+        .feedback-title {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
         }
-        .news-image {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
+        
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
-        .news-content {
-            padding: 15px;
-            flex-grow: 1;
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
-        .news-category {
-            display: inline-block;
+        
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Noto Sans Telugu', Arial, sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .rating-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .rating-star {
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .rating-star:hover,
+        .rating-star.active {
+            color: #ffc107;
+        }
+        
+        .submit-btn {
             background-color: #d32f2f;
             color: white;
-            padding: 3px 8px;
+            border: none;
+            padding: 12px 20px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 5px;
-        }
-        .news-title {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
-            color: #222;
-        }
-        .news-date {
-            color: #777;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-        .news-excerpt {
-            margin: 0;
-            color: #555;
-            line-height: 1.5;
-        }
-        .read-more {
-            display: inline-block;
-            margin-top: 10px;
-            color: #d32f2f;
-            text-decoration: none;
+            cursor: pointer;
+            font-size: 1rem;
             font-weight: bold;
+            transition: background-color 0.3s;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #d32f2f;
-            color: white;
-            margin-top: 40px;
+        
+        .submit-btn:hover {
+            background-color: #b71c1c;
         }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 998;
-            display: none;
+        
+        .feedback-list {
+            margin-top: 3rem;
         }
-        .overlay.active {
-            display: block;
+        
+        .feedback-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .no-news {
-            text-align: center;
-            padding: 40px;
+        
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feedback-name {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        
+        .feedback-date {
             color: #777;
+            font-size: 0.9rem;
         }
+        
+        .feedback-rating {
+            color: #ffc107;
+            margin: 0.5rem 0;
+        }
+        
+        .feedback-message {
+            line-height: 1.6;
+        }
+        
+        /* Responsive design */
         @media (max-width: 768px) {
-            .news-item {
-                flex-direction: column;
-            }
-            .news-image {
-                width: 100%;
-                height: 200px;
-            }
-            .main-nav ul li {
-                margin-left: 10px;
-            }
-        }
-        @media (max-width: 600px) {
-            .main-nav {
-                display: none;
+            .feedback-container {
+                margin: 1rem;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="overlay" id="overlay"></div>
-    
-    <div class="categories-sidebar" id="categoriesSidebar">
-        <ul class="categories-list">
-            <li class="active" data-category="all"><a href="#"><i class="fas fa-newspaper"></i> అన్ని వార్తలు</a></li>
-            <li data-category="headlines"><a href="#"><i class="fas fa-bolt"></i> ముఖ్య వార్తలు</a></li>
-            <li data-category="state"><a href="#"><i class="fas fa-city"></i> రాష్ట్ర వార్తలు</a></li>
-            <li data-category="national"><a href="#"><i class="fas fa-flag"></i> జాతీయ వార్తలు</a></li>
-            <li data-category="international"><a href="#"><i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు</a></li>
-            <li data-category="sports"><a href="#"><i class="fas fa-cricket"></i> క్రీడలు</a></li>
-            <li data-category="cinema"><a href="#"><i class="fas fa-film"></i> సినిమా వార్తలు</a></li>
-            <li data-category="business"><a href="#"><i class="fas fa-rupee-sign"></i> వ్యాపారం</a></li>
-        </ul>
-    </div>
-    
     <header>
         <div class="nav-container">
             <button class="categories-btn" id="categoriesBtn">
@@ -230,21 +162,67 @@
             </button>
             
             <div class="title-container">
-                <h1>తెలుగు న్యూస్</h1>
+                <h1>తెలుగు న్యూస్ - ప్రతిస్పందన</h1>
             </div>
             
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#"><i class="fas fa-home"></i></a></li>
-                    <li><a href="#"><i class="fas fa-search"></i></a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                    <li><a href="#feedback-form"><i class="fas fa-comment-alt"></i></a></li>
                 </ul>
             </nav>
         </div>
     </header>
     
     <main class="container">
-        <div class="news-list" id="newsContainer">
-            <!-- News items will be dynamically inserted here -->
+        <div class="feedback-container">
+            <h2 class="feedback-title">మీ ప్రతిస్పందనను తెలియజేయండి</h2>
+            
+            <form id="feedback-form" class="feedback-form">
+                <div class="form-group">
+                    <label for="name">పేరు:</label>
+                    <input type="text" id="name" name="name" required placeholder="మీ పేరు">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">ఇమెయిల్:</label>
+                    <input type="email" id="email" name="email" placeholder="మీ ఇమెయిల్ (ఐచ్ఛికం)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="news-select">వార్త కోసం ప్రతిస్పందన (ఐచ్ఛికం):</label>
+                    <select id="news-select" name="news">
+                        <option value="">-- వార్తను ఎంచుకోండి --</option>
+                        <option value="rain-news">రాష్ట్రంలో భారీ వర్షాలు</option>
+                        <option value="cultural-event">కువైట్‌లో తెలుగు సంఘం కార్యక్రమం</option>
+                        <option value="cricket-news">జాతీయ క్రికెట్ టీమ్ కు కొత్త కోచ్</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>రేటింగ్:</label>
+                    <div class="rating-container">
+                        <span class="rating-star" data-value="1">★</span>
+                        <span class="rating-star" data-value="2">★</span>
+                        <span class="rating-star" data-value="3">★</span>
+                        <span class="rating-star" data-value="4">★</span>
+                        <span class="rating-star" data-value="5">★</span>
+                        <input type="hidden" id="rating" name="rating" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">ప్రతిస్పందన:</label>
+                    <textarea id="message" name="message" required placeholder="మీ ప్రతిస్పందన ఇక్కడ రాయండి..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">ప్రతిస్పందనను సమర్పించండి</button>
+            </form>
+            
+            <div class="feedback-list" id="feedback-list">
+                <h3>ఇతరుల ప్రతిస్పందనలు:</h3>
+                <!-- Feedback items will be loaded here -->
+            </div>
         </div>
     </main>
     
@@ -253,134 +231,114 @@
     </footer>
 
     <script>
-        // Sample news data
-        const newsData = [
+        // Rating system
+        const stars = document.querySelectorAll('.rating-star');
+        const ratingInput = document.getElementById('rating');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Feedback form submission
+        const feedbackForm = document.getElementById('feedback-form');
+        const feedbackList = document.getElementById('feedback-list');
+        
+        // Sample feedback data (in a real app, this would come from a database)
+        let feedbackData = [
             {
                 id: 1,
-                title: "రాష్ట్రంలో భారీ వర్షాలు: అనేక ప్రాంతాల్లో అలర్ట్",
-                excerpt: "రాష్ట్రంలో కొనసాగుతున్న భారీ వర్షాల వల్ల అనేక ప్రాంతాల్లో నదులు, కాలువలు పొంగి ప్రవాహం స్థాయిలో నీరు పెరిగింది.",
-                date: "మార్చి 15, 2024",
-                category: "headlines",
-                image: "https://via.placeholder.com/300x200?text=Rain+News"
+                name: "రమేష్",
+                email: "",
+                news: "rain-news",
+                rating: 4,
+                message: "వర్షాల గురించి మరింత వివరాలు ఇవ్వాలి. ప్రాంతాల పేర్లు స్పష్టంగా పేర్కొనాలి.",
+                date: "మార్చి 16, 2024"
             },
             {
                 id: 2,
-                title: "కువైట్‌లో తెలుగు సంఘం కార్యక్రమం",
-                excerpt: "కువైట్‌లోని తెలుగు సంఘం విజయవంతమైన సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది.",
-                date: "మార్చి 14, 2024",
-                category: "state",
-                image: "https://via.placeholder.com/300x200?text=Cultural+Event"
-            },
-            {
-                id: 3,
-                title: "జాతీయ క్రికెట్ టీమ్ కు కొత్త కోచ్",
-                excerpt: "జాతీయ క్రికెట్ టీమ్ కు కొత్త కోచ్‌గా రాహుల్ ద్రవిడ్‌ను నియమించారు.",
-                date: "మార్చి 13, 2024",
-                category: "sports",
-                image: "https://via.placeholder.com/300x200?text=Cricket+News"
-            },
-            {
-                id: 4,
-                title: "అమెరికా అధ్యక్షుడు భారత్ సందర్శన",
-                excerpt: "అమెరికా అధ్యక్షుడు తదుపరి వారం భారత దేశాన్ని సందర్శించనున్నారు.",
-                date: "మార్చి 12, 2024",
-                category: "international",
-                image: "https://via.placeholder.com/300x200?text=US+President"
-            },
-            {
-                id: 5,
-                title: "తెలుగు సినిమా ఇండస్ట్రీలో కొత్త రికార్డులు",
-                excerpt: "ఇటీవల విడుదలైన తెలుగు సినిమా బాక్స్ ఆఫీస్ వద్ద కొత్త రికార్డులు సృష్టించింది.",
-                date: "మార్చి 11, 2024",
-                category: "cinema",
-                image: "https://via.placeholder.com/300x200?text=Movie+News"
+                name: "సుజాత",
+                email: "sujatha@example.com",
+                news: "cultural-event",
+                rating: 5,
+                message: "సాంస్కృతిక కార్యక్రమం గురించి చాలా బాగా వివరించారు. ఇలాంటి వార్తలు మరింత ఇవ్వాలి.",
+                date: "మార్చి 15, 2024"
             }
         ];
-
-        // DOM elements
-        const categoriesBtn = document.getElementById('categoriesBtn');
-        const categoriesSidebar = document.getElementById('categoriesSidebar');
-        const overlay = document.getElementById('overlay');
-        const newsContainer = document.getElementById('newsContainer');
-        const categoryItems = document.querySelectorAll('.categories-list li');
-
-        // Initialize with all news
-        renderNews('all');
-
-        // Category sidebar toggle
-        categoriesBtn.addEventListener('click', () => {
-            categoriesSidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        // Close sidebar when clicking overlay
-        overlay.addEventListener('click', () => {
-            categoriesSidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Category selection
-        categoryItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const category = item.dataset.category;
-                
-                // Update active state
-                categoryItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                
-                // Render news for selected category
-                renderNews(category);
-                
-                // Close sidebar
-                categoriesSidebar.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        });
-
-        // Function to render news
-        function renderNews(category) {
-            newsContainer.innerHTML = '';
+        
+        // Load existing feedback
+        renderFeedback();
+        
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            let filteredNews = newsData;
-            if (category !== 'all') {
-                filteredNews = newsData.filter(item => item.category === category);
-            }
+            const formData = new FormData(feedbackForm);
+            const newsSelect = document.getElementById('news-select');
+            const newsText = newsSelect.options[newsSelect.selectedIndex].text;
             
-            if (filteredNews.length === 0) {
-                newsContainer.innerHTML = '<div class="no-news">ఈ వర్గంలో వార్తలు లేవు</div>';
+            const newFeedback = {
+                id: feedbackData.length + 1,
+                name: formData.get('name'),
+                email: formData.get('email'),
+                news: formData.get('news'),
+                newsText: newsText,
+                rating: parseInt(formData.get('rating')),
+                message: formData.get('message'),
+                date: new Date().toLocaleDateString('te-IN', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
+            };
+            
+            feedbackData.unshift(newFeedback); // Add to beginning of array
+            renderFeedback();
+            
+            // Reset form
+            feedbackForm.reset();
+            ratingInput.value = 0;
+            stars.forEach(star => star.classList.remove('active'));
+            
+            // Show success message (in a real app, you would save to a database)
+            alert('మీ ప్రతిస్పందనకు ధన్యవాదాలు!');
+        });
+        
+        function renderFeedback() {
+            feedbackList.innerHTML = '<h3>ఇతరుల ప్రతిస్పందనలు:</h3>';
+            
+            if (feedbackData.length === 0) {
+                feedbackList.innerHTML += '<p>ఇంకా ప్రతిస్పందనలు లేవు. మొదటివారైండి!</p>';
                 return;
             }
             
-            filteredNews.forEach(news => {
-                const newsItem = document.createElement('div');
-                newsItem.className = 'news-item';
-                newsItem.innerHTML = `
-                    <img src="${news.image}" alt="${news.title}" class="news-image">
-                    <div class="news-content">
-                        <span class="news-category">${getCategoryName(news.category)}</span>
-                        <h3 class="news-title">${news.title}</h3>
-                        <div class="news-date">${news.date}</div>
-                        <p class="news-excerpt">${news.excerpt}</p>
-                        <a href="#" class="read-more">ఇంకా చదవండి →</a>
+            feedbackData.forEach(feedback => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                
+                const stars = '★'.repeat(feedback.rating) + '☆'.repeat(5 - feedback.rating);
+                
+                feedbackItem.innerHTML = `
+                    <div class="feedback-header">
+                        <span class="feedback-name">${feedback.name}</span>
+                        <span class="feedback-date">${feedback.date}</span>
                     </div>
+                    ${feedback.news ? `<div>వార్త: ${feedback.newsText || 'సాధారణ ప్రతిస్పందన'}</div>` : ''}
+                    <div class="feedback-rating" title="${feedback.rating} out of 5">${stars}</div>
+                    <div class="feedback-message">${feedback.message}</div>
                 `;
-                newsContainer.appendChild(newsItem);
+                
+                feedbackList.appendChild(feedbackItem);
             });
-        }
-
-        // Helper function to get category name
-        function getCategoryName(category) {
-            const names = {
-                'headlines': 'ముఖ్య వార్తలు',
-                'state': 'రాష్ట్ర వార్తలు',
-                'national': 'జాతీయ వార్తలు',
-                'international': 'అంతర్జాతీయ వార్తలు',
-                'sports': 'క్రీడలు',
-                'cinema': 'సినిమా వార్తలు',
-                'business': 'వ్యాపారం'
-            };
-            return names[category] || category;
         }
     </script>
 </body>
