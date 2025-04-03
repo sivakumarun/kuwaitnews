@@ -9,69 +9,74 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar with Hamburger Menu -->
-        <div class="sidebar">
-            <button class="categories-btn" id="menuToggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="menu" id="menu">
-                <button class="nav-button" onclick="navigateTo('news-local.html')">
-                    <i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు
-                </button>
-                <button class="nav-button" onclick="navigateTo('#')">
-                    <i class="fas fa-flag"></i> జాతీయ వార్తలు
-                </button>
-                <button class="nav-button" onclick="navigateTo('#')">
-                    <i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు
-                </button>
-                <button class="nav-button" onclick="navigateTo('#')">
-                    <i class="fas fa-futbol"></i> క్రీడలు
-                </button>
+        <!-- Header with Categories -->
+        <header>
+            <div class="nav-container">
+                <div class="title-container">
+                    <h1>కువైట్ తెలుగు వార్తలు</h1>
+                    <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                        <li><a href="#feedback"><i class="fas fa-comment-alt"></i></a></li>
+                    </ul>
+                    <button class="categories-btn" id="categoriesToggle">
+                        వర్గాలు <i class="fas fa-chevron-down"></i>
+                    </button>
+                </nav>
+                
+                <div class="categories-container" id="categoriesContainer">
+                    <div class="menu">
+                        <button class="nav-button active" onclick="navigateTo('index.html')">
+                            <i class="fas fa-home"></i> మొదటి పేజీ
+                        </button>
+                        <button class="nav-button" onclick="navigateTo('news-local.html')">
+                            <i class="fas fa-map-marker-alt"></i> స్థానిక వార్తలు
+                        </button>
+                        <button class="nav-button" onclick="navigateTo('#')">
+                            <i class="fas fa-flag"></i> జాతీయ వార్తలు
+                        </button>
+                        <button class="nav-button" onclick="navigateTo('#')">
+                            <i class="fas fa-globe"></i> అంతర్జాతీయ వార్తలు
+                        </button>
+                        <button class="nav-button" onclick="navigateTo('#')">
+                            <i class="fas fa-futbol"></i> క్రీడలు
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
 
         <!-- Main Content -->
         <div class="main-content">
-            <header>
-                <div class="nav-container">
-                    <div class="title-container">
-                        <h1>కువైట్ తెలుగు వార్తలు</h1>
-                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
-                    </div>
-                    <nav class="main-nav">
-                        <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i></a></li>
-                            <li><a href="#feedback"><i class="fas fa-comment-alt"></i></a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
             <div class="intro">
                 <p>మా వెబ్‌సైట్‌లో కువైట్‌లోని తాజా వార్తలను చదవండి. విభాగాలను ఎంచుకోండి మరియు సరికొత్త సమాచారాన్ని పొందండి.</p>
+            </div>
+            
+            <div class="news-section">
+                <!-- News items will be added here dynamically -->
             </div>
         </div>
     </div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            const menuToggle = document.getElementById('menuToggle');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-            menuToggle.classList.toggle('active');
-            
-            // Add active class to current page button
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-button').forEach(button => {
-                button.classList.remove('active');
-                if (button.getAttribute('onclick').includes(currentPage)) {
-                    button.classList.add('active');
-                }
-            });
-        }
-
+        // Toggle categories menu
+        const categoriesToggle = document.getElementById('categoriesToggle');
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        
+        categoriesToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            categoriesContainer.classList.toggle('open');
+        });
+        
+        // Navigation function
         function navigateTo(url) {
-            // Add active class to clicked button
-            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+            // Update active button
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
             event.target.classList.add('active');
             
             // Navigate after slight delay for visual feedback
@@ -79,12 +84,14 @@
                 window.location.href = url;
             }, 200);
         }
-
-        // Initialize menu on load
-        document.addEventListener('DOMContentLoaded', function() {
-            toggleMenu(); // Show menu by default on desktop
-            if (window.innerWidth <= 768) {
-                document.getElementById('menu').style.display = 'none';
+        
+        // Close categories when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.categories-container') && 
+                !e.target.closest('.categories-btn') &&
+                categoriesContainer.classList.contains('open')) {
+                categoriesContainer.classList.remove('open');
+                categoriesToggle.classList.remove('active');
             }
         });
     </script>
