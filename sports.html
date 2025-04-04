@@ -12,9 +12,7 @@
         <header>
             <div class="nav-container">
                 <div class="header-top">
-                    <button class="menu-btn" onclick="toggleMenu()">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
                     <div class="title-container">
                         <h1>కువైట్ తెలుగు వార్తలు</h1>
                         <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
@@ -38,9 +36,7 @@
     <div class="content-bg">
         <div class="container">
             <div class="main-content">
-                <!-- Sports Section -->
                 <div class="news-section">
-                    <!-- IPL Match 1 -->
                     <div class="news-item">
                         <img src="images/ipl1.jpg" alt="IPL Match Image">
                         <div class="news-text">
@@ -49,8 +45,6 @@
                             <p>చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది. ధోని అద్భుతమైన ఫినిషింగ్‌తో అభిమానులను అలరించాడు.</p>
                         </div>
                     </div>
-
-                    <!-- IPL Match 2 -->
                     <div class="news-item">
                         <img src="images/ipl2.jpg" alt="IPL Match Image">
                         <div class="news-text">
@@ -66,23 +60,17 @@
 
     <script>
         function toggleMenu(event) {
-            event.stopPropagation();
+            event.preventDefault();
             const nav = document.getElementById('main-nav');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         }
 
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.addEventListener('click', function(event) {
-                // Default navigation behavior
-            });
-        });
+        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
 
         window.addEventListener('resize', function() {
             const nav = document.getElementById('main-nav');
             if (window.innerWidth > 600) {
                 nav.style.display = 'block';
-            } else if (nav.style.display === 'block') {
-                // Keep visible if toggled
             } else {
                 nav.style.display = 'none';
             }
