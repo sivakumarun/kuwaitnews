@@ -42,7 +42,11 @@
                         <div class="news-text">
                             <h2>CSK vs MI - IPL 2025</h2>
                             <span class="news-meta">తేదీ: 2025-04-05 | సమయం: 07:30 PM</span>
-                            <p>చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది. ధోని అద్భుతమైన ఫినిషింగ్‌తో అభిమానులను అలరించాడు.</p>
+                            <div class="news-content">
+                                <p class="preview">చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది...</p>
+                                <p class="full-text">చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది. ధోని అద్భుతమైన ఫినిషింగ్‌తో అభిమానులను అలరించాడు.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి</a>
+                            </div>
                         </div>
                     </div>
                     <div class="news-item">
@@ -50,7 +54,11 @@
                         <div class="news-text">
                             <h2>RCB vs SRH - IPL 2025</h2>
                             <span class="news-meta">తేదీ: 2025-04-06 | సమయం: 07:30 PM</span>
-                            <p>రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది. SRH 189/6తో పోరాడినా ఓటమి చెందింది. కోహ్లీ సెంచరీ అద్భుతంగా నిలిచింది.</p>
+                            <div class="news-content">
+                                <p class="preview">రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది...</p>
+                                <p class="full-text">రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది. SRH 189/6తో పోరాడినా ఓటమి చెందింది. కోహ్లీ సెంచరీ అద్భుతంగా నిలిచింది.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,6 +91,14 @@
             } else {
                 nav.style.display = 'none';
             }
+        });
+
+        document.querySelectorAll('.read-more').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const content = this.parentElement;
+                content.classList.toggle('expanded');
+            });
         });
     </script>
 </body>
