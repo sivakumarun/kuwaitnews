@@ -37,6 +37,8 @@
         <div class="container">
             <div class="main-content">
                 <div class="news-section">
+                    <h2>తెలుగు రాష్ట్రాల వార్తలు</h2>
+                    <p id="news-count" class="news-meta"></p> <!-- News count will go here -->
                     <div class="news-item">
                         <img src="images/news5.jpg" alt="News Image">
                         <div class="news-text">
@@ -91,6 +93,10 @@
             } else {
                 nav.style.display = 'none';
             }
+
+            // Add news count
+            const newsItems = document.querySelectorAll('.news-item').length;
+            document.getElementById('news-count').textContent = `మొత్తం వార్తలు: ${newsItems}`;
         });
 
         document.querySelectorAll('.read-more').forEach(link => {
