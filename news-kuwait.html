@@ -12,9 +12,7 @@
         <header>
             <div class="nav-container">
                 <div class="header-top">
-                    <button class="menu-btn" onclick="toggleMenu()">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
                     <div class="title-container">
                         <h1>కువైట్ తెలుగు వార్తలు</h1>
                         <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
@@ -31,16 +29,14 @@
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
                 <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
         </nav>
     </div>
     <div class="content-bg">
         <div class="container">
             <div class="main-content">
-                <!-- News Section -->
                 <div class="news-section">
-                    <!-- News Sample 1 -->
                     <div class="news-item">
                         <img src="images/news1.jpg" alt="News Image">
                         <div class="news-text">
@@ -49,8 +45,6 @@
                             <p>పబ్లిక్ అథారిటీ ఫర్ అగ్రికల్చర్ అఫైర్స్ అండ్ ఫిష్ రిసోర్సెస్ (పిఎఎఎఫ్ఆర్) ఈద్ మొదటి మరియు రెండవ రోజులలో తన పర్యవేక్షణ ప్రయత్నాలను ముమ్మరం చేసింది, ఇది నిషేధిత చేపల వలలను ఉపయోగించి అనేక పడవలను స్వాధీనం చేసుకోవడానికి దారితీసింది. ఈ చర్యలు కువైట్ లో సముద్ర జీవులను రక్షించడానికి చేపలు పట్టే పద్ధతులను నియంత్రించే తీర్మానం 2004/8 ను నేరుగా ఉల్లంఘించాయి.</p>
                         </div>
                     </div>
-
-                    <!-- News Sample 2 -->
                     <div class="news-item">
                         <img src="images/news2.jpg" alt="News Image">
                         <div class="news-text">
@@ -59,8 +53,6 @@
                             <p>20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది. అసలు తీర్పు సరిపోదని వాదిస్తూ అధిక భరణం, నష్టపరిహారం చెల్లించాలని కోరుతూ మహిళ తరఫు న్యాయవాది సారా బాదర్ దాఖలు చేసిన అప్పీల్ తర్వాత ఈ నిర్ణయం తీసుకున్నారు.</p>
                         </div>
                     </div>
-
-                    <!-- News Sample 3 -->
                     <div class="news-item">
                         <img src="images/news3.jpg" alt="News Image">
                         <div class="news-text">
@@ -69,8 +61,6 @@
                             <p>కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది. ఈ కొత్త సేవలలో ఉచిత ఆరోగ్య తనిఖీలు మరియు తక్కువ ఖర్చుతో చికిత్సలు ఉన్నాయి, ఇవి వచ్చే నెల నుండి అందుబాటులో ఉంటాయి.</p>
                         </div>
                     </div>
-
-                    <!-- News Sample 4 -->
                     <div class="news-item">
                         <img src="images/news4.jpg" alt="News Image">
                         <div class="news-text">
@@ -86,24 +76,17 @@
 
     <script>
         function toggleMenu(event) {
-            event.stopPropagation(); // Prevent click from bubbling up
+            event.preventDefault();
             const nav = document.getElementById('main-nav');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Ensure links work by not interfering with default behavior
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.addEventListener('click', function(event) {
-                // Default behavior (navigation) should occur, no need to prevent it
-            });
-        });
+        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
 
         window.addEventListener('resize', function() {
             const nav = document.getElementById('main-nav');
             if (window.innerWidth > 600) {
                 nav.style.display = 'block';
-            } else if (nav.style.display === 'block') {
-                // Keep it visible only if toggled on mobile
             } else {
                 nav.style.display = 'none';
             }
