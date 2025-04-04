@@ -12,9 +12,7 @@
         <header>
             <div class="nav-container">
                 <div class="header-top">
-                    <button class="menu-btn" onclick="toggleMenu()">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
                     <div class="title-container">
                         <h1>కువైట్ తెలుగు వార్తలు</h1>
                         <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
@@ -31,16 +29,14 @@
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
                 <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="#"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
         </nav>
     </div>
     <div class="content-bg">
         <div class="container">
             <div class="main-content">
-                <!-- News Section -->
                 <div class="news-section">
-                    <!-- News Sample 1 -->
                     <div class="news-item">
                         <img src="images/news5.jpg" alt="News Image">
                         <div class="news-text">
@@ -49,8 +45,6 @@
                             <p>ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది. ఈ ప్రాజెక్ట్‌కు సుమారు 500 కోట్ల రూపాయలు ఖర్చు అవుతుందని అంచనా.</p>
                         </div>
                     </div>
-
-                    <!-- News Sample 2 -->
                     <div class="news-item">
                         <img src="images/news6.jpg" alt="News Image">
                         <div class="news-text">
@@ -65,19 +59,20 @@
     </div>
 
     <script>
-        function toggleMenu() {
+        function toggleMenu(event) {
+            event.preventDefault();
             const nav = document.getElementById('main-nav');
-            if (nav.style.display === 'block') {
-                nav.style.display = 'none';
-            } else {
-                nav.style.display = 'block';
-            }
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         }
+
+        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
 
         window.addEventListener('resize', function() {
             const nav = document.getElementById('main-nav');
             if (window.innerWidth > 600) {
                 nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
             }
         });
 
