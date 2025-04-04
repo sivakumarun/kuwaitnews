@@ -333,3 +333,42 @@ header p {
         padding: 8px;
     }
 }
+.news-content {
+    position: relative;
+}
+
+.preview {
+    display: block;
+    max-height: 3em; /* Limits to ~2-3 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    margin-bottom: 0.5em; /* Space before Read More link */
+}
+
+.full-text {
+    display: none; /* Ensures full text is hidden by default */
+}
+
+.read-more {
+    color: #007BFF;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.news-content.expanded .preview {
+    display: none; /* Hide preview when expanded */
+}
+
+.news-content.expanded .full-text {
+    display: block; /* Show full text when expanded */
+}
+
+.news-content.expanded .read-more::after {
+    content: " తక్కువ చూడండి"; /* Changes to "Read Less" */
+}
