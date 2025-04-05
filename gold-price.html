@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="తాజా గోల్డ్ ధరలు కువైట్ మరియు హైదరాబాద్, విజయవాడలో - కువైట్ తెలుగు వార్తలు">
+    <meta name="keywords" content="గోల్డ్ ధర, కువైట్, తెలుగు వార్తలు, హైదరాబాద్, విజయవాడ">
     <title>గోల్డ్ ధర - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -27,7 +29,7 @@
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                <li><a href="gold-price.html" class="active"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
@@ -40,7 +42,6 @@
                     <h2>తాజా గోల్డ్ ధరలు</h2>
                     <span class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 12:57 PM</span>
 
-                    <!-- Kuwait Table (in KWD) -->
                     <h3>కువైట్ (KWD)</h3>
                     <table class="price-table">
                         <thead>
@@ -69,7 +70,6 @@
                         </tbody>
                     </table>
 
-                    <!-- Hyderabad Table (in INR) -->
                     <h3>హైదరాబాద్ (INR)</h3>
                     <table class="price-table">
                         <thead>
@@ -98,7 +98,6 @@
                         </tbody>
                     </table>
 
-                    <!-- Vijayawada Table (in INR) -->
                     <h3>విజయవాడ (INR)</h3>
                     <table class="price-table">
                         <thead>
@@ -126,36 +125,51 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="social-share">
+                        <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
+                        <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
+            <div class="footer-links">
+                <a href="#">గోప్యతా విధానం</a> | 
+                <a href="#">సంప్రదించండి</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
         function toggleMenu(event) {
             event.preventDefault();
             const nav = document.getElementById('main-nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            nav.classList.toggle('active');
         }
 
         document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
 
-        window.addEventListener('resize', function() {
-            const nav = document.getElementById('main-nav');
-            if (window.innerWidth > 600) {
-                nav.style.display = 'block';
-            } else {
-                nav.style.display = 'none';
-            }
-        });
-
-        window.addEventListener('load', function() {
-            const nav = document.getElementById('main-nav');
-            if (window.innerWidth > 600) {
-                nav.style.display = 'block';
-            } else {
-                nav.style.display = 'none';
-            }
+        // Social sharing functionality (basic example)
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = window.location.href;
+                const text = 'తాజా గోల్డ్ ధరలు - కువైట్ తెలుగు వార్తలు';
+                if (btn.classList.contains('whatsapp')) {
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
+                } else if (btn.classList.contains('twitter')) {
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+                } else if (btn.classList.contains('facebook')) {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+                }
+            });
         });
     </script>
 </body>
