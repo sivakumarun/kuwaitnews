@@ -171,3 +171,177 @@
 
                 <!-- Gold Price Calculator -->
                 <div class="calculator-container">
+                    <h3><i class="fas fa-calculator"></i> గోల్డ్ ధర కాలిక్యులేటర్</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="gold-type">గోల్డ్ రకం:</label>
+                            <select id="gold-type" class="form-control">
+                                <option value="24">24 క్యారెట్</option>
+                                <option value="22">22 క్యారెట్</option>
+                                <option value="18">18 క్యారెట్</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">స్థానం:</label>
+                            <select id="location" class="form-control">
+                                <option value="kuwait">కువైట్ (KWD)</option>
+                                <option value="hyderabad">హైదరాబాద్ (INR)</option>
+                                <option value="vijayawada">విజయవాడ (INR)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">బరువు (గ్రాములు):</label>
+                            <input type="number" id="weight" class="form-control" value="1" min="0.1" step="0.1">
+                        </div>
+                        <button id="calculate-btn" class="subscribe-btn">లెక్కించండి</button>
+                        <div class="result-container">
+                            <h4>అంచనా ధర:</h4>
+                            <p id="result">KWD 31.03</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gold Price Information -->
+                <div class="info-container">
+                    <h3><i class="fas fa-info-circle"></i> గోల్డ్ ధరల గురించి ముఖ్యమైన విషయాలు</h3>
+                    <div class="info-content">
+                        <p>గోల్డ్ ధరలు ప్రతిరోజు మారుతూ ఉంటాయి. ఈ పేజీలో చూపించిన ధరలు ఎప్పటికప్పుడు నవీకరించబడతాయి.</p>
+                        <ul>
+                            <li>24 క్యారెట్ గోల్డ్: 99.9% స్వచ్ఛమైన బంగారం</li>
+                            <li>22 క్యారెట్ గోల్డ్: 91.6% బంగారం, మిగతా 8.4% ఇతర లోహాలు</li>
+                            <li>18 క్యారెట్ గోల్డ్: 75% బంగారం, మిగతా 25% ఇతర లోహాలు</li>
+                        </ul>
+                        <p><strong>గమనిక:</strong> ఈ ధరలు సుమారు అంచనాలు మాత్రమే. ఖచ్చితమైన ధరల కోసం స్థానిక జ్వెలరీ దుకాణాలను సంప్రదించండి.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Ad Banner -->
+            <div class="widget">
+                <div class="ad-banner">
+                    <h4>గోల్డ్ జ్వెలరీ</h4>
+                    <p>కువైట్‌లోని ఉత్తమ జ్వెలరీ దుకాణాలు</p>
+                    <a href="#" class="subscribe-btn">ఇక్కడ క్లిక్ చేయండి</a>
+                </div>
+            </div>
+
+            <!-- Exchange Rates Widget -->
+            <div class="widget">
+                <h3 class="widget-title"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేట్లు</h3>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>కరెన్సీ</th>
+                            <th>రేటు</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>KWD to INR</td>
+                            <td>277.04</td>
+                        </tr>
+                        <tr>
+                            <td>USD to INR</td>
+                            <td>85.29</td>
+                        </tr>
+                        <tr>
+                            <td>EUR to INR</td>
+                            <td>93.86</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="money-exchange-rate.html" class="read-more">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Gold Price Tips -->
+            <div class="widget">
+                <h3 class="widget-title"><i class="fas fa-lightbulb"></i> బంగారం కొనడానికి చిట్కాలు</h3>
+                <ul class="tips-list">
+                    <li>ఎల్లప్పుడూ BIS హాల్‌మార్క్ ఉన్న బంగారాన్ని మాత్రమే కొనండి</li>
+                    <li>ధరలను బాగా పోల్చి చూసుకోండి</li>
+                    <li>మీకు అవసరమైన బరువు మరియు క్యారెట్‌ను నిర్ణయించుకోండి</li>
+                    <li>రసీదు తప్పనిసరిగా తీసుకోండి</li>
+                </ul>
+            </div>
+
+            <!-- Subscribe Widget -->
+            <div class="widget">
+                <h3 class="widget-title"><i class="fas fa-envelope"></i> సబ్‌స్క్రయిబ్ చేయండి</h3>
+                <p>తాజా గోల్డ్ ధరల కోసం మా న్యూస్‌లెటర్‌కు సబ్‌స్క్రయిబ్ చేయండి</p>
+                <form class="subscribe-form">
+                    <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్" required>
+                    <button type="submit" class="subscribe-btn">సబ్‌స్క్రయిబ్</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="about.html">మా గురించి</a>
+            <a href="contact.html">సంప్రదించండి</a>
+            <a href="advertise.html">ప్రకటించండి</a>
+            <a href="privacy.html">గోప్యతా విధానం</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook social-icon"></i></a>
+            <a href="#"><i class="fab fa-twitter social-icon"></i></a>
+            <a href="#"><i class="fab fa-instagram social-icon"></i></a>
+            <a href="#"><i class="fab fa-youtube social-icon"></i></a>
+            <a href="#"><i class="fab fa-whatsapp social-icon"></i></a>
+        </div>
+        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
+    </footer>
+
+    <script>
+        // Gold Price Calculator
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const goldType = document.getElementById('gold-type').value;
+            const location = document.getElementById('location').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            let pricePerGram = 0;
+            let currency = '';
+            
+            // Set prices based on selections
+            if (location === 'kuwait') {
+                currency = 'KWD';
+                if (goldType === '24') pricePerGram = 31.03;
+                else if (goldType === '22') pricePerGram = 28.45;
+                else if (goldType === '18') pricePerGram = 23.30;
+            } else if (location === 'hyderabad') {
+                currency = 'INR';
+                if (goldType === '24') pricePerGram = 9164;
+                else if (goldType === '22') pricePerGram = 8400;
+                else if (goldType === '18') pricePerGram = 6873;
+            } else if (location === 'vijayawada') {
+                currency = 'INR';
+                if (goldType === '24') pricePerGram = 9167;
+                else if (goldType === '22') pricePerGram = 8400;
+                else if (goldType === '18') pricePerGram = 6873;
+            }
+            
+            const totalPrice = (pricePerGram * weight).toFixed(2);
+            document.getElementById('result').textContent = `${currency} ${totalPrice}`;
+        });
+
+        // Chart toggle
+        document.querySelectorAll('.chart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would switch between KWD and INR charts
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
