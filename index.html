@@ -8,16 +8,12 @@
     <title>కువైట్ తెలుగు వార్తలు - Kuwait Telugu News</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Improved Base Styles */
-        body {
-            font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+        /* IMPROVED CONTENT AREA STYLES ONLY */
+        .content-bg {
+            background-color: #f5f7fa;
+            padding: 25px 0;
         }
         
         .container {
@@ -26,117 +22,16 @@
             padding: 0 15px;
         }
         
-        /* Enhanced Header */
-        .header-bg {
-            background: linear-gradient(135deg, #1a3e72, #2a5298);
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo {
-            height: 60px;
-            width: auto;
-        }
-        
-        .site-title {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        
-        .site-tagline {
-            margin: 5px 0 0;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        /* Improved Navigation */
-        .nav-container {
-            background-color: #2a5298;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 5px;
-        }
-        
-        .nav-menu li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            transition: background-color 0.3s;
-        }
-        
-        .nav-menu li a:hover, .nav-menu li a.active {
-            background-color: rgba(255,255,255,0.2);
-        }
-        
-        .nav-menu li a i {
-            margin-right: 5px;
-        }
-        
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .search-input {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-family: 'Noto Sans Telugu', sans-serif;
-            width: 200px;
-        }
-        
-        .search-btn {
-            background-color: #f8f9fa;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-        
-        /* Enhanced Content Area */
-        .content-bg {
-            padding: 30px 0;
-            background-color: #f8f9fa;
-        }
-        
         .section-title {
             color: #1a3e72;
-            border-bottom: 2px solid #1a3e72;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #e1e5eb;
             padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
         
-        /* Improved Featured News */
+        /* Featured News Improvements */
         .featured-news {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -148,23 +43,30 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
         
         .featured-main img {
             width: 100%;
             height: 350px;
             object-fit: cover;
+            display: block;
         }
         
-        .featured-content {
+        .featured-main-content {
             padding: 20px;
         }
         
-        .featured-content h3 {
-            margin-top: 0;
+        .featured-main-content h3 {
+            margin: 0 0 15px 0;
             font-size: 1.4rem;
             color: #1a3e72;
+        }
+        
+        .featured-main-content p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
         }
         
         .featured-secondary {
@@ -177,13 +79,19 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .secondary-item:hover {
+            transform: translateY(-3px);
         }
         
         .secondary-item img {
             width: 100%;
             height: 150px;
             object-fit: cover;
+            display: block;
         }
         
         .secondary-content {
@@ -193,9 +101,10 @@
         .secondary-content h4 {
             margin: 0;
             font-size: 1.1rem;
+            color: #1a3e72;
         }
         
-        /* Enhanced News Grid */
+        /* News Grid Improvements */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -207,19 +116,20 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .news-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
         }
         
         .news-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            display: block;
         }
         
         .news-content {
@@ -227,9 +137,10 @@
         }
         
         .news-content h3 {
-            margin-top: 0;
+            margin: 0 0 10px 0;
             font-size: 1.2rem;
             color: #1a3e72;
+            line-height: 1.4;
         }
         
         .news-meta {
@@ -237,11 +148,13 @@
             justify-content: space-between;
             color: #666;
             font-size: 0.85rem;
-            margin: 10px 0 15px;
+            margin-bottom: 15px;
         }
         
-        .news-meta i {
-            margin-right: 5px;
+        .news-content p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
         }
         
         .read-more {
@@ -250,6 +163,11 @@
             font-weight: 600;
             display: inline-flex;
             align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: #1a3e72;
         }
         
         .read-more i {
@@ -262,49 +180,13 @@
         }
         
         /* Responsive Improvements */
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .featured-news {
                 grid-template-columns: 1fr;
             }
             
             .featured-main img {
-                height: 300px;
-            }
-            
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .main-nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-menu {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-menu li {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .search-container {
-                width: 100%;
-            }
-            
-            .search-input {
-                width: 100%;
+                height: 250px;
             }
             
             .news-grid {
@@ -314,42 +196,36 @@
     </style>
 </head>
 <body>
-    <!-- Enhanced Header -->
+    <!-- Your Original Header (Unchanged) -->
     <div class="header-bg">
-        <div class="container">
-            <header class="header-container">
-                <div class="logo-container">
-                    <img src="images/logo.png" alt="Logo" class="logo">
-                    <div>
-                        <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
-                        <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+        <header>
+            <div class="nav-container">
+                <div class="header-top">
+                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                     </div>
                 </div>
-            </header>
-        </div>
+            </div>
+        </header>
     </div>
 
-    <!-- Enhanced Navigation -->
-    <div class="nav-container">
-        <div class="container">
-            <nav class="main-nav">
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-                    <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
-                    <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                    <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-                    <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                    <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-                </ul>
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="శోధించండి...">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
-                </div>
-            </nav>
-        </div>
+    <!-- Your Original Navigation (Unchanged) -->
+    <div class="category-bg">
+        <nav class="main-nav" id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+                <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
+                <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
+                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <!-- Enhanced Main Content -->
+    <!-- IMPROVED CONTENT AREA -->
     <div class="content-bg">
         <div class="container">
             <main class="main-content">
@@ -360,7 +236,7 @@
                     <div class="featured-news">
                         <article class="featured-main">
                             <img src="images/featured-news.jpg" alt="Featured News">
-                            <div class="featured-content">
+                            <div class="featured-main-content">
                                 <h3>కువైట్‌లో తెలుగు సమాజం యొక్క పెద్ద సమావేశం</h3>
                                 <p>ఈ వారాంతంలో కువైట్‌లోని తెలుగు సమాజం యొక్క పెద్ద సమావేశం జరిగింది. ఈ సమావేశంలో సమాజ అభివృద్ధి, సాంస్కృతిక కార్యక్రమాలు మరియు సామాజిక సేవలపై చర్చలు జరిగాయి. ప్రముఖ నాయకులు మరియు సమాజ సభ్యులు ఈ సమావేశంలో పాల్గొన్నారు.</p>
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
@@ -426,7 +302,7 @@
                                     <span><i class="far fa-calendar-alt"></i> 02-04-2025</span>
                                     <span><i class="far fa-clock"></i> 11:00 AM</span>
                                 </div>
-                                <p>ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది. ఈ ప్రాజెక్ట్ ద్వారా విజయవాడ మరియు అమరావతి మధ్య రవాణా సమయం 30% తగ్గుతుంది. ప్రాజెక్ట్ పూర్తి కావడానికి 2 సంవత్సరాలు పడుతుంది.</p>
+                                <p>ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది. ఈ ప్రాజెక్ట్ ద్వారా విజయవాడ మరియు అమరావతి మధ్య రవాణా సమయం 30% తగ్గుతుంది.</p>
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </article>
@@ -436,6 +312,34 @@
         </div>
     </div>
 
-    <!-- No JavaScript needed for basic layout -->
+    <!-- Your Original JavaScript (Unchanged) -->
+    <script>
+        function toggleMenu(event) {
+            event.preventDefault();
+            const nav = document.getElementById('main-nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
+
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
