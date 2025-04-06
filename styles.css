@@ -637,3 +637,29 @@ body {
     color: #666;
     font-size: 0.9rem;
 }
+@media (max-width: 768px) {
+    .teams {
+        flex-direction: column;
+    }
+    
+    .team, .match-info {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .team {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .team-logo {
+        margin-right: 1rem;
+        margin-bottom: 0;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+}
