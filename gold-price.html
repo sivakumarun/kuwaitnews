@@ -8,11 +8,88 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 5px 10px;
+                order: -1; /* Ensures button stays left of title */
+            }
+
+            .header-container {
+                display: flex;
+                align-items: center;
+                padding: 10px 20px;
+                flex-wrap: nowrap;
+            }
+
+            .logo-container {
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+            }
+
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 180px;
+                height: 100%;
+                background-color: #333; /* Matches styles.css nav-container */
+                box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            .main-nav.active {
+                display: block;
+            }
+
+            .nav-menu {
+                flex-direction: column !important;
+                padding: 10px 0;
+                margin: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu li a {
+                display: flex;
+                align-items: center;
+                padding: 8px 15px !important;
+                font-size: 0.85rem !important;
+                color: white !important;
+                border-radius: 0 !important;
+                transition: background-color 0.3s ease;
+            }
+
+            .nav-menu li a:hover,
+            .nav-menu li a.active {
+                background-color: rgba(255,255,255,0.2) !important;
+            }
+
+            .search-container {
+                display: none; /* Hidden in mobile to save space */
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <div class="header-bg">
         <header class="header-container">
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="logo-container">
                 <img src="images/logo.png" alt="Kuwait Telugu News Logo" class="logo">
                 <div>
@@ -33,7 +110,7 @@
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                <li><a href="gold-price.html" class="active"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
@@ -44,7 +121,7 @@
         </nav>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main Content (Unchanged) -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
@@ -63,7 +140,6 @@
                         </div>
                     </div>
                     <div class="chart-placeholder">
-                        <!-- In a real implementation, this would be a chart from Chart.js or similar -->
                         <img src="images/gold-chart.jpg" alt="Gold Price Trend Chart" style="width:100%; border-radius:8px;">
                         <p class="chart-note">* గ్రాఫ్ ఉదాహరణకు మాత్రమే, నిజమైన డేటా కాదు</p>
                     </div>
@@ -217,9 +293,8 @@
             </section>
         </main>
 
-        <!-- Sidebar -->
+        <!-- Sidebar (Unchanged) -->
         <aside class="sidebar">
-            <!-- Ad Banner -->
             <div class="widget">
                 <div class="ad-banner">
                     <h4>గోల్డ్ జ్వెలరీ</h4>
@@ -227,8 +302,6 @@
                     <a href="#" class="subscribe-btn">ఇక్కడ క్లిక్ చేయండి</a>
                 </div>
             </div>
-
-            <!-- Exchange Rates Widget -->
             <div class="widget">
                 <h3 class="widget-title"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేట్లు</h3>
                 <table class="price-table">
@@ -255,8 +328,6 @@
                 </table>
                 <a href="money-exchange-rate.html" class="read-more">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a>
             </div>
-
-            <!-- Gold Price Tips -->
             <div class="widget">
                 <h3 class="widget-title"><i class="fas fa-lightbulb"></i> బంగారం కొనడానికి చిట్కాలు</h3>
                 <ul class="tips-list">
@@ -266,8 +337,6 @@
                     <li>రసీదు తప్పనిసరిగా తీసుకోండి</li>
                 </ul>
             </div>
-
-            <!-- Subscribe Widget -->
             <div class="widget">
                 <h3 class="widget-title"><i class="fas fa-envelope"></i> సబ్‌స్క్రయిబ్ చేయండి</h3>
                 <p>తాజా గోల్డ్ ధరల కోసం మా న్యూస్‌లెటర్‌కు సబ్‌స్క్రయిబ్ చేయండి</p>
@@ -279,7 +348,7 @@
         </aside>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (Unchanged) -->
     <footer class="footer">
         <div class="footer-links">
             <a href="about.html">మా గురించి</a>
@@ -297,17 +366,15 @@
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Gold Price Calculator
+        // Gold Price Calculator (Unchanged)
         document.getElementById('calculate-btn').addEventListener('click', function() {
             const goldType = document.getElementById('gold-type').value;
             const location = document.getElementById('location').value;
             const weight = parseFloat(document.getElementById('weight').value);
-            
             let pricePerGram = 0;
             let currency = '';
-            
-            // Set prices based on selections
             if (location === 'kuwait') {
                 currency = 'KWD';
                 if (goldType === '24') pricePerGram = 31.03;
@@ -324,23 +391,28 @@
                 else if (goldType === '22') pricePerGram = 8400;
                 else if (goldType === '18') pricePerGram = 6873;
             }
-            
             const totalPrice = (pricePerGram * weight).toFixed(2);
             document.getElementById('result').textContent = `${currency} ${totalPrice}`;
         });
 
-        // Chart toggle
+        // Chart toggle (Unchanged)
         document.querySelectorAll('.chart-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                // In a real implementation, this would switch between KWD and INR charts
             });
         });
 
         // Mobile menu toggle
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('active');
+            }
         });
     </script>
 </body>
