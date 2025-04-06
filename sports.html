@@ -3,38 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>క్రీడలు | Kuwait Telugu News</title>
-    <meta name="description" content="తాజా క్రీడా వార్తలు మరియు IPL స్కోర్‌లు">
+    <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+    <style>
+        /* Additional Sports Page Styles */
+        .sports-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .match-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+        
+        .team-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        
+        .match-details {
+            width: 40%;
+            text-align: center;
+        }
+        
+        .score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #D32F2F;
+            margin-bottom: 5px;
+        }
+        
+        .result {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .match-meta {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .section-title {
+            color: #007A3D;
+            border-bottom: 2px solid #007A3D;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .match-card {
+                flex-direction: column;
+            }
+            
+            .team, .match-details {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header with consistent styling -->
-<div class="header-bg">
-    <header>
-        <div class="nav-container">
-            <div class="header-top">
-                <button class="menu-btn"><i class="fas fa-bars"></i></button>
-                <div class="title-container">
-                    <h1>కువైట్ తెలుగు వార్తలు</h1>
-                    <p>క్రీడలు - తాజా స్కోర్లు & వార్తలు</p>
+    <div class="header-bg">
+        <header>
+            <div class="nav-container">
+                <div class="header-top">
+                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+                    <div class="title-container">
+                        <h1>కువైట్ తెలుగు వార్తలు</h1>
+                        <p>క్రీడలు - తాజా స్కోర్లు & వార్తలు</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-</div>
+        </header>
+    </div>
 
-<!-- Sports Page Header -->
-<div class="sports-header">
-    <h2>IPL 2025 తాజా స్కోర్లు</h2>
-    <p>ఇండియన్ ప్రీమియర్ లీగ్ యాక్టివ్ అప్డేట్స్</p>
-</div>
-
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container nav-container">
-            <ul class="nav-menu">
+    <div class="category-bg">
+        <nav class="main-nav" id="main-nav">
+            <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
@@ -42,231 +105,83 @@
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="వెతకండి...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main">
-        <div class="container">
-            <h1 class="page-title">క్రీడలు</h1>
+    <div class="content-bg">
+        <div class="container sports-page">
+            <h2 class="section-title">IPL 2025 తాజా మ్యాచ్‌లు</h2>
             
-            <!-- Sports Tabs -->
-            <div class="sports-tabs">
-                <button class="tab-btn active" data-sport="cricket">క్రికెట్</button>
-                <button class="tab-btn" data-sport="football">ఫుట్బాల్</button>
-                <button class="tab-btn" data-sport="tennis">టెన్నిస్</button>
-                <button class="tab-btn" data-sport="others">ఇతర క్రీడలు</button>
-            </div>
-            
-            <!-- Featured Match -->
-            <div class="featured-match">
-                <h2><i class="fas fa-star"></i> ఫీచర్డ్ మ్యాచ్</h2>
-                <div class="match-cards">
-    <!-- Match 1 -->
-    <div class="match-card">
-        <div class="teams">
-            <div class="team">
-                <img src="images/teams/csk.png" alt="CSK" class="team-logo">
-                <span class="team-name">చెన్నై</span>
-            </div>
-            <div class="match-info">
-                <div class="score">182/5 - 176/8</div>
-                <div class="result">CSK won by 6 runs</div>
-                <div class="match-time">
-                    <i class="far fa-calendar"></i> 05-04-2025 | 
-                    <i class="far fa-clock"></i> 7:30 PM
+            <!-- Match 1 -->
+            <div class="match-card">
+                <div class="team">
+                    <img src="https://i.imgur.com/7tKtW2X.png" alt="CSK" class="team-logo">
+                    <span>చెన్నై సూపర్ కింగ్స్</span>
                 </div>
-            </div>
-            <div class="team">
-                <img src="images/teams/mi.png" alt="MI" class="team-logo">
-                <span class="team-name">ముంబై</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Match 2 -->
-    <div class="match-card">
-        <div class="teams">
-            <div class="team">
-                <img src="images/teams/rcb.png" alt="RCB" class="team-logo">
-                <span class="team-name">బెంగళూరు</span>
-            </div>
-            <div class="match-info">
-                <div class="score">200/4 - 189/6</div>
-                <div class="result">RCB won by 11 runs</div>
-                <div class="match-time">
-                    <i class="far fa-calendar"></i> 06-04-2025 | 
-                    <i class="far fa-clock"></i> 7:30 PM
-                </div>
-            </div>
-            <div class="team">
-                <img src="images/teams/srh.png" alt="SRH" class="team-logo">
-                <span class="team-name">హైదరాబాద్</span>
-            </div>
-        </div>
-    </div>
-</div>
-            
-            <!-- Upcoming Matches -->
-            <h2><i class="fas fa-calendar-alt"></i> రాబోయే మ్యాచ్‌లు</h2>
-            <div class="matches-grid">
-                <div class="match-card small">
-                    <div class="teams">
-                        <div class="team">
-                            <img src="images/rcb-logo.png" alt="RCB" class="team-logo">
-                            <span class="team-name">RCB</span>
-                        </div>
-                        <span class="vs">vs</span>
-                        <div class="team">
-                            <img src="images/srh-logo.png" alt="SRH" class="team-logo">
-                            <span class="team-name">SRH</span>
-                        </div>
-                    </div>
-                    <div class="match-info">
-                        <div class="match-time">
-                            <i class="far fa-clock"></i> 07:30 PM
-                        </div>
-                        <div class="match-date">
-                            <i class="far fa-calendar-alt"></i> 2025-04-06
-                        </div>
-                        <div class="match-venue">
-                            <i class="fas fa-map-marker-alt"></i> బెంగళూరు
-                        </div>
+                
+                <div class="match-details">
+                    <div class="score">182/5 - 176/8</div>
+                    <div class="result">CSK won by 6 runs</div>
+                    <div class="match-meta">
+                        <i class="far fa-calendar-alt"></i> 05-04-2025 | 
+                        <i class="far fa-clock"></i> 7:30 PM
                     </div>
                 </div>
                 
-                <div class="match-card small">
-                    <div class="teams">
-                        <div class="team">
-                            <img src="images/dc-logo.png" alt="DC" class="team-logo">
-                            <span class="team-name">DC</span>
-                        </div>
-                        <span class="vs">vs</span>
-                        <div class="team">
-                            <img src="images/kkr-logo.png" alt="KKR" class="team-logo">
-                            <span class="team-name">KKR</span>
-                        </div>
-                    </div>
-                    <div class="match-info">
-                        <div class="match-time">
-                            <i class="far fa-clock"></i> 07:30 PM
-                        </div>
-                        <div class="match-date">
-                            <i class="far fa-calendar-alt"></i> 2025-04-07
-                        </div>
-                        <div class="match-venue">
-                            <i class="fas fa-map-marker-alt"></i> ఢిల్లీ
-                        </div>
-                    </div>
+                <div class="team">
+                    <img src="https://i.imgur.com/J7f0D7h.png" alt="MI" class="team-logo">
+                    <span>ముంబై ఇండియన్స్</span>
                 </div>
             </div>
             
-            <!-- Sports News -->
-            <h2><i class="fas fa-newspaper"></i> క్రీడా వార్తలు</h2>
-            <div class="news-grid">
-                <!-- News Item 1 -->
-                <article class="news-card">
-                    <img src="images/ipl1.jpg" alt="News" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">CSK vs MI - IPL 2025</h3>
-                        <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 2025-04-05</span>
-                            <span><i class="far fa-clock"></i> 07:30 PM</span>
-                        </div>
-                        <p class="news-excerpt">చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది.</p>
-                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+            <!-- Match 2 -->
+            <div class="match-card">
+                <div class="team">
+                    <img src="https://i.imgur.com/4Q42B0v.png" alt="RCB" class="team-logo">
+                    <span>రాయల్ ఛాలెంజర్స్ బెంగళూరు</span>
+                </div>
                 
-                <!-- News Item 2 -->
-                <article class="news-card">
-                    <img src="images/ipl2.jpg" alt="News" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">RCB vs SRH - IPL 2025</h3>
-                        <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 2025-04-06</span>
-                            <span><i class="far fa-clock"></i> 07:30 PM</span>
-                        </div>
-                        <p class="news-excerpt">రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది. SRH 189/6తో పోరాడినా ఓటమి చెందింది.</p>
-                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                <div class="match-details">
+                    <div class="score">200/4 - 189/6</div>
+                    <div class="result">RCB won by 11 runs</div>
+                    <div class="match-meta">
+                        <i class="far fa-calendar-alt"></i> 06-04-2025 | 
+                        <i class="far fa-clock"></i> 7:30 PM
                     </div>
-                </article>
+                </div>
+                
+                <div class="team">
+                    <img src="https://i.imgur.com/9pZzR2x.png" alt="SRH" class="team-logo">
+                    <span>సన్‌రైజర్స్ హైదరాబాద్</span>
+                </div>
+            </div>
+            
+            <h2 class="section-title">క్రీడా వార్తలు</h2>
+            
+            <div class="news-item">
+                <img src="images/ipl1.jpg" alt="IPL News" style="width:100%; max-width:500px; display:block; margin:0 auto 15px; border-radius:8px;">
+                <h3>CSK vs MI: ధోని అద్భుత ఫినిష్</h3>
+                <p>చెన్నై సూపర్ కింగ్స్ కెప్టెన్ ఎంఎస్ ధోని అద్భుతమైన ఫినిషింగ్‌తో CSKకి విజయం తెచ్చిపెట్టారు. MI 176/8 స్కోర్‌తో ఓడిపోయింది.</p>
             </div>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="about.html">మా గురించి</a>
-                <a href="contact.html">సంప్రదించండి</a>
-                <a href="advertise.html">ప్రకటించండి</a>
-                <a href="privacy.html">గోప్యతా విధానం</a>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook social-icon"></i></a>
-                <a href="#"><i class="fab fa-twitter social-icon"></i></a>
-                <a href="#"><i class="fab fa-instagram social-icon"></i></a>
-                <a href="#"><i class="fab fa-youtube social-icon"></i></a>
-                <a href="#"><i class="fab fa-whatsapp social-icon"></i></a>
-            </div>
-            <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        // Sports tabs functionality
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                const sport = this.dataset.sport;
-                // In a real implementation, this would filter sports news
-                alert('Showing news for: ' + sport);
-            });
+        // Mobile menu toggle
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Responsive adjustments
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 768) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
         });
     </script>
 </body>
 </html>
-// Sample live score update (replace with real API in production)
-function updateLiveScores() {
-    const matches = [
-        {
-            id: 1,
-            team1: "CSK",
-            team2: "MI",
-            score1: "182/5",
-            score2: "176/8",
-            status: "CSK won by 6 runs"
-        },
-        {
-            id: 2,
-            team1: "RCB",
-            team2: "SRH",
-            score1: "200/4",
-            score2: "189/6",
-            status: "RCB won by 11 runs"
-        }
-    ];
-    
-    matches.forEach(match => {
-        const element = document.querySelector(`.match-${match.id}`);
-        if (element) {
-            element.querySelector('.score1').textContent = match.score1;
-            element.querySelector('.score2').textContent = match.score2;
-            element.querySelector('.status').textContent = match.status;
-        }
-    });
-}
-
-// Update every 30 seconds
-setInterval(updateLiveScores, 30000);
-updateLiveScores(); // Initial call
