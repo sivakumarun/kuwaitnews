@@ -3,49 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు మరియు క్రీడా వార్తలు">
-    <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు, క్రీడలు">
     <title>కువైట్ తెలుగు వార్తలు - Kuwait Telugu News</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Your existing styles */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        /* Header styles with reduced size */
+        .header-bg {
+            background-color: #1a3e72;
+            color: white;
+            padding: 10px 0;
+            position: relative;
         }
         
-        .news-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .header-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
         
-        .news-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
         }
         
-        .featured-news {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
+        .logo {
+            height: 40px;
+            margin-right: 15px;
         }
         
-        /* Mobile Navigation Styles */
+        .title-container h1 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        
+        .title-container p {
+            margin: 5px 0 0;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        /* Mobile menu button - moved to left */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.4rem;
+            margin-right: 15px;
+            padding: 5px;
+        }
+        
+        /* Rest of your existing styles... */
+        
         @media (max-width: 768px) {
-            .featured-news {
-                grid-template-columns: 1fr;
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr;
+            /* Show mobile menu button */
+            .mobile-menu-btn {
+                display: block;
             }
             
             /* Hide desktop navigation */
@@ -53,22 +68,24 @@
                 display: none;
             }
             
-            /* Mobile menu button */
-            .mobile-menu-btn {
-                display: block;
-                position: fixed;
-                top: 15px;
-                right: 15px;
-                background: #1a3e72;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                padding: 10px;
-                font-size: 1.2rem;
-                z-index: 1000;
+            /* Adjust header spacing */
+            .header-container {
+                padding: 5px 15px;
             }
             
-            /* Mobile navigation */
+            .logo {
+                height: 35px;
+            }
+            
+            .title-container h1 {
+                font-size: 1.2rem;
+            }
+            
+            .title-container p {
+                font-size: 0.7rem;
+            }
+            
+            /* Mobile navigation styles */
             .mobile-nav {
                 display: none;
                 position: fixed;
@@ -76,9 +93,8 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: rgba(0,0,0,0.9);
-                z-index: 999;
-                overflow-y: auto;
+                background: rgba(0,0,0,0.95);
+                z-index: 1000;
                 padding-top: 60px;
             }
             
@@ -120,109 +136,27 @@
                 border: none;
             }
         }
-        
-        @media (min-width: 769px) {
-            .mobile-menu-btn,
-            .mobile-nav {
-                display: none !important;
-            }
-            
-            .nav-container {
-                display: block !important;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with reduced size and left-aligned menu button -->
     <div class="header-bg">
         <header class="header-container">
+            <!-- Mobile Menu Button (left side) -->
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            
             <div class="logo-container">
                 <img src="images/logo.png" alt="Logo" class="logo">
-                <div>
-                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
-                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                <div class="title-container">
+                    <h1>కువైట్ తెలుగు వార్తలు</h1>
+                    <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                 </div>
             </div>
-            <!-- Mobile Menu Button (visible only on mobile) -->
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
         </header>
     </div>
 
-    <!-- Desktop Navigation (unchanged) -->
-    <div class="nav-container">
-        <nav class="main-nav">
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-                <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
-                <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-                <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-            </ul>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="శోధించండి...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-        </nav>
-    </div>
-
-    <!-- Mobile Navigation (hidden by default) -->
-    <div class="mobile-nav" id="mobileNav">
-        <button class="close-btn"><i class="fas fa-times"></i></button>
-        <ul>
-            <li><a href="index.html" class="active"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-            <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
-            <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-            <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-            <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-        </ul>
-    </div>
-
-    <!-- Main Content Area (unchanged) -->
-    <div class="content-bg">
-        <div class="container">
-            <div class="main-content">
-                <div class="news-section">
-                    <h2>ప్రత్యేక వార్తలు</h2>
-                    
-                    <!-- Featured News Section -->
-                    <div class="featured-news">
-                        <div class="featured-main">
-                            <img src="images/featured-news.jpg" alt="Featured News" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
-                            <div style="padding:15px;">
-                                <h3>కువైట్‌లో తెలుగు సమాజం యొక్క పెద్ద సమావేశం</h3>
-                                <p>ఈ వారాంతంలో కువైట్‌లోని తెలుగు సమాజం యొక్క పెద్ద సమావేశం జరిగింది...</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="featured-secondary" style="display:flex; flex-direction:column; gap:15px;">
-                            <div class="secondary-item">
-                                <img src="images/news1.jpg" alt="News 1" style="width:100%; height:140px; object-fit:cover; border-radius:8px;">
-                                <div style="padding:10px;">
-                                    <h4>కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h4>
-                                </div>
-                            </div>
-                            <div class="secondary-item">
-                                <img src="images/news2.jpg" alt="News 2" style="width:100%; height:140px; object-fit:cover; border-radius:8px;">
-                                <div style="padding:10px;">
-                                    <h4>తెలుగు సంస్కృతి పండుగ విజయవంతం</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Latest News Section -->
-                    <h2>తాజా వార్తలు</h2>
-                    <div class="news-grid">
-                        <!-- News cards remain unchanged -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Rest of your HTML remains the same -->
+    
     <script>
         // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
