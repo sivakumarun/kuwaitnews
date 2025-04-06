@@ -3,124 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="తాజా క్రీడా వార్తలు IPL 2025 - కువైట్ తెలుగు వార్తలు">
-    <meta name="keywords" content="క్రీడలు, IPL, తెలుగు వార్తలు, కువైట్">
-    <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
+    <title>క్రీడలు | Kuwait Telugu News</title>
+    <meta name="description" content="తాజా క్రీడా వార్తలు మరియు IPL స్కోర్‌లు">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header-bg">
-        <header>
-            <div class="nav-container">
-                <div class="header-top">
-                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
-                    <div class="title-container">
-                        <h1>కువైట్ తెలుగు వార్తలు</h1>
-                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
-                    </div>
-                </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Kuwait Telugu News">
+                <span>కువైట్ తెలుగు వార్తలు</span>
             </div>
-        </header>
-    </div>
-    <div class="category-bg">
-        <nav class="main-nav" id="main-nav">
-            <ul>
+            <div class="header-actions">
+                <button class="btn btn-primary">సబ్‌స్క్రయిబ్</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <ul class="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
                 <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="sports.html" class="active"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
-        </nav>
-    </div>
-    <div class="content-bg">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="వెతకండి...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
         <div class="container">
-            <div class="main-content">
-                <div class="news-section">
-                    <h2>క్రీడలు</h2>
-                    <p id="news-count" class="news-meta"></p>
-                    <div class="news-item">
-                        <img src="images/ipl1.jpg" alt="IPL Match Image">
-                        <div class="news-text">
-                            <h2>CSK vs MI - IPL 2025</h2>
-                            <span class="news-meta">తేదీ: 2025-04-05 | సమయం: 07:30 PM</span>
-                            <div class="news-content">
-                                <p class="preview">చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది...</p>
-                                <p class="full-text">చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది. ధోని అద్భుతమైన ఫినిషింగ్‌తో అభిమానులను అలరించాడు.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి</a>
-                            </div>
+            <h1 class="page-title">క్రీడలు</h1>
+            
+            <!-- Sports Tabs -->
+            <div class="sports-tabs">
+                <button class="tab-btn active" data-sport="cricket">క్రికెట్</button>
+                <button class="tab-btn" data-sport="football">ఫుట్బాల్</button>
+                <button class="tab-btn" data-sport="tennis">టెన్నిస్</button>
+                <button class="tab-btn" data-sport="others">ఇతర క్రీడలు</button>
+            </div>
+            
+            <!-- Featured Match -->
+            <div class="featured-match">
+                <h2><i class="fas fa-star"></i> ఫీచర్డ్ మ్యాచ్</h2>
+                <div class="match-card">
+                    <div class="team">
+                        <img src="images/csk-logo.png" alt="CSK" class="team-logo">
+                        <span class="team-name">చెన్నై సూపర్ కింగ్స్</span>
+                    </div>
+                    <div class="match-details">
+                        <div class="score">
+                            <span class="runs">182/5 (20)</span>
+                            <span class="vs">vs</span>
+                            <span class="runs">176/8 (20)</span>
+                        </div>
+                        <div class="result">CSK won by 6 runs</div>
+                        <div class="match-meta">
+                            <span><i class="far fa-calendar-alt"></i> 2025-04-05</span>
+                            <span><i class="fas fa-map-marker-alt"></i> చెన్నై</span>
                         </div>
                     </div>
-                    <div class="news-item">
-                        <img src="images/ipl2.jpg" alt="IPL Match Image">
-                        <div class="news-text">
-                            <h2>RCB vs SRH - IPL 2025</h2>
-                            <span class="news-meta">తేదీ: 2025-04-06 | సమయం: 07:30 PM</span>
-                            <div class="news-content">
-                                <p class="preview">రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది...</p>
-                                <p class="full-text">రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది. SRH 189/6తో పోరాడినా ఓటమి చెందింది. కోహ్లీ సెంచరీ అద్భుతంగా నిలిచింది.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-share">
-                        <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
-                        <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
+                    <div class="team">
+                        <img src="images/mi-logo.png" alt="MI" class="team-logo">
+                        <span class="team-name">ముంబై ఇండియన్స్</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <p>© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
-            <div class="footer-links">
-                <a href="#">గోప్యతా విధానం</a> | 
-                <a href="#">సంప్రదించండి</a>
+            
+            <!-- Upcoming Matches -->
+            <h2><i class="fas fa-calendar-alt"></i> రాబోయే మ్యాచ్‌లు</h2>
+            <div class="matches-grid">
+                <div class="match-card small">
+                    <div class="teams">
+                        <div class="team">
+                            <img src="images/rcb-logo.png" alt="RCB" class="team-logo">
+                            <span class="team-name">RCB</span>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="team">
+                            <img src="images/srh-logo.png" alt="SRH" class="team-logo">
+                            <span class="team-name">SRH</span>
+                        </div>
+                    </div>
+                    <div class="match-info">
+                        <div class="match-time">
+                            <i class="far fa-clock"></i> 07:30 PM
+                        </div>
+                        <div class="match-date">
+                            <i class="far fa-calendar-alt"></i> 2025-04-06
+                        </div>
+                        <div class="match-venue">
+                            <i class="fas fa-map-marker-alt"></i> బెంగళూరు
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="match-card small">
+                    <div class="teams">
+                        <div class="team">
+                            <img src="images/dc-logo.png" alt="DC" class="team-logo">
+                            <span class="team-name">DC</span>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="team">
+                            <img src="images/kkr-logo.png" alt="KKR" class="team-logo">
+                            <span class="team-name">KKR</span>
+                        </div>
+                    </div>
+                    <div class="match-info">
+                        <div class="match-time">
+                            <i class="far fa-clock"></i> 07:30 PM
+                        </div>
+                        <div class="match-date">
+                            <i class="far fa-calendar-alt"></i> 2025-04-07
+                        </div>
+                        <div class="match-venue">
+                            <i class="fas fa-map-marker-alt"></i> ఢిల్లీ
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Sports News -->
+            <h2><i class="fas fa-newspaper"></i> క్రీడా వార్తలు</h2>
+            <div class="news-grid">
+                <!-- News Item 1 -->
+                <article class="news-card">
+                    <img src="images/ipl1.jpg" alt="News" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">CSK vs MI - IPL 2025</h3>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 2025-04-05</span>
+                            <span><i class="far fa-clock"></i> 07:30 PM</span>
+                        </div>
+                        <p class="news-excerpt">చెన్నై సూపర్ కింగ్స్ (CSK) మరియు ముంబై ఇండియన్స్ (MI) మధ్య జరిగిన మ్యాచ్‌లో CSK 182/5 స్కోరుతో విజయం సాధించింది. MI 176/8తో ఓడిపోయింది.</p>
+                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- News Item 2 -->
+                <article class="news-card">
+                    <img src="images/ipl2.jpg" alt="News" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">RCB vs SRH - IPL 2025</h3>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 2025-04-06</span>
+                            <span><i class="far fa-clock"></i> 07:30 PM</span>
+                        </div>
+                        <p class="news-excerpt">రాయల్ ఛాలెంజర్స్ బెంగళూరు (RCB) సన్‌రైజర్స్ హైదరాబాద్ (SRH)తో జరిగిన మ్యాచ్‌లో 200/4 స్కోరుతో గెలిచింది. SRH 189/6తో పోరాడినా ఓటమి చెందింది.</p>
+                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="about.html">మా గురించి</a>
+                <a href="contact.html">సంప్రదించండి</a>
+                <a href="advertise.html">ప్రకటించండి</a>
+                <a href="privacy.html">గోప్యతా విధానం</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook social-icon"></i></a>
+                <a href="#"><i class="fab fa-twitter social-icon"></i></a>
+                <a href="#"><i class="fab fa-instagram social-icon"></i></a>
+                <a href="#"><i class="fab fa-youtube social-icon"></i></a>
+                <a href="#"><i class="fab fa-whatsapp social-icon"></i></a>
+            </div>
+            <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
         </div>
     </footer>
 
     <script>
-        function toggleMenu(event) {
-            event.preventDefault();
-            const nav = document.getElementById('main-nav');
-            nav.classList.toggle('active');
-        }
-
-        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
-
-        document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = window.location.href;
-                const text = 'క్రీడలు - కువైట్ తెలుగు వార్తలు';
-                if (btn.classList.contains('whatsapp')) {
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
-                } else if (btn.classList.contains('twitter')) {
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
-                } else if (btn.classList.contains('facebook')) {
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-                }
+        // Sports tabs functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const sport = this.dataset.sport;
+                // In a real implementation, this would filter sports news
+                alert('Showing news for: ' + sport);
             });
-        });
-
-        document.querySelectorAll('.read-more').forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const content = this.parentElement;
-                content.classList.toggle('expanded');
-            });
-        });
-
-        window.addEventListener('load', function() {
-            const newsItems = document.querySelectorAll('.news-item').length;
-            document.getElementById('news-count').textContent = `మొత్తం వార్తలు: ${newsItems}`;
         });
     </script>
 </body>
