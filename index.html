@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Header and Navigation Styles (Same as other pages) */
+        /* Header and Navigation Styles (Now exactly matches other pages) */
         .header-bg {
-            background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
+            background-color: #2a5298; /* Same solid blue as other pages */
             color: white;
             padding: 10px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -52,7 +52,7 @@
         }
         
         .category-bg {
-            background-color: #2a5298;
+            background-color: #1a3e72; /* Darker blue that matches other pages */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
@@ -85,8 +85,8 @@
         .main-nav li a:hover, .main-nav li a.active {
             background-color: rgba(255,255,255,0.2);
         }
-        
-        /* IMPROVED CONTENT AREA STYLES */
+
+        /* Rest of your existing content styles... */
         .content-bg {
             background-color: #f5f7fa;
             padding: 25px 0;
@@ -280,7 +280,7 @@
     </style>
 </head>
 <body>
-    <!-- Header (Same as other pages) -->
+    <!-- Header (Now matches other pages exactly) -->
     <div class="header-bg">
         <header>
             <div class="nav-container">
@@ -295,7 +295,7 @@
         </header>
     </div>
 
-    <!-- Navigation (Same as other pages) -->
+    <!-- Navigation (Now matches other pages exactly) -->
     <div class="category-bg">
         <nav class="main-nav" id="main-nav">
             <ul>
@@ -309,14 +309,13 @@
         </nav>
     </div>
 
-    <!-- IMPROVED CONTENT AREA -->
+    <!-- Content Area (Improved version) -->
     <div class="content-bg">
         <div class="container">
             <main class="main-content">
                 <section class="news-section">
                     <h2 class="section-title">ప్రత్యేక వార్తలు</h2>
                     
-                    <!-- Featured News Section -->
                     <div class="featured-news">
                         <article class="featured-main">
                             <img src="images/featured-news.jpg" alt="Featured News">
@@ -346,10 +345,8 @@
                         </div>
                     </div>
 
-                    <!-- Latest News Section -->
                     <h2 class="section-title">తాజా వార్తలు</h2>
                     <div class="news-grid">
-                        <!-- News Item 1 -->
                         <article class="news-card">
                             <img src="images/news1.jpg" alt="News 1" class="news-image">
                             <div class="news-content">
@@ -363,7 +360,6 @@
                             </div>
                         </article>
                         
-                        <!-- News Item 2 -->
                         <article class="news-card">
                             <img src="images/news2.jpg" alt="News 2" class="news-image">
                             <div class="news-content">
@@ -377,7 +373,6 @@
                             </div>
                         </article>
                         
-                        <!-- News Item 3 -->
                         <article class="news-card">
                             <img src="images/news3.jpg" alt="News 3" class="news-image">
                             <div class="news-content">
@@ -396,7 +391,6 @@
         </div>
     </div>
 
-    <!-- JavaScript (Same as other pages) -->
     <script>
         function toggleMenu(event) {
             event.preventDefault();
@@ -415,7 +409,6 @@
             }
         });
 
-        // Initialize on load
         window.addEventListener('load', function() {
             const nav = document.getElementById('main-nav');
             if (window.innerWidth > 600) {
