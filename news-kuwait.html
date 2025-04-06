@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Custom styles for news content */
         .featured-news-card {
             display: flex;
             background: white;
@@ -93,13 +92,76 @@
             .news-grid {
                 grid-template-columns: 1fr;
             }
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 5px 10px;
+                order: -1;
+            }
+            .header-container {
+                display: flex;
+                align-items: center;
+                padding: 10px 20px;
+                flex-wrap: nowrap;
+            }
+            .logo-container {
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+            }
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 180px;
+                height: 100%;
+                background-color: #333;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+            .main-nav.active {
+                display: block;
+            }
+            .nav-menu {
+                flex-direction: column !important;
+                padding: 10px 0;
+                margin: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu li a {
+                display: flex;
+                align-items: center;
+                padding: 8px 15px !important;
+                font-size: 0.85rem !important;
+                color: white !important;
+                border-radius: 0 !important;
+                transition: background-color 0.3s ease;
+            }
+            .nav-menu li a:hover,
+            .nav-menu li a.active {
+                background-color: rgba(255,255,255,0.2) !important;
+            }
+            .search-container {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header (Copied from gold-price.html) -->
+    <!-- Header -->
     <div class="header-bg">
         <header class="header-container">
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="logo-container">
                 <img src="images/logo.png" alt="Logo" class="logo">
                 <div>
@@ -110,7 +172,7 @@
         </header>
     </div>
 
-    <!-- Navigation (Copied from gold-price.html) -->
+    <!-- Navigation -->
     <div class="nav-container">
         <nav class="main-nav">
             <ul class="nav-menu">
@@ -128,14 +190,13 @@
         </nav>
     </div>
 
-    <!-- Content Area (Aligned with gold-price.html structure, custom news layout) -->
+    <!-- Content Area -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
                 <h2 class="section-title">కువైట్ వార్తలు</h2>
                 <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 06:00 PM</p>
 
-                <!-- Featured News -->
                 <article class="featured-news-card">
                     <img src="images/featured-news.jpg" alt="Featured News" class="featured-img">
                     <div class="featured-content">
@@ -150,9 +211,7 @@
                     </div>
                 </article>
 
-                <!-- News Grid -->
                 <div class="news-grid">
-                    <!-- News Item 1 -->
                     <article class="news-card">
                         <img src="images/news1.jpg" alt="News" class="news-img">
                         <div class="news-content">
@@ -165,8 +224,6 @@
                             <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
-                    
-                    <!-- News Item 2 -->
                     <article class="news-card">
                         <img src="images/news2.jpg" alt="News" class="news-img">
                         <div class="news-content">
@@ -179,8 +236,6 @@
                             <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
-                    
-                    <!-- News Item 3 -->
                     <article class="news-card">
                         <img src="images/news3.jpg" alt="News" class="news-img">
                         <div class="news-content">
@@ -195,7 +250,6 @@
                     </article>
                 </div>
 
-                <!-- Social Sharing (Copied from gold-price.html) -->
                 <div class="social-share">
                     <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
                     <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -205,7 +259,7 @@
             </section>
         </main>
 
-        <!-- Sidebar (Copied from gold-price.html) -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="widget">
                 <h3 class="widget-title">ప్రకటన</h3>
@@ -229,7 +283,7 @@
         </aside>
     </div>
 
-    <!-- Footer (Copied from gold-price.html) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
             <a href="#">గోప్యతా విధానం</a>
@@ -238,9 +292,8 @@
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
-    <!-- JavaScript (Updated for social sharing) -->
+    <!-- JavaScript -->
     <script>
-        // Social Sharing (Copied from gold-price.html)
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -254,6 +307,17 @@
                     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
                 }
             });
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('active');
+            }
         });
     </script>
 </body>
