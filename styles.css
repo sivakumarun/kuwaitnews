@@ -473,3 +473,78 @@ body {
 .news-content.expanded .preview {
   display: none;
 }
+/* Consistent Header Background */
+.header-bg {
+    background: linear-gradient(135deg, #CE1126, #007A3D);
+    width: 100%;
+}
+
+/* Sports Page Specific Styles */
+.sports-header {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('images/sports-bg.jpg') center/cover no-repeat;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.match-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.team-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.match-details {
+    width: 40%;
+    text-align: center;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.vs {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0.5rem;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .match-card {
+        flex-direction: column;
+    }
+    
+    .team, .match-details {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .teams {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+}
