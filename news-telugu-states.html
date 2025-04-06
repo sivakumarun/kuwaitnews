@@ -8,6 +8,74 @@
     <title>తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Custom styles for news content */
+        .state-tabs {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        .tab-btn {
+            background-color: var(--kuwait-green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--primary);
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .news-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 1rem;
+        }
+        .news-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem;
+        }
+        .news-meta span {
+            margin-right: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .news-excerpt {
+            margin: 0.5rem 0;
+            color: var(--dark);
+        }
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .read-more:hover {
+            color: var(--accent);
+        }
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header (Copied from gold-price.html) -->
@@ -41,7 +109,7 @@
         </nav>
     </div>
 
-    <!-- Content Area (Aligned with gold-price.html) -->
+    <!-- Content Area (Aligned with gold-price.html structure, custom news layout) -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
@@ -50,35 +118,40 @@
 
                 <!-- State Tabs -->
                 <div class="state-tabs">
-                    <button class="subscribe-btn tab-btn active" data-state="andhra">ఆంధ్రప్రదేశ్</button>
-                    <button class="subscribe-btn tab-btn" data-state="telangana">తెలంగాణ</button>
+                    <button class="tab-btn active" data-state="andhra">ఆంధ్రప్రదేశ్</button>
+                    <button class="tab-btn" data-state="telangana">తెలంగాణ</button>
                 </div>
 
-                <!-- News Table -->
-                <table class="price-table" id="news-table">
-                    <thead>
-                        <tr>
-                            <th>వార్త శీర్షిక</th>
-                            <th>వివరణ</th>
-                            <th>తేదీ & సమయం</th>
-                            <th>రాష్ట్రం</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-state="andhra">
-                            <td>ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్</td>
-                            <td>ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది.</td>
-                            <td>2025-04-03 | 11:00 AM</td>
-                            <td>ఆంధ్రప్రదేశ్</td>
-                        </tr>
-                        <tr data-state="telangana">
-                            <td>తెలంగాణలో వర్షాలు</td>
-                            <td>తెలంగాణలో భారీ వర్షాలు కురుస్తున్నాయి, దీనివల్ల పలు ప్రాంతాల్లో వరదలు సంభవించాయి.</td>
-                            <td>2025-04-04 | 03:30 PM</td>
-                            <td>తెలంగాణ</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- News Item 1 -->
+                    <article class="news-card" data-state="andhra">
+                        <img src="images/news5.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
+                                <span><i class="far fa-clock"></i> 11:00 AM</span>
+                            </div>
+                            <p class="news-excerpt">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది. ఈ ప్రాజెక్ట్‌కు సుమారు 500 కోట్ల రూపాయలు ఖర్చు అవుతుందని అంచనా.</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- News Item 2 -->
+                    <article class="news-card" data-state="telangana">
+                        <img src="images/news6.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">తెలంగాణలో వర్షాలు</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
+                                <span><i class="far fa-clock"></i> 03:30 PM</span>
+                            </div>
+                            <p class="news-excerpt">తెలంగాణలో భారీ వర్షాలు కురుస్తున్నాయి, దీనివల్ల పలు ప్రాంతాల్లో వరదలు సంభవించాయి. ప్రభుత్వం సహాయక చర్యలను ప్రారంభించింది మరియు ప్రజలను సురక్షిత ప్రాంతాలకు తరలించింది.</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
 
                 <!-- Social Sharing (Copied from gold-price.html) -->
                 <div class="social-share">
@@ -132,11 +205,11 @@
                 this.classList.add('active');
                 
                 const state = this.dataset.state;
-                document.querySelectorAll('#news-table tr').forEach(row => {
-                    if (row.dataset.state === state) {
-                        row.style.display = '';
+                document.querySelectorAll('.news-card').forEach(card => {
+                    if (card.dataset.state === state) {
+                        card.style.display = 'block';
                     } else {
-                        row.style.display = 'none';
+                        card.style.display = 'none';
                     }
                 });
             });
@@ -147,7 +220,7 @@
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const url = window.location.href;
-                const text = 'తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు';
+                const text = 'తెలుగు �రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు';
                 if (btn.classList.contains('whatsapp')) {
                     window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
                 } else if (btn.classList.contains('twitter')) {
