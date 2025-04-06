@@ -214,3 +214,37 @@
     </script>
 </body>
 </html>
+// Sample live score update (replace with real API in production)
+function updateLiveScores() {
+    const matches = [
+        {
+            id: 1,
+            team1: "CSK",
+            team2: "MI",
+            score1: "182/5",
+            score2: "176/8",
+            status: "CSK won by 6 runs"
+        },
+        {
+            id: 2,
+            team1: "RCB",
+            team2: "SRH",
+            score1: "200/4",
+            score2: "189/6",
+            status: "RCB won by 11 runs"
+        }
+    ];
+    
+    matches.forEach(match => {
+        const element = document.querySelector(`.match-${match.id}`);
+        if (element) {
+            element.querySelector('.score1').textContent = match.score1;
+            element.querySelector('.score2').textContent = match.score2;
+            element.querySelector('.status').textContent = match.status;
+        }
+    });
+}
+
+// Update every 30 seconds
+setInterval(updateLiveScores, 30000);
+updateLiveScores(); // Initial call
