@@ -841,3 +841,20 @@ body {
         margin-bottom: 15px;
     }
 }
+/* Header Background - matches gold-price.html */
+.header-bg {
+    background: linear-gradient(135deg, #d32f2f, #007A3D);
+    width: 100%;
+}
+
+/* Navigation Background - matches gold-price.html */
+.category-bg {
+    background-color: #333;
+    width: 100%;
+}
+
+/* Main Content Background */
+.content-bg {
+    background-color: #f8f8f8;
+    width: 100%;
+}
