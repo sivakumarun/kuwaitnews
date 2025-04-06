@@ -583,3 +583,57 @@ body {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     margin-bottom: 1.5rem;
 }
+.match-cards {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.match-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+
+.team-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.match-info {
+    width: 50%;
+    text-align: center;
+}
+
+.score {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #D32F2F;
+    margin-bottom: 0.3rem;
+}
+
+.result {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.match-time {
+    color: #666;
+    font-size: 0.9rem;
+}
