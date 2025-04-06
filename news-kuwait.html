@@ -3,163 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>కువైట్ వార్తలు | Kuwait Telugu News</title>
-    <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు">
+    <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు - కువైట్ తెలుగు వార్తలు">
+    <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు సమాజం, తాజా సమాచారం">
+    <title>కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for news content */
+        .featured-news-card {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .featured-img {
+            width: 40%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .featured-content {
+            padding: 1rem;
+            width: 60%;
+        }
+        .news-category {
+            display: inline-block;
+            background-color: var(--kuwait-red);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .featured-content h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .news-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 1rem;
+        }
+        .news-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem;
+        }
+        .news-meta span {
+            margin-right: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .news-excerpt {
+            margin: 0.5rem 0;
+            color: var(--dark);
+        }
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .read-more:hover {
+            color: var(--accent);
+        }
+        @media (max-width: 768px) {
+            .featured-news-card {
+                flex-direction: column;
+            }
+            .featured-img, .featured-content {
+                width: 100%;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Kuwait Telugu News">
-                <span>కువైట్ తెలుగు వార్తలు</span>
+    <!-- Header (Copied from gold-price.html) -->
+    <div class="header-bg">
+        <header class="header-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <div>
+                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                </div>
             </div>
-            <div class="header-actions">
-                <button class="btn btn-primary">సబ్‌స్క్రయిబ్</button>
-            </div>
-        </div>
-    </header>
+        </header>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container nav-container">
+    <!-- Navigation (Copied from gold-price.html) -->
+    <div class="nav-container">
+        <nav class="main-nav">
             <ul class="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-                <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
+                <li><a href="news-kuwait.html" class="active"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
                 <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="వెతకండి...">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="శోధించండి...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main">
-        <div class="container">
-            <h1 class="page-title">కువైట్ వార్తలు</h1>
-            <p class="news-meta">మొత్తం వార్తలు: 4</p>
-            
-            <!-- Featured News -->
-            <article class="featured-news-card">
-                <img src="images/featured-news.jpg" alt="Featured News" class="featured-img">
-                <div class="featured-content">
-                    <span class="news-category">ప్రత్యేక వార్త</span>
-                    <h2>నిషేధిత చేపల వలల స్వాధీనం</h2>
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> 2025-04-01</span>
-                        <span><i class="far fa-clock"></i> 10:30 AM</span>
+    <!-- Content Area (Aligned with gold-price.html structure, custom news layout) -->
+    <div class="container">
+        <main class="main-content">
+            <section class="news-section">
+                <h2 class="section-title">కువైట్ వార్తలు</h2>
+                <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 06:00 PM</p>
+
+                <!-- Featured News -->
+                <article class="featured-news-card">
+                    <img src="images/featured-news.jpg" alt="Featured News" class="featured-img">
+                    <div class="featured-content">
+                        <span class="news-category">ప్రత్యేక వార్త</span>
+                        <h2>నిషేధిత చేపల వలల స్వాధీనం</h2>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 2025-04-01</span>
+                            <span><i class="far fa-clock"></i> 10:30 AM</span>
+                        </div>
+                        <p class="news-excerpt">పబ్లిక్ అథారిటీ ఫర్ అగ్రికల్చర్ అఫైర్స్ అండ్ ఫిష్ రిసోర్సెస్ (పిఎఎఎఫ్ఆర్) ఈద్ మొదటి మరియు రెండవ రోజులలో తన పర్యవేక్షణ ప్రయత్నాలను ముమ్మరం చేసింది...</p>
+                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <p class="news-excerpt">పబ్లిక్ అథారిటీ ఫర్ అగ్రికల్చర్ అఫైర్స్ అండ్ ఫిష్ రిసోర్సెస్ (పిఎఎఎఫ్ఆర్) ఈద్ మొదటి మరియు రెండవ రోజులలో తన పర్యవేక్షణ ప్రయత్నాలను ముమ్మరం చేసింది...</p>
-                    <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- News Item 1 -->
+                    <article class="news-card">
+                        <img src="images/news1.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">మాజీ భర్తకు పరిహారం</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-02</span>
+                                <span><i class="far fa-clock"></i> 02:15 PM</span>
+                            </div>
+                            <p class="news-excerpt">20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది...</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- News Item 2 -->
+                    <article class="news-card">
+                        <img src="images/news2.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">కొత్త వైద్య సేవల ప్రారంభం</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
+                                <span><i class="far fa-clock"></i> 09:00 AM</span>
+                            </div>
+                            <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది.</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- News Item 3 -->
+                    <article class="news-card">
+                        <img src="images/news3.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">సాంస్కృతిక కార్యక్రమం</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
+                                <span><i class="far fa-clock"></i> 06:00 PM</span>
+                            </div>
+                            <p class="news-excerpt">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉంటాయి.</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
                 </div>
-            </article>
-            
-            <!-- News Grid -->
-            <div class="news-grid">
-                <!-- News Item 1 -->
-                <article class="news-card">
-                    <img src="images/news1.jpg" alt="News" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">మాజీ భర్తకు పరిహారం</h3>
-                        <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 2025-04-02</span>
-                            <span><i class="far fa-clock"></i> 02:15 PM</span>
-                        </div>
-                        <p class="news-excerpt">20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది...</p>
-                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                
-                <!-- News Item 2 -->
-                <article class="news-card">
-                    <img src="images/news2.jpg" alt="News" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">కొత్త వైద్య సేవల ప్రారంభం</h3>
-                        <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
-                            <span><i class="far fa-clock"></i> 09:00 AM</span>
-                        </div>
-                        <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది.</p>
-                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                
-                <!-- News Item 3 -->
-                <article class="news-card">
-                    <img src="images/news3.jpg" alt="News" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">సాంస్కృతిక కార్యక్రమం</h3>
-                        <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
-                            <span><i class="far fa-clock"></i> 06:00 PM</span>
-                        </div>
-                        <p class="news-excerpt">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉంటాయి.</p>
-                        <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
-            
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link">Next <i class="fas fa-chevron-right"></i></a>
-            </div>
-        </div>
-    </main>
 
-    <!-- Footer -->
+                <!-- Social Sharing (Copied from gold-price.html) -->
+                <div class="social-share">
+                    <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
+                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar (Copied from gold-price.html) -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title">ప్రకటన</h3>
+                <div class="ad-banner">ప్రకటన స్థలం</div>
+            </div>
+            <div class="widget">
+                <h3 class="widget-title">సబ్‌స్క్రైబ్ చేయండి</h3>
+                <form class="subscribe-form">
+                    <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్">
+                    <button type="submit" class="subscribe-btn">సబ్‌స్క్రైబ్</button>
+                </form>
+            </div>
+            <div class="widget">
+                <h3 class="widget-title">మమ్మల్ని అనుసరించండి</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer (Copied from gold-price.html) -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="about.html">మా గురించి</a>
-                <a href="contact.html">సంప్రదించండి</a>
-                <a href="advertise.html">ప్రకటించండి</a>
-                <a href="privacy.html">గోప్యతా విధానం</a>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook social-icon"></i></a>
-                <a href="#"><i class="fab fa-twitter social-icon"></i></a>
-                <a href="#"><i class="fab fa-instagram social-icon"></i></a>
-                <a href="#"><i class="fab fa-youtube social-icon"></i></a>
-                <a href="#"><i class="fab fa-whatsapp social-icon"></i></a>
-            </div>
-            <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
+        <div class="footer-links">
+            <a href="#">గోప్యతా విధానం</a>
+            <a href="#">సంప్రదించండి</a>
         </div>
+        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
+    <!-- JavaScript (Updated for social sharing) -->
     <script>
-        // Read more functionality
-        document.querySelectorAll('.read-more').forEach(button => {
-            button.addEventListener('click', function(e) {
+        // Social Sharing (Copied from gold-price.html)
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                const newsCard = this.closest('.news-card, .featured-news-card');
-                const excerpt = newsCard.querySelector('.news-excerpt');
-                const fullText = newsCard.querySelector('.full-text');
-                
-                if (!fullText) {
-                    // In a real implementation, this would load the full article
-                    window.location.href = "news-detail.html";
-                    return;
-                }
-                
-                if (excerpt.style.display === 'none') {
-                    excerpt.style.display = '-webkit-box';
-                    fullText.style.display = 'none';
-                    this.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
-                } else {
-                    excerpt.style.display = 'none';
-                    fullText.style.display = 'block';
-                    this.innerHTML = 'తక్కువ చూడండి <i class="fas fa-arrow-up"></i>';
+                const url = window.location.href;
+                const text = 'కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు';
+                if (btn.classList.contains('whatsapp')) {
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
+                } else if (btn.classList.contains('twitter')) {
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+                } else if (btn.classList.contains('facebook')) {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
                 }
             });
         });
