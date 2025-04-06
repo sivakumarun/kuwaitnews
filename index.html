@@ -50,36 +50,38 @@
     </style>
 </head>
 <body>
-    <!-- Header (matches gold-price.html exactly) -->
+    <!-- Header (Updated to match gold-price.html) -->
     <div class="header-bg">
-        <header>
-            <div class="nav-container">
-                <div class="header-top">
-                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
-                    <div class="title-container">
-                        <h1>కువైట్ తెలుగు వార్తలు</h1>
-                        <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
-                    </div>
+        <header class="header-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <div>
+                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                 </div>
             </div>
         </header>
     </div>
 
-    <!-- Navigation (matches gold-price.html exactly) -->
-    <div class="category-bg">
-        <nav class="main-nav" id="main-nav">
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+    <!-- Navigation (Updated to match gold-price.html) -->
+    <div class="nav-container">
+        <nav class="main-nav">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
                 <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="శోధించండి...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
         </nav>
     </div>
 
-    <!-- Main Content Area (structured like gold-price.html) -->
+    <!-- Main Content Area (Unchanged from your original) -->
     <div class="content-bg">
         <div class="container">
             <div class="main-content">
@@ -162,34 +164,9 @@
         </div>
     </div>
 
+    <!-- JavaScript (Updated to remove unnecessary toggle logic) -->
     <script>
-        // Same JavaScript as gold-price.html
-        function toggleMenu(event) {
-            event.preventDefault();
-            const nav = document.getElementById('main-nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        }
-
-        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
-
-        window.addEventListener('resize', function() {
-            const nav = document.getElementById('main-nav');
-            if (window.innerWidth > 600) {
-                nav.style.display = 'block';
-            } else {
-                nav.style.display = 'none';
-            }
-        });
-
-        // Initialize on load
-        window.addEventListener('load', function() {
-            const nav = document.getElementById('main-nav');
-            if (window.innerWidth > 600) {
-                nav.style.display = 'block';
-            } else {
-                nav.style.display = 'none';
-            }
-        });
+        // No toggle logic needed since nav is responsive via CSS in styles.css
     </script>
 </body>
 </html>
