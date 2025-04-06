@@ -3,156 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="తాజా క్రీడా వార్తలు IPL 2025 - కువైట్ తెలుగు వార్తలు">
+    <meta name="keywords" content="క్రీడలు, IPL, తెలుగు వార్తలు, కువైట్">
     <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Sports-specific styles */
-        .featured-match {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .teams {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .team {
-            text-align: center;
-            width: 30%;
-        }
-        .team-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-        .match-info {
-            text-align: center;
-            width: 40%;
-        }
-        .score {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #D32F2F;
-        }
-        .matches-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        @media (max-width: 768px) {
-            .team, .match-info { width: 100%; }
-        }
-    </style>
 </head>
 <body>
-    <!-- Header (EXACT copy from gold-price.html) -->
+    <!-- Header (Copied from gold-price.html) -->
     <div class="header-bg">
-        <header>
-            <div class="nav-container">
-                <div class="header-top">
-                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
-                    <div class="title-container">
-                        <h1>కువైట్ తెలుగు వార్తలు</h1>
-                        <p>క్రీడలు - తాజా స్కోర్లు & వార్తలు</p>
-                    </div>
+        <header class="header-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <div>
+                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                 </div>
             </div>
         </header>
     </div>
 
-    <!-- Navigation (EXACT copy from gold-price.html) -->
-    <div class="category-bg">
-        <nav class="main-nav" id="main-nav">
-            <ul>
+    <!-- Navigation (Copied from gold-price.html) -->
+    <div class="nav-container">
+        <nav class="main-nav">
+            <ul class="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
                 <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+                <li><a href="sports.html" class="active"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="శోధించండి...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
         </nav>
     </div>
 
-    <!-- Content Area -->
-    <div class="content-bg">
-        <div class="container">
-            <div class="main-content">
-                <div class="news-section">
-                    <h2>IPL 2025 తాజా మ్యాచ్‌లు</h2>
-                    <span class="news-meta">నవీకరణ తేదీ: 05-04-2025 | సమయం: 08:45 PM</span>
+    <!-- Content Area (Aligned with gold-price.html) -->
+    <div class="container">
+        <main class="main-content">
+            <section class="news-section">
+                <h2 class="section-title">IPL 2025 తాజా మ్యాచ్‌లు</h2>
+                <p class="news-meta">నవీకరణ తేదీ: 05-04-2025 | సమయం: 08:45 PM</p>
 
-                    <!-- Featured Match -->
-                    <div class="featured-match">
-                        <div class="teams">
-                            <div class="team">
-                                <img src="images/csk.png" alt="CSK" class="team-logo">
-                                <h3>చెన్నై సూపర్ కింగ్స్</h3>
-                            </div>
-                            <div class="match-info">
-                                <div class="score">182/5 - 176/8</div>
-                                <div class="result">CSK won by 6 runs</div>
-                                <div class="match-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 05-04-2025</span>
-                                    <span><i class="far fa-clock"></i> 7:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="team">
-                                <img src="images/mi.png" alt="MI" class="team-logo">
-                                <h3>ముంబై ఇండియన్స్</h3>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Recent Matches Table -->
+                <h3>ఇటీవలి మ్యాచ్‌లు</h3>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>మ్యాచ్</th>
+                            <th>స్కోరు</th>
+                            <th>ఫలితం</th>
+                            <th>తేదీ & సమయం</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CSK vs MI</td>
+                            <td>182/5 - 176/8</td>
+                            <td>CSK won by 6 runs</td>
+                            <td>05-04-2025 | 7:30 PM</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <!-- Upcoming Matches Table -->
-                    <h3>రాబోయే మ్యాచ్‌లు</h3>
-                    <table class="matches-table">
-                        <thead>
-                            <tr>
-                                <th>తేదీ</th>
-                                <th>సమయం</th>
-                                <th>టీమ్ 1</th>
-                                <th>టీమ్ 2</th>
-                                <th>స్థలం</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>06-04-2025</td>
-                                <td>7:30 PM</td>
-                                <td>RCB</td>
-                                <td>SRH</td>
-                                <td>బెంగళూరు</td>
-                            </tr>
-                            <!-- More matches... -->
-                        </tbody>
-                    </table>
+                <!-- Upcoming Matches Table -->
+                <h3>రాబోయే మ్యాచ్‌లు</h3>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>తేదీ</th>
+                            <th>సమయం</th>
+                            <th>టీమ్ 1</th>
+                            <th>టీమ్ 2</th>
+                            <th>స్థలం</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>06-04-2025</td>
+                            <td>7:30 PM</td>
+                            <td>RCB</td>
+                            <td>SRH</td>
+                            <td>బెంగళూరు</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Social Sharing (Copied from gold-price.html) -->
+                <div class="social-share">
+                    <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
+                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar (Copied from gold-price.html) -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title">ప్రకటన</h3>
+                <div class="ad-banner">ప్రకటన స్థలం</div>
+            </div>
+            <div class="widget">
+                <h3 class="widget-title">సబ్‌స్క్రైబ్ చేయండి</h3>
+                <form class="subscribe-form">
+                    <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్">
+                    <button type="submit" class="subscribe-btn">సబ్‌స్క్రైబ్</button>
+                </form>
+            </div>
+            <div class="widget">
+                <h3 class="widget-title">మమ్మల్ని అనుసరించండి</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
 
-    <!-- Same JavaScript as gold-price.html -->
+    <!-- Footer (Copied from gold-price.html) -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">గోప్యతా విధానం</a>
+            <a href="#">సంప్రదించండి</a>
+        </div>
+        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
+    </footer>
+
+    <!-- JavaScript (Copied from gold-price.html) -->
     <script>
-        function toggleMenu(event) {
-            event.preventDefault();
-            const nav = document.getElementById('main-nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        }
-        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
-        window.addEventListener('resize', function() {
-            const nav = document.getElementById('main-nav');
-            nav.style.display = window.innerWidth > 600 ? 'block' : 'none';
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = window.location.href;
+                const text = 'క్రీడలు - కువైట్ తెలుగు వార్తలు';
+                if (btn.classList.contains('whatsapp')) {
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
+                } else if (btn.classList.contains('twitter')) {
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+                } else if (btn.classList.contains('facebook')) {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+                }
+            });
         });
     </script>
 </body>
