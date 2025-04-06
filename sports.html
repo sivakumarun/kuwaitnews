@@ -6,79 +6,6 @@
     <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Additional Sports Page Styles */
-        .sports-page {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .match-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .team {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 30%;
-        }
-        
-        .team-logo {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-        
-        .match-details {
-            width: 40%;
-            text-align: center;
-        }
-        
-        .score {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #D32F2F;
-            margin-bottom: 5px;
-        }
-        
-        .result {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .match-meta {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .section-title {
-            color: #007A3D;
-            border-bottom: 2px solid #007A3D;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .match-card {
-                flex-direction: column;
-            }
-            
-            .team, .match-details {
-                width: 100%;
-                margin-bottom: 15px;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="header-bg">
@@ -109,74 +36,106 @@
     </div>
 
     <div class="content-bg">
-        <div class="container sports-page">
-            <h2 class="section-title">IPL 2025 తాజా మ్యాచ్‌లు</h2>
-            
-            <!-- Match 1 -->
-            <div class="match-card">
-                <div class="team">
-                    <img src="https://i.imgur.com/7tKtW2X.png" alt="CSK" class="team-logo">
-                    <span>చెన్నై సూపర్ కింగ్స్</span>
-                </div>
-                
-                <div class="match-details">
-                    <div class="score">182/5 - 176/8</div>
-                    <div class="result">CSK won by 6 runs</div>
-                    <div class="match-meta">
-                        <i class="far fa-calendar-alt"></i> 05-04-2025 | 
-                        <i class="far fa-clock"></i> 7:30 PM
+        <div class="container">
+            <div class="main-content">
+                <div class="news-section">
+                    <h2>IPL 2025 తాజా మ్యాచ్‌లు</h2>
+                    <span class="news-meta">నవీకరణ తేదీ: 05-04-2025 | సమయం: 08:45 PM</span>
+
+                    <!-- Featured Match -->
+                    <div class="featured-match">
+                        <div class="teams">
+                            <div class="team">
+                                <img src="https://i.imgur.com/7tKtW2X.png" alt="CSK" class="team-logo">
+                                <h3>చెన్నై సూపర్ కింగ్స్</h3>
+                            </div>
+                            <div class="match-info">
+                                <div class="score">182/5 - 176/8</div>
+                                <div class="result">CSK won by 6 runs</div>
+                                <div class="match-meta">
+                                    <span><i class="far fa-calendar-alt"></i> 05-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 7:30 PM</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> చెన్నై</span>
+                                </div>
+                            </div>
+                            <div class="team">
+                                <img src="https://i.imgur.com/J7f0D7h.png" alt="MI" class="team-logo">
+                                <h3>ముంబై ఇండియన్స్</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Matches -->
+                    <h3>రాబోయే మ్యాచ్‌లు</h3>
+                    <table class="matches-table">
+                        <thead>
+                            <tr>
+                                <th>తేదీ</th>
+                                <th>సమయం</th>
+                                <th>టీమ్ 1</th>
+                                <th>టీమ్ 2</th>
+                                <th>స్థలం</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>06-04-2025</td>
+                                <td>7:30 PM</td>
+                                <td>RCB</td>
+                                <td>SRH</td>
+                                <td>బెంగళూరు</td>
+                            </tr>
+                            <tr>
+                                <td>07-04-2025</td>
+                                <td>7:30 PM</td>
+                                <td>DC</td>
+                                <td>KKR</td>
+                                <td>ఢిల్లీ</td>
+                            </tr>
+                            <tr>
+                                <td>08-04-2025</td>
+                                <td>7:30 PM</td>
+                                <td>PBKS</td>
+                                <td>RR</td>
+                                <td>మొహాలి</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Sports News -->
+                    <h3>క్రీడా వార్తలు</h3>
+                    <div class="news-item">
+                        <img src="images/ipl1.jpg" alt="IPL News" style="max-width:100%; border-radius:8px; margin-bottom:15px;">
+                        <h4>CSK vs MI: ధోని అద్భుత ఫినిష్</h4>
+                        <p>చెన్నై సూపర్ కింగ్స్ కెప్టెన్ ఎంఎస్ ధోని అద్భుతమైన ఫినిషింగ్‌తో CSKకి విజయం తెచ్చిపెట్టారు. MI 176/8 స్కోర్‌తో ఓడిపోయింది.</p>
+                        <a href="#" class="read-more">మరిన్ని చదవండి</a>
                     </div>
                 </div>
-                
-                <div class="team">
-                    <img src="https://i.imgur.com/J7f0D7h.png" alt="MI" class="team-logo">
-                    <span>ముంబై ఇండియన్స్</span>
-                </div>
-            </div>
-            
-            <!-- Match 2 -->
-            <div class="match-card">
-                <div class="team">
-                    <img src="https://i.imgur.com/4Q42B0v.png" alt="RCB" class="team-logo">
-                    <span>రాయల్ ఛాలెంజర్స్ బెంగళూరు</span>
-                </div>
-                
-                <div class="match-details">
-                    <div class="score">200/4 - 189/6</div>
-                    <div class="result">RCB won by 11 runs</div>
-                    <div class="match-meta">
-                        <i class="far fa-calendar-alt"></i> 06-04-2025 | 
-                        <i class="far fa-clock"></i> 7:30 PM
-                    </div>
-                </div>
-                
-                <div class="team">
-                    <img src="https://i.imgur.com/9pZzR2x.png" alt="SRH" class="team-logo">
-                    <span>సన్‌రైజర్స్ హైదరాబాద్</span>
-                </div>
-            </div>
-            
-            <h2 class="section-title">క్రీడా వార్తలు</h2>
-            
-            <div class="news-item">
-                <img src="images/ipl1.jpg" alt="IPL News" style="width:100%; max-width:500px; display:block; margin:0 auto 15px; border-radius:8px;">
-                <h3>CSK vs MI: ధోని అద్భుత ఫినిష్</h3>
-                <p>చెన్నై సూపర్ కింగ్స్ కెప్టెన్ ఎంఎస్ ధోని అద్భుతమైన ఫినిషింగ్‌తో CSKకి విజయం తెచ్చిపెట్టారు. MI 176/8 స్కోర్‌తో ఓడిపోయింది.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.menu-btn').addEventListener('click', function() {
+        function toggleMenu(event) {
+            event.preventDefault();
             const nav = document.getElementById('main-nav');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        });
+        }
 
-        // Responsive adjustments
+        document.querySelector('.menu-btn').addEventListener('click', toggleMenu);
+
         window.addEventListener('resize', function() {
             const nav = document.getElementById('main-nav');
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 600) {
+                nav.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.innerWidth > 600) {
                 nav.style.display = 'block';
             } else {
                 nav.style.display = 'none';
