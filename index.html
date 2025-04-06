@@ -38,7 +38,7 @@
             margin-bottom: 30px;
         }
 
-        /* Mobile-specific navigation styles */
+        /* Mobile-specific styles */
         @media (max-width: 768px) {
             .featured-news {
                 grid-template-columns: 1fr;
@@ -48,7 +48,7 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Add hamburger menu button (hidden in desktop by styles.css) */
+            /* Hamburger menu button */
             .menu-toggle {
                 display: block;
                 background: none;
@@ -57,33 +57,48 @@
                 font-size: 1.5rem;
                 cursor: pointer;
                 padding: 5px 10px;
+                order: -1; /* Moves button to the left */
             }
 
-            /* Navigation container adjustments */
+            /* Header adjustments */
+            .header-container {
+                display: flex;
+                align-items: center;
+                padding: 10px 20px;
+                flex-wrap: nowrap; /* Prevent wrapping */
+            }
+
+            .logo-container {
+                display: flex;
+                align-items: center;
+                flex-grow: 1; /* Allow title to take remaining space */
+            }
+
+            /* Navigation adjustments */
             .nav-container {
                 position: relative;
-                padding: 0; /* Override any padding from styles.css for mobile */
+                padding: 0;
             }
 
             .main-nav {
-                display: none; /* Hidden by default on mobile */
+                display: none;
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 200px; /* Compact width for mobile */
-                height: 100%; /* Full height but scrollable */
-                background-color: #1a3e72; /* Match typical nav color */
+                width: 180px; /* Reduced from 200px for smaller background */
+                height: 100%;
+                background-color: #1a3e72;
                 box-shadow: 2px 0 5px rgba(0,0,0,0.2);
                 z-index: 1000;
-                overflow-y: auto; /* Scrollable if needed */
+                overflow-y: auto;
             }
 
             .main-nav.active {
-                display: block; /* Show when toggled */
+                display: block;
             }
 
             .nav-menu {
-                flex-direction: column !important; /* Override any flex from styles.css */
+                flex-direction: column !important;
                 padding: 10px 0;
                 margin: 0;
             }
@@ -95,10 +110,10 @@
             .nav-menu li a {
                 display: flex;
                 align-items: center;
-                padding: 10px 15px !important; /* Compact padding */
-                font-size: 0.9rem !important; /* Smaller font */
-                color: white !important; /* Ensure visibility */
-                border-radius: 0 !important; /* Remove rounding for sidebar */
+                padding: 8px 15px !important; /* Reduced padding for compactness */
+                font-size: 0.85rem !important; /* Smaller font for less height */
+                color: white !important;
+                border-radius: 0 !important;
                 transition: background-color 0.3s ease;
             }
 
@@ -107,22 +122,9 @@
                 background-color: rgba(255,255,255,0.2) !important;
             }
 
-            /* Hide search container in mobile nav to save space */
+            /* Hide search container */
             .search-container {
                 display: none;
-            }
-
-            /* Adjust header to include toggle button */
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-            }
-
-            .logo-container {
-                display: flex;
-                align-items: center;
             }
         }
     </style>
@@ -131,6 +133,9 @@
     <!-- Header -->
     <div class="header-bg">
         <header class="header-container">
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="logo-container">
                 <img src="images/logo.png" alt="Logo" class="logo">
                 <div>
@@ -138,9 +143,6 @@
                     <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                 </div>
             </div>
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
         </header>
     </div>
 
@@ -203,7 +205,7 @@
                                     <span><i class="far fa-calendar-alt"></i> 04-04-2025</span>
                                     <span><i class="far fa-clock"></i> 10:30 AM</span>
                                 </div>
-                                <p style="margin-bottom:15px;">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది.</p>
+                                <p style="margin-bottom:15px;">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది。</p>
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -215,7 +217,7 @@
                                     <span><i class="far fa-calendar-alt"></i> 03-04-2025</span>
                                     <span><i class="far fa-clock"></i> 05:45 PM</span>
                                 </div>
-                                <p style="margin-bottom:15px;">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉన్నాయి.</p>
+                                <p style="margin-bottom:15px;">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది。 ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉన్నాయి。</p>
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -227,7 +229,7 @@
                                     <span><i class="far fa-calendar-alt"></i> 02-04-2025</span>
                                     <span><i class="far fa-clock"></i> 11:00 AM</span>
                                 </div>
-                                <p style="margin-bottom:15px;">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది.</p>
+                                <p style="margin-bottom:15px;">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది。</p>
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -246,7 +248,6 @@
             mainNav.classList.toggle('active');
         });
 
-        // Close menu on resize to desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 mainNav.classList.remove('active');
