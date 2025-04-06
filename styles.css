@@ -773,3 +773,71 @@ body {
         padding: 8px;
     }
 }
+/* Sports Page Additions */
+.featured-match {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.team {
+    text-align: center;
+    width: 30%;
+}
+
+.team-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.match-info {
+    text-align: center;
+    width: 40%;
+}
+
+.score {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #D32F2F;
+    margin: 10px 0;
+}
+
+.matches-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.matches-table th {
+    background-color: #007A3D;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.matches-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .team, .match-info {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
