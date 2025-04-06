@@ -6,180 +6,148 @@
     <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు మరియు క్రీడా వార్తలు">
     <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు, క్రీడలు">
     <title>కువైట్ తెలుగు వార్తలు - Kuwait Telugu News</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Existing styles unchanged for desktop */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
-
-        body {
-            font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
-            line-height: 1.6;
-            background-color: #f5f7fa;
-        }
-
-        /* Header Styles */
-        .header-bg {
-            background-color: #2a5298;
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .title-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .title-container h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .title-container p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .menu-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none;
-        }
-
-        /* Navigation Styles */
-        .category-bg {
-            background-color: #1a3e72;
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        .main-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .featured-news {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: flex-start;
-            gap: 15px;
-            flex-wrap: wrap;
-            padding: 10px 0;
-        }
-
-        .main-nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        .main-nav ul li a:hover,
-        .main-nav ul li a.active {
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        /* Responsive Design */
+        /* Mobile-specific navigation styles */
         @media (max-width: 768px) {
-            .menu-btn {
+            .featured-news {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Add hamburger menu button (hidden in desktop by styles.css) */
+            .menu-toggle {
                 display: block;
-            }
-
-            .category-bg {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 250px; /* Fixed width instead of full screen */
-                height: 100%; /* Full height but scrollable */
-                overflow-y: auto; /* Scroll if content exceeds height */
-                z-index: 999;
-                padding-bottom: 20px;
-            }
-
-            .category-bg.active {
-                display: block;
-            }
-
-            .main-nav ul {
-                flex-direction: column;
-                gap: 5px; /* Reduced gap for compactness */
-                padding: 10px;
-            }
-
-            .main-nav ul li a {
-                padding: 8px 15px; /* Smaller padding */
-                font-size: 0.95rem; /* Slightly smaller font */
-                justify-content: flex-start;
-            }
-
-            .title-container h1 {
+                background: none;
+                border: none;
+                color: white;
                 font-size: 1.5rem;
+                cursor: pointer;
+                padding: 5px 10px;
             }
 
-            .title-container p {
-                font-size: 0.8rem;
+            /* Navigation container adjustments */
+            .nav-container {
+                position: relative;
+                padding: 0; /* Override any padding from styles.css for mobile */
             }
-        }
 
-        /* Content Styles */
-        .content-bg {
-            padding: 25px 0;
-        }
+            .main-nav {
+                display: none; /* Hidden by default on mobile */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px; /* Compact width for mobile */
+                height: 100%; /* Full height but scrollable */
+                background-color: #1a3e72; /* Match typical nav color */
+                box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+                z-index: 1000;
+                overflow-y: auto; /* Scrollable if needed */
+            }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            .main-nav.active {
+                display: block; /* Show when toggled */
+            }
+
+            .nav-menu {
+                flex-direction: column !important; /* Override any flex from styles.css */
+                padding: 10px 0;
+                margin: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu li a {
+                display: flex;
+                align-items: center;
+                padding: 10px 15px !important; /* Compact padding */
+                font-size: 0.9rem !important; /* Smaller font */
+                color: white !important; /* Ensure visibility */
+                border-radius: 0 !important; /* Remove rounding for sidebar */
+                transition: background-color 0.3s ease;
+            }
+
+            .nav-menu li a:hover,
+            .nav-menu li a.active {
+                background-color: rgba(255,255,255,0.2) !important;
+            }
+
+            /* Hide search container in mobile nav to save space */
+            .search-container {
+                display: none;
+            }
+
+            /* Adjust header to include toggle button */
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+            }
+
+            .logo-container {
+                display: flex;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <div class="header-bg">
-        <header>
-            <div class="nav-container">
-                <div class="title-container">
-                    <h1>కువైట్ తెలుగు వార్తలు</h1>
-                    <p>కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+        <header class="header-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <div>
+                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
                 </div>
-                <button class="menu-btn" aria-label="Toggle Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </header>
     </div>
 
-    <!--- Navigation -->
-    <div class="category-bg" id="category-nav">
+    <!-- Navigation -->
+    <div class="nav-container">
         <nav class="main-nav">
-            <ul>
+            <ul class="nav-menu">
                 <li><a href="index.html" class="active"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
@@ -187,38 +155,103 @@
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="శోధించండి...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
         </nav>
     </div>
 
-    <!-- Content Area -->
+    <!-- Main Content Area (Unchanged) -->
     <div class="content-bg">
         <div class="container">
-            <main class="main-content">
-                <!-- Your existing content can be placed here -->
-            </main>
+            <div class="main-content">
+                <div class="news-section">
+                    <h2>ప్రత్యేక వార్తలు</h2>
+                    <div class="featured-news">
+                        <div class="featured-main">
+                            <img src="images/featured-news.jpg" alt="Featured News" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
+                            <div style="padding:15px;">
+                                <h3>కువైట్‌లో తెలుగు సమాజం యొక్క పెద్ద సమావేశం</h3>
+                                <p>ఈ వారాంతంలో కువైట్‌లోని తెలుగు సమాజం యొక్క పెద్ద సమావేశం జరిగింది...</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="featured-secondary" style="display:flex; flex-direction:column; gap:15px;">
+                            <div class="secondary-item">
+                                <img src="images/news1.jpg" alt="News 1" style="width:100%; height:140px; object-fit:cover; border-radius:8px;">
+                                <div style="padding:10px;">
+                                    <h4>కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h4>
+                                </div>
+                            </div>
+                            <div class="secondary-item">
+                                <img src="images/news2.jpg" alt="News 2" style="width:100%; height:140px; object-fit:cover; border-radius:8px;">
+                                <div style="padding:10px;">
+                                    <h4>తెలుగు సంస్కృతి పండుగ విజయవంతం</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>తాజా వార్తలు</h2>
+                    <div class="news-grid">
+                        <div class="news-card">
+                            <img src="images/news1.jpg" alt="News 1" class="news-image">
+                            <div style="padding:15px;">
+                                <h3>కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h3>
+                                <div style="display:flex; justify-content:space-between; color:#666; font-size:0.9rem; margin:10px 0;">
+                                    <span><i class="far fa-calendar-alt"></i> 04-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 10:30 AM</span>
+                                </div>
+                                <p style="margin-bottom:15px;">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="images/news2.jpg" alt="News 2" class="news-image">
+                            <div style="padding:15px;">
+                                <h3>తెలుగు సంస్కృతి పండుగ విజయవంతం</h3>
+                                <div style="display:flex; justify-content:space-between; color:#666; font-size:0.9rem; margin:10px 0;">
+                                    <span><i class="far fa-calendar-alt"></i> 03-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 05:45 PM</span>
+                                </div>
+                                <p style="margin-bottom:15px;">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉన్నాయి.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="images/news3.jpg" alt="News 3" class="news-image">
+                            <div style="padding:15px;">
+                                <h3>ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్ ప్రారంభం</h3>
+                                <div style="display:flex; justify-content:space-between; color:#666; font-size:0.9rem; margin:10px 0;">
+                                    <span><i class="far fa-calendar-alt"></i> 02-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 11:00 AM</span>
+                                </div>
+                                <p style="margin-bottom:15px;">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- JavaScript for mobile menu toggle -->
     <script>
-        const menuBtn = document.querySelector('.menu-btn');
-        const categoryNav = document.getElementById('category-nav');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
 
-        menuBtn.addEventListener('click', () => {
-            categoryNav.classList.toggle('active');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
         });
 
+        // Close menu on resize to desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
-                categoryNav.classList.remove('active');
-                categoryNav.style.display = 'block';
-            } else if (!categoryNav.classList.contains('active')) {
-                categoryNav.style.display = 'none';
+                mainNav.classList.remove('active');
             }
         });
-
-        if (window.innerWidth <= 768) {
-            categoryNav.style.display = 'none';
-        }
     </script>
 </body>
 </html>
