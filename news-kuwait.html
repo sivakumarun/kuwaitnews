@@ -6,7 +6,7 @@
     <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు - కువైట్ తెలుగు వార్తలు">
     <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు సమాజం, తాజా సమాచారం">
     <title>కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/kuwaitnews/styles.css"> <!-- Adjusted path for GitHub Pages -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Custom styles for news content */
@@ -29,7 +29,7 @@
         }
         .news-category {
             display: inline-block;
-            background-color: var(--kuwait-red);
+            background-color: #e63946; /* Fallback if --kuwait-red is undefined */
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 4px;
@@ -37,7 +37,7 @@
             margin-bottom: 0.5rem;
         }
         .featured-content h2 {
-            color: var(--primary);
+            color: #1a3c34; /* Fallback if --primary is undefined */
             font-size: 1.5rem;
             margin: 0 0 0.5rem;
         }
@@ -62,7 +62,7 @@
             padding: 1rem;
         }
         .news-title {
-            color: var(--primary);
+            color: #1a3c34; /* Fallback if --primary is undefined */
             font-size: 1.2rem;
             margin: 0 0 0.5rem;
         }
@@ -73,15 +73,15 @@
         }
         .news-excerpt {
             margin: 0.5rem 0;
-            color: var(--dark);
+            color: #333; /* Fallback if --dark is undefined */
         }
         .read-more {
-            color: var(--secondary);
+            color: #2e6b5e; /* Fallback if --secondary is undefined */
             text-decoration: none;
             font-weight: bold;
         }
         .read-more:hover {
-            color: var(--accent);
+            color: #e63946; /* Fallback if --accent is undefined */
         }
         @media (max-width: 768px) {
             .featured-news-card {
@@ -97,6 +97,7 @@
     </style>
 </head>
 <body>
+    <!-- Header and Navigation will be injected here -->
     <!-- Content Area -->
     <div class="container">
         <main class="main-content">
@@ -106,7 +107,7 @@
 
                 <!-- Featured News -->
                 <article class="featured-news-card">
-                    <img src="images/featured-news.jpg" alt="Featured News" class="featured-img">
+                    <img src="/kuwaitnews/images/featured-news.jpg" alt="Featured News" class="featured-img">
                     <div class="featured-content">
                         <span class="news-category">ప్రత్యేక వార్త</span>
                         <h2>నిషేధిత చేపల వలల స్వాధీనం</h2>
@@ -123,7 +124,7 @@
                 <div class="news-grid">
                     <!-- News Item 1 -->
                     <article class="news-card">
-                        <img src="images/news1.jpg" alt="News" class="news-img">
+                        <img src="/kuwaitnews/images/news1.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">మాజీ భర్తకు పరిహారం</h3>
                             <div class="news-meta">
@@ -137,7 +138,7 @@
                     
                     <!-- News Item 2 -->
                     <article class="news-card">
-                        <img src="images/news2.jpg" alt="News" class="news-img">
+                        <img src="/kuwaitnews/images/news2.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">కొత్త వైద్య సేవల ప్రారంభం</h3>
                             <div class="news-meta">
@@ -151,7 +152,7 @@
                     
                     <!-- News Item 3 -->
                     <article class="news-card">
-                        <img src="images/news3.jpg" alt="News" class="news-img">
+                        <img src="/kuwaitnews/images/news3.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">సాంస్కృతిక కార్యక్రమం</h3>
                             <div class="news-meta">
@@ -207,8 +208,10 @@
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
-    <!-- JavaScript for social sharing -->
+    <!-- JavaScript -->
+    <script src="/kuwaitnews/scripts.js"></script> <!-- Adjusted path for GitHub Pages -->
     <script>
+        // Social Sharing
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
