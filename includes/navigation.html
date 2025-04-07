@@ -14,4 +14,105 @@
             <button class="search-btn"><i class="fas fa-search"></i></button>
         </div>
     </nav>
+    <style>
+        .nav-container {
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        .main-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-menu li {
+            margin-right: 1.5rem;
+        }
+        .nav-menu a {
+            color: #1a3c34;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #e63946;
+        }
+        .nav-menu a i {
+            margin-right: 0.5rem;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-btn {
+            padding: 0.5rem 1rem;
+            background: #1a3c34;
+            color: #ffffff;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-btn:hover {
+            background: #2e6b5e;
+        }
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a3c34;
+        }
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .main-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+            .search-container {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            .search-input {
+                width: 70%;
+            }
+        }
+    </style>
 </div>
