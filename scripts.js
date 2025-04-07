@@ -24,7 +24,7 @@ function setActiveNavLink() {
     const navLinks = document.querySelectorAll('.nav-menu a');
     if (navLinks.length === 0) return;
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href');
+        const linkPage = link.getAttribute('href').split('/').pop(); // Adjust for absolute paths
         if (linkPage === currentPage) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
@@ -50,8 +50,13 @@ function initMobileMenu() {
 // Main function to load components
 async function loadCommonComponents() {
     try {
+        // Load header at the start of body
         await loadComponent('/kuwaitnews/includes/header.html', 'body', 'afterbegin');
+        
+        // Load navigation after header
         await loadComponent('/kuwaitnews/includes/navigation.html', '.header-bg', 'afterend');
+        
+        // Initialize navigation features
         setActiveNavLink();
         initMobileMenu();
         document.dispatchEvent(new Event('commonComponentsLoaded'));
