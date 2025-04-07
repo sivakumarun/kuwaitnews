@@ -78,20 +78,7 @@
     </style>
 </head>
 <body>
-    <!-- Header (Copied from gold-price.html) -->
-    <div class="header-bg">
-        <header class="header-container">
-            <div class="logo-container">
-                <img src="images/logo.png" alt="Logo" class="logo">
-                <div>
-                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
-                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
-                </div>
-            </div>
-        </header>
-    </div>
-
-    <!-- Navigation (Copied from gold-price.html) -->
+    <!-- Navigation (Kept as is) -->
     <div class="nav-container">
         <nav class="main-nav">
             <ul class="nav-menu">
@@ -109,7 +96,7 @@
         </nav>
     </div>
 
-    <!-- Content Area (Aligned with gold-price.html structure, custom news layout) -->
+    <!-- Content Area -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
@@ -153,7 +140,7 @@
                     </article>
                 </div>
 
-                <!-- Social Sharing (Copied from gold-price.html) -->
+                <!-- Social Sharing -->
                 <div class="social-share">
                     <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
                     <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -163,7 +150,7 @@
             </section>
         </main>
 
-        <!-- Sidebar (Copied from gold-price.html) -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="widget">
                 <h3 class="widget-title">ప్రకటన</h3>
@@ -187,7 +174,7 @@
         </aside>
     </div>
 
-    <!-- Footer (Copied from gold-price.html) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
             <a href="#">గోప్యతా విధానం</a>
@@ -196,7 +183,7 @@
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
-    <!-- JavaScript (Updated for tabs and social sharing) -->
+    <!-- JavaScript -->
     <script>
         // State Tabs Functionality
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -215,12 +202,12 @@
             });
         });
 
-        // Social Sharing (Copied from gold-price.html)
+        // Social Sharing
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const url = window.location.href;
-                const text = 'తెలుగు  రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు';
+                const text = 'తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు';
                 if (btn.classList.contains('whatsapp')) {
                     window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
                 } else if (btn.classList.contains('twitter')) {
