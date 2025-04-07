@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Custom styles for news content */
         .state-tabs {
             margin: 1rem 0;
             display: flex;
@@ -73,76 +74,13 @@
             .news-grid {
                 grid-template-columns: 1fr;
             }
-            .menu-toggle {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-                padding: 5px 10px;
-                order: -1;
-            }
-            .header-container {
-                display: flex;
-                align-items: center;
-                padding: 10px 20px;
-                flex-wrap: nowrap;
-            }
-            .logo-container {
-                display: flex;
-                align-items: center;
-                flex-grow: 1;
-            }
-            .main-nav {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 180px;
-                height: 100%;
-                background-color: #333;
-                box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-                z-index: 1000;
-                overflow-y: auto;
-            }
-            .main-nav.active {
-                display: block;
-            }
-            .nav-menu {
-                flex-direction: column !important;
-                padding: 10px 0;
-                margin: 0;
-            }
-            .nav-menu li {
-                width: 100%;
-            }
-            .nav-menu li a {
-                display: flex;
-                align-items: center;
-                padding: 8px 15px !important;
-                font-size: 0.85rem !important;
-                color: white !important;
-                border-radius: 0 !important;
-                transition: background-color 0.3s ease;
-            }
-            .nav-menu li a:hover,
-            .nav-menu li a.active {
-                background-color: rgba(255,255,255,0.2) !important;
-            }
-            .search-container {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (Copied from gold-price.html) -->
     <div class="header-bg">
         <header class="header-container">
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
             <div class="logo-container">
                 <img src="images/logo.png" alt="Logo" class="logo">
                 <div>
@@ -153,7 +91,7 @@
         </header>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation (Copied from gold-price.html) -->
     <div class="nav-container">
         <nav class="main-nav">
             <ul class="nav-menu">
@@ -171,76 +109,51 @@
         </nav>
     </div>
 
-    <!-- Content Area -->
+    <!-- Content Area (Aligned with gold-price.html structure, custom news layout) -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
                 <h2 class="section-title">తెలుగు రాష్ట్రాల వార్తలు</h2>
-                <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 06:00 PM</p>
+                <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 03:30 PM</p>
 
+                <!-- State Tabs -->
                 <div class="state-tabs">
-                    <button class="tab-btn active" data-tab="ap">ఆంధ్రప్రదేశ్</button>
-                    <button class="tab-btn" data-tab="tg">తెలంగాణ</button>
+                    <button class="tab-btn active" data-state="andhra">ఆంధ్రప్రదేశ్</button>
+                    <button class="tab-btn" data-state="telangana">తెలంగాణ</button>
                 </div>
 
-                <div id="ap-news" class="tab-content" style="display: block;">
-                    <div class="news-grid">
-                        <article class="news-card">
-                            <img src="images/ap-news1.jpg" alt="News" class="news-img">
-                            <div class="news-content">
-                                <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త రహదారి ప్రాజెక్ట్</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 2025-04-02</span>
-                                    <span><i class="far fa-clock"></i> 11:00 AM</span>
-                                </div>
-                                <p class="news-excerpt">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- News Item 1 -->
+                    <article class="news-card" data-state="andhra">
+                        <img src="images/news5.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
+                                <span><i class="far fa-clock"></i> 11:00 AM</span>
                             </div>
-                        </article>
-                        <article class="news-card">
-                            <img src="images/ap-news2.jpg" alt="News" class="news-img">
-                            <div class="news-content">
-                                <h3 class="news-title">విశాఖలో బీచ్ శుభ్రత కార్యక్రమం</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
-                                    <span><i class="far fa-clock"></i> 08:00 AM</span>
-                                </div>
-                                <p class="news-excerpt">విశాఖపట్నంలో స్థానిక సంస్థలు బీచ్ శుభ్రత కార్యక్రమాన్ని నిర్వహించాయి, ఇందులో వందలాది మంది స్వచ్ఛంద సేవకులు పాల్గొన్నారు.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            <p class="news-excerpt">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది. ఈ ప్రాజెక్ట్‌కు సుమారు 500 కోట్ల రూపాయలు ఖర్చు అవుతుందని అంచనా.</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- News Item 2 -->
+                    <article class="news-card" data-state="telangana">
+                        <img src="images/news6.jpg" alt="News" class="news-img">
+                        <div class="news-content">
+                            <h3 class="news-title">తెలంగాణలో వర్షాలు</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
+                                <span><i class="far fa-clock"></i> 03:30 PM</span>
                             </div>
-                        </article>
-                    </div>
+                            <p class="news-excerpt">తెలంగాణలో భారీ వర్షాలు కురుస్తున్నాయి, దీనివల్ల పలు ప్రాంతాల్లో వరదలు సంభవించాయి. ప్రభుత్వం సహాయక చర్యలను ప్రారంభించింది మరియు ప్రజలను సురక్షిత ప్రాంతాలకు తరలించింది.</p>
+                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
                 </div>
 
-                <div id="tg-news" class="tab-content" style="display: none;">
-                    <div class="news-grid">
-                        <article class="news-card">
-                            <img src="images/tg-news1.jpg" alt="News" class="news-img">
-                            <div class="news-content">
-                                <h3 class="news-title">హైదరాబాద్‌లో టెక్ సమ్మిట్</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 2025-04-01</span>
-                                    <span><i class="far fa-clock"></i> 09:30 AM</span>
-                                </div>
-                                <p class="news-excerpt">తెలంగాణ రాష్ట్ర ఐటీ విభాగం హైదరాబాద్‌లో ఒక అంతర్జాతీయ టెక్ సమ్మిట్‌ను నిర్వహించింది.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
-                        <article class="news-card">
-                            <img src="images/tg-news2.jpg" alt="News" class="news-img">
-                            <div class="news-content">
-                                <h3 class="news-title">కొత్త విద్యా విధానం ప్రకటన</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
-                                    <span><i class="far fa-clock"></i> 03:00 PM</span>
-                                </div>
-                                <p class="news-excerpt">తెలంగాణ ప్రభుత్వం విద్యా రంగంలో సంస్కరణల కోసం కొత్త విధానాన్ని ప్రవేశపెట్టింది.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
+                <!-- Social Sharing (Copied from gold-price.html) -->
                 <div class="social-share">
                     <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
                     <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -250,7 +163,7 @@
             </section>
         </main>
 
-        <!-- Sidebar -->
+        <!-- Sidebar (Copied from gold-price.html) -->
         <aside class="sidebar">
             <div class="widget">
                 <h3 class="widget-title">ప్రకటన</h3>
@@ -274,7 +187,7 @@
         </aside>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (Copied from gold-price.html) -->
     <footer class="footer">
         <div class="footer-links">
             <a href="#">గోప్యతా విధానం</a>
@@ -283,24 +196,31 @@
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript (Updated for tabs and social sharing) -->
     <script>
-        // Tab Switching
+        // State Tabs Functionality
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', function() {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
-                document.getElementById(`${btn.dataset.tab}-news`).style.display = 'block';
+                this.classList.add('active');
+                
+                const state = this.dataset.state;
+                document.querySelectorAll('.news-card').forEach(card => {
+                    if (card.dataset.state === state) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
 
-        // Social Sharing
+        // Social Sharing (Copied from gold-price.html)
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const url = window.location.href;
-                const text = 'తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు';
+                const text = 'తెలుగు  రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు';
                 if (btn.classList.contains('whatsapp')) {
                     window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
                 } else if (btn.classList.contains('twitter')) {
@@ -309,18 +229,6 @@
                     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
                 }
             });
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mainNav.classList.remove('active');
-            }
         });
     </script>
 </body>
