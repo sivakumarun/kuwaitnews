@@ -1,5 +1,17 @@
-<!-- Header and Navigation injected by scripts.js -->
-    <!-- Content Area (Aligned with gold-price.html) -->
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="తాజా మనీ ఎక్స్ఛేంజ్ రేట్లు - కువైట్ తెలుగు వార్తలు">
+    <title>మనీ ఎక్స్ఛేంజ్ రేటు - కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header and Navigation injected by scripts.js -->
+
+    <!-- Content Area -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
@@ -76,7 +88,7 @@
                     </tbody>
                 </table>
 
-                <!-- Social Sharing (Copied from gold-price.html) -->
+                <!-- Social Sharing -->
                 <div class="social-share">
                     <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
                     <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -86,7 +98,7 @@
             </section>
         </main>
 
-        <!-- Sidebar (Copied from gold-price.html) -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="widget">
                 <h3 class="widget-title">ప్రకటన</h3>
@@ -110,16 +122,17 @@
         </aside>
     </div>
 
-    <!-- Footer (Copied from gold-price.html) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="#">గోప్యతా విధానం</a>
-            <a href="#">సంప్రదించండి</a>
+            <a href="/kuwaitnews/privacy.html">గోప్యతా విధానం</a>
+            <a href="/kuwaitnews/contact.html">సంప్రదించండి</a>
         </div>
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
-    <!-- JavaScript (Updated for calculator and social sharing) -->
+    <!-- JavaScript -->
+    <script src="/kuwaitnews/scripts.js"></script>
     <script>
         // Exchange Rate Calculator
         document.getElementById('convert-btn').addEventListener('click', function() {
@@ -160,7 +173,7 @@
             document.getElementById('conversion-result').textContent = `${result.toFixed(2)} ${toCurrency}`;
         });
 
-        // Social Sharing (Copied from gold-price.html)
+        // Social Sharing
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
