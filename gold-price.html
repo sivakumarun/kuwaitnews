@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Header -->
-    <div class="header-bg">
-        <header class="header-container">
+    <header class="header-bg">
+        <div class="header-container">
             <div class="logo-container">
                 <img src="images/logo.png" alt="Kuwait Telugu News Logo" class="logo">
                 <div>
@@ -21,161 +22,170 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button class="menu-btn mobile-only" aria-label="Menu"><i class="fas fa-bars"></i></button>
                 <button class="subscribe-btn">సబ్‌స్క్రయిబ్</button>
             </div>
-        </header>
-    </div>
+        </div>
+    </header>
 
     <!-- Navigation -->
-    <div class="nav-container">
-        <nav class="main-nav">
+    <nav class="nav-container">
+        <div class="main-nav">
             <ul class="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
                 <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
                 <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                <li><a href="gold-price.html" class="active"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
                 <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
                 <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
             </ul>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="వార్తలు వెతకండి...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
+                <input type="text" class="search-input" placeholder="వార్తలు వెతకండి..." aria-label="Search news">
+                <button class="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
     <!-- Main Content -->
     <div class="container">
         <main class="main-content">
-            <section class="news-section">
+            <article class="news-section">
                 <h1 class="section-title">గోల్డ్ ధరలు</h1>
                 <div class="news-meta">
-                    <span><i class="fas fa-sync-alt"></i> చివరిగా నవీకరించబడింది: 04-04-2025 12:57 PM</span>
+                    <span><i class="fas fa-sync-alt"></i> చివరిగా నవీకరించబడింది: <span id="last-updated">04-04-2025 12:57 PM</span></span>
                 </div>
 
                 <!-- Gold Price Charts -->
-                <div class="price-chart-container">
+                <section class="price-chart-container">
                     <div class="chart-header">
-                        <h3><i class="fas fa-chart-line"></i> గోల్డ్ ధరల ట్రెండ్ (గత 30 రోజులు)</h3>
+                        <h2><i class="fas fa-chart-line"></i> గోల్డ్ ధరల ట్రెండ్ (గత 30 రోజులు)</h2>
                         <div class="chart-options">
-                            <button class="chart-btn active">KWD</button>
-                            <button class="chart-btn">INR</button>
+                            <button class="chart-btn active" data-currency="kwd">KWD</button>
+                            <button class="chart-btn" data-currency="inr">INR</button>
                         </div>
                     </div>
-                    <div class="chart-placeholder">
-                        <!-- In a real implementation, this would be a chart from Chart.js or similar -->
-                        <img src="images/gold-chart.jpg" alt="Gold Price Trend Chart" style="width:100%; border-radius:8px;">
+                    <div class="chart-wrapper">
+                        <canvas id="goldPriceChart" aria-label="Gold Price Trend Chart" role="img"></canvas>
                         <p class="chart-note">* గ్రాఫ్ ఉదాహరణకు మాత్రమే, నిజమైన డేటా కాదు</p>
                     </div>
-                </div>
+                </section>
 
                 <!-- Kuwait Table (in KWD) -->
-                <div class="price-table-container">
-                    <h3><i class="fas fa-map-marker-alt"></i> కువైట్ (KWD)</h3>
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>వివరణ</th>
-                                <th>1 గ్రాము (KWD)</th>
-                                <th>8 గ్రాములు (KWD)</th>
-                                <th>10 గ్రాములు (KWD)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>24 క్యారెట్ గోల్డ్</td>
-                                <td>31.03</td>
-                                <td>248.24</td>
-                                <td>310.30</td>
-                            </tr>
-                            <tr>
-                                <td>22 క్యారెట్ గోల్డ్</td>
-                                <td>28.45</td>
-                                <td>227.60</td>
-                                <td>284.50</td>
-                            </tr>
-                            <tr>
-                                <td>18 క్యారెట్ గోల్డ్</td>
-                                <td>23.30</td>
-                                <td>186.40</td>
-                                <td>233.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <section class="price-table-container">
+                    <h2><i class="fas fa-map-marker-alt"></i> కువైట్ (KWD)</h2>
+                    <div class="table-responsive">
+                        <table class="price-table">
+                            <caption>కువైట్ లో గోల్డ్ ధరలు</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">వివరణ</th>
+                                    <th scope="col">1 గ్రాము (KWD)</th>
+                                    <th scope="col">8 గ్రాములు (KWD)</th>
+                                    <th scope="col">10 గ్రాములు (KWD)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>24 క్యారెట్ గోల్డ్</td>
+                                    <td>31.03</td>
+                                    <td>248.24</td>
+                                    <td>310.30</td>
+                                </tr>
+                                <tr>
+                                    <td>22 క్యారెట్ గోల్డ్</td>
+                                    <td>28.45</td>
+                                    <td>227.60</td>
+                                    <td>284.50</td>
+                                </tr>
+                                <tr>
+                                    <td>18 క్యారెట్ గోల్డ్</td>
+                                    <td>23.30</td>
+                                    <td>186.40</td>
+                                    <td>233.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
 
                 <!-- India Tables -->
                 <div class="price-tables-grid">
                     <!-- Hyderabad Table (in INR) -->
-                    <div class="price-table-container">
-                        <h3><i class="fas fa-city"></i> హైదరాబాద్ (INR)</h3>
-                        <table class="price-table">
-                            <thead>
-                                <tr>
-                                    <th>వివరణ</th>
-                                    <th>1 గ్రాము (INR)</th>
-                                    <th>10 గ్రాములు (INR)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>24 క్యారెట్ గోల్డ్</td>
-                                    <td>9,164</td>
-                                    <td>91,640</td>
-                                </tr>
-                                <tr>
-                                    <td>22 క్యారెట్ గోల్డ్</td>
-                                    <td>8,400</td>
-                                    <td>84,000</td>
-                                </tr>
-                                <tr>
-                                    <td>18 క్యారెట్ గోల్డ్</td>
-                                    <td>6,873</td>
-                                    <td>68,730</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <section class="price-table-container">
+                        <h2><i class="fas fa-city"></i> హైదరాబాద్ (INR)</h2>
+                        <div class="table-responsive">
+                            <table class="price-table">
+                                <caption>హైదరాబాద్ లో గోల్డ్ ధరలు</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">వివరణ</th>
+                                        <th scope="col">1 గ్రాము (INR)</th>
+                                        <th scope="col">10 గ్రాములు (INR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>24 క్యారెట్ గోల్డ్</td>
+                                        <td>9,164</td>
+                                        <td>91,640</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22 క్యారెట్ గోల్డ్</td>
+                                        <td>8,400</td>
+                                        <td>84,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18 క్యారెట్ గోల్డ్</td>
+                                        <td>6,873</td>
+                                        <td>68,730</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
 
                     <!-- Vijayawada Table (in INR) -->
-                    <div class="price-table-container">
-                        <h3><i class="fas fa-city"></i> విజయవాడ (INR)</h3>
-                        <table class="price-table">
-                            <thead>
-                                <tr>
-                                    <th>వివరణ</th>
-                                    <th>1 గ్రాము (INR)</th>
-                                    <th>10 గ్రాములు (INR)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>24 క్యారెట్ గోల్డ్</td>
-                                    <td>9,167</td>
-                                    <td>91,670</td>
-                                </tr>
-                                <tr>
-                                    <td>22 క్యారెట్ గోల్డ్</td>
-                                    <td>8,400</td>
-                                    <td>82,800</td>
-                                </tr>
-                                <tr>
-                                    <td>18 క్యారెట్ గోల్డ్</td>
-                                    <td>6,873</td>
-                                    <td>68,730</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <section class="price-table-container">
+                        <h2><i class="fas fa-city"></i> విజయవాడ (INR)</h2>
+                        <div class="table-responsive">
+                            <table class="price-table">
+                                <caption>విజయవాడ లో గోల్డ్ ధరలు</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">వివరణ</th>
+                                        <th scope="col">1 గ్రాము (INR)</th>
+                                        <th scope="col">10 గ్రాములు (INR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>24 క్యారెట్ గోల్డ్</td>
+                                        <td>9,167</td>
+                                        <td>91,670</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22 క్యారెట్ గోల్డ్</td>
+                                        <td>8,400</td>
+                                        <td>84,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18 క్యారెట్ గోల్డ్</td>
+                                        <td>6,873</td>
+                                        <td>68,730</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
 
                 <!-- Gold Price Calculator -->
-                <div class="calculator-container">
-                    <h3><i class="fas fa-calculator"></i> గోల్డ్ ధర కాలిక్యులేటర్</h3>
-                    <div class="calculator-form">
+                <section class="calculator-container">
+                    <h2><i class="fas fa-calculator"></i> గోల్డ్ ధర కాలిక్యులేటర్</h2>
+                    <form class="calculator-form" id="gold-calculator">
                         <div class="form-group">
                             <label for="gold-type">గోల్డ్ రకం:</label>
-                            <select id="gold-type" class="form-control">
+                            <select id="gold-type" class="form-control" required>
                                 <option value="24">24 క్యారెట్</option>
                                 <option value="22">22 క్యారెట్</option>
                                 <option value="18">18 క్యారెట్</option>
@@ -183,7 +193,7 @@
                         </div>
                         <div class="form-group">
                             <label for="location">స్థానం:</label>
-                            <select id="location" class="form-control">
+                            <select id="location" class="form-control" required>
                                 <option value="kuwait">కువైట్ (KWD)</option>
                                 <option value="hyderabad">హైదరాబాద్ (INR)</option>
                                 <option value="vijayawada">విజయవాడ (INR)</option>
@@ -191,19 +201,19 @@
                         </div>
                         <div class="form-group">
                             <label for="weight">బరువు (గ్రాములు):</label>
-                            <input type="number" id="weight" class="form-control" value="1" min="0.1" step="0.1">
+                            <input type="number" id="weight" class="form-control" value="1" min="0.1" step="0.1" required>
                         </div>
-                        <button id="calculate-btn" class="subscribe-btn">లెక్కించండి</button>
+                        <button type="submit" class="subscribe-btn">లెక్కించండి</button>
                         <div class="result-container">
-                            <h4>అంచనా ధర:</h4>
-                            <p id="result">KWD 31.03</p>
+                            <h3>అంచనా ధర:</h3>
+                            <p id="result" aria-live="polite">KWD 31.03</p>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                </section>
 
                 <!-- Gold Price Information -->
-                <div class="info-container">
-                    <h3><i class="fas fa-info-circle"></i> గోల్డ్ ధరల గురించి ముఖ్యమైన విషయాలు</h3>
+                <section class="info-container">
+                    <h2><i class="fas fa-info-circle"></i> గోల్డ్ ధరల గురించి ముఖ్యమైన విషయాలు</h2>
                     <div class="info-content">
                         <p>గోల్డ్ ధరలు ప్రతిరోజు మారుతూ ఉంటాయి. ఈ పేజీలో చూపించిన ధరలు ఎప్పటికప్పుడు నవీకరించబడతాయి.</p>
                         <ul>
@@ -213,8 +223,8 @@
                         </ul>
                         <p><strong>గమనిక:</strong> ఈ ధరలు సుమారు అంచనాలు మాత్రమే. ఖచ్చితమైన ధరల కోసం స్థానిక జ్వెలరీ దుకాణాలను సంప్రదించండి.</p>
                     </div>
-                </div>
-            </section>
+                </section>
+            </article>
         </main>
 
         <!-- Sidebar -->
@@ -222,7 +232,7 @@
             <!-- Ad Banner -->
             <div class="widget">
                 <div class="ad-banner">
-                    <h4>గోల్డ్ జ్వెలరీ</h4>
+                    <h3>గోల్డ్ జ్వెలరీ</h3>
                     <p>కువైట్‌లోని ఉత్తమ జ్వెలరీ దుకాణాలు</p>
                     <a href="#" class="subscribe-btn">ఇక్కడ క్లిక్ చేయండి</a>
                 </div>
@@ -231,28 +241,31 @@
             <!-- Exchange Rates Widget -->
             <div class="widget">
                 <h3 class="widget-title"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేట్లు</h3>
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>కరెన్సీ</th>
-                            <th>రేటు</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>KWD to INR</td>
-                            <td>277.04</td>
-                        </tr>
-                        <tr>
-                            <td>USD to INR</td>
-                            <td>85.29</td>
-                        </tr>
-                        <tr>
-                            <td>EUR to INR</td>
-                            <td>93.86</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="price-table">
+                        <caption>కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">కరెన్సీ</th>
+                                <th scope="col">రేటు</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KWD to INR</td>
+                                <td>277.04</td>
+                            </tr>
+                            <tr>
+                                <td>USD to INR</td>
+                                <td>85.29</td>
+                            </tr>
+                            <tr>
+                                <td>EUR to INR</td>
+                                <td>93.86</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <a href="money-exchange-rate.html" class="read-more">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a>
             </div>
 
@@ -271,7 +284,7 @@
             <div class="widget">
                 <h3 class="widget-title"><i class="fas fa-envelope"></i> సబ్‌స్క్రయిబ్ చేయండి</h3>
                 <p>తాజా గోల్డ్ ధరల కోసం మా న్యూస్‌లెటర్‌కు సబ్‌స్క్రయిబ్ చేయండి</p>
-                <form class="subscribe-form">
+                <form class="subscribe-form" id="newsletter-form">
                     <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్" required>
                     <button type="submit" class="subscribe-btn">సబ్‌స్క్రయిబ్</button>
                 </form>
@@ -288,60 +301,113 @@
             <a href="privacy.html">గోప్యతా విధానం</a>
         </div>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook social-icon"></i></a>
-            <a href="#"><i class="fab fa-twitter social-icon"></i></a>
-            <a href="#"><i class="fab fa-instagram social-icon"></i></a>
-            <a href="#"><i class="fab fa-youtube social-icon"></i></a>
-            <a href="#"><i class="fab fa-whatsapp social-icon"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook social-icon"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter social-icon"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp social-icon"></i></a>
         </div>
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
     </footer>
 
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Gold Price Calculator
-        document.getElementById('calculate-btn').addEventListener('click', function() {
-            const goldType = document.getElementById('gold-type').value;
-            const location = document.getElementById('location').value;
-            const weight = parseFloat(document.getElementById('weight').value);
-            
-            let pricePerGram = 0;
-            let currency = '';
-            
-            // Set prices based on selections
-            if (location === 'kuwait') {
-                currency = 'KWD';
-                if (goldType === '24') pricePerGram = 31.03;
-                else if (goldType === '22') pricePerGram = 28.45;
-                else if (goldType === '18') pricePerGram = 23.30;
-            } else if (location === 'hyderabad') {
-                currency = 'INR';
-                if (goldType === '24') pricePerGram = 9164;
-                else if (goldType === '22') pricePerGram = 8400;
-                else if (goldType === '18') pricePerGram = 6873;
-            } else if (location === 'vijayawada') {
-                currency = 'INR';
-                if (goldType === '24') pricePerGram = 9167;
-                else if (goldType === '22') pricePerGram = 8400;
-                else if (goldType === '18') pricePerGram = 6873;
-            }
-            
-            const totalPrice = (pricePerGram * weight).toFixed(2);
-            document.getElementById('result').textContent = `${currency} ${totalPrice}`;
-        });
-
-        // Chart toggle
-        document.querySelectorAll('.chart-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                // In a real implementation, this would switch between KWD and INR charts
-            });
-        });
-
         // Mobile menu toggle
         document.querySelector('.menu-btn').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('active');
         });
+
+        // Initialize chart
+        const ctx = document.getElementById('goldPriceChart').getContext('2d');
+        const goldChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 30}, (_, i) => (i + 1) + 'వ రోజు'),
+                datasets: [{
+                    label: '24K Gold Price (KWD)',
+                    data: Array.from({length: 30}, () => Math.random() * 5 + 28),
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Chart currency toggle
+        document.querySelectorAll('.chart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.classList.contains('active')) {
+                    document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const currency = this.dataset.currency;
+                    const newLabel = currency === 'kwd' ? '24K Gold Price (KWD)' : '24K Gold Price (INR)';
+                    const newData = Array.from({length: 30}, () => 
+                        currency === 'kwd' ? Math.random() * 5 + 28 : Math.random() * 1500 + 8000);
+                    
+                    goldChart.data.datasets[0].label = newLabel;
+                    goldChart.data.datasets[0].data = newData;
+                    goldChart.update();
+                }
+            });
+        });
+
+        // Gold Price Calculator
+        document.getElementById('gold-calculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const goldType = document.getElementById('gold-type').value;
+            const location = document.getElementById('location').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            const prices = {
+                kuwait: {
+                    '24': 31.03,
+                    '22': 28.45,
+                    '18': 23.30
+                },
+                hyderabad: {
+                    '24': 9164,
+                    '22': 8400,
+                    '18': 6873
+                },
+                vijayawada: {
+                    '24': 9167,
+                    '22': 8400,
+                    '18': 6873
+                }
+            };
+            
+            const currency = location === 'kuwait' ? 'KWD' : 'INR';
+            const pricePerGram = prices[location][goldType];
+            const totalPrice = (pricePerGram * weight).toFixed(2);
+            
+            document.getElementById('result').textContent = `${currency} ${totalPrice}`;
+        });
+
+        // Update last updated time
+        function updateLastUpdated() {
+            const now = new Date();
+            const options = { 
+                day: '2-digit', 
+                month: '2-digit', 
+                year: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true
+            };
+            document.getElementById('last-updated').textContent = now.toLocaleString('te-IN', options);
+        }
+        
+        updateLastUpdated();
     </script>
 </body>
 </html>
