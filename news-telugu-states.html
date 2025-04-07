@@ -6,7 +6,7 @@
     <meta name="description" content="ఆంధ్రప్రదేశ్ మరియు తెలంగాణలోని తాజా వార్తలు - కువైట్ తెలుగు వార్తలు">
     <meta name="keywords" content="తెలుగు రాష్ట్రాలు, ఆంధ్రప్రదేశ్, తెలంగాణ, వార్తలు">
     <title>తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/kuwaitnews/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Custom styles for news content */
@@ -78,25 +78,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation (Kept as is) -->
-    <div class="nav-container">
-        <nav class="main-nav">
-            <ul class="nav-menu">
-                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-                <li><a href="news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
-                <li><a href="news-telugu-states.html" class="active"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-                <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-            </ul>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="శోధించండి...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-        </nav>
-    </div>
-
-    <!-- Content Area -->
+    <!-- Header and Navigation will be injected here by scripts.js -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
@@ -113,7 +95,7 @@
                 <div class="news-grid">
                     <!-- News Item 1 -->
                     <article class="news-card" data-state="andhra">
-                        <img src="images/news5.jpg" alt="News" class="news-img">
+                        <img src="/kuwaitnews/images/news5.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్</h3>
                             <div class="news-meta">
@@ -127,7 +109,7 @@
                     
                     <!-- News Item 2 -->
                     <article class="news-card" data-state="telangana">
-                        <img src="images/news6.jpg" alt="News" class="news-img">
+                        <img src="/kuwaitnews/images/news6.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">తెలంగాణలో వర్షాలు</h3>
                             <div class="news-meta">
@@ -184,6 +166,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="/kuwaitnews/scripts.js"></script>
     <script>
         // State Tabs Functionality
         document.querySelectorAll('.tab-btn').forEach(btn => {
