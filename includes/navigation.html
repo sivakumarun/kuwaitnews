@@ -1,108 +1,17 @@
-<!DOCTYPE html>
-<html lang="te">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Navigation Styles with Colors */
-        .nav-container {
-            background: #ffffff; /* White background for clean look */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 1rem 0;
-        }
-        .main-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-        }
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-menu li {
-            margin-right: 1.5rem;
-        }
-        .nav-menu a {
-            color: #1a3c34; /* Dark green for links */
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-menu a:hover, .nav-menu a.active {
-            color: #e63946; /* Red accent for hover/active, inspired by Kuwait flag */
-        }
-        .nav-menu a i {
-            margin-right: 0.5rem;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-        .search-input {
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-        .search-btn {
-            padding: 0.5rem 1rem;
-            background: #1a3c34; /* Dark green for button */
-            color: #ffffff; /* White text */
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .search-btn:hover {
-            background: #2e6b5e; /* Lighter green on hover */
-        }
-        @media (max-width: 768px) {
-            .main-nav {
-                flex-direction: column;
-            }
-            .nav-menu {
-                flex-direction: column;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-            .nav-menu li {
-                margin: 0.5rem 0;
-            }
-            .search-container {
-                width: 100%;
-                justify-content: center;
-            }
-            .search-input {
-                width: 70%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <div class="nav-container">
-        <nav class="main-nav">
-            <ul class="nav-menu">
-                <li><a href="index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-                <li><a href="news-kuwait.html" class="active"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
-                <li><a href="news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-                <li><a href="gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-                <li><a href="money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-                <li><a href="sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-            </ul>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="శోధించండి...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-        </nav>
-    </div>
-</body>
-</html>
+<div class="nav-container">
+    <nav class="main-nav">
+        <button class="menu-btn" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+        <ul class="nav-menu">
+            <li><a href="/kuwaitnews/index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+            <li><a href="/kuwaitnews/news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
+            <li><a href="/kuwaitnews/news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
+            <li><a href="/kuwaitnews/gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+            <li><a href="/kuwaitnews/money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            <li><a href="/kuwaitnews/sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="శోధించండి...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+</div>
