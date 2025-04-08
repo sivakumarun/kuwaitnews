@@ -1,3 +1,7 @@
+console.log('Debug Info:');
+console.log('Location:', window.location.href);
+console.log('Base Path:', window.location.hostname.includes('github.io') ? '/kuwaitnews' : '');
+console.log('Header Path:', `${window.location.hostname.includes('github.io') ? '/kuwaitnews' : ''}/includes/header.html`);
 // scripts.js - Final Working Version
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Set correct base path
