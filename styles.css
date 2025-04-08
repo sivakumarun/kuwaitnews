@@ -557,3 +557,15 @@ body {
     50% { opacity: 1; }
     100% { opacity: 0.6; }
 }
+/* Temporary debug styles */
+#header-container, #nav-container {
+    border: 2px dashed red;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#header-container::after, #nav-container::after {
+    content: "Container";
+    color: red;
+    font-size: 12px;
+}
