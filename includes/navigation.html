@@ -41,12 +41,12 @@
         border: none;
         font-size: 1.5rem;
         cursor: pointer;
-        color: #000000; /* Ensure icon is visible */
+        color: white; /* Contrast with header gradient */
         padding: 0;
     }
 
     .menu-btn i {
-        display: block; /* Ensure icon renders */
+        display: block;
     }
 
     .nav-menu {
@@ -93,9 +93,14 @@
 
     @media (max-width: 768px) {
         .nav-container {
-            background: #ffffff !important;
-            padding: 0; /* Remove padding to fit with header */
-            box-shadow: none; /* Avoid double shadow with header */
+            background: transparent; /* Blend with header */
+            padding: 0;
+            box-shadow: none;
+            position: absolute; /* Overlay on header */
+            top: 0;
+            left: 0;
+            width: auto;
+            z-index: 1001; /* Above header */
         }
 
         nav {
@@ -104,10 +109,7 @@
 
         .menu-btn {
             display: block;
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
+            position: static; /* Flex positioning handles it */
         }
 
         .nav-menu {
