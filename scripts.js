@@ -59,12 +59,18 @@ async function loadCommonComponents() {
     }
 }
 
-// Add mobile view styling
+// Add styling for both views
 const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
         position: relative;
+        background: linear-gradient(135deg, #CE1126, #007A3D); /* Default for desktop */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-bg {
+        background: transparent; /* No gradient here */
+        width: 100%;
     }
     @media (max-width: 768px) {
         .top-wrapper {
@@ -74,13 +80,7 @@ style.textContent = `
             justify-content: space-between;
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, #CE1126, #007A3D); /* Gradient only in mobile */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .header-bg {
-            background: transparent !important; /* Override gradient in mobile */
-            width: auto;
-            box-shadow: none;
+            background: linear-gradient(135deg, #CE1126, #007A3D); /* Ensure gradient in mobile */
         }
         .header-container {
             flex-grow: 1;
