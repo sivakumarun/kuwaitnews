@@ -6,14 +6,12 @@
     <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు మరియు క్రీడా వార్తలు">
     <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు, క్రీడలు">
     <title>కువైట్ తెలుగు వార్తలు - Kuwait Telugu News</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="/kuwaitnews/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Placeholders for potential dynamic injection -->
-    <div id="header-container" class="loading"></div>
-    <div id="nav-container" class="loading"></div>
+    <!-- Header and Navigation injected by scripts.js -->
 
     <!-- Main Content Area -->
     <div class="content-bg">
@@ -21,9 +19,11 @@
             <main class="main-content">
                 <section class="news-section">
                     <h2>ప్రత్యేక వార్తలు</h2>
+                    
+                    <!-- Featured News Section -->
                     <div class="featured-news">
                         <div class="featured-main">
-                            <img src="./images/featured-news.jpg" alt="Featured News" class="news-image">
+                            <img src="/kuwaitnews/images/featured-news.jpg" alt="Featured News" class="news-image">
                             <div class="featured-content">
                                 <h3>కువైట్‌లో తెలుగు సమాజం యొక్క పెద్ద సమావేశం</h3>
                                 <p>ఈ వారాంతంలో కువైట్‌లోని తెలుగు సమాజం యొక్క పెద్ద సమావేశం జరిగింది...</p>
@@ -32,13 +32,13 @@
                         </div>
                         <div class="featured-secondary">
                             <div class="secondary-item">
-                                <img src="./images/news1.jpg" alt="News 1" class="news-image">
+                                <img src="/kuwaitnews/images/news1.jpg" alt="News 1" class="news-image">
                                 <div class="secondary-content">
                                     <h4>కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h4>
                                 </div>
                             </div>
                             <div class="secondary-item">
-                                <img src="./images/news2.jpg" alt="News 2" class="news-image">
+                                <img src="/kuwaitnews/images/news2.jpg" alt="News 2" class="news-image">
                                 <div class="secondary-content">
                                     <h4>తెలుగు సంస్కృతి పండుగ విజయవంతం</h4>
                                 </div>
@@ -46,10 +46,12 @@
                         </div>
                     </div>
 
+                    <!-- Latest News Section -->
                     <h2>తాజా వార్తలు</h2>
                     <div class="news-grid">
+                        <!-- News Item 1 -->
                         <div class="news-card">
-                            <img src="./images/news1.jpg" alt="News 1" class="news-image">
+                            <img src="/kuwaitnews/images/news1.jpg" alt="News 1" class="news-image">
                             <div class="news-body">
                                 <h3 class="news-title">కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h3>
                                 <div class="news-meta">
@@ -60,8 +62,10 @@
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
+                        
+                        <!-- News Item 2 -->
                         <div class="news-card">
-                            <img src="./images/news2.jpg" alt="News 2" class="news-image">
+                            <img src="/kuwaitnews/images/news2.jpg" alt="News 2" class="news-image">
                             <div class="news-body">
                                 <h3 class="news-title">తెలుగు సంస్కృతి పండుగ విజయవంతం</h3>
                                 <div class="news-meta">
@@ -72,8 +76,10 @@
                                 <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
+                        
+                        <!-- News Item 3 -->
                         <div class="news-card">
-                            <img src="./images/news3.jpg" alt="News 3" class="news-image">
+                            <img src="/kuwaitnews/images/news3.jpg" alt="News 3" class="news-image">
                             <div class="news-body">
                                 <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్ ప్రారంభం</h3>
                                 <div class="news-meta">
@@ -89,5 +95,8 @@
             </main>
         </div>
     </div>
+
+    <!-- JavaScript -->
+    <script src="/kuwaitnews/scripts.js"></script>
 </body>
 </html>
