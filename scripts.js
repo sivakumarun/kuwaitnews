@@ -1,95 +1,96 @@
-// Configuration
-const config = {
-    basePath: window.location.host.includes('github.io') ? '/kuwaitnews' : '',
-    components: {
-        header: {
-            url: './includes/header.html',
-            target: '#header-container'
-        },
-        navigation: {
-            url: './includes/navigation.html',
-            target: '#nav-container'
-        }
-    }
-};
-
-// Enhanced component loader
-async function loadComponent(component) {
+// scripts.js
+async function loadComponent(url, targetSelector, position) {
     try {
-        const response = await fetch(`${config.basePath}${component.url}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const html = await response.text();
-        const target = document.querySelector(component.target);
-        if (!target) throw new Error(`Target element not found: ${component.target}`);
-        
-        target.innerHTML = html;
-        return true;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+        const content = await response.text();
+        const target = document.querySelector(targetSelector);
+        if (target) {
+            if (position === 'afterbegin') {
+                target.insertAdjacentHTML('afterbegin', content);
+            } else if (position === 'afterend') {
+                target.insertAdjacentHTML('afterend', content);
+            }
+            return true;
+        }
+        return false;
     } catch (error) {
-        console.error(`Failed to load ${component.url}:`, error);
+        console.error(error);
         return false;
     }
 }
 
-// Mobile menu functionality
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.menu-btn');
-    const navContent = document.querySelector('.nav-content');
-    
-    if (!menuBtn || !navContent) return;
+async function loadCommonComponents() {
+    try {
+        const headerLoaded = await loadComponent('./includes/header.html', 'body', 'afterbegin');
+        if (!headerLoaded) throw new Error('Header failed to load');
 
-    const toggleMenu = (show) => {
-        const isExpanded = show ?? (menuBtn.getAttribute('aria-expanded') !== 'true');
-        menuBtn.setAttribute('aria-expanded', isExpanded);
-        navContent.classList.toggle('active', isExpanded);
-        menuBtn.innerHTML = isExpanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        document.body.style.overflow = isExpanded ? 'hidden' : '';
-    };
+        const navLoaded = await loadComponent('./includes/navigation.html', '.header-bg', 'afterend');
+        if (!navLoaded) throw new Error('Navigation failed to load');
 
-    menuBtn.addEventListener('click', () => toggleMenu());
-    
-    // Close menu on navigation or click outside
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('.nav-menu a')) toggleMenu(false);
-        if (!e.target.closest('.nav-content') && e.target !== menuBtn) toggleMenu(false);
-    });
+        await new Promise(resolve => setTimeout(resolve, 100)); // Brief delay for DOM update
 
-    // Responsive behavior
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) toggleMenu(false);
-    });
+        setActiveNavLink();
+        initMobileMenu();
+
+        console.log('Common components loaded successfully');
+    } catch (error) {
+        console.error('Error in loadCommonComponents:', error);
+    }
 }
 
-// Highlight active navigation link
-function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+function initMobileMenu() {
+    const menuBtns = document.querySelectorAll('.menu-btn');
+    const navContent = document.querySelector('.nav-content');
+    if (!menuBtns || !navContent) {
+        console.warn('Mobile menu elements not found');
+        return;
+    }
+    const toggleMenu = () => {
+        const isExpanded = menuBtns[0].getAttribute('aria-expanded') === 'true';
+        menuBtns.forEach(btn => {
+            btn.setAttribute('aria-expanded', !isExpanded);
+            btn.innerHTML = isExpanded ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        });
+        navContent.classList.toggle('active');
+        document.body.style.overflow = isExpanded ? '' : 'hidden';
+    };
+    const closeMenu = () => {
+        menuBtns.forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
+            btn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+        navContent.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+    menuBtns.forEach(btn => btn.addEventListener('click', toggleMenu));
     document.querySelectorAll('.nav-menu a').forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop();
-        if (linkPage === currentPage) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
+        link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('click', (e) => {
+        if (!navContent.contains(e.target) && !Array.from(menuBtns).includes(e.target)) {
+            closeMenu();
+        }
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMenu();
         }
     });
 }
 
-// Main initialization
-async function initApp() {
-    try {
-        // Load components in parallel
-        await Promise.all([
-            loadComponent(config.components.header),
-            loadComponent(config.components.navigation)
-        ]);
-        
-        // Initialize features
-        setActiveNavLink();
-        initMobileMenu();
-        
-        console.log('App initialized successfully');
-    } catch (error) {
-        console.error('Initialization error:', error);
-    }
+function setActiveNavLink() {
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === currentPath || href === `.${currentPath}`) {
+            link.classList.add('active');
+        }
+    });
 }
 
-// Start the app
-document.addEventListener('DOMContentLoaded', initApp);
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadCommonComponents();
+});
