@@ -41,7 +41,7 @@
         border: none;
         font-size: 1.5rem;
         cursor: pointer;
-        color: white; /* Contrast with header gradient */
+        color: white;
         padding: 0;
     }
 
@@ -93,23 +93,20 @@
 
     @media (max-width: 768px) {
         .nav-container {
-            background: transparent; /* Blend with header */
+            background: transparent;
             padding: 0;
             box-shadow: none;
-            position: absolute; /* Overlay on header */
-            top: 0;
-            left: 0;
+            position: static; /* Integrate with top-wrapper */
             width: auto;
-            z-index: 1001; /* Above header */
         }
 
         nav {
             justify-content: flex-end;
+            width: auto;
         }
 
         .menu-btn {
             display: block;
-            position: static; /* Flex positioning handles it */
         }
 
         .nav-menu {
@@ -139,8 +136,7 @@
         }
 
         .search-bar {
-            margin-left: auto;
-            width: auto;
+            margin-left: 1rem; /* Space from title */
         }
 
         body.nav-open {
