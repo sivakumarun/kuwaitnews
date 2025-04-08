@@ -41,7 +41,12 @@
         border: none;
         font-size: 1.5rem;
         cursor: pointer;
-        color: var(--primary);
+        color: #000000; /* Ensure icon is visible */
+        padding: 0;
+    }
+
+    .menu-btn i {
+        display: block; /* Ensure icon renders */
     }
 
     .nav-menu {
@@ -88,19 +93,19 @@
 
     @media (max-width: 768px) {
         .nav-container {
-            background: #ffffff !important; /* Ensure white background */
-            padding: 0.5rem;
-            position: static; /* Prevent overlap with header */
+            background: #ffffff !important;
+            padding: 0; /* Remove padding to fit with header */
+            box-shadow: none; /* Avoid double shadow with header */
         }
 
         nav {
-            justify-content: flex-end; /* Move search bar to right */
+            justify-content: flex-end;
         }
 
         .menu-btn {
             display: block;
             position: absolute;
-            left: 1rem; /* Position hamburger on the left */
+            left: 1rem;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -132,7 +137,7 @@
         }
 
         .search-bar {
-            margin-left: auto; /* Push to right */
+            margin-left: auto;
             width: auto;
         }
 
