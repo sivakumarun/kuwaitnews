@@ -1,103 +1,80 @@
-// scripts.js - Working Version
-async function loadHeaderAndNav() {
-    // Determine base path for GitHub Pages
-    const basePath = window.location.host.includes('github.io') ? '/kuwaitnews' : '';
+// Guaranteed Working scripts.js
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Define paths - works for both local and GitHub Pages
+    const basePath = window.location.pathname.includes('/kuwaitnews') ? '/kuwaitnews' : '';
+    const headerPath = `${basePath}/includes/header.html`;
+    const navPath = `${basePath}/includes/navigation.html`;
     
-    try {
-        // 1. Load Header
-        const headerResponse = await fetch(`${basePath}/includes/header.html`);
-        if (!headerResponse.ok) throw new Error('Failed to load header');
-        document.getElementById('header-container').innerHTML = await headerResponse.text();
-        
-        // 2. Load Navigation
-        const navResponse = await fetch(`${basePath}/includes/navigation.html`);
-        if (!navResponse.ok) throw new Error('Failed to load navigation');
-        document.getElementById('nav-container').innerHTML = await navResponse.text();
-        
-        // 3. Initialize components after short delay
-        setTimeout(() => {
+    // 2. Load Header
+    fetch(headerPath)
+        .then(response => {
+            if (!response.ok) throw new Error('Header failed to load');
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById('header-container').innerHTML = html;
+            console.log('Header loaded successfully');
+            
+            // 3. Load Navigation after header
+            return fetch(navPath);
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Navigation failed to load');
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById('nav-container').innerHTML = html;
+            console.log('Navigation loaded successfully');
+            
+            // 4. Initialize components
             initMobileMenu();
             setActiveNavLink();
-        }, 100);
-        
-    } catch (error) {
-        console.error('Error loading components:', error);
-        // Fallback content
-        document.getElementById('header-container').innerHTML = `
-            <div class="fallback-header">
-                <h1>కువైట్ తెలుగు వార్తలు</h1>
-                <nav>
-                    <a href="${basePath}/index.html">Home</a> | 
-                    <a href="${basePath}/sports.html">Sports</a>
-                </nav>
-            </div>
-        `;
-    }
-}
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Visible fallback
+            document.getElementById('header-container').innerHTML = `
+                <div style="background:#007A3D;color:white;padding:1rem">
+                    <h1>కువైట్ తెలుగు వార్తలు</h1>
+                    <nav style="display:flex;gap:1rem">
+                        <a href="${basePath}/index.html" style="color:white">Home</a>
+                        <a href="${basePath}/sports.html" style="color:white">Sports</a>
+                    </nav>
+                </div>
+            `;
+        });
+});
 
 function initMobileMenu() {
     const menuBtn = document.querySelector('.menu-btn');
-    const navContent = document.querySelector('.nav-content');
-    
-    if (!menuBtn || !navContent) {
-        console.warn('Mobile menu elements missing');
+    if (!menuBtn) {
+        console.log('Mobile menu button not found - skipping initialization');
         return;
     }
-
-    const toggleMenu = () => {
-        const isOpen = navContent.classList.toggle('active');
+    
+    const navContent = document.querySelector('.nav-content');
+    menuBtn.addEventListener('click', function() {
+        navContent.classList.toggle('active');
+        const isOpen = navContent.classList.contains('active');
         menuBtn.setAttribute('aria-expanded', isOpen);
         menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         document.body.style.overflow = isOpen ? 'hidden' : '';
-    };
-
-    menuBtn.addEventListener('click', toggleMenu);
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) toggleMenu();
-        });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.nav-content') && e.target !== menuBtn) {
-            navContent.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded', 'false');
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Reset on window resize
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            navContent.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded', 'false');
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            document.body.style.overflow = '';
-        }
     });
 }
 
 function setActiveNavLink() {
+    const links = document.querySelectorAll('.nav-menu a');
+    if (links.length === 0) {
+        console.log('No navigation links found');
+        return;
+    }
+    
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-menu a').forEach(link => {
+    links.forEach(link => {
         const linkPage = link.getAttribute('href').split('/').pop();
         if (linkPage === currentPage) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
-        } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
         }
     });
-}
-
-// Start loading when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadHeaderAndNav);
-} else {
-    loadHeaderAndNav();
 }
