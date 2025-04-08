@@ -20,7 +20,7 @@
 
 <style>
     .nav-container {
-        background: #ffffff;
+        background: #ffffff; /* Ensure color stays white */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         padding: 1rem;
         position: relative;
@@ -87,24 +87,27 @@
     }
 
     @media (max-width: 768px) {
+        .nav-container {
+            background: #ffffff; /* Reinforce white background */
+            padding: 0.5rem; /* Reduce padding for tighter mobile layout */
+        }
+
         nav {
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
-            position: relative;
         }
 
         .hamburger {
             display: block;
-            order: 1; /* Hamburger first (leftmost) */
-            margin-right: 1rem;
+            margin-right: 1rem; /* Space between hamburger and next element */
         }
 
         .nav-list {
             display: none; /* Hidden by default */
             position: fixed;
             top: 0;
-            left: -100%; /* Start off-screen to the left */
+            left: -100%; /* Slide from left */
             width: 250px;
             height: 100%;
             background: #ffffff;
@@ -116,8 +119,8 @@
         }
 
         .nav-list.active {
-            display: flex; /* Show when active */
-            left: 0; /* Slide in from the left */
+            display: flex; /* Show when toggled */
+            left: 0; /* Slide in from left */
         }
 
         .nav-link {
@@ -127,19 +130,21 @@
         }
 
         .search-bar {
-            order: 3; /* Search bar last */
             margin-top: 1rem;
             width: 100%;
         }
 
-        /* Ensure body doesn't scroll when menu is open */
         body.nav-open {
             overflow: hidden;
         }
 
-        /* Adjust header title positioning if present */
-        .header-bg + .nav-container nav {
-            padding-left: 0; /* Remove padding if header title is adjacent */
+        /* Adjust layout relative to header */
+        .header-bg + .nav-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0.5rem;
         }
     }
 </style>
