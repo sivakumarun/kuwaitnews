@@ -87,9 +87,17 @@
     }
 
     @media (max-width: 768px) {
+        nav {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+        }
+
         .hamburger {
             display: block;
-            order: 2; /* Moves hamburger to the right */
+            order: 1; /* Hamburger first (leftmost) */
+            margin-right: 1rem;
         }
 
         .nav-list {
@@ -119,7 +127,7 @@
         }
 
         .search-bar {
-            order: 3; /* Moves search bar after hamburger */
+            order: 3; /* Search bar last */
             margin-top: 1rem;
             width: 100%;
         }
@@ -127,6 +135,11 @@
         /* Ensure body doesn't scroll when menu is open */
         body.nav-open {
             overflow: hidden;
+        }
+
+        /* Adjust header title positioning if present */
+        .header-bg + .nav-container nav {
+            padding-left: 0; /* Remove padding if header title is adjacent */
         }
     }
 </style>
