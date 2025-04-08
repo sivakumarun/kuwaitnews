@@ -6,11 +6,13 @@
     <meta name="description" content="తాజా క్రీడా వార్తలు IPL 2025 - కువైట్ తెలుగు వార్తలు">
     <meta name="keywords" content="క్రీడలు, IPL, తెలుగు వార్తలు, కువైట్">
     <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header and Navigation injected by scripts.js -->
+    <!-- Header and Navigation injection points -->
+    <div id="header-container"></div>
+    <div id="nav-container"></div>
 
     <!-- Content Area -->
     <div class="container">
@@ -100,14 +102,14 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="/kuwaitnews/privacy.html">గోప్యతా విధానం</a>
-            <a href="/kuwaitnews/contact.html">సంప్రదించండి</a>
+            <a href="./privacy.html">గోప్యతా విధానం</a>
+            <a href="./contact.html">సంప్రదించండి</a>
         </div>
         <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
     </footer>
 
     <!-- JavaScript -->
-    <script src="/kuwaitnews/scripts.js"></script>
+    <script src="./scripts.js" defer></script>
     <script>
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -126,6 +128,3 @@
     </script>
 </body>
 </html>
-
-<div id="header-container" class="loading"></div>
-<div id="nav-container" class="loading"></div>
