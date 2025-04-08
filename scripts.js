@@ -1,104 +1,88 @@
-// FINAL WORKING scripts.js
-(function() {
-    // 1. Detect environment
-    const isGitHub = window.location.hostname.includes('github.io');
-    const basePath = isGitHub ? '/kuwaitnews' : '';
-    
-    // 2. Load components with absolute URLs
-    function loadComponent(url, targetId) {
-        return new Promise((resolve, reject) => {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error(`${url} failed: ${response.status}`);
-                    return response.text();
-                })
-                .then(html => {
-                    const target = document.getElementById(targetId);
-                    if (!target) throw new Error(`Target #${targetId} not found`);
-                    target.innerHTML = html;
-                    console.log(`✅ Loaded ${url}`);
-                    resolve();
-                })
-                .catch(error => {
-                    console.error(`❌ Failed ${url}:`, error);
-                    reject(error);
-                });
-        });
-    }
-
-    // 3. Main initialization
-    function init() {
-        Promise.all([
-            loadComponent(`${basePath}/includes/header.html`, 'header-container'),
-            loadComponent(`${basePath}/includes/navigation.html`, 'nav-container')
-        ])
-        .then(() => {
-            // Initialize components after load
-            setTimeout(() => {
-                initMobileMenu();
-                setActiveNavLink();
-            }, 100);
-        })
-        .catch(error => {
-            console.error('Initialization failed:', error);
-            showFallbackNavigation(basePath);
-        });
-    }
-
-    // 4. Mobile menu functionality
-    function initMobileMenu() {
-        const menuBtn = document.querySelector('.menu-btn');
-        const navContent = document.querySelector('.nav-content');
-        
-        if (!menuBtn || !navContent) {
-            console.warn('Mobile menu elements not found');
-            return;
+// Function to load HTML components (header/nav)
+async function loadComponent(url, targetElement, position = 'beforeend') {
+    try {
+        console.log(`Attempting to load ${url}`);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${url}: ${response.statusText}`);
         }
-
-        menuBtn.addEventListener('click', () => {
-            const isOpen = navContent.classList.toggle('active');
-            menuBtn.setAttribute('aria-expanded', isOpen);
-            menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-    }
-
-    // 5. Active link highlighting
-    function setActiveNavLink() {
-        const currentPath = window.location.pathname;
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            const linkPath = link.getAttribute('href');
-            const isActive = currentPath.endsWith(linkPath);
-            link.classList.toggle('active', isActive);
-            link.toggleAttribute('aria-current', isActive);
-        });
-    }
-
-    // 6. Fallback content
-    function showFallbackNavigation(basePath) {
-        const header = document.getElementById('header-container');
-        if (header) {
-            header.innerHTML = `
-                <div style="
-                    background: linear-gradient(135deg, #CE1126, #007A3D);
-                    color: white;
-                    padding: 1rem;
-                    text-align: center;
-                ">
-                    <h1 style="margin:0">కువైట్ తెలుగు వార్తలు</h1>
-                    <nav style="margin-top: 1rem;">
-                        <a href="${basePath}/index.html" style="color:white;margin:0 10px">Home</a>
-                        <a href="${basePath}/sports.html" style="color:white;margin:0 10px">Sports</a>
-                    </nav>
-                </div>
-            `;
+        const html = await response.text();
+        const target = document.querySelector(targetElement);
+        if (!target) {
+            throw new Error(`Target element '${targetElement}' not found`);
         }
+        target.insertAdjacentHTML(position, html);
+        console.log(`Successfully loaded ${url}`);
+        return true;
+    } catch (error) {
+        console.error('Error loading component:', error.message);
+        return false;
     }
+}
 
-    // Start when DOM is ready
-    if (document.readyState !== 'loading') {
-        init();
-    } else {
-        document.addEventListener('DOMContentLoaded', init);
+// Function to highlight current page in navigation
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    if (navLinks.length === 0) {
+        console.warn('No navigation links found');
+        return;
     }
-})();
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+        }
+    });
+}
+
+// Function to initialize mobile menu toggle
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    if (!menuBtn || !navMenu) {
+        console.warn('Mobile menu elements not found:', { menuBtn, navMenu });
+        return;
+    }
+    menuBtn.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
+        menuBtn.setAttribute('aria-expanded', isActive);
+        menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        console.log('Menu toggled:', isActive);
+    });
+}
+
+// Main function to load components with retry mechanism
+async function loadCommonComponents() {
+    try {
+        // Load header at the start of body
+        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', 'body', 'afterbegin');
+        if (!headerLoaded) throw new Error('Header failed to load');
+
+        // Load navigation after header
+        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.header-bg', 'afterend');
+        if (!navLoaded) throw new Error('Navigation failed to load');
+
+        // Wait briefly for DOM to update
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        // Initialize navigation features
+        setActiveNavLink();
+        initMobileMenu();
+
+        document.dispatchEvent(new Event('commonComponentsLoaded'));
+        console.log('Common components loaded successfully');
+    } catch (error) {
+        console.error('Error in loadCommonComponents:', error);
+    }
+}
+
+// Start the process
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM content loaded, starting component load');
+    loadCommonComponents();
+});
