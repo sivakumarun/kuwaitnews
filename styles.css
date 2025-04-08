@@ -594,3 +594,48 @@ body {
 .menu-toggle {
   display: none;
 }
+
+@media (max-width: 992px) {
+  .container {
+    grid-template-columns: 1fr;
+    margin-left: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 0;
+  }
+  
+  .nav-menu {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .nav-item {
+    margin: 0;
+  }
+  
+  .nav-link {
+    padding: 1rem;
+    white-space: nowrap;
+  }
+  
+  .container {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
