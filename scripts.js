@@ -53,11 +53,24 @@ function initMobileMenu() {
 // Update your loadCommonComponents function to include error handling
 async function loadCommonComponents() {
     try {
-        // Load header and navigation
-        await Promise.all([
-            loadComponent('/kuwaitnews/includes/header.html', 'body', 'afterbegin'),
-            loadComponent('/kuwaitnews/includes/navigation.html', '.header-bg', 'afterend')
-        ]);
+        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', 'body', 'afterbegin');
+        if (!headerLoaded) throw new Error('Header failed to load');
+
+        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.header-bg', 'afterend');
+        if (!navLoaded) throw new Error('Navigation failed to load');
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        setActiveNavLink();
+        initMobileMenu();
+
+        document.dispatchEvent(new Event('commonComponentsLoaded'));
+        console.log('Common components loaded successfully');
+    } catch (error) {
+        console.error('Error in loadCommonComponents:', error);
+    }
+}
+
 
         // Initialize components after short delay
         setTimeout(() => {
