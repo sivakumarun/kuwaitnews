@@ -1,146 +1,58 @@
-<div class="nav-container">
-    <nav>
-        <button class="menu-btn" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul class="nav-menu">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
-            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
-        <div class="search-bar">
-            <input type="text" placeholder="వెతకండి..." aria-label="Search">
-            <button type="submit" aria-label="Search button"><i class="fas fa-search"></i></button>
-        </div>
-    </nav>
-</div>
-
-<style>
+@media (max-width: 768px) {
     .nav-container {
-        background: #ffffff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        position: relative;
-        z-index: 1000;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        position: static;
+        width: 100%;
     }
 
     nav {
-        display: flex;
         justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
+        width: 100%;
     }
 
     .menu-btn {
-        display: none;
+        display: block;
+        color: white;
         background: none;
         border: none;
         font-size: 1.5rem;
-        cursor: pointer;
-        color: white;
         padding: 0;
-    }
-
-    .menu-btn i {
-        display: block;
     }
 
     .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100%;
+        background: #ffffff;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        padding: 2rem 1rem;
+        transition: left 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
         display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        left: 0;
     }
 
     .nav-link {
-        color: var(--primary);
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        transition: color 0.3s;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-        color: var(--secondary);
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        color: #333;
     }
 
     .search-bar {
-        display: flex;
-        align-items: center;
+        margin-left: 0;
     }
 
-    .search-bar input {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
-        outline: none;
+    body.nav-open {
+        overflow: hidden;
     }
-
-    .search-bar button {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-left: none;
-        background: var(--primary);
-        color: white;
-        border-radius: 0 4px 4px 0;
-        cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-        .nav-container {
-            background: transparent;
-            padding: 0;
-            box-shadow: none;
-            position: static;
-            width: auto;
-        }
-
-        nav {
-            justify-content: flex-end;
-            width: auto;
-        }
-
-        .menu-btn {
-            display: block;
-        }
-
-        .nav-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 250px;
-            height: 100%;
-            background: #ffffff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            flex-direction: column;
-            padding: 2rem 1rem;
-            transition: left 0.3s ease-in-out;
-            z-index: 999;
-        }
-
-        .nav-menu.active {
-            display: flex;
-            left: 0;
-        }
-
-        .nav-link {
-            padding: 1rem;
-            width: 100%;
-            text-align: left;
-        }
-
-        .search-bar {
-            margin-left: 1rem;
-        }
-
-        body.nav-open {
-            overflow: hidden;
-        }
-    }
-</style>
+}
