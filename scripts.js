@@ -1,18 +1,37 @@
-// scripts.js - Complete Updated Version
-async function loadComponent(url, targetId) {
+// scripts.js - Working Version
+async function loadHeaderAndNav() {
+    // Determine base path for GitHub Pages
+    const basePath = window.location.host.includes('github.io') ? '/kuwaitnews' : '';
+    
     try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+        // 1. Load Header
+        const headerResponse = await fetch(`${basePath}/includes/header.html`);
+        if (!headerResponse.ok) throw new Error('Failed to load header');
+        document.getElementById('header-container').innerHTML = await headerResponse.text();
         
-        const content = await response.text();
-        const target = document.getElementById(targetId);
-        if (!target) throw new Error(`Target element #${targetId} not found`);
+        // 2. Load Navigation
+        const navResponse = await fetch(`${basePath}/includes/navigation.html`);
+        if (!navResponse.ok) throw new Error('Failed to load navigation');
+        document.getElementById('nav-container').innerHTML = await navResponse.text();
         
-        target.innerHTML = content;
-        return true;
+        // 3. Initialize components after short delay
+        setTimeout(() => {
+            initMobileMenu();
+            setActiveNavLink();
+        }, 100);
+        
     } catch (error) {
-        console.error(error);
-        return false;
+        console.error('Error loading components:', error);
+        // Fallback content
+        document.getElementById('header-container').innerHTML = `
+            <div class="fallback-header">
+                <h1>కువైట్ తెలుగు వార్తలు</h1>
+                <nav>
+                    <a href="${basePath}/index.html">Home</a> | 
+                    <a href="${basePath}/sports.html">Sports</a>
+                </nav>
+            </div>
+        `;
     }
 }
 
@@ -21,37 +40,41 @@ function initMobileMenu() {
     const navContent = document.querySelector('.nav-content');
     
     if (!menuBtn || !navContent) {
-        console.warn('Mobile menu elements not found');
+        console.warn('Mobile menu elements missing');
         return;
     }
 
     const toggleMenu = () => {
-        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        menuBtn.setAttribute('aria-expanded', !isExpanded);
-        navContent.classList.toggle('active');
-        menuBtn.innerHTML = isExpanded ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-        document.body.style.overflow = isExpanded ? '' : 'hidden';
+        const isOpen = navContent.classList.toggle('active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+        menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
     menuBtn.addEventListener('click', toggleMenu);
     
+    // Close menu when clicking on links
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) toggleMenu();
         });
     });
 
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!navContent.contains(e.target) && e.target !== menuBtn) {
-            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-            if (isExpanded) toggleMenu();
+        if (!e.target.closest('.nav-content') && e.target !== menuBtn) {
+            navContent.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
         }
     });
 
+    // Reset on window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {
-            menuBtn.setAttribute('aria-expanded', 'false');
             navContent.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
             menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             document.body.style.overflow = '';
         }
@@ -59,10 +82,10 @@ function initMobileMenu() {
 }
 
 function setActiveNavLink() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-menu a').forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        if (linkPath === currentPath) {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         } else {
@@ -72,40 +95,9 @@ function setActiveNavLink() {
     });
 }
 
-async function loadCommonComponents() {
-    const basePath = window.location.host.includes('github.io') ? '/kuwaitnews' : '';
-    
-    try {
-        await Promise.all([
-            loadComponent(`${basePath}/includes/header.html`, 'header-container'),
-            loadComponent(`${basePath}/includes/navigation.html`, 'nav-container')
-        ]);
-        
-        // Small delay to ensure DOM is ready
-        await new Promise(resolve => setTimeout(resolve, 50));
-        
-        setActiveNavLink();
-        initMobileMenu();
-        
-        console.log('Components loaded successfully');
-    } catch (error) {
-        console.error('Error loading components:', error);
-        // Fallback basic navigation
-        document.getElementById('header-container').innerHTML = `
-            <div class="fallback-header">
-                <h1>కువైట్ తెలుగు వార్తలు</h1>
-                <nav>
-                    <a href="${basePath}/index.html">Home</a>
-                    <a href="${basePath}/sports.html">Sports</a>
-                </nav>
-            </div>
-        `;
-    }
-}
-
-// Initialize when DOM is ready
+// Start loading when DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadCommonComponents);
+    document.addEventListener('DOMContentLoaded', loadHeaderAndNav);
 } else {
-    loadCommonComponents();
+    loadHeaderAndNav();
 }
