@@ -71,32 +71,38 @@ style.textContent = `
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between; /* Distribute space evenly */
             width: 100%;
-            min-height: 80px; /* Match header height */
+            padding: 1rem; /* Match header padding */
+            background: linear-gradient(135deg, #CE1126, #007A3D); /* Extend gradient */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .header-bg {
-            width: 100%;
-            padding: 0; /* Let header-container handle padding */
-            background: linear-gradient(135deg, #CE1126, #007A3D); /* Reinforce gradient */
+            background: transparent; /* Gradient moved to top-wrapper */
+            width: auto;
+            padding: 0;
         }
         .header-container {
-            width: 100%;
-            padding: 1rem;
-            flex-direction: row; /* Keep logo and text inline */
+            padding: 0;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             gap: 1rem;
+            flex-grow: 1; /* Take available space */
         }
         .logo-container {
-            flex-grow: 1;
-            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .site-title {
-            font-size: 1.2rem; /* Adjust for mobile */
+            font-size: 1.2rem;
         }
         .site-tagline {
-            display: none; /* Hide tagline in mobile */
+            display: none;
+        }
+        .menu-btn {
+            margin-right: 1rem; /* Space from title */
         }
     }
 `;
