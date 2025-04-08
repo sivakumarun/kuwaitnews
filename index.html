@@ -6,86 +6,20 @@
     <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు మరియు క్రీడా వార్తలు">
     <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు, క్రీడలు">
     <title>కువైట్ తెలుగు వార్తలు - Kuwait Telugu News</title>
-    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="/kuwaitnews/scripts.js" defer></script>
+    <script src="./scripts.js" defer></script>
 </head>
 <body>
-    <!-- Header and Navigation injected by scripts.js -->
+    <!-- Injection points for components -->
+    <div id="header-container"></div>
+    <div id="nav-container"></div>
 
     <!-- Main Content Area -->
     <div class="content-bg">
         <div class="container">
-            <main class="main-content">
-                <section class="news-section">
-                    <h2>ప్రత్యేక వార్తలు</h2>
-                    <div class="featured-news">
-                        <div class="featured-main">
-                            <img src="/kuwaitnews/images/featured-news.jpg" alt="Featured News" class="news-image">
-                            <div class="featured-content">
-                                <h3>కువైట్‌లో తెలుగు సమాజం యొక్క పెద్ద సమావేశం</h3>
-                                <p>ఈ వారాంతంలో కువైట్‌లోని తెలుగు సమాజం యొక్క పెద్ద సమావేశం జరిగింది...</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="featured-secondary">
-                            <div class="secondary-item">
-                                <img src="/kuwaitnews/images/news1.jpg" alt="News 1" class="news-image">
-                                <div class="secondary-content">
-                                    <h4>కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h4>
-                                </div>
-                            </div>
-                            <div class="secondary-item">
-                                <img src="/kuwaitnews/images/news2.jpg" alt="News 2" class="news-image">
-                                <div class="secondary-content">
-                                    <h4>తెలుగు సంస్కృతి పండుగ విజయవంతం</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h2>తాజా వార్తలు</h2>
-                    <div class="news-grid">
-                        <div class="news-card">
-                            <img src="/kuwaitnews/images/news1.jpg" alt="News 1" class="news-image">
-                            <div class="news-body">
-                                <h3 class="news-title">కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 04-04-2025</span>
-                                    <span><i class="far fa-clock"></i> 10:30 AM</span>
-                                </div>
-                                <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="news-card">
-                            <img src="/kuwaitnews/images/news2.jpg" alt="News 2" class="news-image">
-                            <div class="news-body">
-                                <h3 class="news-title">తెలుగు సంస్కృతి పండుగ విజయవంతం</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 03-04-2025</span>
-                                    <span><i class="far fa-clock"></i> 05:45 PM</span>
-                                </div>
-                                <p class="news-excerpt">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉన్నాయి.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="news-card">
-                            <img src="/kuwaitnews/images/news3.jpg" alt="News 3" class="news-image">
-                            <div class="news-body">
-                                <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్ ప్రారంభం</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 02-04-2025</span>
-                                    <span><i class="far fa-clock"></i> 11:00 AM</span>
-                                </div>
-                                <p class="news-excerpt">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది.</p>
-                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
+            <!-- Your existing content here -->
         </div>
     </div>
 </body>
