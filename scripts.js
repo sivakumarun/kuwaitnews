@@ -20,59 +20,37 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
     }
 }
 
-// Function to highlight current page in navigation
-function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    if (navLinks.length === 0) {
-        console.warn('No navigation links found');
-        return;
-    }
-    navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop();
-        if (linkPage === currentPage) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
-        } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
-        }
-    });
-}
-
-// Function to initialize mobile menu toggle
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    if (!menuBtn || !navMenu) {
-        console.warn('Mobile menu elements not found:', { menuBtn, navMenu });
-        return;
-    }
-    menuBtn.addEventListener('click', () => {
-        const isActive = navMenu.classList.toggle('active');
-        menuBtn.setAttribute('aria-expanded', isActive);
-        menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        console.log('Menu toggled:', isActive);
-    });
-}
-
 // Main function to load components with retry mechanism
 async function loadCommonComponents() {
     try {
-        // Load header at the start of body
-        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', 'body', 'afterbegin');
+        // Wrap header and navigation in a single flex container
+        document.body.insertAdjacentHTML('afterbegin', '<div class="top-wrapper"></div>');
+        const wrapper = document.querySelector('.top-wrapper');
+
+        // Load header
+        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper', 'beforeend');
         if (!headerLoaded) throw new Error('Header failed to load');
 
-        // Load navigation after header
-        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.header-bg', 'afterend');
+        // Load navigation
+        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper', 'beforeend');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
         // Wait briefly for DOM to update
         await new Promise(resolve => setTimeout(resolve, 100));
 
-        // Initialize navigation features
-        setActiveNavLink();
-        initMobileMenu();
+        // Initialize mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isActive = navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isActive);
+                menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                document.body.classList.toggle('nav-open');
+            });
+        } else {
+            console.warn('Mobile menu elements not found');
+        }
 
         document.dispatchEvent(new Event('commonComponentsLoaded'));
         console.log('Common components loaded successfully');
@@ -80,6 +58,25 @@ async function loadCommonComponents() {
         console.error('Error in loadCommonComponents:', error);
     }
 }
+
+// Add mobile view styling
+const style = document.createElement('style');
+style.textContent = `
+    @media (max-width: 768px) {
+        .top-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+        }
+        .header-bg {
+            flex-grow: 1;
+            text-align: center;
+            padding: 0.5rem;
+        }
+    }
+`;
+document.head.appendChild(style);
 
 // Start the process
 document.addEventListener('DOMContentLoaded', () => {
