@@ -1,22 +1,25 @@
 // scripts.js
-async function loadCommonComponents() {
+async function loadComponent(url, targetSelector, position) {
     try {
-        const headerLoaded = await loadComponent('./includes/header.html', 'body', 'afterbegin');
-        if (!headerLoaded) throw new Error('Header failed to load');
-
-        const navLoaded = await loadComponent('./includes/navigation.html', '.header-bg', 'afterend');
-        if (!navLoaded) throw new Error('Navigation failed to load');
-
-        await new Promise(resolve => setTimeout(resolve, 100)); // Brief delay for DOM update
-
-        setActiveNavLink();
-        initMobileMenu();
-
-        console.log('Common components loaded successfully');
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+        const content = await response.text();
+        const target = document.querySelector(targetSelector);
+        if (target) {
+            if (position === 'afterbegin') {
+                target.insertAdjacentHTML('afterbegin', content);
+            } else if (position === 'afterend') {
+                target.insertAdjacentHTML('afterend', content);
+            }
+            return true;
+        }
+        return false;
     } catch (error) {
-        console.error('Error in loadCommonComponents:', error);
+        console.error(error);
+        return false;
     }
 }
+
 
 function initMobileMenu() {
     const menuBtns = document.querySelectorAll('.menu-btn');
