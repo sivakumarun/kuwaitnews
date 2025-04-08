@@ -24,7 +24,7 @@ body {
 /* Main Content */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: 270px; /* Account for nav width + padding */
   padding: 1rem;
   display: grid;
   grid-template-columns: 1fr 300px;
