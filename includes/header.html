@@ -26,7 +26,7 @@
             margin: 0 auto;
         }
         .menu-btn {
-            display: none; /* Hidden by default, shown on mobile via media query */
+            display: none; /* Hidden by default, shown on mobile */
             background: none;
             border: none;
             color: white;
@@ -56,14 +56,14 @@
         }
         @media (max-width: 768px) {
             .header-container {
-                justify-content: flex-start; /* Keep hamburger left of title */
+                justify-content: flex-start;
                 padding: 0.5rem;
             }
             .menu-btn {
                 display: block; /* Show hamburger on mobile */
             }
             .logo-container {
-                flex-grow: 1; /* Allow title to take remaining space */
+                flex-grow: 1;
             }
         }
     </style>
