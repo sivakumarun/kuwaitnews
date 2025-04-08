@@ -1,7 +1,7 @@
 <div class="header-bg">
     <header class="header-container">
         <div class="logo-container">
-            <img src="./images/logo.png" alt="Kuwait Telugu News Logo" class="logo">
+            <img src="../images/logo.png" alt="Kuwait Telugu News Logo" class="logo">
             <div>
                 <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
                 <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
@@ -11,12 +11,15 @@
 </div>
 
 <style>
+    :root {
+        --kuwait-red: #CE1126;
+        --kuwait-green: #007A3D;
+    }
     .header-bg {
         background: linear-gradient(135deg, var(--kuwait-red), var(--kuwait-green));
         width: 100%;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    
     .header-container {
         display: flex;
         align-items: center;
@@ -25,43 +28,35 @@
         max-width: 1200px;
         margin: 0 auto;
     }
-    
     .logo-container {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
-    
     .logo {
         height: 50px;
         width: auto;
     }
-    
     .site-title {
         color: white;
         margin: 0;
         font-size: 1.5rem;
     }
-    
     .site-tagline {
         color: rgba(255, 255, 255, 0.8);
         margin: 0;
         font-size: 0.9rem;
     }
-    
     @media (max-width: 768px) {
         .header-container {
             padding: 0.75rem;
         }
-        
         .logo {
             height: 40px;
         }
-        
         .site-title {
             font-size: 1.2rem;
         }
-        
         .site-tagline {
             font-size: 0.8rem;
         }
