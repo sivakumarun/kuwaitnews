@@ -71,7 +71,6 @@ async function loadCommonComponents() {
     }
 }
 
-
         // Initialize components after short delay
         setTimeout(() => {
             setActiveNavLink();
