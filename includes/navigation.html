@@ -1,29 +1,362 @@
-<nav class="main-nav">
-    <div class="mobile-nav-header">
-        <button class="menu-btn" aria-label="Toggle Menu" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="logo">Kuwait News</div>
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు మరియు క్రీడా వార్తలు">
+    <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు వార్తలు, గోల్డ్ ధరలు, మనీ ఎక్స్ఛేంజ్ రేట్లు, క్రీడలు">
+    <title>కువైట్ తెలుగు వార్తలు - Kuwait Telugu News</title>
+    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Header Styles */
+        .header-bg {
+            background: linear-gradient(135deg, #CE1126, #007A3D);
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        .site-title {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .site-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                justify-content: flex-start;
+                padding: 0.5rem;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .logo-container {
+                flex-grow: 1;
+            }
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        .main-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .mobile-nav-header {
+            display: none;
+            align-items: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 0;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #007A3D;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            min-width: 200px;
+        }
+        .search-btn {
+            padding: 0.5rem 1rem;
+            background: #007A3D;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-btn:hover {
+            background: #005A2B;
+        }
+        @media (max-width: 768px) {
+            .mobile-nav-header {
+                display: flex;
+            }
+            .nav-content {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                opacity: 0;
+                z-index: 999;
+            }
+            .nav-content.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .nav-menu {
+                flex-direction: column;
+                gap: 0;
+            }
+            .nav-menu li {
+                border-bottom: 1px solid #eee;
+            }
+            .nav-menu a {
+                padding: 1rem;
+            }
+            .search-container {
+                margin-top: 1rem;
+            }
+            .search-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-bg">
+        <header class="header-container">
+            <button class="menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo-container">
+                <img src="/kuwaitnews/images/logo.png" alt="Logo" class="logo">
+                <div>
+                    <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                    <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
+                </div>
+            </div>
+        </header>
     </div>
-    
-    <div class="nav-content">
-        <ul class="nav-menu">
-            <li><a href="./index.html"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
-            <li><a href="./news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
-            <li><a href="./news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="./gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-            <li><a href="./money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-            <li><a href="./sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-        </ul>
-        
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="శోధించండి..." aria-label="Search">
-            <button class="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav class="main-nav">
+            <div class="mobile-nav-header">
+                <button class="menu-btn" aria-label="Toggle Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">Kuwait News</div>
+            </div>
+            <div class="nav-content">
+                <ul class="nav-menu">
+                    <li><a href="/kuwaitnews/index.html" class="active"><i class="fas fa-home"></i> మొదటి పేజీ</a></li>
+                    <li><a href="/kuwaitnews/news-kuwait.html"><i class="fas fa-map-marker-alt"></i> కువైట్ వార్తలు</a></li>
+                    <li><a href="/kuwaitnews/news-telugu-states.html"><i class="fas fa-flag"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
+                    <li><a href="/kuwaitnews/gold-price.html"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+                    <li><a href="/kuwaitnews/money-exchange-rate.html"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+                    <li><a href="/kuwaitnews/sports.html"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="శోధించండి..." aria-label="Search">
+                    <button class="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content-bg">
+        <div class="container">
+            <main class="main-content">
+                <section class="news-section">
+                    <h2>ప్రత్యేక వార్తలు</h2>
+                    <div class="featured-news">
+                        <div class="featured-main">
+                            <img src="/kuwaitnews/images/featured-news.jpg" alt="Featured News" class="news-image">
+                            <div class="featured-content">
+                                <h3>కువైట్‌లో తెలుగు సమాజం యొక్క పెద్ద సమావేశం</h3>
+                                <p>ఈ వారాంతంలో కువైట్‌లోని తెలుగు సమాజం యొక్క పెద్ద సమావేశం జరిగింది...</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="featured-secondary">
+                            <div class="secondary-item">
+                                <img src="/kuwaitnews/images/news1.jpg" alt="News 1" class="news-image">
+                                <div class="secondary-content">
+                                    <h4>కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h4>
+                                </div>
+                            </div>
+                            <div class="secondary-item">
+                                <img src="/kuwaitnews/images/news2.jpg" alt="News 2" class="news-image">
+                                <div class="secondary-content">
+                                    <h4>తెలుగు సంస్కృతి పండుగ విజయవంతం</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>తాజా వార్తలు</h2>
+                    <div class="news-grid">
+                        <div class="news-card">
+                            <img src="/kuwaitnews/images/news1.jpg" alt="News 1" class="news-image">
+                            <div class="news-body">
+                                <h3 class="news-title">కువైట్‌లో కొత్త వైద్య సేవల ప్రారంభం</h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar-alt"></i> 04-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 10:30 AM</span>
+                                </div>
+                                <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="/kuwaitnews/images/news2.jpg" alt="News 2" class="news-image">
+                            <div class="news-body">
+                                <h3 class="news-title">తెలుగు సంస్కృతి పండుగ విజయవంతం</h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar-alt"></i> 03-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 05:45 PM</span>
+                                </div>
+                                <p class="news-excerpt">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించింది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉన్నాయి.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="/kuwaitnews/images/news3.jpg" alt="News 3" class="news-image">
+                            <div class="news-body">
+                                <h3 class="news-title">ఆంధ్రప్రదేశ్‌లో కొత్త ప్రాజెక్ట్ ప్రారంభం</h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar-alt"></i> 02-04-2025</span>
+                                    <span><i class="far fa-clock"></i> 11:00 AM</span>
+                                </div>
+                                <p class="news-excerpt">ఆంధ్రప్రదేశ్ ప్రభుత్వం కొత్త రహదారి ప్రాజెక్ట్‌ను ప్రకటించింది, ఇది రాష్ట్రంలోని రవాణా సౌలభ్యాన్ని మెరుగుపరుస్తుంది.</p>
+                                <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
     </div>
-</nav>
 
-<style>
-    /* Your existing navigation styles remain the same */
-    /* Just ensure all paths are relative (./) */
-</style>
+    <script>
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const menuBtns = document.querySelectorAll('.menu-btn');
+            const navContent = document.querySelector('.nav-content');
+
+            if (!menuBtns || !navContent) {
+                console.warn('Mobile menu elements not found');
+                return;
+            }
+
+            const toggleMenu = () => {
+                const isExpanded = menuBtns[0].getAttribute('aria-expanded') === 'true';
+                menuBtns.forEach(btn => {
+                    btn.setAttribute('aria-expanded', !isExpanded);
+                    btn.innerHTML = isExpanded ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+                });
+                navContent.classList.toggle('active');
+                document.body.style.overflow = isExpanded ? '' : 'hidden';
+            };
+
+            const closeMenu = () => {
+                menuBtns.forEach(btn => {
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+                navContent.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            menuBtns.forEach(btn => btn.addEventListener('click', toggleMenu));
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navContent.contains(e.target) && !Array.from(menuBtns).includes(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+
+        // Set active navigation link
+        function setActiveNavLink() {
+            const currentPath = window.location.pathname;
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setActiveNavLink();
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>
