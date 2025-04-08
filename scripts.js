@@ -64,19 +64,39 @@ const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
+        position: relative;
     }
     @media (max-width: 768px) {
         .top-wrapper {
             display: flex;
             flex-direction: row;
             align-items: center;
-            position: relative;
+            justify-content: flex-start;
             width: 100%;
+            min-height: 80px; /* Match header height */
         }
         .header-bg {
-            width: 100%; /* Preserve original width */
-            padding: 1rem; /* Default padding, adjust if different in header.html */
-            margin-left: 3rem; /* Space for hamburger */
+            width: 100%;
+            padding: 0; /* Let header-container handle padding */
+            background: linear-gradient(135deg, #CE1126, #007A3D); /* Reinforce gradient */
+        }
+        .header-container {
+            width: 100%;
+            padding: 1rem;
+            flex-direction: row; /* Keep logo and text inline */
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-container {
+            flex-grow: 1;
+            justify-content: center;
+        }
+        .site-title {
+            font-size: 1.2rem; /* Adjust for mobile */
+        }
+        .site-tagline {
+            display: none; /* Hide tagline in mobile */
         }
     }
 `;
