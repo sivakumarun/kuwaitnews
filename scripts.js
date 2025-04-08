@@ -1,25 +1,4 @@
 // scripts.js
-async function loadComponent(url, targetSelector, position) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
-        const content = await response.text();
-        const target = document.querySelector(targetSelector);
-        if (target) {
-            if (position === 'afterbegin') {
-                target.insertAdjacentHTML('afterbegin', content);
-            } else if (position === 'afterend') {
-                target.insertAdjacentHTML('afterend', content);
-            }
-            return true;
-        }
-        return false;
-    } catch (error) {
-        console.error(error);
-        return false;
-    }
-}
-
 async function loadCommonComponents() {
     try {
         const headerLoaded = await loadComponent('./includes/header.html', 'body', 'afterbegin');
