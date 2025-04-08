@@ -1,9 +1,9 @@
 <div class="nav-container">
     <nav>
-        <button class="hamburger" aria-label="Toggle navigation">
+        <button class="menu-btn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
-        <ul class="nav-list">
+        <ul class="nav-menu">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
             <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
@@ -20,7 +20,7 @@
 
 <style>
     .nav-container {
-        background: #ffffff; /* Ensure color stays white */
+        background: #ffffff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         padding: 1rem;
         position: relative;
@@ -35,7 +35,7 @@
         margin: 0 auto;
     }
 
-    .hamburger {
+    .menu-btn {
         display: none;
         background: none;
         border: none;
@@ -44,7 +44,7 @@
         color: var(--primary);
     }
 
-    .nav-list {
+    .nav-menu {
         display: flex;
         list-style: none;
         margin: 0;
@@ -88,26 +88,28 @@
 
     @media (max-width: 768px) {
         .nav-container {
-            background: #ffffff; /* Reinforce white background */
-            padding: 0.5rem; /* Reduce padding for tighter mobile layout */
+            background: #ffffff !important; /* Ensure white background */
+            padding: 0.5rem;
+            position: static; /* Prevent overlap with header */
         }
 
         nav {
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
+            justify-content: flex-end; /* Move search bar to right */
         }
 
-        .hamburger {
+        .menu-btn {
             display: block;
-            margin-right: 1rem; /* Space between hamburger and next element */
+            position: absolute;
+            left: 1rem; /* Position hamburger on the left */
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        .nav-list {
-            display: none; /* Hidden by default */
+        .nav-menu {
+            display: none;
             position: fixed;
             top: 0;
-            left: -100%; /* Slide from left */
+            left: -100%;
             width: 250px;
             height: 100%;
             background: #ffffff;
@@ -118,9 +120,9 @@
             z-index: 999;
         }
 
-        .nav-list.active {
-            display: flex; /* Show when toggled */
-            left: 0; /* Slide in from left */
+        .nav-menu.active {
+            display: flex;
+            left: 0;
         }
 
         .nav-link {
@@ -130,42 +132,12 @@
         }
 
         .search-bar {
-            margin-top: 1rem;
-            width: 100%;
+            margin-left: auto; /* Push to right */
+            width: auto;
         }
 
         body.nav-open {
             overflow: hidden;
         }
-
-        /* Adjust layout relative to header */
-        .header-bg + .nav-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0.5rem;
-        }
     }
 </style>
-
-<script>
-    document.querySelector('.hamburger').addEventListener('click', () => {
-        const navList = document.querySelector('.nav-list');
-        navList.classList.toggle('active');
-        document.body.classList.toggle('nav-open');
-
-        // Update hamburger icon
-        const icon = document.querySelector('.hamburger i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
-
-    // Highlight active link
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href').includes(currentPage)) {
-            link.classList.add('active');
-        }
-    });
-</script>
