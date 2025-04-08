@@ -541,3 +541,56 @@ body {
   background-color: #f8f8f8;
   width: 100%;
 }
+/* ======================
+   LEFT SIDE NAVIGATION 
+   ====================== */
+.main-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: var(--kuwait-green);
+  color: white;
+  padding: 1rem 0;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.nav-header {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1rem;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin: 0.25rem 0;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.nav-link.active {
+  background-color: rgba(255,255,255,0.2);
+  border-left: 4px solid var(--accent);
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+}
