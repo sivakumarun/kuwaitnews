@@ -19,6 +19,24 @@ async function loadComponent(url, targetSelector, position) {
         return false;
     }
 }
+async function loadCommonComponents() {
+    try {
+        const headerLoaded = await loadComponent('./includes/header.html', 'body', 'afterbegin');
+        if (!headerLoaded) throw new Error('Header failed to load');
+
+        const navLoaded = await loadComponent('./includes/navigation.html', '.header-bg', 'afterend');
+        if (!navLoaded) throw new Error('Navigation failed to load');
+
+        await new Promise(resolve => setTimeout(resolve, 100)); // Brief delay for DOM update
+
+        setActiveNavLink();
+        initMobileMenu();
+
+        console.log('Common components loaded successfully');
+    } catch (error) {
+        console.error('Error in loadCommonComponents:', error);
+    }
+}
 
 
 function initMobileMenu() {
