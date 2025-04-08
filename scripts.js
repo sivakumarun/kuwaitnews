@@ -43,34 +43,38 @@ function setActiveNavLink() {
 // Function to initialize mobile menu toggle
 function initMobileMenu() {
     const menuBtn = document.querySelector('.menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    if (!menuBtn || !navMenu) {
-        console.warn('Mobile menu elements not found:', { menuBtn, navMenu });
+    const mainNav = document.querySelector('.main-nav'); // Changed from .nav-menu to match structure
+    if (!menuBtn || !mainNav) {
+        console.warn('Mobile menu elements not found:', { menuBtn, mainNav });
         return;
     }
     menuBtn.addEventListener('click', () => {
-        const isActive = navMenu.classList.toggle('active');
+        const isActive = mainNav.classList.toggle('active');
         menuBtn.setAttribute('aria-expanded', isActive);
         menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         console.log('Menu toggled:', isActive);
+    });
+    // Ensure menu closes on resize to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
+            mainNav.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
 }
 
 // Main function to load components with retry mechanism
 async function loadCommonComponents() {
     try {
-        // Load header at the start of body
         const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', 'body', 'afterbegin');
         if (!headerLoaded) throw new Error('Header failed to load');
 
-        // Load navigation after header
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.header-bg', 'afterend');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
-        // Wait briefly for DOM to update
         await new Promise(resolve => setTimeout(resolve, 100));
 
-        // Initialize navigation features
         setActiveNavLink();
         initMobileMenu();
 
