@@ -3,45 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="తాజా క్రీడా వార్తలు IPL 2025 - కువైట్ తెలుగు వార్తలు">
-    <meta name="keywords" content="క్రీడలు, IPL, తెలుగు వార్తలు, కువైట్">
     <title>క్రీడలు - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="/kuwaitnews/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Load scripts.js in HEAD with defer -->
+    <!-- Load scripts.js in head with defer -->
     <script src="/kuwaitnews/scripts.js" defer></script>
 </head>
 <body>
-    <!-- ONLY these injection points - no other header/nav markup -->
+    <!-- Only these empty containers -->
     <div id="header-container"></div>
     <div id="nav-container"></div>
 
-    <!-- Content Area -->
+    <!-- Your existing content here -->
     <div class="container">
-        <!-- [Rest of your existing content remains exactly the same] -->
+        <!-- [All your sports content remains unchanged] -->
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <!-- [Your existing footer content] -->
+        <!-- [Your footer content] -->
     </footer>
 
-    <!-- Social sharing script only -->
+    <!-- Only social sharing script at bottom -->
     <script>
-        document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = window.location.href;
-                const text = 'క్రీడలు - కువైట్ తెలుగు వార్తలు';
-                if (btn.classList.contains('whatsapp')) {
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
-                } else if (btn.classList.contains('twitter')) {
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
-                } else if (btn.classList.contains('facebook')) {
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-                }
-            });
-        });
+        // [Your social sharing code]
     </script>
 </body>
 </html>
