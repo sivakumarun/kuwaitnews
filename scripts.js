@@ -62,17 +62,21 @@ async function loadCommonComponents() {
 // Add mobile view styling
 const style = document.createElement('style');
 style.textContent = `
+    .top-wrapper {
+        width: 100%;
+    }
     @media (max-width: 768px) {
         .top-wrapper {
             display: flex;
             flex-direction: row;
             align-items: center;
             position: relative;
+            width: 100%;
         }
         .header-bg {
-            flex-grow: 1;
-            text-align: center;
-            padding: 0.5rem;
+            width: 100%; /* Preserve original width */
+            padding: 1rem; /* Default padding, adjust if different in header.html */
+            margin-left: 3rem; /* Space for hamburger */
         }
     }
 `;
