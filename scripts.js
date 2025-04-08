@@ -1,57 +1,70 @@
-// Update this part in scripts.js
+// Update the style injection part in scripts.js
 const style = document.createElement('style');
 style.textContent = `
+    /* Common styles for both desktop and mobile */
     .top-wrapper {
         width: 100%;
-        position: relative;
-        background: linear-gradient(135deg, #CE1126, #007A3D); /* Default for desktop */
+        background: linear-gradient(135deg, #CE1126, #007A3D);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    .header-bg {
-        background: transparent; /* No gradient here */
-        width: 100%;
+    
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
+    
+    /* Mobile-specific styles */
     @media (max-width: 768px) {
         .top-wrapper {
-            display: flex;
-            flex-direction: column;
             padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, #CE1126, #007A3D);
         }
+        
         .header-container {
-            flex-grow: 1;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            order: 1;
+            width: 100%;
+            justify-content: center;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-container {
+            order: 2;
+            width: 100%;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
+            background: transparent;
             padding: 0;
         }
-        .logo-container {
-            flex-grow: 1;
-        }
-        .site-title {
-            font-size: 1.2rem;
-        }
-        .site-tagline {
-            display: none;
-        }
-        .nav-container {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 0.5rem;
-        }
+        
         nav {
             width: 100%;
             justify-content: space-between;
         }
-        .search-bar {
-            margin-left: 0;
-            margin-right: 1rem;
+        
+        .site-title {
+            font-size: 1.2rem;
         }
+        
+        .site-tagline {
+            display: none;
+        }
+        
         .menu-btn {
             color: white;
             margin-left: 0.5rem;
+        }
+        
+        .search-bar {
+            margin-right: 0.5rem;
         }
     }
 `;
