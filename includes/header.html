@@ -1,5 +1,8 @@
 <div class="header-bg">
     <header class="header-container">
+        <button class="menu-btn" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
         <div class="logo-container">
             <img src="/kuwaitnews/images/logo.png" alt="Logo" class="logo">
             <div>
@@ -17,10 +20,20 @@
         .header-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start; /* Align hamburger and title to left */
             padding: 1rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+        .menu-btn {
+            display: none; /* Hidden by default, shown on mobile via media query */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 10px;
         }
         .logo-container {
             display: flex;
@@ -43,9 +56,14 @@
         }
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+                justify-content: flex-start; /* Keep hamburger left of title */
+                padding: 0.5rem;
+            }
+            .menu-btn {
+                display: block; /* Show hamburger on mobile */
+            }
+            .logo-container {
+                flex-grow: 1; /* Allow title to take remaining space */
             }
         }
     </style>
