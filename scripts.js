@@ -91,13 +91,13 @@ style.textContent = `
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between; /* Spread elements */
+            justify-content: space-between;
             padding: 0.5rem;
             position: relative;
             min-height: 40px;
         }
         .menu-btn {
-            order: 0; /* Leftmost */
+            order: -1; /* Explicitly leftmost */
             margin-right: 0.5rem;
         }
         .header-container {
@@ -105,7 +105,7 @@ style.textContent = `
             justify-content: center;
             align-items: center;
             gap: 5px;
-            order: 1; /* Middle */
+            order: 0; /* Middle */
         }
         .site-title {
             font-size: 1.3rem;
@@ -117,7 +117,7 @@ style.textContent = `
         .nav-container {
             background: transparent;
             padding: 0;
-            order: 2; /* Right side with search */
+            order: 1; /* Right side with search */
         }
         nav {
             display: flex;
@@ -125,7 +125,7 @@ style.textContent = `
         }
         .search-bar {
             margin-left: 0.5rem;
-            order: 2; /* Rightmost */
+            order: 1; /* Rightmost */
         }
     }
     @media (min-width: 769px) {
