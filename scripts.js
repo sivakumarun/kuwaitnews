@@ -27,15 +27,21 @@ async function loadCommonComponents() {
         const existingWrapper = document.querySelector('.top-wrapper');
         if (existingWrapper) existingWrapper.remove();
 
-        // Create a single wrapper
-        document.body.insertAdjacentHTML('afterbegin', '<div class="top-wrapper"></div>');
+        // Create a single wrapper with menu-btn as a direct child
+        document.body.insertAdjacentHTML('afterbegin', `
+            <div class="top-wrapper">
+                <button class="menu-btn" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        `);
         const wrapper = document.querySelector('.top-wrapper');
 
-        // Load header once
+        // Load header
         const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper', 'beforeend');
         if (!headerLoaded) throw new Error('Header failed to load');
 
-        // Load navigation once
+        // Load navigation (without menu-btn, as it's now in top-wrapper)
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper', 'beforeend');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
@@ -83,8 +89,20 @@ style.textContent = `
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .header-bg {
-        background: transparent;
+        background.slides: transparent;
         width: 100%;
+    }
+    .menu-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: white;
+        padding: 0;
+        display: none; /* Hidden by default, shown in mobile */
+    }
+    .menu-btn i {
+        display: block;
     }
     @media (max-width: 768px) {
         .top-wrapper {
@@ -97,7 +115,8 @@ style.textContent = `
             min-height: 40px;
         }
         .menu-btn {
-            order: -1; /* Explicitly leftmost */
+            display: block;
+            order: -1; /* Leftmost */
             margin-right: 0.5rem;
         }
         .header-container {
