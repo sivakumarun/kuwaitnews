@@ -46,7 +46,19 @@
         .header-container {
             padding: 0;
             justify-content: center;
-            flex-grow: 1; /* Ensure it takes available space */
+            flex-grow: 1;
+            width: 100%; /* Ensure full available width */
+        }
+        .logo-container {
+            flex-grow: 1; /* Expand to fit */
+            justify-content: center;
+            gap: 5px; /* Reduce gap for more title space */
+        }
+        .logo {
+            height: 30px; /* Reduce height for mobile */
+        }
+        .site-title {
+            font-size: 1.2rem; /* Smaller title */
         }
     }
 </style>
