@@ -81,14 +81,15 @@ style.textContent = `
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem;
+            padding: 0.5rem; /* Reduce padding */
             position: relative;
+            min-height: 50px; /* Cap height */
         }
         .header-container {
             flex-grow: 1;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 5px; /* Match logo-container */
         }
         .site-title {
             font-size: 1.2rem;
@@ -97,16 +98,19 @@ style.textContent = `
             display: none;
         }
         .menu-btn {
-            margin-right: 1rem;
-            order: -1; /* Ensure leftmost position */
+            margin-right: 0.5rem;
+            order: -1;
         }
         .nav-container {
             background: transparent;
             padding: 0;
-            display: contents; /* Integrate children into top-wrapper flex */
+            display: contents;
         }
         nav {
-            display: contents; /* Flatten nav into top-wrapper */
+            display: contents;
+        }
+        .search-bar {
+            margin-left: 0.5rem;
         }
     }
     @media (min-width: 769px) {
