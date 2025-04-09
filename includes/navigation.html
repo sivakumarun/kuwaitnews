@@ -12,7 +12,7 @@
             <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
         <div class="search-bar">
-            <input type="text" placeholder="వెతకండి..." aria-label="Search">
+            <input type="text" placeholder="Search..." aria-label="Search">
             <button type="submit" aria-label="Search button"><i class="fas fa-search"></i></button>
         </div>
     </nav>
@@ -136,7 +136,16 @@
         }
 
         .search-bar {
-            margin-left: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .search-bar input {
+            padding: 0.3rem; /* Smaller input */
+            width: 60px; /* Fixed smaller width */
+        }
+
+        .search-bar button {
+            padding: 0.3rem;
         }
 
         body.nav-open {
