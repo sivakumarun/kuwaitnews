@@ -27,7 +27,7 @@ async function loadCommonComponents() {
         const existingWrapper = document.querySelector('.top-wrapper');
         if (existingWrapper) existingWrapper.remove();
 
-        // Create a single wrapper for header and navigation
+        // Create a single wrapper
         document.body.insertAdjacentHTML('afterbegin', '<div class="top-wrapper"></div>');
         const wrapper = document.querySelector('.top-wrapper');
 
@@ -82,6 +82,7 @@ style.textContent = `
             align-items: center;
             justify-content: space-between;
             padding: 1rem;
+            position: relative;
         }
         .header-container {
             flex-grow: 1;
@@ -97,10 +98,15 @@ style.textContent = `
         }
         .menu-btn {
             margin-right: 1rem;
+            order: -1; /* Ensure leftmost position */
         }
         .nav-container {
-            position: static;
             background: transparent;
+            padding: 0;
+            display: contents; /* Integrate children into top-wrapper flex */
+        }
+        nav {
+            display: contents; /* Flatten nav into top-wrapper */
         }
     }
     @media (min-width: 769px) {
@@ -108,7 +114,7 @@ style.textContent = `
             display: block;
         }
         .nav-container {
-            margin-top: 0; /* Ensure no overlap */
+            margin-top: 0;
         }
     }
 `;
