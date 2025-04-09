@@ -47,18 +47,19 @@
             padding: 0;
             justify-content: center;
             flex-grow: 1;
-            width: 100%; /* Ensure full available width */
+            width: 100%;
         }
         .logo-container {
-            flex-grow: 1; /* Expand to fit */
+            flex-grow: 1;
             justify-content: center;
-            gap: 5px; /* Reduce gap for more title space */
+            gap: 5px;
         }
         .logo {
-            height: 30px; /* Reduce height for mobile */
+            height: 30px;
         }
         .site-title {
-            font-size: 1.2rem; /* Smaller title */
+            font-size: 1rem; /* Smaller to prevent wrapping */
+            white-space: nowrap; /* Prevent line breaks */
         }
     }
 </style>
