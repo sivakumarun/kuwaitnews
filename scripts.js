@@ -81,18 +81,19 @@ style.textContent = `
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            padding: 0.5rem; /* Reduce padding */
+            padding: 0.5rem;
             position: relative;
-            min-height: 50px; /* Cap height */
+            min-height: 40px; /* Tighter height */
         }
         .header-container {
             flex-grow: 1;
             justify-content: center;
             align-items: center;
-            gap: 5px; /* Match logo-container */
+            gap: 5px;
         }
         .site-title {
-            font-size: 1.2rem;
+            font-size: 1rem;
+            white-space: nowrap; /* Prevent wrapping */
         }
         .site-tagline {
             display: none;
