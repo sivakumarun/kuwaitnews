@@ -4,16 +4,16 @@
             <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-menu">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
-            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            <li><a href="/kuwaitnews/index.html" class="nav-link"><i class="fas fa-home"></i> హోమ్</a></li>
+            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link"><i class="fas fa-newspaper"></i> కువైట్ వార్తలు</a></li>
+            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link"><i class="fas fa-globe"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
+            <li><a href="/kuwaitnews/sports.html" class="nav-link"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
+            <li><a href="/kuwaitnews/gold-price.html" class="nav-link"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
+            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
         <div class="search-bar">
-            <input type="text" placeholder="Search..." aria-label="Search">
-            <button type="submit" aria-label="Search button"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Search..." aria-label="Search" class="search-input">
+            <button type="submit" aria-label="Search button" class="search-toggle"><i class="fas fa-search"></i></button>
         </div>
     </nav>
 </div>
@@ -62,6 +62,13 @@
         padding: 0.5rem 1rem;
         font-weight: 600;
         transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .nav-link i {
+        font-size: 1rem;
     }
 
     .nav-link:hover,
@@ -74,14 +81,14 @@
         align-items: center;
     }
 
-    .search-bar input {
+    .search-input {
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px 0 0 4px;
         outline: none;
     }
 
-    .search-bar button {
+    .search-toggle {
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-left: none;
@@ -107,6 +114,7 @@
         .menu-btn {
             display: block;
             order: -1;
+            margin-right: 0.5rem;
         }
 
         .nav-menu {
@@ -139,13 +147,21 @@
             margin-left: 0.5rem;
         }
 
-        .search-bar input {
-            padding: 0.3rem; /* Smaller input */
-            width: 60px; /* Fixed smaller width */
+        .search-input {
+            display: none; /* Hidden by default */
+            padding: 0.3rem;
+            width: 100px; /* Expandable width */
         }
 
-        .search-bar button {
+        .search-bar.active .search-input {
+            display: block; /* Show when active */
+        }
+
+        .search-toggle {
             padding: 0.3rem;
+            border: none; /* Standalone icon */
+            background: transparent;
+            color: white;
         }
 
         body.nav-open {
