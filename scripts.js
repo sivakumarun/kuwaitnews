@@ -56,6 +56,17 @@ async function loadCommonComponents() {
             console.warn('Mobile menu elements not found');
         }
 
+        // Initialize search bar toggle
+        const searchToggle = document.querySelector('.search-toggle');
+        const searchBar = document.querySelector('.search-bar');
+        if (searchToggle && searchBar) {
+            searchToggle.addEventListener('click', () => {
+                searchBar.classList.toggle('active');
+            });
+        } else {
+            console.warn('Search bar elements not found');
+        }
+
         document.dispatchEvent(new Event('commonComponentsLoaded'));
         console.log('Common components loaded successfully');
     } catch (error) {
@@ -80,27 +91,28 @@ style.textContent = `
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Center everything */
             padding: 0.5rem;
             position: relative;
-            min-height: 40px; /* Tighter height */
+            min-height: 40px;
         }
         .header-container {
             flex-grow: 1;
             justify-content: center;
             align-items: center;
             gap: 5px;
+            order: 1; /* Middle position */
         }
         .site-title {
-            font-size: 1rem;
-            white-space: nowrap; /* Prevent wrapping */
+            font-size: 1.3rem; /* Increased size */
+            white-space: nowrap;
         }
         .site-tagline {
             display: none;
         }
         .menu-btn {
             margin-right: 0.5rem;
-            order: -1;
+            order: 0; /* Left of title */
         }
         .nav-container {
             background: transparent;
@@ -112,6 +124,7 @@ style.textContent = `
         }
         .search-bar {
             margin-left: 0.5rem;
+            order: 2; /* Right side */
         }
     }
     @media (min-width: 769px) {
