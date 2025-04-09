@@ -41,7 +41,7 @@ async function loadCommonComponents() {
         const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper', 'beforeend');
         if (!headerLoaded) throw new Error('Header failed to load');
 
-        // Load navigation (without menu-btn, as it's now in top-wrapper)
+        // Load navigation
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper', 'beforeend');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
@@ -52,6 +52,7 @@ async function loadCommonComponents() {
         const menuBtn = document.querySelector('.menu-btn');
         const navMenu = document.querySelector('.nav-menu');
         if (menuBtn && navMenu) {
+            console.log('Menu button and nav menu found, initializing toggle');
             menuBtn.addEventListener('click', () => {
                 const isActive = navMenu.classList.toggle('active');
                 menuBtn.setAttribute('aria-expanded', isActive);
@@ -59,18 +60,19 @@ async function loadCommonComponents() {
                 document.body.classList.toggle('nav-open');
             });
         } else {
-            console.warn('Mobile menu elements not found');
+            console.warn('Mobile menu elements not found:', { menuBtn: !!menuBtn, navMenu: !!navMenu });
         }
 
         // Initialize search bar toggle
         const searchToggle = document.querySelector('.search-toggle');
         const searchBar = document.querySelector('.search-bar');
         if (searchToggle && searchBar) {
+            console.log('Search toggle and bar found, initializing');
             searchToggle.addEventListener('click', () => {
                 searchBar.classList.toggle('active');
             });
         } else {
-            console.warn('Search bar elements not found');
+            console.warn('Search bar elements not found:', { searchToggle: !!searchToggle, searchBar: !!searchBar });
         }
 
         document.dispatchEvent(new Event('commonComponentsLoaded'));
@@ -89,7 +91,7 @@ style.textContent = `
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .header-bg {
-        background.slides: transparent;
+        background: transparent; /* Fixed typo */
         width: 100%;
     }
     .menu-btn {
@@ -99,7 +101,7 @@ style.textContent = `
         cursor: pointer;
         color: white;
         padding: 0;
-        display: none; /* Hidden by default, shown in mobile */
+        display: none; /* Hidden by default */
     }
     .menu-btn i {
         display: block;
