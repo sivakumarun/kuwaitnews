@@ -63,67 +63,15 @@ async function loadCommonComponents() {
             console.warn('Mobile menu elements not found:', { menuBtn: !!menuBtn, navMenu: !!navMenu });
         }
 
-        
-        // Initialize search bar toggle and functionality
-const searchToggle = document.querySelector('.search-toggle');
-const searchBar = document.querySelector('.search-bar');
-const searchForm = document.querySelector('#search-form');
-const searchInput = document.querySelector('.search-input');
-
-if (searchToggle && searchBar && searchForm && searchInput) {
-    console.log('Search elements found, initializing');
-
-    // Toggle search input visibility in mobile view
-    searchToggle.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-            e.preventDefault(); // Prevent form submission on toggle in mobile
-            searchBar.classList.toggle('active');
-        }
-    });
-
-    // Handle search submission
-    searchForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Prevent page reload
-        const query = searchInput.value.trim().toLowerCase();
-        if (query) {
-            console.log('Search query:', query);
-            performSearch(query);
-        }
-    });
-} else {
-    console.warn('Search elements not found:', {
-        searchToggle: !!searchToggle,
-        searchBar: !!searchBar,
-        searchForm: !!searchForm,
-        searchInput: !!searchInput
-    });
-}
-
-// Simple search function to filter content
-function performSearch(query) {
-    const articles = document.querySelectorAll('.news-card'); // Assuming news items have this class
-    if (articles.length === 0) {
-        console.warn('No news cards found to filter');
-        alert('No content available to search.');
-        return;
-    }
-
-    let found = false;
-    articles.forEach(article => {
-        const title = article.querySelector('h2')?.textContent.toLowerCase() || '';
-        const content = article.querySelector('p')?.textContent.toLowerCase() || '';
-        if (title.includes(query) || content.includes(query)) {
-            article.style.display = 'block';
-            found = true;
+        // Initialize search bar toggle
+        const searchToggle = document.querySelector('.search-toggle');
+        const searchBar = document.querySelector('.search-bar');
+        if (searchToggle && searchBar) {
+            console.log('Search toggle and bar found, initializing');
+            searchToggle.addEventListener('click', () => {
+                searchBar.classList.toggle('active');
+            });
         } else {
-            article.style.display = 'none';
-        }
-    });
-
-    if (!found) {
-        alert('No results found for "' + query + '".');
-    }
-}else {
             console.warn('Search bar elements not found:', { searchToggle: !!searchToggle, searchBar: !!searchBar });
         }
 
