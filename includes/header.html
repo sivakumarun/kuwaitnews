@@ -48,14 +48,16 @@
             justify-content: center;
             flex-grow: 1;
             width: 100%;
+            height: 100%; /* Match top-wrapper height */
         }
         .logo-container {
-            flex-grow: 1;
+            flex-grow: 0; /* Reduce stretching */
+            max-width: 70%; /* Limit width */
             justify-content: center;
             gap: 5px;
         }
         .logo {
-            height: 30px;
+            height: 35px; /* Slightly larger for taller header */
         }
         .site-title {
             font-size: 1.3rem;
