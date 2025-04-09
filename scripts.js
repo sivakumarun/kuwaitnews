@@ -91,40 +91,41 @@ style.textContent = `
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center; /* Center everything */
+            justify-content: space-between; /* Spread elements */
             padding: 0.5rem;
             position: relative;
             min-height: 40px;
+        }
+        .menu-btn {
+            order: 0; /* Leftmost */
+            margin-right: 0.5rem;
         }
         .header-container {
             flex-grow: 1;
             justify-content: center;
             align-items: center;
             gap: 5px;
-            order: 1; /* Middle position */
+            order: 1; /* Middle */
         }
         .site-title {
-            font-size: 1.3rem; /* Increased size */
+            font-size: 1.3rem;
             white-space: nowrap;
         }
         .site-tagline {
             display: none;
         }
-        .menu-btn {
-            margin-right: 0.5rem;
-            order: 0; /* Left of title */
-        }
         .nav-container {
             background: transparent;
             padding: 0;
-            display: contents;
+            order: 2; /* Right side with search */
         }
         nav {
-            display: contents;
+            display: flex;
+            justify-content: flex-end;
         }
         .search-bar {
             margin-left: 0.5rem;
-            order: 2; /* Right side */
+            order: 2; /* Rightmost */
         }
     }
     @media (min-width: 769px) {
