@@ -23,15 +23,19 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
 // Main function to load components with retry mechanism
 async function loadCommonComponents() {
     try {
-        // Wrap header and navigation in a single flex container
+        // Clear any existing top-wrapper to prevent duplicates
+        const existingWrapper = document.querySelector('.top-wrapper');
+        if (existingWrapper) existingWrapper.remove();
+
+        // Create a single wrapper for header and navigation
         document.body.insertAdjacentHTML('afterbegin', '<div class="top-wrapper"></div>');
         const wrapper = document.querySelector('.top-wrapper');
 
-        // Load header
+        // Load header once
         const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper', 'beforeend');
         if (!headerLoaded) throw new Error('Header failed to load');
 
-        // Load navigation
+        // Load navigation once
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper', 'beforeend');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
@@ -64,12 +68,11 @@ const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
-        position: relative;
-        background: linear-gradient(135deg, #CE1126, #007A3D); /* Default for desktop */
+        background: linear-gradient(135deg, #CE1126, #007A3D);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .header-bg {
-        background: transparent; /* No gradient here */
+        background: transparent;
         width: 100%;
     }
     @media (max-width: 768px) {
@@ -78,9 +81,7 @@ style.textContent = `
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, #CE1126, #007A3D); /* Ensure gradient in mobile */
         }
         .header-container {
             flex-grow: 1;
@@ -96,6 +97,18 @@ style.textContent = `
         }
         .menu-btn {
             margin-right: 1rem;
+        }
+        .nav-container {
+            position: static;
+            background: transparent;
+        }
+    }
+    @media (min-width: 769px) {
+        .top-wrapper {
+            display: block;
+        }
+        .nav-container {
+            margin-top: 0; /* Ensure no overlap */
         }
     }
 `;
