@@ -19,12 +19,12 @@
         display: flex;
         align-items: center;
         padding: 1rem;
-        max-width: 1200px;
+        max-width: 1400px; /* Increased from 1200px */
         margin: 0 auto;
     }
     .logo-container {
         display: flex;
-        align-items: center;
+        align-items: center; /* Center vertically in desktop */
         gap: 10px;
     }
     .logo {
@@ -38,7 +38,7 @@
     }
     .site-tagline {
         color: rgba(255, 255, 255, 0.8);
-        margin: 0;
+        margin: 0 0 0 5px; /* Added margin-left for spacing */
         font-size: 0.9rem;
     }
     @media (max-width: 768px) {
@@ -54,7 +54,7 @@
             max-width: 200px;
             justify-content: center;
             gap: 5px;
-            flex-direction: column; /* Match scripts.js */
+            flex-direction: column; /* Stack vertically */
         }
         .logo {
             height: 35px;
@@ -64,7 +64,7 @@
             white-space: nowrap;
         }
         .site-tagline {
-            font-size: 0.8rem; /* Match scripts.js */
+            font-size: 0.85rem; /* Increased from 0.8rem */
         }
     }
 </style>
