@@ -115,7 +115,7 @@ style.textContent = `
             justify-content: space-between;
             padding: 0.5rem;
             position: relative;
-            min-height: 60px; /* Increased to fit tagline */
+            min-height: 60px;
         }
         .menu-btn {
             display: block;
@@ -130,7 +130,7 @@ style.textContent = `
             order: 0;
         }
         .logo-container {
-            flex-direction: column; /* Stack title and tagline */
+            flex-direction: column;
             align-items: center;
             max-width: 200px;
         }
@@ -140,7 +140,7 @@ style.textContent = `
             margin: 0;
         }
         .site-tagline {
-            font-size: 0.8rem; /* Smaller to fit */
+            font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.8);
             margin: 0;
             white-space: nowrap;
@@ -162,6 +162,9 @@ style.textContent = `
     @media (min-width: 769px) {
         .top-wrapper {
             display: block;
+        }
+        .header-container {
+            justify-content: center; /* Center header content in desktop */
         }
         .nav-container {
             margin-top: 0;
