@@ -176,3 +176,48 @@ if (menuBtn && navContainer && overlay) {
         document.body.classList.remove('nav-open');
     });
 }
+
+// Add this to your global styles
+const style = document.createElement('style');
+style.textContent = `
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+        .top-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            position: relative;
+            z-index: 1001;
+            background: linear-gradient(135deg, #CE1126, #007A3D);
+        }
+        
+        .menu-btn {
+            display: block;
+            z-index: 1002;
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        body.nav-open {
+            overflow: hidden;
+        }
+    }
+`;
+document.head.appendChild(style);
