@@ -1,8 +1,7 @@
 .logo-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Changed to flex-start for better control */
-    width: max-content;
+    justify-content: center;
 }
 
 .site-title {
@@ -11,13 +10,13 @@
     font-size: 2rem;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    letter-spacing: 0.5px; /* Reduced slightly */
+    letter-spacing: 0.5px;
     line-height: 1;
     text-transform: uppercase;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     white-space: nowrap;
-    position: relative;
-    left: -2px; /* Optical adjustment for uppercase text */
+    width: 100%;
+    text-align: center;
 }
 
 .site-tagline {
@@ -27,29 +26,20 @@
     font-family: 'Open Sans', sans-serif;
     font-style: italic;
     font-weight: 400;
-    letter-spacing: 0.8px; /* Increased slightly */
+    letter-spacing: 0.8px;
     white-space: nowrap;
-    position: relative;
-    left: -1px; /* Fine-tuned alignment */
     width: 100%;
-    text-indent: 1px; /* Micro-adjustment */
+    text-align: center;
+    margin-left: 4px; /* Optical adjustment for italic */
 }
 
 @media (max-width: 768px) {
-    .logo-text {
-        align-items: center; /* Center align on mobile */
-    }
-    
     .site-title {
         font-size: 1.6rem;
-        left: 0; /* Reset adjustment */
-        letter-spacing: 0.3px; /* Tighter on mobile */
     }
     
     .site-tagline {
         font-size: 0.85rem;
-        left: 0; /* Reset adjustment */
-        letter-spacing: 0.6px; /* Tighter on mobile */
-        text-indent: 0; /* Reset adjustment */
+        margin-left: 3px; /* Smaller adjustment for mobile */
     }
 }
