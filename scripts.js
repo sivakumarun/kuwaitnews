@@ -1,36 +1,45 @@
-// Function to load HTML components
+// Function to load HTML components (header/nav)
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
+        console.log(`Attempting to load ${url}`);
         const response = await fetch(url);
-        if (!response.ok) throw new Error(`Failed to load ${url}`);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${url}: ${response.statusText}`);
+        }
         const html = await response.text();
         const target = document.querySelector(targetElement);
-        if (!target) throw new Error(`Target element not found`);
+        if (!target) {
+            throw new Error(`Target element '${targetElement}' not found`);
+        }
         target.insertAdjacentHTML(position, html);
+        console.log(`Successfully loaded ${url}`);
         return true;
     } catch (error) {
-        console.error('Error loading component:', error);
+        console.error('Error loading component:', error.message);
         return false;
     }
 }
 
-// Main function to load and initialize components
+// Main function to load components
 async function loadCommonComponents() {
     try {
-        // Clear any existing wrappers
+        // Clear any existing top-wrapper to prevent duplicates
         const existingWrapper = document.querySelector('.top-wrapper');
         if (existingWrapper) existingWrapper.remove();
 
         // Create wrapper structure
         document.body.insertAdjacentHTML('afterbegin', `
-            <div class="top-wrapper">
-                <div class="mobile-overlay"></div>
-            </div>
+            <div class="top-wrapper"></div>
+            <div class="mobile-overlay"></div>
         `);
 
-        // Load header and navigation
-        await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
-        await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
+        // Load header
+        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
+        if (!headerLoaded) throw new Error('Header failed to load');
+
+        // Load navigation
+        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
+        if (!navLoaded) throw new Error('Navigation failed to load');
 
         // Initialize mobile menu toggle
         const menuBtn = document.querySelector('.menu-btn');
@@ -55,12 +64,12 @@ async function loadCommonComponents() {
             });
         }
 
-        // Initialize search functionality
+        // Initialize search bar toggle
         const searchBtn = document.querySelector('.search-btn');
         const searchBar = document.querySelector('.search-bar');
         
         if (searchBtn && searchBar) {
-            searchBtn.addEventListener('click', function(e) {
+            searchBtn.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
                     searchBar.classList.toggle('active');
@@ -72,8 +81,9 @@ async function loadCommonComponents() {
         }
 
         document.dispatchEvent(new Event('commonComponentsLoaded'));
+        console.log('Common components loaded successfully');
     } catch (error) {
-        console.error('Error loading components:', error);
+        console.error('Error in loadCommonComponents:', error);
     }
 }
 
@@ -82,142 +92,18 @@ const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
-        position: relative;
     }
     
-    .header-bg {
-        width: 100%;
-    }
-    
-    /* Desktop Styles */
     @media (min-width: 769px) {
         .header-container {
             justify-content: center;
         }
-        
-        .menu-btn {
-            display: none !important;
-        }
-        
-        .nav-menu {
-            display: flex !important;
-        }
-    }
-    
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .top-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem;
-            min-height: 70px;
-        }
-        
-        .menu-btn {
-            order: -1;
-        }
-        
-        .header-container {
-            flex-grow: 1;
-        }
-        
-        .nav-container {
-            order: 1;
-        }
-    }
-    
-    .mobile-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 998;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-    }
-    
-    .mobile-overlay.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-    
-    body.nav-open {
-        overflow: hidden;
     }
 `;
 document.head.appendChild(style);
 
-// Start initialization
-document.addEventListener('DOMContentLoaded', loadCommonComponents);
-
-// Update the mobile menu initialization part:
-const menuBtn = document.querySelector('.menu-btn');
-const navContainer = document.querySelector('.nav-container');
-const overlay = document.querySelector('.mobile-overlay');
-
-if (menuBtn && navContainer && overlay) {
-    menuBtn.addEventListener('click', () => {
-        const isActive = navContainer.classList.toggle('active');
-        menuBtn.setAttribute('aria-expanded', isActive);
-        menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        overlay.classList.toggle('active');
-        document.body.classList.toggle('nav-open');
-    });
-    
-    overlay.addEventListener('click', () => {
-        navContainer.classList.remove('active');
-        overlay.classList.remove('active');
-        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        menuBtn.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('nav-open');
-    });
-}
-
-// Add this to your global styles
-const style = document.createElement('style');
-style.textContent = `
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .top-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem;
-            position: relative;
-            z-index: 1001;
-            background: linear-gradient(135deg, #CE1126, #007A3D);
-        }
-        
-        .menu-btn {
-            display: block;
-            z-index: 1002;
-        }
-        
-        .mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        
-        .mobile-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        body.nav-open {
-            overflow: hidden;
-        }
-    }
-`;
-document.head.appendChild(style);
+// Start the process
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM content loaded, starting component load');
+    loadCommonComponents();
+});
