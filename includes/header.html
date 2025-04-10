@@ -3,8 +3,8 @@
         <div class="logo-container">
             <img src="/kuwaitnews/images/logo.png" alt="Logo" class="logo">
             <div>
-                <h1 class="site-title">THINK</h1>
-                <p class="site-tagline">Question More</p>
+                <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+                <p class="site-tagline">కువైట్ తెలుగు సమాజానికి సరికొత్త వార్తలు</p>
             </div>
         </div>
     </header>
@@ -18,7 +18,6 @@
     .header-container {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         padding: 1rem;
         max-width: 1200px;
         margin: 0 auto;
@@ -29,7 +28,7 @@
         gap: 10px;
     }
     .logo {
-        height: 35px;
+        height: 50px;
         width: auto;
     }
     .site-title {
@@ -52,16 +51,20 @@
         }
         .logo-container {
             flex-grow: 0;
-            max-width: 200px; /* Reduced from 70% to fixed 200px */
+            max-width: 200px;
             justify-content: center;
             gap: 5px;
+            flex-direction: column; /* Match scripts.js */
         }
         .logo {
-            height: 50px;
+            height: 35px;
         }
         .site-title {
-            font-size: 1.2rem; /* Slightly smaller to fit */
+            font-size: 1.2rem;
             white-space: nowrap;
+        }
+        .site-tagline {
+            font-size: 0.8rem; /* Match scripts.js */
         }
     }
 </style>
