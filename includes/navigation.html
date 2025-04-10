@@ -8,9 +8,11 @@
             <li><a href="/kuwaitnews/gold-price.html" class="nav-link"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
             <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
-        <div class="search-bar">
-            <input type="text" placeholder="Search..." aria-label="Search" class="search-input">
-            <button type="submit" aria-label="Search button" class="search-toggle"><i class="fas fa-search"></i></button>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." aria-label="Search" class="search-input">
+                <button type="submit" aria-label="Search button" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
         </div>
     </nav>
 </div>
@@ -19,7 +21,6 @@
     .nav-container {
         background: #ffffff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
         position: relative;
         z-index: 1000;
     }
@@ -28,8 +29,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
+        padding: 0.5rem 1rem;
     }
 
     .nav-menu {
@@ -37,17 +39,19 @@
         list-style: none;
         margin: 0;
         padding: 0;
+        gap: 5px;
     }
 
     .nav-link {
         color: var(--primary);
         text-decoration: none;
-        padding: 0.5rem 1rem;
+        padding: 0.75rem 1rem;
         font-weight: 600;
-        transition: color 0.3s;
+        transition: all 0.3s;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 8px;
+        border-radius: 4px;
     }
 
     .nav-link i {
@@ -57,93 +61,128 @@
     .nav-link:hover,
     .nav-link.active {
         color: var(--secondary);
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .search-container {
+        margin-left: 1rem;
     }
 
     .search-bar {
         display: flex;
         align-items: center;
+        background: #f5f5f5;
+        border-radius: 4px;
+        overflow: hidden;
+        transition: all 0.3s;
     }
 
     .search-input {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
+        padding: 0.6rem;
+        border: none;
+        background: transparent;
         outline: none;
+        width: 180px;
+        transition: width 0.3s;
     }
 
-    .search-toggle {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-left: none;
-        background: var(--primary);
-        color: white;
-        border-radius: 0 4px 4px 0;
+    .search-btn {
+        padding: 0.6rem 0.8rem;
+        border: none;
+        background: transparent;
+        color: #555;
         cursor: pointer;
     }
 
+    .search-btn:hover {
+        color: var(--primary);
+    }
+
+    /* Mobile Styles */
     @media (max-width: 768px) {
         .nav-container {
-            background: transparent;
             padding: 0;
+            background: transparent;
             box-shadow: none;
-            width: auto;
         }
-
+        
         nav {
+            padding: 0;
             justify-content: flex-end;
-            width: auto;
         }
-
+        
         .nav-menu {
-            display: none;
             position: fixed;
             top: 0;
             left: -100%;
-            width: 250px;
-            height: 100%;
+            width: 280px;
+            height: 100vh;
             background: #ffffff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             flex-direction: column;
-            padding: 2rem 1rem;
-            transition: left 0.3s ease-in-out;
+            padding: 5rem 1.5rem 1.5rem;
+            gap: 0;
+            transition: left 0.3s ease-out;
             z-index: 999;
         }
-
+        
         .nav-menu.active {
-            display: flex;
             left: 0;
         }
-
+        
         .nav-link {
             padding: 1rem;
-            width: 100%;
-            text-align: left;
+            border-radius: 0;
+            border-bottom: 1px solid #eee;
         }
-
+        
+        .search-container {
+            margin-left: 0.5rem;
+        }
+        
         .search-bar {
-            margin-left: 0.25rem; /* Reduced from 0.5rem */
-            min-width: 30px; /* Ensure space for icon */
+            background: rgba(255, 255, 255, 0.2);
         }
-
+        
         .search-input {
-            display: none;
-            padding: 0.3rem;
-            width: 100px;
-        }
-
-        .search-bar.active .search-input {
-            display: block;
-        }
-
-        .search-toggle {
-            padding: 0.3rem;
-            border: none;
-            background: transparent;
+            width: 0;
+            padding: 0.5rem 0;
             color: white;
         }
-
-        body.nav-open {
-            overflow: hidden;
+        
+        .search-bar.active {
+            background: rgba(255, 255, 255, 0.3);
         }
+        
+        .search-bar.active .search-input {
+            width: 140px;
+            padding: 0.5rem;
+        }
+        
+        .search-btn {
+            color: white;
+        }
+    }
+
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    .mobile-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    body.nav-open {
+        overflow: hidden;
     }
 </style>
