@@ -11,6 +11,12 @@
   --kuwait-black: #000000;
   --kuwait-white: #FFFFFF;
 }
+.nav-link {
+    font-family: 'Arial', sans-serif !important; /* or your desired font */
+    font-size: 0.95rem !important;
+    font-weight: 600;
+    color: var(--primary);
+}
 
 body {
   font-family: 'Noto Sans Telugu', 'Open Sans', Arial, sans-serif;
@@ -542,6 +548,3 @@ body {
   width: 100%;
 }
 
-.category-list {
-    font-family: 'Noto Sans Telugu', sans-serif !important;
-}

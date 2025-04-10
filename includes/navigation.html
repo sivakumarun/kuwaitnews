@@ -18,6 +18,12 @@
 </div>
 
 <style>
+    .nav-link {
+    font-family: 'Noto Sans Telugu', 'Open Sans', Arial, sans-serif !important; /* or your desired font */
+    font-size: 0.95rem !important;
+    font-weight: 600;
+    color: var(--primary);
+}
     .nav-container {
         background: #ffffff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -118,12 +124,12 @@
             background: transparent;
             box-shadow: none;
         }
-        
+
         nav {
             padding: 0;
             justify-content: flex-end;
         }
-        
+
         .nav-menu {
             position: fixed;
             top: 0;
@@ -139,11 +145,11 @@
             z-index: 999;
             overflow-x: visible;
         }
-        
+
         .nav-menu.active {
             left: 0;
         }
-        
+
         .nav-link {
             padding: 1rem;
             border-radius: 0;
@@ -151,31 +157,31 @@
             font-size: 1rem;
             gap: 8px;
         }
-        
+
         .search-container {
             margin-left: 0.5rem;
             min-width: auto;
         }
-        
+
         .search-bar {
             background: rgba(255, 255, 255, 0.2);
         }
-        
+
         .search-input {
             width: 0;
             padding: 0.5rem 0;
             color: white;
         }
-        
+
         .search-bar.active {
             background: rgba(255, 255, 255, 0.3);
         }
-        
+
         .search-bar.active .search-input {
             width: 140px;
             padding: 0.5rem;
         }
-        
+
         .search-btn {
             color: white;
         }
