@@ -115,7 +115,7 @@ style.textContent = `
             justify-content: space-between;
             padding: 0.5rem;
             position: relative;
-            min-height: 60px;
+            min-height: 70px; /* Increased from 60px */
         }
         .menu-btn {
             display: block;
@@ -140,7 +140,7 @@ style.textContent = `
             margin: 0;
         }
         .site-tagline {
-            font-size: 0.8rem;
+            font-size: 0.85rem; /* Increased from 0.8rem */
             color: rgba(255, 255, 255, 0.8);
             margin: 0;
             white-space: nowrap;
@@ -164,7 +164,7 @@ style.textContent = `
             display: block;
         }
         .header-container {
-            justify-content: center; /* Center header content in desktop */
+            justify-content: center;
         }
         .nav-container {
             margin-top: 0;
