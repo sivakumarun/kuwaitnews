@@ -542,3 +542,6 @@ body {
   width: 100%;
 }
 
+.category-list {
+    font-family: 'Noto Sans Telugu', sans-serif !important;
+}
