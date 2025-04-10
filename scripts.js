@@ -115,7 +115,7 @@ style.textContent = `
             justify-content: space-between;
             padding: 0.5rem;
             position: relative;
-            min-height: 70px; /* Increased from 60px */
+            min-height: 70px;
         }
         .menu-btn {
             display: block;
@@ -135,15 +135,21 @@ style.textContent = `
             max-width: 200px;
         }
         .site-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Increased from 1.2rem to stretch */
             white-space: nowrap;
             margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         .site-tagline {
-            font-size: 0.85rem; /* Increased from 0.8rem */
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.8);
             margin: 0;
             white-space: nowrap;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.5px; /* Condensed slightly */
         }
         .nav-container {
             background: transparent;
