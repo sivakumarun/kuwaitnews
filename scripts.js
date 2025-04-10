@@ -282,3 +282,118 @@ function initNavigation() {
 
 // Initialize when components are loaded
 document.addEventListener('commonComponentsLoaded', initNavigation);
+
+<div class="header-bg">
+    <header class="header-container">
+        <button class="menu-btn" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo-container">
+            <img src="/kuwaitnews/images/logo.png" alt="Kuwait News Logo" class="logo">
+            <div class="logo-text">
+                <h1 class="site-title">THINK</h1>
+                <p class="site-tagline">Beyond the headlines</p>
+            </div>
+        </div>
+    </header>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:ital,wght@0,400;1,400&display=swap');
+
+    .header-bg {
+        background: linear-gradient(135deg, #CE1126, #007A3D);
+        width: 100%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .logo {
+        height: 50px;
+        width: auto;
+    }
+
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .site-title {
+        color: white;
+        margin: 0;
+        font-size: 2rem;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        line-height: 1;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .site-tagline {
+        color: rgba(255, 255, 255, 0.9);
+        margin: 3px 0 0;
+        font-size: 0.9rem;
+        font-family: 'Open Sans', sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+
+    .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: white;
+        padding: 0.5rem;
+        margin-right: 0.5rem;
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 0.75rem;
+            justify-content: space-between;
+        }
+        
+        .logo-container {
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .site-title {
+            font-size: 1.6rem;
+        }
+        
+        .site-tagline {
+            font-size: 0.85rem;
+        }
+        
+        .menu-btn {
+            display: block;
+        }
+    }
+</style>
