@@ -154,3 +154,131 @@ function initSearch() {
 
 // Call this in your loadCommonComponents function
 document.addEventListener('DOMContentLoaded', initSearch);
+
+
+// Initialize navigation functionality
+function initNavigation() {
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const overlay = document.querySelector('.mobile-overlay');
+    
+    if (menuBtn && navMenu && overlay) {
+        menuBtn.addEventListener('click', () => {
+            const isActive = navMenu.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', isActive);
+            menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+        
+        overlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            menuBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        });
+    }
+
+    // Horizontal navigation controls
+    const navScrollContainer = document.querySelector('.nav-scroll-container');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navScrollContainer && navMenu) {
+        const checkNavigation = () => {
+            const containerWidth = navScrollContainer.offsetWidth;
+            const menuWidth = navMenu.scrollWidth;
+            
+            if (menuWidth > containerWidth) {
+                let controls = navScrollContainer.querySelector('.nav-controls');
+                if (!controls) {
+                    controls = document.createElement('div');
+                    controls.className = 'nav-controls';
+                    controls.innerHTML = `
+                        <div class="nav-control nav-prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="nav-control nav-next"><i class="fas fa-chevron-right"></i></div>
+                    `;
+                    navScrollContainer.appendChild(controls);
+                    
+                    const prevBtn = controls.querySelector('.nav-prev');
+                    const nextBtn = controls.querySelector('.nav-next');
+                    let scrollPosition = 0;
+                    const scrollStep = 150;
+                    
+                    prevBtn.addEventListener('click', () => {
+                        scrollPosition = Math.max(0, scrollPosition - scrollStep);
+                        navMenu.style.transform = `translateX(-${scrollPosition}px)`;
+                        updateControls();
+                    });
+                    
+                    nextBtn.addEventListener('click', () => {
+                        const maxScroll = menuWidth - containerWidth;
+                        scrollPosition = Math.min(maxScroll, scrollPosition + scrollStep);
+                        navMenu.style.transform = `translateX(-${scrollPosition}px)`;
+                        updateControls();
+                    });
+                    
+                    function updateControls() {
+                        prevBtn.style.opacity = scrollPosition > 0 ? 1 : 0.5;
+                        nextBtn.style.opacity = scrollPosition < (menuWidth - containerWidth) ? 1 : 0.5;
+                    }
+                    
+                    updateControls();
+                }
+                controls.style.display = 'flex';
+            } else {
+                const controls = navScrollContainer.querySelector('.nav-controls');
+                if (controls) {
+                    controls.style.display = 'none';
+                    navMenu.style.transform = 'translateX(0)';
+                }
+            }
+        };
+        
+        // Check on load and resize
+        checkNavigation();
+        window.addEventListener('resize', checkNavigation);
+    }
+
+    // Search functionality
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            const searchInput = this.querySelector('.search-input');
+            if (!searchInput.value.trim()) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+    }
+
+    // Mobile search toggle
+    const searchBtn = document.querySelector('.search-btn');
+    const searchBar = document.querySelector('.search-bar');
+    
+    if (searchBtn && searchBar) {
+        searchBtn.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!searchBar.classList.contains('active')) {
+                    e.preventDefault();
+                    searchBar.classList.add('active');
+                    searchBar.querySelector('.search-input').focus();
+                }
+            }
+        });
+        
+        // Close search when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768 && 
+                searchBar.classList.contains('active') &&
+                !searchBar.contains(e.target) &&
+                e.target !== searchBtn) {
+                searchBar.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Initialize when components are loaded
+document.addEventListener('commonComponentsLoaded', initNavigation);
