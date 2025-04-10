@@ -20,59 +20,64 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
     }
 }
 
-// Main function to load components with retry mechanism
+// Main function to load components
 async function loadCommonComponents() {
     try {
         // Clear any existing top-wrapper to prevent duplicates
         const existingWrapper = document.querySelector('.top-wrapper');
         if (existingWrapper) existingWrapper.remove();
 
-        // Create a single wrapper with menu-btn as a direct child
+        // Create wrapper structure
         document.body.insertAdjacentHTML('afterbegin', `
-            <div class="top-wrapper">
-                <button class="menu-btn" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <div class="top-wrapper"></div>
+            <div class="mobile-overlay"></div>
         `);
-        const wrapper = document.querySelector('.top-wrapper');
 
         // Load header
-        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper', 'beforeend');
+        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
         if (!headerLoaded) throw new Error('Header failed to load');
 
         // Load navigation
-        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper', 'beforeend');
+        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
         if (!navLoaded) throw new Error('Navigation failed to load');
-
-        // Wait briefly for DOM to update
-        await new Promise(resolve => setTimeout(resolve, 100));
 
         // Initialize mobile menu toggle
         const menuBtn = document.querySelector('.menu-btn');
         const navMenu = document.querySelector('.nav-menu');
-        if (menuBtn && navMenu) {
-            console.log('Menu button and nav menu found, initializing toggle');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        if (menuBtn && navMenu && overlay) {
             menuBtn.addEventListener('click', () => {
                 const isActive = navMenu.classList.toggle('active');
                 menuBtn.setAttribute('aria-expanded', isActive);
                 menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                overlay.classList.toggle('active');
                 document.body.classList.toggle('nav-open');
             });
-        } else {
-            console.warn('Mobile menu elements not found:', { menuBtn: !!menuBtn, navMenu: !!navMenu });
+            
+            overlay.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-open');
+            });
         }
 
         // Initialize search bar toggle
-        const searchToggle = document.querySelector('.search-toggle');
+        const searchBtn = document.querySelector('.search-btn');
         const searchBar = document.querySelector('.search-bar');
-        if (searchToggle && searchBar) {
-            console.log('Search toggle and bar found, initializing');
-            searchToggle.addEventListener('click', () => {
-                searchBar.classList.toggle('active');
+        
+        if (searchBtn && searchBar) {
+            searchBtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    searchBar.classList.toggle('active');
+                    if (searchBar.classList.contains('active')) {
+                        searchBar.querySelector('.search-input').focus();
+                    }
+                }
             });
-        } else {
-            console.warn('Search bar elements not found:', { searchToggle: !!searchToggle, searchBar: !!searchBar });
         }
 
         document.dispatchEvent(new Event('commonComponentsLoaded'));
@@ -82,98 +87,16 @@ async function loadCommonComponents() {
     }
 }
 
-// Add styling for both views
+// Add global styles
 const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
-        background: linear-gradient(135deg, #CE1126, #007A3D);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    .header-bg {
-        background: transparent;
-        width: 100%;
-        height: 100%;
-    }
-    .menu-btn {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: white;
-        padding: 0;
-        display: none;
-    }
-    .menu-btn i {
-        display: block;
-    }
-    @media (max-width: 768px) {
-        .top-wrapper {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem;
-            position: relative;
-            min-height: 70px;
-        }
-        .menu-btn {
-            display: block;
-            order: -1;
-            margin-right: 0.25rem;
-        }
-        .header-container {
-            flex-grow: 1;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            order: 0;
-        }
-        .logo-container {
-            flex-direction: column;
-            align-items: center;
-            max-width: 200px;
-        }
-        .site-title {
-            font-size: 1.4rem; /* Increased from 1.2rem to stretch */
-            white-space: nowrap;
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .site-tagline {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0;
-            white-space: nowrap;
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
-            letter-spacing: -0.5px; /* Condensed slightly */
-        }
-        .nav-container {
-            background: transparent;
-            padding: 0;
-            order: 1;
-        }
-        nav {
-            display: flex;
-            justify-content: flex-end;
-        }
-        .search-bar {
-            margin-left: 0.25rem;
-            min-width: 30px;
-        }
-    }
+    
     @media (min-width: 769px) {
-        .top-wrapper {
-            display: block;
-        }
         .header-container {
             justify-content: center;
-        }
-        .nav-container {
-            margin-top: 0;
         }
     }
 `;
