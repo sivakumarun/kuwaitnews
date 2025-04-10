@@ -93,7 +93,7 @@ style.textContent = `
     .header-bg {
         background: transparent;
         width: 100%;
-        height: 100%; /* Match top-wrapper */
+        height: 100%;
     }
     .menu-btn {
         background: none;
@@ -115,12 +115,12 @@ style.textContent = `
             justify-content: space-between;
             padding: 0.5rem;
             position: relative;
-            min-height: 50px; /* Increased height */
+            min-height: 50px;
         }
         .menu-btn {
             display: block;
             order: -1;
-            margin-right: 0.5rem;
+            margin-right: 0.25rem; /* Reduced from 0.5rem */
         }
         .header-container {
             flex-grow: 1;
@@ -130,7 +130,7 @@ style.textContent = `
             order: 0;
         }
         .site-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             white-space: nowrap;
         }
         .site-tagline {
@@ -146,8 +146,8 @@ style.textContent = `
             justify-content: flex-end;
         }
         .search-bar {
-            margin-left: 0.5rem;
-            order: 1;
+            margin-left: 0.25rem;
+            min-width: 30px;
         }
     }
     @media (min-width: 769px) {
