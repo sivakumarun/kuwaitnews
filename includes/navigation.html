@@ -186,3 +186,57 @@
         overflow: hidden;
     }
 </style>
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px; /* Reduced from larger gap */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    scrollbar-width: none; /* Hide scrollbar */
+}
+
+.nav-menu::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on WebKit browsers */
+}
+
+.nav-link {
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.75rem 0.8rem; /* Slightly reduced horizontal padding */
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Reduced icon gap */
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent text wrapping */
+    font-size: 0.95rem; /* Slightly reduced font size */
+}
+
+/* Keep your existing hover/active states */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--secondary);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    /* Keep your existing mobile styles */
+    .nav-menu {
+        flex-direction: column;
+        gap: 0;
+        width: 280px;
+        padding: 5rem 1.5rem 1.5rem;
+    }
+    
+    .nav-link {
+        padding: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1rem; /* Restore full size on mobile */
+    }
+}
