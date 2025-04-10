@@ -115,12 +115,12 @@ style.textContent = `
             justify-content: space-between;
             padding: 0.5rem;
             position: relative;
-            min-height: 50px;
+            min-height: 60px; /* Increased to fit tagline */
         }
         .menu-btn {
             display: block;
             order: -1;
-            margin-right: 0.25rem; /* Reduced from 0.5rem */
+            margin-right: 0.25rem;
         }
         .header-container {
             flex-grow: 1;
@@ -129,12 +129,21 @@ style.textContent = `
             gap: 5px;
             order: 0;
         }
+        .logo-container {
+            flex-direction: column; /* Stack title and tagline */
+            align-items: center;
+            max-width: 200px;
+        }
         .site-title {
             font-size: 1.2rem;
             white-space: nowrap;
+            margin: 0;
         }
         .site-tagline {
-            display: none;
+            font-size: 0.8rem; /* Smaller to fit */
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            white-space: nowrap;
         }
         .nav-container {
             background: transparent;
