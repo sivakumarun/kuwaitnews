@@ -107,3 +107,50 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM content loaded, starting component load');
     loadCommonComponents();
 });
+
+// Initialize search functionality
+function initSearch() {
+    // Search form submission
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            const searchInput = this.querySelector('.search-input');
+            const query = searchInput.value.trim();
+            
+            if (!query) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            // Form will naturally submit to search.html?q=[query]
+        });
+    }
+
+    // Mobile search toggle
+    const searchBtn = document.querySelector('.search-btn');
+    const searchBar = document.querySelector('.search-bar');
+    
+    if (searchBtn && searchBar) {
+        searchBtn.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!searchBar.classList.contains('active')) {
+                    e.preventDefault();
+                    searchBar.classList.add('active');
+                    searchBar.querySelector('.search-input').focus();
+                }
+            }
+        });
+        
+        // Close search when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768 && 
+                searchBar.classList.contains('active') &&
+                !searchBar.contains(e.target) &&
+                e.target !== searchBtn) {
+                searchBar.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Call this in your loadCommonComponents function
+document.addEventListener('DOMContentLoaded', initSearch);
