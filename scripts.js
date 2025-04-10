@@ -153,3 +153,26 @@ document.head.appendChild(style);
 
 // Start initialization
 document.addEventListener('DOMContentLoaded', loadCommonComponents);
+
+// Update the mobile menu initialization part:
+const menuBtn = document.querySelector('.menu-btn');
+const navContainer = document.querySelector('.nav-container');
+const overlay = document.querySelector('.mobile-overlay');
+
+if (menuBtn && navContainer && overlay) {
+    menuBtn.addEventListener('click', () => {
+        const isActive = navContainer.classList.toggle('active');
+        menuBtn.setAttribute('aria-expanded', isActive);
+        menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('nav-open');
+    });
+    
+    overlay.addEventListener('click', () => {
+        navContainer.classList.remove('active');
+        overlay.classList.remove('active');
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+    });
+}
