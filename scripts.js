@@ -17,22 +17,20 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
 // Main function to load and initialize components
 async function loadCommonComponents() {
     try {
-        // Clear any existing wrappers to prevent duplicates
+        // Clear any existing wrappers
         const existingWrapper = document.querySelector('.top-wrapper');
         if (existingWrapper) existingWrapper.remove();
 
-        // Create the main wrapper structure
+        // Create wrapper structure
         document.body.insertAdjacentHTML('afterbegin', `
             <div class="top-wrapper">
                 <div class="mobile-overlay"></div>
             </div>
         `);
 
-        // Load header and navigation components
-        await Promise.all([
-            loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper'),
-            loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper')
-        ]);
+        // Load header and navigation
+        await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
+        await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
 
         // Initialize mobile menu toggle
         const menuBtn = document.querySelector('.menu-btn');
@@ -58,19 +56,8 @@ async function loadCommonComponents() {
         }
 
         // Initialize search functionality
-        const searchForm = document.querySelector('.search-form');
         const searchBtn = document.querySelector('.search-btn');
         const searchBar = document.querySelector('.search-bar');
-        
-        if (searchForm) {
-            searchForm.addEventListener('submit', function(e) {
-                const searchInput = this.querySelector('.search-input');
-                if (!searchInput.value.trim()) {
-                    e.preventDefault();
-                    searchInput.focus();
-                }
-            });
-        }
         
         if (searchBtn && searchBar) {
             searchBtn.addEventListener('click', function(e) {
@@ -84,74 +71,22 @@ async function loadCommonComponents() {
             });
         }
 
-        // Initialize horizontal navigation scrolling if needed
-        const navScrollContainer = document.querySelector('.nav-scroll-container');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        if (navScrollContainer && navMenu) {
-            const checkNavigation = () => {
-                const containerWidth = navScrollContainer.offsetWidth;
-                const menuWidth = navMenu.scrollWidth;
-                
-                if (menuWidth > containerWidth) {
-                    let controls = navScrollContainer.querySelector('.nav-controls');
-                    if (!controls) {
-                        controls = document.createElement('div');
-                        controls.className = 'nav-controls';
-                        controls.innerHTML = `
-                            <div class="nav-control nav-prev"><i class="fas fa-chevron-left"></i></div>
-                            <div class="nav-control nav-next"><i class="fas fa-chevron-right"></i></div>
-                        `;
-                        navScrollContainer.appendChild(controls);
-                        
-                        const prevBtn = controls.querySelector('.nav-prev');
-                        const nextBtn = controls.querySelector('.nav-next');
-                        let scrollPosition = 0;
-                        const scrollStep = 150;
-                        
-                        prevBtn.addEventListener('click', () => {
-                            scrollPosition = Math.max(0, scrollPosition - scrollStep);
-                            navMenu.style.transform = `translateX(-${scrollPosition}px)`;
-                            updateControls();
-                        });
-                        
-                        nextBtn.addEventListener('click', () => {
-                            const maxScroll = menuWidth - containerWidth;
-                            scrollPosition = Math.min(maxScroll, scrollPosition + scrollStep);
-                            navMenu.style.transform = `translateX(-${scrollPosition}px)`;
-                            updateControls();
-                        });
-                        
-                        function updateControls() {
-                            prevBtn.style.opacity = scrollPosition > 0 ? 1 : 0.5;
-                            nextBtn.style.opacity = scrollPosition < (menuWidth - containerWidth) ? 1 : 0.5;
-                        }
-                    }
-                    controls.style.display = 'flex';
-                } else {
-                    const controls = navScrollContainer.querySelector('.nav-controls');
-                    if (controls) controls.style.display = 'none';
-                    navMenu.style.transform = 'translateX(0)';
-                }
-            };
-            
-            checkNavigation();
-            window.addEventListener('resize', checkNavigation);
-        }
-
         document.dispatchEvent(new Event('commonComponentsLoaded'));
     } catch (error) {
         console.error('Error loading components:', error);
     }
 }
 
-// Global styles for the components
+// Add global styles
 const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
-        background: linear-gradient(135deg, #CE1126, #007A3D);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    
+    .header-bg {
+        width: 100%;
     }
     
     /* Desktop Styles */
@@ -167,11 +102,6 @@ style.textContent = `
         .nav-menu {
             display: flex !important;
         }
-        
-        .nav-container {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
     }
     
     /* Mobile Styles */
@@ -186,50 +116,33 @@ style.textContent = `
         
         .menu-btn {
             order: -1;
-            margin-right: 0.5rem;
         }
         
         .header-container {
             flex-grow: 1;
-            justify-content: center;
         }
         
         .nav-container {
             order: 1;
-            background: transparent;
-            box-shadow: none;
-        }
-        
-        .mobile-overlay {
-            display: block;
         }
     }
     
-    /* Navigation Controls */
-    .nav-controls {
-        position: absolute;
-        right: 0;
+    .mobile-overlay {
+        position: fixed;
         top: 0;
-        height: 100%;
-        display: none;
-        align-items: center;
-        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 30%);
-        padding-left: 30px;
-        z-index: 2;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
     }
     
-    .nav-control {
-        background: white;
-        border: 1px solid #eee;
-        border-radius: 50%;
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        margin-left: 5px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    .mobile-overlay.active {
+        opacity: 1;
+        pointer-events: all;
     }
     
     body.nav-open {
@@ -238,5 +151,5 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Start initialization when DOM is loaded
+// Start initialization
 document.addEventListener('DOMContentLoaded', loadCommonComponents);
