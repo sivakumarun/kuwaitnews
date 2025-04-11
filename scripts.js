@@ -93,12 +93,6 @@ style.textContent = `
     .top-wrapper {
         width: 100%;
     }
-    
-    @media (min-width: 769px) {
-        .header-container {
-            justify-content: center;
-        }
-    }
 `;
 document.head.appendChild(style);
 
