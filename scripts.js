@@ -30,7 +30,6 @@ async function loadCommonComponents() {
         // Create wrapper structure
         document.body.insertAdjacentHTML('afterbegin', `
             <div class="top-wrapper"></div>
-            <div class="mobile-overlay"></div>
         `);
 
         // Load header
@@ -40,29 +39,6 @@ async function loadCommonComponents() {
         // Load navigation
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
         if (!navLoaded) throw new Error('Navigation failed to load');
-
-        // Initialize menu toggle
-        const menuBtn = document.querySelector('.menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
-        const overlay = document.querySelector('.mobile-overlay');
-        
-        if (menuBtn && navMenu && overlay) {
-            menuBtn.addEventListener('click', () => {
-                const isActive = navMenu.classList.toggle('active');
-                menuBtn.setAttribute('aria-expanded', isActive);
-                menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('nav-open');
-            });
-            
-            overlay.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                menuBtn.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('nav-open');
-            });
-        }
 
         // Initialize search bar
         const searchBtn = document.querySelector('.search-btn');
