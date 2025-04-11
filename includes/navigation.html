@@ -68,7 +68,7 @@
         scrollbar-width: none;
         position: fixed;
         top: 0;
-        left: 2.4rem; /* Offset to align with original position after .menu-btn */
+        left: calc(1rem + 2.4rem); /* nav padding + menu-btn width */
         width: fit-content;
         background: #333333;
         z-index: 1001;
@@ -141,7 +141,7 @@
 
         .nav-menu-horizontal {
             gap: 3px;
-            left: 2.1rem; /* Adjusted for mobile .menu-btn size */
+            left: calc(0.75rem + 2.1rem); /* Adjusted for mobile nav padding + menu-btn */
             padding-top: 0.4rem;
             padding-bottom: 0.4rem;
         }
