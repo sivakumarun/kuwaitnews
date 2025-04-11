@@ -1,5 +1,8 @@
 <div class="nav-container">
     <nav>
+        <button class="menu-btn" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="nav-menu">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
@@ -13,7 +16,7 @@
 
 <style>
     .nav-container {
-        background: #e0e0e0;
+        background: #333333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         position: relative;
         z-index: 1000;
@@ -23,6 +26,20 @@
         max-width: 1400px;
         margin: 0 auto;
         padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #ffffff;
+        padding: 0.5rem;
+        margin-right: 0.5rem;
+        z-index: 1000;
     }
 
     .nav-menu {
@@ -41,11 +58,15 @@
         display: none;
     }
 
+    .nav-menu.hidden {
+        display: none;
+    }
+
     .nav-link {
         font-family: 'Noto Sans Telugu', 'Open Sans', Arial, sans-serif;
         font-size: 0.95rem;
         font-weight: 600;
-        color: var(--primary);
+        color: #ffffff;
         text-decoration: none;
         padding: 0.7rem 0.9rem;
         transition: all 0.3s;
@@ -58,8 +79,7 @@
 
     .nav-link:hover,
     .nav-link.active {
-        color: var(--secondary);
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(255, 255, 255, 0.1);
     }
 
     @media (max-width: 768px) {
@@ -68,6 +88,10 @@
         }
 
         nav {
+            padding: 0.5rem 0.75rem;
+        }
+
+        .menu-btn {
             padding: 0.5rem 0.75rem;
         }
 
