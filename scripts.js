@@ -40,15 +40,16 @@ async function loadCommonComponents() {
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
-        // Initialize menu toggle
+        // Initialize menu toggle (placeholder for independent action)
         const menuBtn = document.querySelector('.menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
         
-        if (menuBtn && navMenu) {
+        if (menuBtn) {
             menuBtn.addEventListener('click', () => {
-                const isHidden = navMenu.classList.toggle('hidden');
-                menuBtn.setAttribute('aria-expanded', !isHidden);
-                menuBtn.innerHTML = isHidden ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+                const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                menuBtn.innerHTML = isExpanded ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+                // Placeholder for future functionality (e.g., mobile collapse or other action)
+                console.log('Menu toggle clicked:', !isExpanded ? 'expanded' : 'collapsed');
             });
         }
 
