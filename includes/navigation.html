@@ -1,10 +1,25 @@
-<div class="nav-container">
-    <nav>
-        <div class="menu-wrapper">
-            <button class="menu-btn" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu-horizontal">
+<div class="header-container">
+    <!-- Your header content goes here -->
+    <header>
+        <h1>Your Website Header</h1>
+    </header>
+    
+    <div class="nav-container">
+        <nav>
+            <div class="menu-wrapper">
+                <button class="menu-btn" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu-horizontal">
+                    <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                    <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
+                    <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
+                    <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                    <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                    <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+                </ul>
+            </div>
+            <ul class="nav-menu-toggle hidden">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
                 <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
@@ -12,26 +27,27 @@
                 <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
                 <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
             </ul>
-        </div>
-        <ul class="nav-menu-toggle hidden">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
-            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
-    </nav>
+        </nav>
+    </div>
 </div>
 
 <style>
+    .header-container {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: white; /* Adjust as needed */
+    }
+    
+    header {
+        background: #f8f8f8; /* Your header background */
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
     .nav-container {
         background: #333333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
     }
 
     nav {
