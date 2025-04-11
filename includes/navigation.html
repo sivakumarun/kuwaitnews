@@ -3,7 +3,15 @@
         <button class="menu-btn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
-        <ul class="nav-menu hidden">
+        <ul class="nav-menu-toggle hidden">
+            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
+            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
+            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+        </ul>
+        <ul class="nav-menu-horizontal">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
             <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
@@ -43,25 +51,33 @@
         z-index: 1000;
     }
 
-    .nav-menu {
+    .nav-menu-toggle {
         display: none;
         list-style: none;
-        margin: 0;
-        padding: 0.5rem 0 0 0;
+        margin: 0.5rem 0 0 0;
+        padding: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu-toggle.active {
+        display: flex;
+    }
+
+    .nav-menu-horizontal {
+        display: flex;
+        list-style: none;
+        margin: 0 0 0 1rem;
+        padding: 0;
         gap: 4px;
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        width: 100%;
     }
 
-    .nav-menu::-webkit-scrollbar {
+    .nav-menu-horizontal::-webkit-scrollbar {
         display: none;
-    }
-
-    .nav-menu.active {
-        display: flex;
     }
 
     .nav-link {
@@ -76,6 +92,14 @@
         align-items: center;
         border-radius: 4px;
         white-space: nowrap;
+    }
+
+    .nav-menu-toggle .nav-link {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .nav-menu-horizontal .nav-link {
         min-width: max-content;
     }
 
@@ -98,9 +122,13 @@
             font-size: 1.1rem;
         }
 
-        .nav-menu {
+        .nav-menu-toggle {
+            margin: 0.4rem 0 0 0;
+        }
+
+        .nav-menu-horizontal {
+            margin: 0 0 0 0.75rem;
             gap: 3px;
-            padding: 0.4rem 0 0 0;
         }
 
         .nav-link {
