@@ -1,12 +1,12 @@
 <div class="nav-container">
     <nav>
         <ul class="nav-menu">
-            <li><a href="/kuwaitnews/index.html" class="nav-link"><i class="fas fa-home"></i> హోమ్</a></li>
-            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link"><i class="fas fa-newspaper"></i> కువైట్ వార్తలు</a></li>
-            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link"><i class="fas fa-globe"></i> తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link"><i class="fas fa-futbol"></i> క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link"><i class="fas fa-coins"></i> గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
+            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
+            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
         <div class="search-container">
             <div class="search-bar">
@@ -18,14 +18,8 @@
 </div>
 
 <style>
-    .nav-link {
-    font-family: 'Noto Sans Telugu', 'Open Sans', Arial, sans-serif !important; /* or your desired font */
-    font-size: 0.95rem !important;
-    font-weight: 600;
-    color: var(--primary);
-}
     .nav-container {
-        background: #ffffff;
+        background: #e0e0e0;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         position: relative;
         z-index: 1000;
@@ -57,22 +51,19 @@
     }
 
     .nav-link {
+        font-family: 'Noto Sans Telugu', 'Open Sans', Arial, sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
         color: var(--primary);
         text-decoration: none;
         padding: 0.7rem 0.9rem;
-        font-weight: 600;
         transition: all 0.3s;
         display: flex;
         align-items: center;
         gap: 6px;
         border-radius: 4px;
         white-space: nowrap;
-        font-size: 0.95rem;
         min-width: max-content;
-    }
-
-    .nav-link i {
-        font-size: 0.95rem;
     }
 
     .nav-link:hover,
@@ -90,7 +81,7 @@
     .search-bar {
         display: flex;
         align-items: center;
-        background: #f5f5f5;
+        background: #ffffff;
         border-radius: 4px;
         overflow: hidden;
         transition: all 0.3s;
@@ -117,11 +108,10 @@
         color: var(--primary);
     }
 
-    /* Mobile Styles */
     @media (max-width: 768px) {
         .nav-container {
             padding: 0;
-            background: transparent;
+            background: #e0e0e0;
             box-shadow: none;
         }
 
@@ -136,7 +126,7 @@
             left: -100%;
             width: 280px;
             height: 100vh;
-            background: #ffffff;
+            background: #e0e0e0;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             flex-direction: column;
             padding: 5rem 1.5rem 1.5rem;
@@ -153,7 +143,7 @@
         .nav-link {
             padding: 1rem;
             border-radius: 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #d0d0d0;
             font-size: 1rem;
             gap: 8px;
         }
@@ -164,26 +154,21 @@
         }
 
         .search-bar {
-            background: rgba(255, 255, 255, 0.2);
+            background: #ffffff;
         }
 
         .search-input {
             width: 0;
             padding: 0.5rem 0;
-            color: white;
         }
 
         .search-bar.active {
-            background: rgba(255, 255, 255, 0.3);
+            background: #ffffff;
         }
 
         .search-bar.active .search-input {
             width: 140px;
             padding: 0.5rem;
-        }
-
-        .search-btn {
-            color: white;
         }
     }
 
