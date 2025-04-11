@@ -8,12 +8,6 @@
             <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
             <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
-        <div class="search-container">
-            <div class="search-bar">
-                <input type="text" placeholder="Search..." aria-label="Search" class="search-input">
-                <button type="submit" aria-label="Search button" class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
     </nav>
 </div>
 
@@ -26,38 +20,25 @@
     }
 
     nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         max-width: 1400px;
         margin: 0 auto;
         padding: 0.8rem 1rem;
     }
 
     .nav-menu {
-        display: none;
+        display: flex;
         list-style: none;
         margin: 0;
         padding: 0;
         gap: 6px;
         flex-wrap: nowrap;
-        background: #e0e0e0;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        transition: all 0.3s ease-out;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
     }
 
-    .nav-menu.active {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        z-index: 999;
+    .nav-menu::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-link {
@@ -72,6 +53,7 @@
         align-items: center;
         border-radius: 4px;
         white-space: nowrap;
+        min-width: max-content;
     }
 
     .nav-link:hover,
@@ -80,85 +62,22 @@
         background: rgba(0, 0, 0, 0.05);
     }
 
-    .search-container {
-        margin-left: 1rem;
-        min-width: 180px;
-        flex-shrink: 0;
-    }
-
-    .search-bar {
-        display: flex;
-        align-items: center;
-        background: #ffffff;
-        border-radius: 4px;
-        overflow: hidden;
-        transition: all 0.3s;
-    }
-
-    .search-input {
-        padding: 0.6rem;
-        border: none;
-        background: transparent;
-        outline: none;
-        width: 100%;
-    }
-
-    .search-btn {
-        padding: 0.6rem 0.8rem;
-        border: none;
-        background: transparent;
-        color: #555;
-        cursor: pointer;
-    }
-
-    .search-btn:hover {
-        color: var(--primary);
-    }
-
-    .mobile-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 998;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-    }
-
-    .mobile-overlay.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    body.nav-open {
-        overflow: hidden;
-    }
-
     @media (max-width: 768px) {
         .nav-container {
-            background: #e0e0e0;
+            padding: 0;
         }
 
-        .nav-menu.active {
-            padding: 1rem;
+        nav {
+            padding: 0.5rem 0.75rem;
+        }
+
+        .nav-menu {
+            gap: 4px;
         }
 
         .nav-link {
-            padding: 1rem;
-            border-bottom: 1px solid #d0d0d0;
-            font-size: 1rem;
-        }
-
-        .search-container {
-            margin: 1rem 0;
-            width: 100%;
-        }
-
-        .search-bar {
-            width: 100%;
+            padding: 0.5rem 0.7rem;
+            font-size: 0.9rem;
         }
     }
 </style>
