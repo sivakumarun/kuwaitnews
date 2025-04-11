@@ -1,17 +1,19 @@
 <div class="nav-container">
     <nav>
-        <button class="menu-btn" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div class="menu-wrapper">
+            <button class="menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu-horizontal">
+                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
+                <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
+                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            </ul>
+        </div>
         <ul class="nav-menu-toggle hidden">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
-            <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
-        <ul class="nav-menu-horizontal">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li><a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a></li>
             <li><a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a></li>
@@ -35,8 +37,12 @@
         margin: 0 auto;
         padding: 0.5rem 1rem;
         display: flex;
+        flex-direction: column;
+    }
+
+    .menu-wrapper {
+        display: flex;
         align-items: center;
-        flex-wrap: wrap;
     }
 
     .menu-btn {
@@ -51,6 +57,22 @@
         z-index: 1000;
     }
 
+    .nav-menu-horizontal {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 4px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav-menu-horizontal::-webkit-scrollbar {
+        display: none;
+    }
+
     .nav-menu-toggle {
         display: none;
         list-style: none;
@@ -62,22 +84,6 @@
 
     .nav-menu-toggle.active {
         display: flex;
-    }
-
-    .nav-menu-horizontal {
-        display: flex;
-        list-style: none;
-        margin: 0 0 0 1rem;
-        padding: 0;
-        gap: 4px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .nav-menu-horizontal::-webkit-scrollbar {
-        display: none;
     }
 
     .nav-link {
@@ -122,13 +128,12 @@
             font-size: 1.1rem;
         }
 
-        .nav-menu-toggle {
-            margin: 0.4rem 0 0 0;
+        .nav-menu-horizontal {
+            gap: 3px;
         }
 
-        .nav-menu-horizontal {
-            margin: 0 0 0 0.75rem;
-            gap: 3px;
+        .nav-menu-toggle {
+            margin: 0.4rem 0 0 0;
         }
 
         .nav-link {
