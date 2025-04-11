@@ -42,6 +42,12 @@
     .menu-wrapper {
         display: flex;
         align-items: center;
+        position: sticky;
+        top: 0;
+        background: #333333;
+        z-index: 1001;
+        padding: 0.5rem 1rem;
+        margin: -0.5rem -1rem;
     }
 
     .menu-btn {
@@ -66,10 +72,6 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        position: sticky;
-        top: 0;
-        background: #333333;
-        z-index: 1001;
     }
 
     .nav-menu-horizontal::-webkit-scrollbar {
@@ -128,6 +130,11 @@
 
         nav {
             padding: 0.4rem 0.75rem;
+        }
+
+        .menu-wrapper {
+            padding: 0.4rem 0.75rem;
+            margin: -0.4rem -0.75rem;
         }
 
         .menu-btn {
