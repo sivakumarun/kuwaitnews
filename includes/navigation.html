@@ -42,12 +42,6 @@
     .menu-wrapper {
         display: flex;
         align-items: center;
-        position: sticky;
-        top: 0;
-        background: #333333;
-        z-index: 1001;
-        padding: 0.5rem 1rem;
-        margin: -0.5rem -1rem;
     }
 
     .menu-btn {
@@ -72,6 +66,14 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        position: fixed;
+        top: 0;
+        left: 2.4rem; /* Offset to align with original position after .menu-btn */
+        width: fit-content;
+        background: #333333;
+        z-index: 1001;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
     }
 
     .nav-menu-horizontal::-webkit-scrollbar {
@@ -132,11 +134,6 @@
             padding: 0.4rem 0.75rem;
         }
 
-        .menu-wrapper {
-            padding: 0.4rem 0.75rem;
-            margin: -0.4rem -0.75rem;
-        }
-
         .menu-btn {
             padding: 0.3rem 0.5rem;
             font-size: 1.1rem;
@@ -144,6 +141,9 @@
 
         .nav-menu-horizontal {
             gap: 3px;
+            left: 2.1rem; /* Adjusted for mobile .menu-btn size */
+            padding-top: 0.4rem;
+            padding-bottom: 0.4rem;
         }
 
         .nav-menu-toggle {
