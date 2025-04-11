@@ -28,7 +28,9 @@
     .nav-container {
         background: #333333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: relative;
+        position: sticky;
+        top: 0;
+        width: 100%;
         z-index: 1000;
     }
 
@@ -42,8 +44,6 @@
     .menu-wrapper {
         display: flex;
         align-items: center;
-        position: sticky;
-        top: 0;
         background: #333333;
         z-index: 1001;
         padding: 0.5rem 1rem;
