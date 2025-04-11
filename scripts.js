@@ -40,6 +40,18 @@ async function loadCommonComponents() {
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
+        // Initialize menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isHidden = navMenu.classList.toggle('hidden');
+                menuBtn.setAttribute('aria-expanded', !isHidden);
+                menuBtn.innerHTML = isHidden ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+            });
+        }
+
         // Initialize search bar
         const searchBtn = document.querySelector('.search-btn');
         const searchInput = document.querySelector('.search-input');
