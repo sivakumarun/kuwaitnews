@@ -1,7 +1,10 @@
-<div class="header-container">
-    <!-- Your header content goes here -->
-    <header>
-        <h1>Your Website Header</h1>
+<!-- includes/navigation.html -->
+<div class="sticky-header">
+    <header class="site-header">
+        <!-- Your header content here -->
+        <div class="header-content">
+            <h1>Kuwait News</h1>
+        </div>
     </header>
     
     <div class="nav-container">
@@ -32,17 +35,23 @@
 </div>
 
 <style>
-    .header-container {
+    .sticky-header {
         position: sticky;
         top: 0;
         z-index: 1000;
-        background: white; /* Adjust as needed */
+        width: 100%;
     }
-    
-    header {
-        background: #f8f8f8; /* Your header background */
-        padding: 1rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    .site-header {
+        background: #f8f8f8;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 15px;
     }
 
     .nav-container {
@@ -63,7 +72,6 @@
         background: #333333;
         z-index: 1001;
         padding: 0.5rem 1rem;
-        margin: -0.5rem -1rem;
     }
 
     .menu-btn {
@@ -150,7 +158,6 @@
 
         .menu-wrapper {
             padding: 0.4rem 0.75rem;
-            margin: -0.4rem -0.75rem;
         }
 
         .menu-btn {
