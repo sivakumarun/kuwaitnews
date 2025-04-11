@@ -41,7 +41,7 @@ async function loadCommonComponents() {
         const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
-        // Initialize mobile menu toggle
+        // Initialize menu toggle
         const menuBtn = document.querySelector('.menu-btn');
         const navMenu = document.querySelector('.nav-menu');
         const overlay = document.querySelector('.mobile-overlay');
@@ -64,19 +64,14 @@ async function loadCommonComponents() {
             });
         }
 
-        // Initialize search bar toggle
+        // Initialize search bar
         const searchBtn = document.querySelector('.search-btn');
-        const searchBar = document.querySelector('.search-bar');
+        const searchInput = document.querySelector('.search-input');
         
-        if (searchBtn && searchBar) {
+        if (searchBtn && searchInput) {
             searchBtn.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    searchBar.classList.toggle('active');
-                    if (searchBar.classList.contains('active')) {
-                        searchBar.querySelector('.search-input').focus();
-                    }
-                }
+                e.preventDefault();
+                searchInput.focus();
             });
         }
 
