@@ -3,136 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు - కువైట్ తెలుగు వార్తలు">
-    <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు సమాజం, తాజా సమాచారం">
     <title>కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="/kuwaitnews/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Custom styles for news content */
-        .featured-news-card {
-            display: flex;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 1rem 0;
-            overflow: hidden;
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .featured-img {
-            width: 40%;
-            height: 250px;
-            object-fit: cover;
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            color: #333;
         }
-        .featured-content {
-            padding: 1rem;
-            width: 60%;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
         }
-        .news-category {
-            display: inline-block;
-            background-color: #e63946;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        .featured-content h2 {
-            color: #1a3c34;
-            font-size: 1.5rem;
-            margin: 0 0 0.5rem;
-        }
+        
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 1rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
         }
+        
         .news-card {
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
+        
         .news-card:hover {
             transform: translateY(-5px);
         }
+        
         .news-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
+        
         .news-content {
-            padding: 1rem;
+            padding: 15px;
         }
+        
         .news-title {
-            color: #1a3c34;
             font-size: 1.2rem;
-            margin: 0 0 0.5rem;
+            margin-bottom: 10px;
+            color: #1a3c34;
         }
-        .news-meta span {
-            margin-right: 1rem;
-            color: #666;
+        
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
             font-size: 0.9rem;
+            color: #666;
         }
+        
         .preview {
-            margin: 0.5rem 0;
-            color: #333;
-        }
-        .full-text {
-            display: none;
-            margin: 0.5rem 0;
-            color: #333;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .news-content.expanded .full-text {
+            margin-bottom: 15px;
             display: block;
         }
-        .news-content.expanded .preview {
+        
+        .full-text {
+            display: none;
+            margin-bottom: 15px;
+        }
+        
+        .news-card.expanded .preview {
             display: none;
         }
+        
+        .news-card.expanded .full-text {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .read-more {
             color: #2e6b5e;
             text-decoration: none;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 5px;
         }
+        
         .read-more:hover {
             color: #e63946;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; max-height: 0; }
-            to { opacity: 1; max-height: 1000px; }
-        }
+        
         @media (max-width: 768px) {
-            .featured-news-card {
-                flex-direction: column;
-            }
-            .featured-img, .featured-content {
-                width: 100%;
-            }
-            .news-grid {
+            .container {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header and Navigation injected by scripts.js -->
-
-    <!-- Content Area -->
     <div class="container">
         <main class="main-content">
             <section class="news-section">
                 <h2 class="section-title">కువైట్ వార్తలు</h2>
-                <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 06:00 PM</p>
-
-                <!-- News Grid -->
+                
                 <div class="news-grid">
                     <!-- News Item 1 -->
-                    <article class="news-card">
+                    <article class="news-card" id="news1">
                         <img src="/kuwaitnews/images/news1.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">మాజీ భర్తకు పరిహారం</h3>
@@ -145,12 +137,12 @@
                                 <p>20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది. ఈ కేసులో కోర్టు తీర్పు ప్రకారం, భార్యకు ఆమె మాజీ భర్త నెలకు 300 కువైట్ దినార్లు (సుమారు 1,000 డాలర్లు) పరిహారంగా చెల్లించాలని నిర్ణయించింది.</p>
                                 <p>ఈ తీర్పు కువైట్ లోని విడాకులు పొందిన మహిళల హక్కులకు సంబంధించిన చట్టాలను స్పష్టం చేసింది. న్యాయవాదులు ఈ తీర్పును ఒక మైలురాయిగా పరిగణిస్తున్నారు, ఇది భవిష్యత్తులో ఇలాంటి కేసులకు మార్గదర్శకంగా ఉంటుంది.</p>
                             </div>
-                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="read-more" onclick="toggleReadMore('news1')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                     
                     <!-- News Item 2 -->
-                    <article class="news-card">
+                    <article class="news-card" id="news2">
                         <img src="/kuwaitnews/images/news2.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">కొత్త వైద్య సేవల ప్రారంభం</h3>
@@ -163,109 +155,32 @@
                                 <p>కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది. ఈ కొత్త సేవలలో ప్రత్యేకంగా తెలుగు మాట్లాడే వైద్యుల సలహాలు, టెలిమెడిసిన్ సదుపాయాలు మరియు సాంస్కృతికంగా సున్నితమైన సంరక్షణ ఉన్నాయి.</p>
                                 <p>ఆసుపత్రి నిర్వాహకులు ఈ కొత్త సేవలు ప్రత్యేకంగా కువైట్‌లో నివసిస్తున్న తెలుగు సమాజం అవసరాలను దృష్టిలో ఉంచుకుని రూపొందించబడ్డాయని తెలిపారు. ఇది భాషా అవరోధాలను తగ్గించడానికి మరియు మెరుగైన వైద్య సేవలను అందించడానికి ఉద్దేశించబడింది.</p>
                             </div>
-                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="read-more" onclick="toggleReadMore('news2')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
-                    
-                    <!-- News Item 3 -->
-                    <article class="news-card">
-                        <img src="/kuwaitnews/images/news3.jpg" alt="News" class="news-img">
-                        <div class="news-content">
-                            <h3 class="news-title">సాంస్కృతిక కార్యక్రమం</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
-                                <span><i class="far fa-clock"></i> 06:00 PM</span>
-                            </div>
-                            <p class="preview">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం ఉంటాయి...</p>
-                            <div class="full-text">
-                                <p>స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉంటాయి. కార్యక్రమం కువైట్ లోని ప్రధాన సాంస్కృతిక కేంద్రంలో ఏప్రిల్ 5, 2025 రోజు సాయంత్రం 5 గంటల నుండి 10 గంటల వరకు నిర్వహించబడుతుంది.</p>
-                                <p>ఈ కార్యక్రమంలో పాల్గొనడానికి అన్ని తెలుగు కుటుంబాలను సంఘం ఆహ్వానించింది. ప్రవేశం ఉచితం మరియు వివిధ వయస్సు వర్గాలకు అనువైన కార్యక్రమాలు ఏర్పాటు చేయబడ్డాయి. ఈ సందర్భంగా తెలుగు సంస్కృతి, భాష మరియు సంప్రదాయాలను ప్రదర్శించే వివిధ పోటీలు కూడా నిర్వహించబడతాయి.</p>
-                            </div>
-                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Social Sharing -->
-                <div class="social-share">
-                    <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
-                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
                 </div>
             </section>
         </main>
-
-        <!-- Sidebar -->
+        
         <aside class="sidebar">
-            <div class="widget">
-                <h3 class="widget-title">ప్రకటన</h3>
-                <div class="ad-banner">ప్రకటన స్థలం</div>
-            </div>
-            <div class="widget">
-                <h3 class="widget-title">సబ్‌స్క్రైబ్ చేయండి</h3>
-                <form class="subscribe-form">
-                    <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్">
-                    <button type="submit" class="subscribe-btn">సబ్‌స్క్రైబ్</button>
-                </form>
-            </div>
-            <div class="widget">
-                <h3 class="widget-title">మమ్మల్ని అనుసరించండి</h3>
-                <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+            <!-- Sidebar content -->
         </aside>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#">గోప్యతా విధానం</a>
-            <a href="#">సంప్రదించండి</a>
-        </div>
-        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="/kuwaitnews/scripts.js"></script>
     <script>
-        // Social Sharing
-        document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = window.location.href;
-                const text = 'కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు';
-                if (btn.classList.contains('whatsapp')) {
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
-                } else if (btn.classList.contains('twitter')) {
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
-                } else if (btn.classList.contains('facebook')) {
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-                }
-            });
-        });
-
-        // Read More functionality
-        document.querySelectorAll('.read-more').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const newsCard = this.closest('.news-card');
-                const newsContent = newsCard.querySelector('.news-content');
-                
-                // Toggle the expanded class
-                newsContent.classList.toggle('expanded');
-                
-                // Change the text based on state
-                if (newsContent.classList.contains('expanded')) {
-                    this.innerHTML = 'తక్కువ చదవండి <i class="fas fa-arrow-up"></i>';
-                } else {
-                    this.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
-                }
-            });
-        });
+        function toggleReadMore(newsId) {
+            event.preventDefault();
+            const newsCard = document.getElementById(newsId);
+            const readMoreLink = newsCard.querySelector('.read-more');
+            
+            newsCard.classList.toggle('expanded');
+            
+            if (newsCard.classList.contains('expanded')) {
+                readMoreLink.innerHTML = 'తక్కువ చదవండి <i class="fas fa-arrow-up"></i>';
+            } else {
+                readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+            }
+        }
     </script>
 </body>
 </html>
