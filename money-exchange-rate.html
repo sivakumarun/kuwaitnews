@@ -3,121 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="తాజా మనీ ఎక్స్ఛేంజ్ రేట్లు - కువైట్ తెలుగు వార్తలు">
-    <title>మనీ ఎక్స్ఛేంజ్ రేటు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <meta name="description" content="కువైట్ లో తాజా కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు - Money Exchange Rates">
+    <title>మనీ ఎక్స్ఛేంజ్ రేట్లు - కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Header and Navigation injected by scripts.js -->
 
-    <!-- Content Area -->
+    <!-- Main Content -->
     <div class="container">
         <main class="main-content">
-            <section class="news-section">
-                <h2 class="section-title">మనీ ఎక్స్ఛేంజ్ రేట్లు</h2>
-                <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 01:21 PM</p>
+            <article class="news-section">
+                <h1 class="section-title">మనీ ఎక్స్ఛేంజ్ రేట్లు</h1>
+                <div class="news-meta">
+                    <span><i class="fas fa-sync-alt"></i> చివరిగా నవీకరించబడింది: <span id="last-updated"></span></span>
+                </div>
 
-                <!-- Exchange Rate Calculator -->
-                <h3>కరెన్సీ కన్వర్టర్</h3>
-                <div class="calculator">
-                    <div class="calculator-form">
-                        <div class="form-group">
-                            <label for="amount">మొత్తం:</label>
-                            <input type="number" id="amount" class="subscribe-input" value="1" min="1">
-                        </div>
-                        <div class="form-group">
-                            <label for="from-currency">నుండి:</label>
-                            <select id="from-currency" class="subscribe-input">
-                                <option value="KWD">కువైట్ దినార్ (KWD)</option>
-                                <option value="USD">యూఎస్ డాలర్ (USD)</option>
-                                <option value="EUR">యూరో (EUR)</option>
-                                <option value="INR">భారత రూపాయి (INR)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="to-currency">కు:</label>
-                            <select id="to-currency" class="subscribe-input">
-                                <option value="INR">భారత రూపాయి (INR)</option>
-                                <option value="KWD">కువైట్ దినార్ (KWD)</option>
-                                <option value="USD">యూఎస్ డాలర్ (USD)</option>
-                                <option value="EUR">యూరో (EUR)</option>
-                            </select>
-                        </div>
-                        <button id="convert-btn" class="subscribe-btn">కన్వర్ట్ చేయండి</button>
-                        <div class="result">
-                            <p id="conversion-result">277.04 INR</p>
-                        </div>
+                <!-- Exchange Rates Table -->
+                <section class="price-table-container">
+                    <h2><i class="fas fa-exchange-alt"></i> తాజా కరెన్సీ రేట్లు</h2>
+                    <div class="table-responsive">
+                        <table class="price-table">
+                            <caption>కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">కరెన్సీ</th>
+                                    <th scope="col">రేటు</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>KWD to INR</td>
+                                    <td>277.04</td>
+                                </tr>
+                                <tr>
+                                    <td>USD to INR</td>
+                                    <td>85.29</td>
+                                </tr>
+                                <tr>
+                                    <td>EUR to INR</td>
+                                    <td>93.86</td>
+                                </tr>
+                                <tr>
+                                    <td>GBP to INR</td>
+                                    <td>110.50</td>
+                                </tr>
+                                <tr>
+                                    <td>AED to INR</td>
+                                    <td>23.22</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
+                </section>
 
-                <!-- Exchange Rate Table -->
-                <h3>తాజా ఎక్స్ఛేంజ్ రేట్లు</h3>
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>కరెన్సీ</th>
-                            <th>రేటు</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1 KWD to INR</td>
-                            <td>277.04</td>
-                        </tr>
-                        <tr>
-                            <td>1 KWD to USD</td>
-                            <td>3.25</td>
-                        </tr>
-                        <tr>
-                            <td>1 KWD to EUR</td>
-                            <td>2.95</td>
-                        </tr>
-                        <tr>
-                            <td>1 USD to INR</td>
-                            <td>85.29</td>
-                        </tr>
-                        <tr>
-                            <td>1 EUR to INR</td>
-                            <td>93.86</td>
-                        </tr>
-                        <tr>
-                            <td>1 GBP to INR</td>
-                            <td>108.42</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- Social Sharing -->
-                <div class="social-share">
-                    <p>ఈ సమాచారాన్ని షేర్ చేయండి:</p>
-                    <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="share-btn facebook"><i class="fab fa-facebook"></i></a>
-                </div>
-            </section>
+                <!-- Additional Information -->
+                <section class="info-container">
+                    <h2><i class="fas fa-info-circle"></i> ఎక్స్ఛేంజ్ రేట్ల గురించి</h2>
+                    <div class="info-content">
+                        <p>ఈ పేజీలో చూపించిన కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు సమయానుసారం నవీకరించబడతాయి. ఖచ్చితమైన రేట్ల కోసం స్థానిక బ్యాంకులు లేదా ఎక్స్ఛేంజ్ కేంద్రాలను సంప్రదించండి.</p>
+                    </div>
+                </section>
+            </article>
         </main>
 
         <!-- Sidebar -->
         <aside class="sidebar">
+            <!-- Ad Banner -->
             <div class="widget">
-                <h3 class="widget-title">ప్రకటన</h3>
-                <div class="ad-banner">ప్రకటన స్థలం</div>
-            </div>
-            <div class="widget">
-                <h3 class="widget-title">సబ్‌స్క్రైబ్ చేయండి</h3>
-                <form class="subscribe-form">
-                    <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్">
-                    <button type="submit" class="subscribe-btn">సబ్‌స్క్రైబ్</button>
-                </form>
-            </div>
-            <div class="widget">
-                <h3 class="widget-title">మమ్మల్ని అనుసరించండి</h3>
-                <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <div class="ad-banner">
+                    <h3>గోల్డ్ జ్వెలరీ</h3>
+                    <p>కువైట్‌లోని ఉత్తమ జ్వెలరీ దుకాణాలు</p>
+                    <a href="#" class="subscribe-btn">ఇక్కడ క్లిక్ చేయండి</a>
                 </div>
+            </div>
+
+            <!-- Subscribe Widget -->
+            <div class="widget">
+                <h3 class="widget-title"><i class="fas fa-envelope"></i> సబ్‌స్క్రయిబ్ చేయండి</h3>
+                <p>తాజా ఎక్స్ఛేంజ్ రేట్ల కోసం మా న్యూస్‌లెటర్‌కు సబ్‌స్క్రయిబ్ చేయండి</p>
+                <form class="subscribe-form" id="newsletter-form">
+                    <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్" required>
+                    <button type="submit" class="subscribe-btn">సబ్‌స్క్రయిబ్</button>
+                </form>
             </div>
         </aside>
     </div>
@@ -125,69 +94,46 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="/kuwaitnews/privacy.html">గోప్యతా విధానం</a>
-            <a href="/kuwaitnews/contact.html">సంప్రదించండి</a>
+            <a href="about.html">మా గురించి</a>
+            <a href="contact.html">సంప్రదించండి</a>
+            <a href="advertise.html">ప్రకటించండి</a>
+            <a href="privacy.html">గోప్యతా విధానం</a>
         </div>
-        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook social-icon"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter social-icon"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp social-icon"></i></a>
+        </div>
+        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
     </footer>
 
     <!-- JavaScript -->
-    <script src="/kuwaitnews/scripts.js"></script>
+    <script src="scripts.js"></script>
     <script>
-        // Exchange Rate Calculator
-        document.getElementById('convert-btn').addEventListener('click', function() {
-            const amount = parseFloat(document.getElementById('amount').value);
-            const fromCurrency = document.getElementById('from-currency').value;
-            const toCurrency = document.getElementById('to-currency').value;
-            
-            const rates = {
-                'KWD': { 'INR': 277.04, 'USD': 3.25, 'EUR': 2.95 },
-                'USD': { 'INR': 85.29, 'KWD': 0.31, 'EUR': 0.92 },
-                'EUR': { 'INR': 93.86, 'KWD': 0.34, 'USD': 1.09 },
-                'INR': { 'KWD': 0.0036, 'USD': 0.012, 'EUR': 0.011 }
-            };
-            
-            if (fromCurrency === toCurrency) {
-                document.getElementById('conversion-result').textContent = `${amount} ${toCurrency}`;
-                return;
-            }
-            
-            let result;
-            if (fromCurrency === 'KWD' && toCurrency === 'INR') {
-                result = amount * rates.KWD.INR;
-            } else if (fromCurrency === 'INR' && toCurrency === 'KWD') {
-                result = amount * rates.INR.KWD;
-            } else if (fromCurrency === 'USD' && toCurrency === 'INR') {
-                result = amount * rates.USD.INR;
-            } else if (fromCurrency === 'INR' && toCurrency === 'USD') {
-                result = amount * rates.INR.USD;
-            } else if (fromCurrency === 'EUR' && toCurrency === 'INR') {
-                result = amount * rates.EUR.INR;
-            } else if (fromCurrency === 'INR' && toCurrency === 'EUR') {
-                result = amount * rates.INR.EUR;
-            } else {
-                const inInr = amount * rates[fromCurrency].INR;
-                result = inInr * rates.INR[toCurrency];
-            }
-            
-            document.getElementById('conversion-result').textContent = `${result.toFixed(2)} ${toCurrency}`;
-        });
-
-        // Social Sharing
-        document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = window.location.href;
-                const text = 'తాజా మనీ ఎక్స్ఛేంజ్ రేట్లు - కువైట్ తెలుగు వార్తలు';
-                if (btn.classList.contains('whatsapp')) {
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
-                } else if (btn.classList.contains('twitter')) {
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
-                } else if (btn.classList.contains('facebook')) {
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+        // Update last updated time
+        function updateLastUpdated() {
+            try {
+                const now = new Date();
+                const options = { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true
+                };
+                const lastUpdated = document.getElementById('last-updated');
+                if (lastUpdated) {
+                    lastUpdated.textContent = now.toLocaleString('te-IN', options);
                 }
-            });
-        });
+            } catch (error) {
+                console.error('Time update error:', error);
+            }
+        }
+        
+        updateLastUpdated();
     </script>
 </body>
 </html>
