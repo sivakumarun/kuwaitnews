@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="కువైట్ మరియు భారతదేశంలో తాజా గోల్డ్ ధరలు - Kuwait Gold Price in KWD and INR">
     <title>గోల్డ్ ధర - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Updated to relative path -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<!--    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">-->
-<!--    <link rel="icon" href="/kuwaitnews/images/favicon.ico" type="image/x-icon">-->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"> -->
+    <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
     <!-- Header and Navigation injected by scripts.js -->
@@ -233,7 +233,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="/kuwaitnews/money-exchange-rate.html" class="read-more">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a>
+                <a href="news-kuwait.html" class="read-more">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a> <!-- Fixed link -->
             </div>
 
             <!-- Gold Price Tips -->
@@ -262,10 +262,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="/kuwaitnews/about.html">మా గురించి</a>
-            <a href="/kuwaitnews/contact.html">సంప్రదించండి</a>
-            <a href="/kuwaitnews/advertise.html">ప్రకటించండి</a>
-            <a href="/kuwaitnews/privacy.html">గోప్యతా విధానం</a>
+            <a href="about.html">మా గురించి</a>
+            <a href="contact.html">సంప్రదించండి</a>
+            <a href="advertise.html">ప్రకటించండి</a>
+            <a href="privacy.html">గోప్యతా విధానం</a>
         </div>
         <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook social-icon"></i></a>
@@ -278,31 +278,38 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="/kuwaitnews/scripts.js"></script>
+    <script src="scripts.js"></script> <!-- Updated to relative path -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Initialize chart
-        const ctx = document.getElementById('goldPriceChart').getContext('2d');
-        const goldChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: Array.from({length: 30}, (_, i) => (i + 1) + 'వ రోజు'),
-                datasets: [{
-                    label: '24K Gold Price (KWD)',
-                    data: Array.from({length: 30}, () => Math.random() * 5 + 28),
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: false
+        // Initialize chart with error handling
+        const ctx = document.getElementById('goldPriceChart')?.getContext('2d');
+        let goldChart;
+        if (ctx) {
+            try {
+                goldChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: Array.from({length: 30}, (_, i) => (i + 1) + 'వ రోజు'),
+                        datasets: [{
+                            label: '24K Gold Price (KWD)',
+                            data: Array.from({length: 30}, () => Math.random() * 5 + 28),
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: false
+                            }
+                        }
                     }
-                }
+                });
+            } catch (error) {
+                console.error('Chart initialization failed:', error);
             }
-        });
+        }
 
         // Chart currency toggle
         document.querySelectorAll('.chart-btn').forEach(btn => {
@@ -316,58 +323,59 @@
                     const newData = Array.from({length: 30}, () => 
                         currency === 'kwd' ? Math.random() * 5 + 28 : Math.random() * 1500 + 8000);
                     
-                    goldChart.data.datasets[0].label = newLabel;
-                    goldChart.data.datasets[0].data = newData;
-                    goldChart.update();
+                    if (goldChart) {
+                        goldChart.data.datasets[0].label = newLabel;
+                        goldChart.data.datasets[0].data = newData;
+                        goldChart.update();
+                    }
                 }
             });
         });
 
         // Gold Price Calculator
-        document.getElementById('gold-calculator').addEventListener('submit', function(e) {
+        document.getElementById('gold-calculator')?.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const goldType = document.getElementById('gold-type').value;
-            const location = document.getElementById('location').value;
-            const weight = parseFloat(document.getElementById('weight').value);
+            const goldType = document.getElementById('gold-type')?.value;
+            const location = document.getElementById('location')?.value;
+            const weight = parseFloat(document.getElementById('weight')?.value);
             
             const prices = {
-                kuwait: {
-                    '24': 31.03,
-                    '22': 28.45,
-                    '18': 23.30
-                },
-                hyderabad: {
-                    '24': 9164,
-                    '22': 8400,
-                    '18': 6873
-                },
-                vijayawada: {
-                    '24': 9167,
-                    '22': 8400,
-                    '18': 6873
-                }
+                kuwait: { '24': 31.03, '22': 28.45, '18': 23.30 },
+                hyderabad: { '24': 9164, '22': 8400, '18': 6873 },
+                vijayawada: { '24': 9167, '22': 8400, '18': 6873 }
             };
             
-            const currency = location === 'kuwait' ? 'KWD' : 'INR';
-            const pricePerGram = prices[location][goldType];
-            const totalPrice = (pricePerGram * weight).toFixed(2);
-            
-            document.getElementById('result').textContent = `${currency} ${totalPrice}`;
+            try {
+                const currency = location === 'kuwait' ? 'KWD' : 'INR';
+                const pricePerGram = prices[location][goldType];
+                const totalPrice = (pricePerGram * weight).toFixed(2);
+                document.getElementById('result').textContent = `${currency} ${totalPrice}`;
+            } catch (error) {
+                console.error('Calculator error:', error);
+                document.getElementById('result').textContent = 'ఎర్రర్: లెక్కింపు విఫలమైంది';
+            }
         });
 
         // Update last updated time
         function updateLastUpdated() {
-            const now = new Date();
-            const options = { 
-                day: '2-digit', 
-                month: '2-digit', 
-                year: 'numeric',
-                hour: '2-digit', 
-                minute: '2-digit',
-                hour12: true
-            };
-            document.getElementById('last-updated').textContent = now.toLocaleString('te-IN', options);
+            try {
+                const now = new Date();
+                const options = { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true
+                };
+                const lastUpdated = document.getElementById('last-updated');
+                if (lastUpdated) {
+                    lastUpdated.textContent = now.toLocaleString('te-IN', options);
+                }
+            } catch (error) {
+                console.error('Time update error:', error);
+            }
         }
         
         updateLastUpdated();
