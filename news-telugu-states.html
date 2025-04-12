@@ -1,161 +1,214 @@
-<!DOCTYPE html>
-<html lang="te">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="తాజా తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు">
-    <title>తెలుగు రాష్ట్రాల వార్తలు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <!-- Header and Navigation injected by scripts.js -->
-    <header class="site-header">
-        <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
-    </header>
-    <nav class="nav-menu">
-        <ul>
-            <li><a href="index.html">హోమ్</a></li>
-            <li><a href="news-kuwait.html">కువైట్ వార్తలు</a></li>
-            <li><a href="news-telugu-states.html">తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="gold-price.html">బంగారం ధర</a></li>
-        </ul>
-    </nav>
+/* styles.css */
 
-    <div class="content-bg">
-        <div class="container">
-            <main class="main-content">
-                <section class="news-section">
-                    <h2 class="section-title">తెలుగు రాష్ట్రాల వార్తలు</h2>
-                    <div class="news-grid">
-                        <!-- News Item 1 -->
-                        <article class="news-card" id="news1">
-                            <img src="images/news1.jpg" alt="News" class="news-image">
-                            <div class="news-body">
-                                <h3 class="news-title">మాజీ భర్తకు పరిహారం</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 2025-04-02</span>
-                                    <span><i class="far fa-clock"></i> 02:15 PM</span>
-                                </div>
-                                <p class="news-excerpt">20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది...</p>
-                                <div class="full-text">
-                                    <p>20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది. ఈ కేసులో కోర్టు తీర్పు ప్రకారం, భార్యకు ఆమె మాజీ భర్త నెలకు 300 కువైట్ దినార్లు (సుమారు 1,000 డాలర్లు) పరిహారంగా చెల్లించాలని నిర్ణయించింది.</p>
-                                    <p>ఈ తీర్పు కువైట్ లోని విడాకులు పొందిన మహిళల హక్కులకు సంబంధించిన చట్టాలను స్పష్టం చేసింది. న్యాయవాదులు ఈ తీర్పును ఒక మైలురాయిగా పరిగణిస్తున్నారు, ఇది భవిష్యత్తులో ఇలాంటి కేసులకు మార్గదర్శకంగా ఉంటుంది.</p>
-                                    <div class="share-buttons">
-                                        <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
-                                        <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
-                                        <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                    </div>
-                                </div>
-                                <a href="#" class="read-more" onclick="toggleReadMore('news1')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
-                        
-                        <!-- News Item 2 -->
-                        <article class="news-card" id="news2">
-                            <img src="images/news2.jpg" alt="News" class="news-image">
-                            <div class="news-body">
-                                <h3 class="news-title">కొత్త వైద్య సేవల ప్రారంభం</h3>
-                                <div class="news-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
-                                    <span><i class="far fa-clock"></i> 09:00 AM</span>
-                                </div>
-                                <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది...</p>
-                                <div class="full-text">
-                                    <p>కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది. ఈ కొత్త సేవలలో ప్రత్యేకంగా తెలుగు మాట్లాడే వైద్యుల సలహాలు, టెలిమెడిసిన్ సదుపాయాలు మరియు సాంస్కృతికంగా సున్నితమైన సంరక్షణ ఉన్నాయి.</p>
-                                    <p>ఆసుపత్రి నిర్వాహకులు ఈ కొత్త సేవలు ప్రత్యేకంగా కువైట్‌లో నివసిస్తున్న తెలుగు సమాజం అవసరాలను దృష్టిలో ఉంచుకుని రూపొందించబడ్డాయని తెలిపారు. ఇది భాషా అవరోధాలను తగ్గించడానికి మరియు మెరుగైన వైద్య సేవలను అందించడానికి ఉద్దేశించబడింది.</p>
-                                    <div class="share-buttons">
-                                        <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
-                                        <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
-                                        <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                    </div>
-                                </div>
-                                <a href="#" class="read-more" onclick="toggleReadMore('news2')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-            </main>
-            
-            <aside class="sidebar">
-                <div class="widget">
-                    <h3 class="widget-title">ప్రకటన</h3>
-                    <div class="ad-banner">ప్రకటన స్థలం</div>
-                </div>
-                <div class="widget">
-                    <h3 class="widget-title">సబ్‌స్క్రైబ్ చేయండి</h3>
-                    <form class="subscribe-form">
-                        <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్">
-                        <button type="submit" class="subscribe-btn">సబ్‌స్క్రైబ్</button>
-                    </form>
-                </div>
-                <div class="widget">
-                    <h3 class="widget-title">మమ్మల్ని అనుసరించండి</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </div>
+/* Base Styles */
+:root {
+    --primary: #1a3c34;
+    --secondary: #2e6b5e;
+    --accent: #e63946;
+}
 
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="about.html">మా గురించి</a>
-            <a href="contact.html">సంప్రదించండి</a>
-            <a href="advertise.html">ప్రకటించండి</a>
-            <a href="privacy.html">గోప్యతా విధానం</a>
-        </div>
-        <div class="social-links">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook social-icon"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter social-icon"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp social-icon"></i></a>
-        </div>
-        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
-    </footer>
+body {
+    font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
+    margin BMW: 0;
+    color: #333;
+}
 
-    <script src="scripts.js"></script>
-    <script>
-        // Initialize news cards as collapsed
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded for news-telugu-states.html');
-            document.querySelectorAll('.news-card').forEach(item => {
-                item.classList.remove('expanded');
-                const readMoreLink = item.querySelector('.read-more');
-                if (readMoreLink) {
-                    readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
-                }
-            });
-            // Debug header injection
-            const header = document.querySelector('.site-header');
-            if (!header) {
-                console.warn('Header not found. Ensure scripts.js injects .site-header');
-            }
-        });
+/* Header and Navigation */
+.site-header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
 
-        // Read More Toggle
-        function toggleReadMore(newsId) {
-            event.preventDefault();
-            const newsCard = document.getElementById(newsId);
-            const readMoreLink = newsCard.querySelector('.read-more');
-            
-            if (!newsCard || !readMoreLink) {
-                console.error(`News card or read-more link not found for ID: ${newsId}`);
-                return;
-            }
-            
-            newsCard.classList.toggle('expanded');
-            
-            if (newsCard.classList.contains('expanded')) {
-                readMoreLink.innerHTML = 'తక్కువ చదవండి <i class="fas fa-arrow-up"></i>';
-            } else {
-                readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
-            }
-        }
-    </script>
-</body>
-</html>
+.site-title {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.nav-menu {
+    background: var(--secondary);
+    padding: 1rem;
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--accent);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.content-bg {
+    background-color: #f8f8f8;
+    width: 100%;
+}
+
+.sidebar {
+    /* Sidebar styles */
+}
+
+.footer {
+    /* Footer styles */
+}
+
+/* News Content Area Styles */
+.news-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.news-image {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.news-body {
+    padding: 15px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-title {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+}
+
+.news-meta span {
+    margin-right: 1rem;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.news-excerpt {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.full-text {
+    display: none;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.news-card.expanded .news-excerpt {
+    display: none;
+}
+
+.news-card.expanded .full-text {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background: var(--secondary);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.read-more:hover {
+    background: var(--accent);
+}
+
+.share-buttons {
+    display: none;
+    margin-top: 10px;
+}
+
+.news-card.expanded .share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.share-buttons a {
+    color: #333;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.share-buttons a:hover {
+    color: var(--accent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .news-card {
+        flex-direction: column;
+    }
+    .news-image {
+        width: 100%;
+        height: 200px;
+    }
+    .news-body {
+        width: 100%;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
