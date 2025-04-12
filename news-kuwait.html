@@ -6,7 +6,7 @@
     <meta name="description" content="కువైట్‌లోని తెలుగు సమాజానికి తాజా వార్తలు - కువైట్ తెలుగు వార్తలు">
     <meta name="keywords" content="కువైట్ వార్తలు, తెలుగు సమాజం, తాజా సమాచారం">
     <title>కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="/kuwaitnews/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Custom styles for news content */
@@ -74,13 +74,52 @@
         .news-excerpt {
             margin: 0.5rem 0;
             color: #333;
+            transition: opacity 0.3s ease;
+        }
+        .full-text {
+            max-height: 0;
+            overflow: hidden;
+            margin-bottom: 0;
+            transition: max-height 0.5s ease, margin-bottom 0.3s ease;
+        }
+        .news-card.expanded .news-excerpt {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+        }
+        .news-card.expanded .full-text {
+            max-height: 1000px; /* Adjust based on content */
+            margin-bottom: 15px;
         }
         .read-more {
-            color: #2e6b5e;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            background: #2e6b5e;
+            color: white;
             text-decoration: none;
             font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s ease;
         }
         .read-more:hover {
+            background: #e63946;
+        }
+        .share-buttons {
+            display: none;
+            margin-top: 10px;
+        }
+        .news-card.expanded .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .share-buttons a {
+            color: #333;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .share-buttons a:hover {
             color: #e63946;
         }
         @media (max-width: 768px) {
@@ -106,12 +145,11 @@
                 <h2 class="section-title">కువైట్ వార్తలు</h2>
                 <p class="news-meta">నవీకరణ తేదీ: 04-04-2025 | సమయం: 06:00 PM</p>
 
-                
                 <!-- News Grid -->
                 <div class="news-grid">
                     <!-- News Item 1 -->
-                    <article class="news-card">
-                        <img src="/kuwaitnews/images/news1.jpg" alt="News" class="news-img">
+                    <article class="news-card" id="news1">
+                        <img src="images/news1.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">మాజీ భర్తకు పరిహారం</h3>
                             <div class="news-meta">
@@ -119,35 +157,62 @@
                                 <span><i class="far fa-clock"></i> 02:15 PM</span>
                             </div>
                             <p class="news-excerpt">20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది...</p>
-                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            <div class="full-text">
+                                <p>20 ఏళ్ల వైవాహిక జీవితం ముగిసిన తర్వాత తన మాజీ భర్తకు న్యాయమైన ఆర్థిక పరిహారాన్ని చెల్లించాలని అప్పీల్స్ కోర్టు ఓ మహిళకు అనుకూలంగా తీర్పునిచ్చింది. ఈ కేసులో కోర్టు తీర్పు ప్రకారం, భార్యకు ఆమె మాజీ భర్త నెలకు 300 కువైట్ దినార్లు (సుమారు 1,000 డాలర్లు) పరిహారంగా చెల్లించాలని నిర్ణయించింది.</p>
+                                <p>ఈ తీర్పు కువైట్ లోని విడాకులు పొందిన మహిళల హక్కులకు సంబంధించిన చట్టాలను స్పష్టం చేసింది. న్యాయవాదులు ఈ తీర్పును ఒక మైలురాయిగా పరిగణిస్తున్నారు, ఇది భవిష్యత్తులో ఇలాంటి కేసులకు మార్గదర్శకంగా ఉంటుంది.</p>
+                                <div class="share-buttons">
+                                    <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more" onclick="toggleReadMore('news1')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                     
                     <!-- News Item 2 -->
-                    <article class="news-card">
-                        <img src="/kuwaitnews/images/news2.jpg" alt="News" class="news-img">
+                    <article class="news-card" id="news2">
+                        <img src="images/news2.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">కొత్త వైద్య సేవల ప్రారంభం</h3>
                             <div class="news-meta">
                                 <span><i class="far fa-calendar-alt"></i> 2025-04-03</span>
                                 <span><i class="far fa-clock"></i> 09:00 AM</span>
                             </div>
-                            <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది。</p>
-                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            <p class="news-excerpt">కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది...</p>
+                            <div class="full-text">
+                                <p>కువైట్‌లోని ఒక ప్రముఖ ఆసుపత్రి కొత్త వైద్య సేవలను ప్రారంభించింది, ఇది స్థానిక తెలుగు సమాజానికి మెరుగైన ఆరోగ్య సంరక్షణను అందిస్తుంది. ఈ కొత్త సేవలలో ప్రత్యేకంగా తెలుగు మాట్లాడే వైద్యుల సలహాలు, టెలిమెడిసిన్ సదుపాయాలు మరియు సాంస్కృతికంగా సున్నితమైన సంరక్షణ ఉన్నాయి.</p>
+                                <p>ఆసుపత్రి నిర్వాహకులు ఈ కొత్త సేవలు ప్రత్యేకంగా కువైట్‌లో నివసిస్తున్న తెలుగు సమాజం అవసరాలను దృష్టిలో ఉంచుకుని రూపొందించబడ్డాయని తెలిపారు. ఇది భాషా అవరోధాలను తగ్గించడానికి మరియు మెరుగైన వైద్య సేవలను అందించడానికి ఉద్దేశించబడింది.</p>
+                                <div class="share-buttons">
+                                    <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more" onclick="toggleReadMore('news2')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                     
                     <!-- News Item 3 -->
-                    <article class="news-card">
-                        <img src="/kuwaitnews/images/news3.jpg" alt="News" class="news-img">
+                    <article class="news-card" id="news3">
+                        <img src="images/news3.jpg" alt="News" class="news-img">
                         <div class="news-content">
                             <h3 class="news-title">సాంస్కృతిక కార్యక్రమం</h3>
                             <div class="news-meta">
                                 <span><i class="far fa-calendar-alt"></i> 2025-04-04</span>
                                 <span><i class="far fa-clock"></i> 06:00 PM</span>
                             </div>
-                            <p class="news-excerpt">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉంటాయి。</p>
-                            <a href="#" class="read-more">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            <p class="news-excerpt">స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉంటాయి...</p>
+                            <div class="full-text">
+                                <p>స్థానిక తెలుగు సంఘం ఈ వారాంతంలో ఒక సాంస్కృతిక కార్యక్రమాన్ని నిర్వహించనుంది. ఈ కార్యక్రమంలో సాంప్రదాయ నృత్యాలు, సంగీతం మరియు తెలుగు వంటకాలు ఉంటాయి. కువైట్‌లోని తెలుగు సమాజం సభ్యులు ఈ కార్యక్రమంలో పాల్గొని, తమ సంస్కృతిని ప్రదర్శించే అవకాశం పొందుతారు.</p>
+                                <p>ఈ కార్యక్రమం స్థానిక సమాజంలో ఐక్యతను పెంపొందించడానికి మరియు సాంస్కృతిక వారసత్వాన్ని యువతకు పరిచయం చేయడానికి ఉద్దేశించబడింది.</p>
+                                <div class="share-buttons">
+                                    <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more" onclick="toggleReadMore('news3')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -196,8 +261,25 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="/kuwaitnews/scripts.js"></script>
+    <script src="scripts.js"></script>
     <script>
+        // Read More Toggle
+        function toggleReadMore(newsId) {
+            event.preventDefault();
+            const newsCard = document.getElementById(newsId);
+            const readMoreLink = newsCard.querySelector('.read-more');
+            
+            if (!newsCard || !readMoreLink) return; // Error handling
+            
+            newsCard.classList.toggle('expanded');
+            
+            if (newsCard.classList.contains('expanded')) {
+                readMoreLink.innerHTML = 'తక్కువ చదవండి <i class="fas fa-arrow-up"></i>';
+            } else {
+                readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+            }
+        }
+
         // Social Sharing
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
