@@ -7,8 +7,6 @@
     <title>గోల్డ్ ధర - కువైట్ తెలుగు వార్తలు</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"> -->
-    <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
     <!-- Header and Navigation injected by scripts.js -->
@@ -206,8 +204,50 @@
             </div>
 
             <!-- Exchange Rates Widget -->
-            <div class="widget">
+            <div class="widget exchange-widget" id="exchange1">
                 <h3 class="widget-title"><i class="fas fa-exchange-alt"></i> మనీ ఎక్స్ఛేంజ్ రేట్లు</h3>
+                <p class="news-excerpt">తాజా కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు కువైట్ మరియు ఇతర ప్రధాన కరెన్సీలకు...</p>
+                <div class="full-text">
+                    <p>కువైట్ దినార్ (KWD) మరియు ఇతర ప్రధాన కరెన్సీల మధ్య తాజా ఎక్స్ఛేంజ్ రేట్లు ఇక్కడ ఉన్నాయి. ఈ రేట్లు రోజువారీగా నవీకరించబడతాయి మరియు అంతర్జాతీయ మార్కెట్ ఆధారంగా మారుతాయి.</p>
+                    <div class="table-responsive">
+                        <table class="price-table">
+                            <caption>కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">కరెన్సీ</th>
+                                    <th scope="col">రేటు</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>KWD to INR</td>
+                                    <td>277.04</td>
+                                </tr>
+                                <tr>
+                                    <td>USD to INR</td>
+                                    <td>85.29</td>
+                                </tr>
+                                <tr>
+                                    <td>EUR to INR</td>
+                                    <td>93.86</td>
+                                </tr>
+                                <tr>
+                                    <td>GBP to INR</td>
+                                    <td>112.45</td>
+                                </tr>
+                                <tr>
+                                    <td>AUD to INR</td>
+                                    <td>57.32</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="share-buttons">
+                        <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="price-table">
                         <caption>కరెన్సీ ఎక్స్ఛేంజ్ రేట్లు</caption>
@@ -233,7 +273,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="money-exchange-rate.html" class="read-more">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="read-more" onclick="toggleReadMore('exchange1')">మరిన్ని చూడండి <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <!-- Gold Price Tips -->
@@ -281,6 +321,34 @@
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Initialize exchange widget as collapsed
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.exchange-widget').forEach(widget => {
+                widget.classList.remove('expanded');
+                const readMoreLink = widget.querySelector('.read-more');
+                if (readMoreLink) {
+                    readMoreLink.innerHTML = 'మరిన్ని చూడండి <i class="fas fa-arrow-right"></i>';
+                }
+            });
+        });
+
+        // Read More Toggle
+        function toggleReadMore(widgetId) {
+            event.preventDefault();
+            const widget = document.getElementById(widgetId);
+            const readMoreLink = widget.querySelector('.read-more');
+            
+            if (!widget || !readMoreLink) return; // Error handling
+            
+            widget.classList.toggle('expanded');
+            
+            if (widget.classList.contains('expanded')) {
+                readMoreLink.innerHTML = 'తక్కువ చూడండి <i class="fas fa-arrow-up"></i>';
+            } else {
+                readMoreLink.innerHTML = 'మరిన్ని చూడండి <i class="fas fa-arrow-right"></i>';
+            }
+        }
+
         // Initialize chart with error handling
         const ctx = document.getElementById('goldPriceChart')?.getContext('2d');
         let goldChart;
@@ -380,5 +448,65 @@
         
         updateLastUpdated();
     </script>
+    <style>
+        /* Custom styles for exchange widget */
+        .exchange-widget {
+            position: relative;
+        }
+        .exchange-widget .news-excerpt {
+            margin: 0.5rem 0;
+            color: #333;
+            display: block;
+        }
+        .exchange-widget .full-text {
+            display: none;
+            margin-bottom: 15px;
+        }
+        .exchange-widget.expanded .news-excerpt {
+            display: none;
+        }
+        .exchange-widget.expanded .full-text {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .exchange-widget.expanded .table-responsive:last-of-type {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .exchange-widget .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            background: #2e6b5e;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        .exchange-widget .read-more:hover {
+            background: #e63946;
+        }
+        .exchange-widget .share-buttons {
+            display: none;
+            margin-top: 10px;
+        }
+        .exchange-widget.expanded .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .exchange-widget .share-buttons a {
+            color: #333;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .exchange-widget .share-buttons a:hover {
+            color: #e63946;
+        }
+    </style>
 </body>
 </html>
