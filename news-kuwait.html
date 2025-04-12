@@ -58,17 +58,19 @@
             display: block;
         }
         .full-text {
-            max-height: 0;
-            overflow: hidden;
-            margin-bottom: 0;
-            transition: max-height 0.5s ease, margin-bottom 0.3s ease;
+            display: none;
+            margin-bottom: 15px;
         }
         .news-card.expanded .news-excerpt {
             display: none;
         }
         .news-card.expanded .full-text {
-            max-height: 1000px; /* Adjust based on content */
-            margin-bottom: 15px;
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .read-more {
             display: inline-flex;
@@ -250,6 +252,17 @@
     <!-- JavaScript -->
     <script src="scripts.js"></script>
     <script>
+        // Initialize news cards as collapsed
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.news-card').forEach(card => {
+                card.classList.remove('expanded');
+                const readMoreLink = card.querySelector('.read-more');
+                if (readMoreLink) {
+                    readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+                }
+            });
+        });
+
         // Read More Toggle
         function toggleReadMore(newsId) {
             event.preventDefault();
