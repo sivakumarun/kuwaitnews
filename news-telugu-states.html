@@ -10,17 +10,6 @@
 </head>
 <body>
     <!-- Header and Navigation injected by scripts.js -->
-    <header class="site-header static-header">
-        <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
-    </header>
-    <nav class="nav-menu static-nav">
-        <ul>
-            <li><a href="index.html">హోమ్</a></li>
-            <li><a href="news-kuwait.html">కువైట్ వార్తలు</a></li>
-            <li><a href="news-telugu-states.html">తెలుగు రాష్ట్రాల వార్తలు</a></li>
-            <li><a href="gold-price.html">బంగారం ధర</a></li>
-        </ul>
-    </nav>
 
     <div class="content-bg">
         <div class="container">
@@ -120,7 +109,7 @@
 
     <script src="scripts.js"></script>
     <script>
-        // Initialize news cards and check for header duplicates
+        // Initialize news cards and debug header injection
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded for news-telugu-states.html');
             
@@ -133,22 +122,20 @@
                 }
             });
 
-            // Check for header/nav injection
-            const headers = document.querySelectorAll('.site-header');
-            const navs = document.querySelectorAll('.nav-menu');
-            if (headers.length > 1) {
-                console.log(`Found ${headers.length} headers. Removing static header.`);
-                const staticHeader = document.querySelector('.static-header');
-                if (staticHeader) staticHeader.remove();
-            }
-            if (navs.length > 1) {
-                console.log(`Found ${navs.length} navs. Removing static nav.`);
-                const staticNav = document.querySelector('.static-nav');
-                if (staticNav) staticNav.remove();
-            }
-            if (headers.length === 0) {
-                console.warn('No header found. Scripts.js may have failed to inject .site-header.');
-            }
+            // Debug header/nav injection
+            setTimeout(() => {
+                const header = document.querySelector('.site-header');
+                const nav = document.querySelector('.nav-menu');
+                if (!header || !nav) {
+                    console.error('Header or navigation missing after scripts.js execution.', {
+                        headerFound: !!header,
+                        navFound: !!nav,
+                        page: window.location.pathname
+                    });
+                } else {
+                    console.log('Header and navigation injected successfully.');
+                }
+            }, 1000); // Delay to allow scripts.js to run
         });
 
         // Read More Toggle
