@@ -1,134 +1,132 @@
-// Global configuration
-const config = {
-    basePath: window.location.hostname.includes('github.io') ? '/kuwaitnews' : ''
-};
-
-// Component loader
-async function loadComponent(componentName, targetSelector) {
+// Function to load HTML components (header/nav)
+async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
-        const response = await fetch(`${config.basePath}/includes/${componentName}.html`);
-        if (!response.ok) throw new Error('Network response was not ok');
+        console.log(`Attempting to load ${url}`);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${url}: ${response.statusText}`);
+        }
         const html = await response.text();
-        document.querySelector(targetSelector).insertAdjacentHTML('beforeend', html);
+        const target = document.querySelector(targetElement);
+        if (!target) {
+            throw new Error(`Target element '${targetElement}' not found`);
+        }
+        target.insertAdjacentHTML(position, html);
+        console.log(`Successfully loaded ${url}`);
         return true;
     } catch (error) {
-        console.error(`Failed to load ${componentName}:`, error);
+        console.error('Error loading component:', error);
+        // Display error to user
+        const errorDiv = document.createElement('div');
+        errorDiv.style.color = 'red';
+        errorDiv.style.padding = '10px';
+        errorDiv.style.backgroundColor = '#ffeeee';
+        errorDiv.textContent = `Error loading component: ${error.message}`;
+        document.body.prepend(errorDiv);
         return false;
     }
 }
 
-// Initialize components
-async function initPage() {
-    // Create structure
-    document.body.insertAdjacentHTML('afterbegin', `
-        <div class="top-wrapper">
-            <!-- Header will load here -->
-            <!-- Navigation will load here -->
-        </div>
-        <div class="content-bg">
-            <div class="container">
-                <!-- Main content -->
-            </div>
-        </div>
-    `);
+// Main function to load components
+async function loadCommonComponents() {
+    try {
+        // Clear any existing top-wrapper to prevent duplicates
+        const existingWrapper = document.querySelector('.top-wrapper');
+        if (existingWrapper) existingWrapper.remove();
 
-    // Load components
-    await Promise.all([
-        loadComponent('header', '.top-wrapper'),
-        loadComponent('navigation', '.top-wrapper')
-    ]);
+        // Create wrapper structure
+        document.body.insertAdjacentHTML('afterbegin', `
+            <div class="top-wrapper"></div>
+        `);
 
-    // Initialize functionality
-    initHeader();
-    initNavigation();
-}
+        // Use relative paths for GitHub Pages
+        const basePath = window.location.hostname.includes('github.io') ? '/kuwaitnews' : '';
+        
+        // Load header
+        const headerLoaded = await loadComponent(`${basePath}/includes/header.html`, '.top-wrapper');
+        if (!headerLoaded) throw new Error('Header failed to load');
 
-function initHeader() {
-    // Search functionality
-    const searchBtn = document.querySelector('.search-btn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.search-input')?.focus();
-        });
+        // Load navigation
+        const navLoaded = await loadComponent(`${basePath}/includes/navigation.html`, '.top-wrapper');
+        if (!navLoaded) throw new Error('Navigation failed to load');
+
+        // Initialize components after a small delay to ensure DOM is ready
+        setTimeout(initializeComponents, 100);
+        
+        document.dispatchEvent(new Event('commonComponentsLoaded'));
+        console.log('Common components loaded successfully');
+    } catch (error) {
+        console.error('Error in loadCommonComponents:', error);
+        // Display error to user
+        const errorDiv = document.createElement('div');
+        errorDiv.style.color = 'red';
+        errorDiv.style.padding = '10px';
+        errorDiv.style.backgroundColor = '#ffeeee';
+        errorDiv.textContent = `Error loading page components: ${error.message}`;
+        document.body.prepend(errorDiv);
     }
 }
 
-function initNavigation() {
-    // Desktop hover dropdowns
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 768) {
-                dropdown.querySelector('.dropdown-menu').style.display = 'block';
-            }
+function initializeComponents() {
+    // Initialize menu toggle for vertical list
+    const menuBtn = document.querySelector('.menu-btn');
+    const navMenuToggle = document.querySelector('.nav-menu-toggle');
+    
+    if (menuBtn && navMenuToggle) {
+        menuBtn.addEventListener('click', () => {
+            const isActive = navMenuToggle.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', isActive);
+            menuBtn.innerHTML = isActive ? 
+                '<i class="fas fa-times"></i>' : 
+                '<i class="fas fa-bars"></i>';
         });
-        
-        dropdown.addEventListener('mouseleave', () => {
-            if (window.innerWidth > 768) {
-                dropdown.querySelector('.dropdown-menu').style.display = 'none';
-            }
-        });
-    });
+    }
 
-    // Mobile click dropdowns
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
+    // Initialize dropdown toggle for mobile
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
-                const menu = this.nextElementSibling;
-                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                const dropdownMenu = toggle.nextElementSibling;
+                if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
+                    dropdownMenu.classList.toggle('active');
+                }
             }
         });
     });
 
-    // Mobile menu toggle
-    document.querySelector('.menu-btn')?.addEventListener('click', () => {
-        document.querySelector('.nav-menu-toggle').classList.toggle('active');
-    });
-}
-
-// Start initialization
-document.addEventListener('DOMContentLoaded', initPage);
-
-// Enhanced mobile menu toggle
-function initNavigation() {
-    // Mobile menu button
-    const menuBtn = document.querySelector('.menu-btn');
-    if (menuBtn) {
-        menuBtn.addEventListener('click', function() {
-            const mobileMenu = document.querySelector('.nav-menu-toggle');
-            mobileMenu.classList.toggle('active');
-            this.classList.toggle('active');
+    // Initialize search bar
+    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.search-input');
+    
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchInput.focus();
         });
     }
-
-    // Dropdowns - single function for both desktop/mobile
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        
-        // Desktop hover
-        dropdown.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 768) {
-                menu.style.display = 'block';
-            }
-        });
-        
-        dropdown.addEventListener('mouseleave', () => {
-            if (window.innerWidth > 768) {
-                menu.style.display = 'none';
-            }
-        });
-        
-        // Mobile click
-        if (toggle) {
-            toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-                    dropdown.classList.toggle('active');
-                }
-            });
-        }
-    });
 }
+
+// Add global styles
+function addGlobalStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .top-wrapper {
+            width: 100%;
+        }
+        .header-container, .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Start the process
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM content loaded, starting component load');
+    addGlobalStyles();
+    loadCommonComponents();
+});
