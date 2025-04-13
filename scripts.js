@@ -1,11 +1,11 @@
-// scripts.js
+scripts.js
 // Function to load HTML components (header/nav)
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
         console.log(`Attempting to load ${url}`);
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Failed to load ${url}: ${response.status} ${response.statusText}`);
+            throw new Error(`Failed to load ${url}: ${response.statusText}`);
         }
         const html = await response.text();
         const target = document.querySelector(targetElement);
@@ -50,29 +50,8 @@ async function loadCommonComponents() {
                 const isActive = navMenuToggle.classList.toggle('active');
                 menuBtn.setAttribute('aria-expanded', isActive);
                 menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-                console.log(`Mobile menu toggled: ${isActive ? 'open' : 'closed'}`);
             });
         }
-
-        // Initialize dropdown toggle for mobile
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    const dropdownMenu = toggle.nextElementSibling;
-                    const isActive = dropdownMenu.classList.toggle('active');
-                    console.log(`Dropdown toggled on mobile: ${isActive ? 'open' : 'closed'} for ${toggle.textContent}`);
-                }
-            });
-
-            // Debug hover on desktop
-            toggle.addEventListener('mouseenter', () => {
-                if (window.innerWidth > 768) {
-                    console.log(`Hover detected on desktop for: ${toggle.textContent}`);
-                }
-            });
-        });
 
         // Initialize search bar
         const searchBtn = document.querySelector('.search-btn');
@@ -82,7 +61,6 @@ async function loadCommonComponents() {
             searchBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 searchInput.focus();
-                console.log('Search button clicked');
             });
         }
 
@@ -92,6 +70,15 @@ async function loadCommonComponents() {
         console.error('Error in loadCommonComponents:', error);
     }
 }
+
+// Add global styles
+const style = document.createElement('style');
+style.textContent = `
+    .top-wrapper {
+        width: 100%;
+    }
+`;
+document.head.appendChild(style);
 
 // Start the process
 document.addEventListener('DOMContentLoaded', () => {
