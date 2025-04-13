@@ -1,21 +1,42 @@
-// Function to load HTML components with retry logic
-async function loadComponent(url, targetElement, position = 'beforeend') {
+// Update loadCommonComponents function
+async function loadCommonComponents() {
     try {
-        const cacheBuster = `?v=${new Date().getTime()}`;
-        console.log(`Attempting to load ${url}`);
-        const response = await fetch(`${url}${cacheBuster}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const html = await response.text();
-        const target = document.querySelector(targetElement);
-        if (!target) throw new Error(`Target element not found`);
-        target.insertAdjacentHTML(position, html);
-        return true;
+        // Set preload state
+        document.documentElement.classList.add('preload');
+        
+        // Create placeholders first
+        document.body.insertAdjacentHTML('afterbegin', `
+            <div class="top-wrapper">
+                <div class="header-placeholder"></div>
+                <div class="nav-placeholder"></div>
+            </div>
+        `);
+
+        // Load components
+        const basePath = window.location.hostname.includes('github.io') ? '/kuwaitnews' : '';
+        
+        // Load header and replace placeholder
+        await loadComponentWithRetry(`${basePath}/includes/header.html`, '.header-placeholder', 'afterend');
+        document.querySelector('.header-placeholder')?.remove();
+        
+        // Load navigation and replace placeholder
+        await loadComponentWithRetry(`${basePath}/includes/navigation.html`, '.nav-placeholder', 'afterend');
+        document.querySelector('.nav-placeholder')?.remove();
+
+        // Initialize components
+        initializeComponents();
+
+        // Mark as ready
+        document.documentElement.classList.remove('preload');
+        document.documentElement.classList.add('components-ready');
+
     } catch (error) {
-        console.error('Component load error:', error);
-        throw error;
+        console.error('Load error:', error);
+        // Fallback - still show the page
+        document.documentElement.classList.remove('preload');
+        document.documentElement.classList.add('components-ready');
     }
 }
-
 async function loadComponentWithRetry(url, targetElement, retries = 3, delay = 1000) {
     try {
         return await loadComponent(url, targetElement);
