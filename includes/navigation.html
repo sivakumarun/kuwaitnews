@@ -6,20 +6,13 @@
             </button>
             <ul class="nav-menu-horizontal">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-                <li class="nav-dropdown">
-                    <a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/kuwaitnews/news-kuwait.html#politics" class="nav-link">రాజకీయాలు</a></li>
-                        <li><a href="/kuwaitnews/news-kuwait.html#business" class="nav-link">వ్యాపారం</a></li>
-                        <li><a href="/kuwaitnews/news-kuwait.html#community" class="nav-link">సంఘం</a></li>
-                    </ul>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/kuwaitnews/news-telugu-states.html#andhra" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                        <li><a href="/kuwaitnews/news-telugu-states.html#telangana" class="nav-link">తెలంగాణ</a></li>
-                        <li><a href="/kuwaitnews/news-telugu-states.html#india" class="nav-link">భారత్</a></li>
+                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
                     </ul>
                 </li>
                 <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
@@ -29,20 +22,13 @@
         </div>
         <ul class="nav-menu-toggle hidden">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li class="nav-dropdown">
-                <a href="/kuwaitnews/news-kuwait.html" class="nav-link">కువైట్ వార్తలు</a>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/kuwaitnews/news-kuwait.html#politics" class="nav-link">రాజకీయాలు</a></li>
-                    <li><a href="/kuwaitnews/news-kuwait.html#business" class="nav-link">వ్యాపారం</a></li>
-                    <li><a href="/kuwaitnews/news-kuwait.html#community" class="nav-link">సంఘం</a></li>
-                </ul>
-            </li>
-            <li class="nav-dropdown">
-                <a href="/kuwaitnews/news-telugu-states.html" class="nav-link">తెలుగు రాష్ట్రాల వార్తలు</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/kuwaitnews/news-telugu-states.html#andhra" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                    <li><a href="/kuwaitnews/news-telugu-states.html#telangana" class="nav-link">తెలంగాణ</a></li>
-                    <li><a href="/kuwaitnews/news-telugu-states.html#india" class="nav-link">భారత్</a></li>
+                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
                 </ul>
             </li>
             <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
@@ -151,44 +137,50 @@
         background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Dropdown styles */
-    .nav-dropdown {
+    /* Dropdown Styles */
+    .dropdown {
         position: relative;
+    }
+
+    .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 5px;
     }
 
     .dropdown-menu {
         display: none;
         position: absolute;
-        background: #444;
-        border-radius: 4px;
-        padding: 5px 0;
-        min-width: 180px;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        z-index: 1001;
-        list-style: none;
-        margin: 0;
-    }
-
-    .nav-menu-horizontal .dropdown-menu {
         top: 100%;
         left: 0;
+        background: #333333;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        min-width: 150px;
+        z-index: 1000;
+        list-style: none;
+        margin: 0;
+        padding: 0.2rem 0;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
     }
 
     .nav-menu-toggle .dropdown-menu {
         position: static;
-        margin-left: 15px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        display: none;
+        background: #444444;
+        margin: 0.2rem 0;
+        box-shadow: none;
     }
 
-    .nav-dropdown:hover .dropdown-menu {
-        display: block;
+    .nav-menu-toggle .dropdown:hover .dropdown-menu {
+        display: flex;
     }
 
     .dropdown-menu .nav-link {
-        padding: 0.4rem 1rem;
         font-size: 0.8rem;
+        padding: 0.4rem 1rem;
     }
 
     @media (max-width: 768px) {
@@ -223,8 +215,19 @@
             font-size: 0.8rem;
         }
 
-        .dropdown-menu .nav-link {
-            padding: 0.3rem 0.8rem;
+        .dropdown-menu {
+            position: static;
+            background: #444444;
+            margin: 0.2rem 0;
+            box-shadow: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: none;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
         }
     }
 </style>
