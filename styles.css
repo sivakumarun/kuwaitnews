@@ -49,3 +49,47 @@ body.components-ready {
 
 /* Rest of your existing styles... */
 /* [PASTE ALL YOUR EXISTING STYLES HERE] */
+
+/* Fix Header-Nav Spacing */
+.header-container {
+    position: fixed;
+    top: 0;
+    height: 70px; /* Fixed height */
+}
+
+.nav-container {
+    position: fixed;
+    top: 70px; /* Match header height */
+    height: 45px; /* Reduced from 50px */
+}
+
+/* Fix Dropdown Visibility */
+.nav-menu-horizontal .dropdown:hover .dropdown-menu {
+    display: block !important; /* Override any conflicting styles */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu {
+    background: #2e6b5e !important; /* Match your color scheme */
+    border-top: 2px solid var(--accent);
+}
+
+/* Mobile Dropdown Fixes */
+.menu-btn {
+    color: white !important;
+}
+
+.dropdown-toggle .fa-chevron-down {
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.dropdown-menu.active {
+    display: block !important;
+}
+
+.dropdown-toggle.active .fa-chevron-down {
+    transform: rotate(180deg);
+}
