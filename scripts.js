@@ -1,109 +1,119 @@
-// Function to load HTML components (header/nav)
+// Function to load HTML components with retry logic
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
+        const cacheBuster = `?v=${new Date().getTime()}`;
         console.log(`Attempting to load ${url}`);
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Failed to load ${url}: ${response.statusText}`);
-        }
+        const response = await fetch(`${url}${cacheBuster}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const html = await response.text();
         const target = document.querySelector(targetElement);
-        if (!target) {
-            throw new Error(`Target element '${targetElement}' not found`);
-        }
+        if (!target) throw new Error(`Target element not found`);
         target.insertAdjacentHTML(position, html);
-        console.log(`Successfully loaded ${url}`);
         return true;
     } catch (error) {
-        console.error('Error loading component:', error);
-        // Display error to user
-        const errorDiv = document.createElement('div');
-        errorDiv.style.color = 'red';
-        errorDiv.style.padding = '10px';
-        errorDiv.style.backgroundColor = '#ffeeee';
-        errorDiv.textContent = `Error loading component: ${error.message}`;
-        document.body.prepend(errorDiv);
-        return false;
+        console.error('Component load error:', error);
+        throw error;
     }
 }
 
-// Main function to load components
+async function loadComponentWithRetry(url, targetElement, retries = 3, delay = 1000) {
+    try {
+        return await loadComponent(url, targetElement);
+    } catch (error) {
+        if (retries > 0) {
+            console.log(`Retrying ${url} (${retries} attempts left)`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+            return loadComponentWithRetry(url, targetElement, retries - 1, delay * 2);
+        }
+        throw error;
+    }
+}
+
+// Main component loader
 async function loadCommonComponents() {
     try {
-        // Clear any existing top-wrapper to prevent duplicates
-        const existingWrapper = document.querySelector('.top-wrapper');
-        if (existingWrapper) existingWrapper.remove();
-
-        // Create wrapper structure
+        // Show loading state
         document.body.insertAdjacentHTML('afterbegin', `
-            <div class="top-wrapper"></div>
+            <div class="loading-indicator">
+                <div class="loader-spinner"></div>
+                Loading page components...
+            </div>
         `);
 
-        // Use relative paths for GitHub Pages
+        // Clean existing wrapper
+        document.querySelector('.top-wrapper')?.remove();
+
+        // Create wrapper
+        document.body.insertAdjacentHTML('afterbegin', '<div class="top-wrapper"></div>');
+
+        // Determine base path
         const basePath = window.location.hostname.includes('github.io') ? '/kuwaitnews' : '';
-        
-        // Load header
-        const headerLoaded = await loadComponent(`${basePath}/includes/header.html`, '.top-wrapper');
-        if (!headerLoaded) throw new Error('Header failed to load');
 
-        // Load navigation
-        const navLoaded = await loadComponent(`${basePath}/includes/navigation.html`, '.top-wrapper');
-        if (!navLoaded) throw new Error('Navigation failed to load');
+        // Load components with retry
+        await Promise.all([
+            loadComponentWithRetry(`${basePath}/includes/header.html`, '.top-wrapper'),
+            loadComponentWithRetry(`${basePath}/includes/navigation.html`, '.top-wrapper')
+        ]);
 
-        // Initialize components after a small delay to ensure DOM is ready
-        setTimeout(initializeComponents, 100);
-        
-        document.dispatchEvent(new Event('commonComponentsLoaded'));
-        console.log('Common components loaded successfully');
+        // Initialize components
+        initializeComponents();
+
+        // Dispatch loaded event
+        document.dispatchEvent(new CustomEvent('componentsLoaded', {
+            detail: { success: true }
+        }));
+
     } catch (error) {
-        console.error('Error in loadCommonComponents:', error);
-        // Display error to user
-        const errorDiv = document.createElement('div');
-        errorDiv.style.color = 'red';
-        errorDiv.style.padding = '10px';
-        errorDiv.style.backgroundColor = '#ffeeee';
-        errorDiv.textContent = `Error loading page components: ${error.message}`;
-        document.body.prepend(errorDiv);
+        console.error('Failed to load components:', error);
+        document.dispatchEvent(new CustomEvent('componentsLoaded', {
+            detail: { success: false, error }
+        }));
+        
+        // Show user-friendly error
+        document.querySelector('.loading-indicator')?.remove();
+        document.body.insertAdjacentHTML('afterbegin', `
+            <div class="load-error">
+                <p>⚠️ Failed to load page components. Please try refreshing.</p>
+                <button onclick="window.location.reload()">Retry</button>
+            </div>
+        `);
+    } finally {
+        // Remove loading indicator
+        document.querySelector('.loading-indicator')?.remove();
     }
 }
 
 function initializeComponents() {
-    // Initialize menu toggle for vertical list
+    // Menu toggle
     const menuBtn = document.querySelector('.menu-btn');
-    const navMenuToggle = document.querySelector('.nav-menu-toggle');
-    
-    if (menuBtn && navMenuToggle) {
+    if (menuBtn) {
         menuBtn.addEventListener('click', () => {
-            const isActive = navMenuToggle.classList.toggle('active');
-            menuBtn.setAttribute('aria-expanded', isActive);
-            menuBtn.innerHTML = isActive ? 
-                '<i class="fas fa-times"></i>' : 
-                '<i class="fas fa-bars"></i>';
+            const navMenu = document.querySelector('.nav-menu-toggle');
+            if (navMenu) {
+                const isActive = navMenu.classList.toggle('active');
+                menuBtn.innerHTML = isActive ? 
+                    '<i class="fas fa-times"></i>' : 
+                    '<i class="fas fa-bars"></i>';
+            }
         });
     }
 
-    // Initialize dropdown toggle for mobile
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
+    // Mobile dropdowns
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
-                const dropdownMenu = toggle.nextElementSibling;
-                if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
-                    dropdownMenu.classList.toggle('active');
-                }
+                this.nextElementSibling?.classList.toggle('active');
             }
         });
     });
 
-    // Initialize search bar
+    // Search functionality
     const searchBtn = document.querySelector('.search-btn');
-    const searchInput = document.querySelector('.search-input');
-    
-    if (searchBtn && searchInput) {
+    if (searchBtn) {
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            searchInput.focus();
+            document.querySelector('.search-input')?.focus();
         });
     }
 }
@@ -112,21 +122,52 @@ function initializeComponents() {
 function addGlobalStyles() {
     const style = document.createElement('style');
     style.textContent = `
-        .top-wrapper {
+        .top-wrapper { width: 100%; }
+        .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .header-container, .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1rem;
+        .loader-spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s ease-in-out infinite;
         }
+        .load-error {
+            padding: 20px;
+            background: #ffebee;
+            color: #c62828;
+            text-align: center;
+        }
+        .load-error button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     `;
     document.head.appendChild(style);
 }
 
-// Start the process
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM content loaded, starting component load');
     addGlobalStyles();
     loadCommonComponents();
 });
