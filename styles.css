@@ -332,3 +332,31 @@ body {
     font-size: 1rem;
     color: #333;
 }
+
+/* Ensure header and nav containers are properly styled */
+.top-wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Mobile menu styles */
+.nav-menu {
+    display: none;
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .nav-menu {
+        display: block;
+    }
+}
+
+/* Active link styling */
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
