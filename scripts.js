@@ -1,10 +1,11 @@
+// scripts.js
 // Function to load HTML components (header/nav)
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
         console.log(`Attempting to load ${url}`);
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Failed to load ${url}: ${response.statusText}`);
+            throw new Error(`Failed to load ${url}: ${response.status} ${response.statusText}`);
         }
         const html = await response.text();
         const target = document.querySelector(targetElement);
@@ -91,15 +92,6 @@ async function loadCommonComponents() {
         console.error('Error in loadCommonComponents:', error);
     }
 }
-
-// Add global styles
-const style = document.createElement('style');
-style.textContent = `
-    .top-wrapper {
-        width: 100%;
-    }
-`;
-document.head.appendChild(style);
 
 // Start the process
 document.addEventListener('DOMContentLoaded', () => {
