@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="తాజా కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు">
+    <title>కువైట్ వార్తలు - కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header and Navigation injected by scripts.js -->
 
+    <div class="content-bg">
+        <div class="container">
+            <main class="main-content">
+                <section class="news-section">
+                    <h2 class="section-title">కువైట్ వార్తలు</h2>
+                    <div class="news-grid">
+                        <!-- Sample Item (replace with news-kuwait.html content) -->
+                        <article class="news-card" id="kuwait1">
+                            <img src="../images/kuwait1.jpg" alt="News" class="news-image">
+                            <div class="news-body">
+                                <h3 class="news-title">కువైట్ నీతి నవీకరణ: కొత్త చట్టం</h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar-alt"></i> 2025-04-10</span>
+                                    <span><i class="far fa-clock"></i> 08:00 AM</span>
+                                </div>
+                                <p class="news-excerpt">కువైట్ ప్రభుత్వం కొత్త చట్టాన్ని ప్రవేశపెట్టింది...</p>
+                                <div class="full-text">
+                                    <p>కువైట్, ఏప్రిల్ 10: ప్రభుత్వం కొత్త నీతిని...</p>
+                                    <div class="share-buttons">
+                                        <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                                        <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                    </div>
+                                </div>
+                                <a href="#" class="read-more" onclick="toggleReadMore('kuwait1')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </main>
+            <!-- Sidebar (same as news-telugu-states.html) -->
+            <aside class="sidebar">
+                <div class="widget">
+                    <h3 class="widget-title">ప్రకటన</h3>
+                    <div class="ad-banner">ప్రకటన స్థలం</div>
+                </div>
+                <div class="widget">
+                    <h3 class="widget-title">సబ్‌స్క్రైబ్ చేయండి</h3>
+                    <form class="subscribe-form">
+                        <input type="email" class="subscribe-input" placeholder="మీ ఇమెయిల్">
+                        <button type="submit" class="subscribe-btn">సబ్‌స్క్రైబ్</button>
+                    </form>
+                </div>
+                <div class="widget">
+                    <h3 class="widget-title">మమ్మల్ని అనుసరించండి</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer (same) -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="../about.html">మా గురించి</a>
+            <a href="../contact.html">సంప్రదించండి</a>
+            <a href="../advertise.html">ప్రకటించండి</a>
+            <a href="../privacy.html">గోప్యతా విధానం</a>
+        </div>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook social-icon"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter social-icon"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram social-icon"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube social-icon"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp social-icon"></i></a>
+        </div>
+        <p class="copyright">© 2025 కువైట్ తెలుగు వార్తలు. అన్ని హక్కులు ప్రత్యేకించబడినవి.</p>
+    </footer>
+
+    <script src="../scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded for kuwait.html');
+            document.querySelectorAll('.news-card').forEach(item => {
+                item.classList.remove('expanded');
+                const readMoreLink = item.querySelector('.read-more');
+                if (readMoreLink) {
+                    readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+                }
+            });
+        });
+
+        function toggleReadMore(newsId) {
+            event.preventDefault();
+            const newsCard = document.getElementById(newsId);
+            const readMoreLink = newsCard.querySelector('.read-more');
+            if (!newsCard || !readMoreLink) {
+                console.error(`News card or read-more link not found for ID: ${newsId}`);
+                return;
+            }
+            newsCard.classList.toggle('expanded');
+            if (newsCard.classList.contains('expanded')) {
+                readMoreLink.innerHTML = 'తక్కువ చదవండి <i class="fas fa-arrow-up"></i>';
+            } else {
+                readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
