@@ -52,6 +52,18 @@ async function loadCommonComponents() {
             });
         }
 
+        // Initialize dropdown toggle for mobile
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdownMenu = toggle.nextElementSibling;
+                if (window.innerWidth <= 768) {
+                    dropdownMenu.classList.toggle('active');
+                }
+            });
+        });
+
         // Initialize search bar
         const searchBtn = document.querySelector('.search-btn');
         const searchInput = document.querySelector('.search-input');
