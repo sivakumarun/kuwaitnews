@@ -920,3 +920,53 @@ nav {
     padding-left: 20px;
     font-size: 0.9rem;
 }
+
+/* Category Grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.category-card {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+}
+
+.category-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    font-family: 'Noto Sans Telugu', sans-serif;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin: 10px;
+    text-align: center;
+}
+
+/* Hero */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.hero-text {
+    font-family: 'Noto Sans Telugu', sans-serif;
+    font-size: 1rem;
+    color: #333;
+}
