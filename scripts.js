@@ -96,3 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM content loaded, starting component load');
     loadCommonComponents();
 });
+
+nano kuwaitnews/scripts.js
+# Paste code
