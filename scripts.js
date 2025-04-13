@@ -49,6 +49,7 @@ async function loadCommonComponents() {
                 const isActive = navMenuToggle.classList.toggle('active');
                 menuBtn.setAttribute('aria-expanded', isActive);
                 menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                console.log(`Mobile menu toggled: ${isActive ? 'open' : 'closed'}`);
             });
         }
 
@@ -56,10 +57,18 @@ async function loadCommonComponents() {
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const dropdownMenu = toggle.nextElementSibling;
                 if (window.innerWidth <= 768) {
-                    dropdownMenu.classList.toggle('active');
+                    e.preventDefault();
+                    const dropdownMenu = toggle.nextElementSibling;
+                    const isActive = dropdownMenu.classList.toggle('active');
+                    console.log(`Dropdown toggled on mobile: ${isActive ? 'open' : 'closed'} for ${toggle.textContent}`);
+                }
+            });
+
+            // Debug hover on desktop
+            toggle.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) {
+                    console.log(`Hover detected on desktop for: ${toggle.textContent}`);
                 }
             });
         });
@@ -72,6 +81,7 @@ async function loadCommonComponents() {
             searchBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 searchInput.focus();
+                console.log('Search button clicked');
             });
         }
 
