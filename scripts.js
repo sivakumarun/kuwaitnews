@@ -1,4 +1,3 @@
-scripts.js
 // Function to load HTML components (header/nav)
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
