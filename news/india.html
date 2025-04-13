@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="తాజా భారత వార్తలు - కువైట్ తెలుగు వార్తలు">
+    <title>భారత వార్తలు - కువైట్ తెలుగు వార్తలు</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header and Navigation injected by scripts.js -->
 
+    <div class="content-bg">
+        <div class="container">
+            <main class="main-content">
+                <section class="news-section">
+                    <h2 class="section-title">భారత వార్తలు</h2>
+                    <div class="news-grid">
+                        <article class="news-card" id="india1">
+                            <img src="../images/india1.jpg" alt="News" class="news-image">
+                            <div class="news-body">
+                                <h3 class="news-title">జాతీయ విధాన నవీకరణ: కొత్త చొరవ</h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar-alt"></i> 2025-04-12</span>
+                                    <span><i class="far fa-clock"></i> 10:00 AM</span>
+                                </div>
+                                <p class="news-excerpt">భారత ప్రభుత్వం కొత్త విధానాన్ని ప్రకటించింది...</p>
+                                <div class="full-text">
+                                    <p>న్యూఢిల్లీ, ఏప్రిల్ 12: కేంద్రం కొత్త చొరవలను...</p>
+                                    <div class="share-buttons">
+                                        <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                                        <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                    </div>
+                                </div>
+                                <a href="#" class="read-more" onclick="toggleReadMore('india1')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <!-- Same sidebar -->
+            </aside>
+        </div>
+    </div>
+    <footer class="footer">
+        <!-- Same footer -->
+    </footer>
+    <script src="../scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded for india.html');
+            document.querySelectorAll('.news-card').forEach(item => {
+                item.classList.remove('expanded');
+                const readMoreLink = item.querySelector('.read-more');
+                if (readMoreLink) {
+                    readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+                }
+            });
+        });
+
+        function toggleReadMore(newsId) {
+            event.preventDefault();
+            const newsCard = document.getElementById(newsId);
+            const readMoreLink = newsCard.querySelector('.read-more');
+            if (!newsCard || !readMoreLink) {
+                console.error(`News card or read-more link not found for ID: ${newsId}`);
+                return;
+            }
+            newsCard.classList.toggle('expanded');
+            if (newsCard.classList.contains('expanded')) {
+                readMoreLink.innerHTML = 'తక్కువ చదవండి <i class="fas fa-arrow-up"></i>';
+            } else {
+                readMoreLink.innerHTML = 'మరిన్ని చదవండి <i class="fas fa-arrow-right"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
