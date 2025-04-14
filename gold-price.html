@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="కువైట్ మరియు భారతదేశంలో తాజా గోల్డ్ ధరలు - Kuwait Gold Price in KWD and INR">
     <title>గోల్డ్ ధర - కువైట్ తెలుగు వార్తలు</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/kuwaitnews/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header and Navigation injected by scripts.js -->
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">కువైట్ తెలుగు వార్తలు</h1>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/kuwaitnews/index.html">హోమ్</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">వార్తలు</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">కువైట్ వార్తలు</a></li>
+                            <li><a href="#">భారత వార్తలు</a></li>
+                            <li><a href="#">అంతర్జాతీయ వార్తలు</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/kuwaitnews/gold-price.html">గోల్డ్ ధర</a></li>
+                    <li><a href="/kuwaitnews/money-exchange-rate.html">ఎక్స్ఛేంజ్ రేట్లు</a></li>
+                    <li><a href="/kuwaitnews/contact.html">సంప్రదించండి</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <!-- Main Content -->
     <div class="container">
@@ -302,10 +326,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="about.html">మా గురించి</a>
-            <a href="contact.html">సంప్రదించండి</a>
-            <a href="advertise.html">ప్రకటించండి</a>
-            <a href="privacy.html">గోప్యతా విధానం</a>
+            <a href="/kuwaitnews/about.html">మా గురించి</a>
+            <a href="/kuwaitnews/contact.html">సంప్రదించండి</a>
+            <a href="/kuwaitnews/advertise.html">ప్రకటించండి</a>
+            <a href="/kuwaitnews/privacy.html">గోప్యతా విధానం</a>
         </div>
         <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook social-icon"></i></a>
@@ -318,13 +342,29 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="/kuwaitnews/scripts.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Initialize exchange widget and debug header injection
+        // Navigation Toggle for Mobile
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded for gold-price.html');
-            
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            menuToggle?.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            });
+
+            // Dropdown Toggle for Mobile
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.addEventListener('click', (e) => {
+                    if (window.innerWidth < 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
             // Initialize exchange widget as collapsed
             document.querySelectorAll('.exchange-widget').forEach(widget => {
                 widget.classList.remove('expanded');
@@ -333,21 +373,6 @@
                     readMoreLink.innerHTML = 'మరిన్ని చూడండి <i class="fas fa-arrow-right"></i>';
                 }
             });
-
-            // Debug header/nav injection
-            setTimeout(() => {
-                const header = document.querySelector('.site-header');
-                const nav = document.querySelector('.nav-menu');
-                if (!header || !nav) {
-                    console.error('Header or navigation missing after scripts.js execution.', {
-                        headerFound: !!header,
-                        navFound: !!nav,
-                        page: window.location.pathname
-                    });
-                } else {
-                    console.log('Header and navigation injected successfully.');
-                }
-            }, 1000); // Delay to allow scripts.js to run
         });
 
         // Read More Toggle
@@ -356,51 +381,37 @@
             const widget = document.getElementById(widgetId);
             const readMoreLink = widget.querySelector('.read-more');
             
-            if (!widget || !readMoreLink) {
-                console.error(`Widget or read-more link not found for ID: ${widgetId}`);
-                return;
-            }
+            if (!widget || !readMoreLink) return;
             
             widget.classList.toggle('expanded');
-            
-            if (widget.classList.contains('expanded')) {
-                readMoreLink.innerHTML = 'తక్కువ చూడండి <i class="fas fa-arrow-up"></i>';
-            } else {
-                readMoreLink.innerHTML = 'మరిన్ని చూడండి <i class="fas fa-arrow-right"></i>';
-            }
+            readMoreLink.innerHTML = widget.classList.contains('expanded')
+                ? 'తక్కువ చూడండి <i class="fas fa-arrow-up"></i>'
+                : 'మరిన్ని చూడండి <i class="fas fa-arrow-right"></i>';
         }
 
-        // Initialize chart with error handling
+        // Initialize Chart
         const ctx = document.getElementById('goldPriceChart')?.getContext('2d');
         let goldChart;
         if (ctx) {
-            try {
-                goldChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: Array.from({length: 30}, (_, i) => (i + 1) + 'వ రోజు'),
-                        datasets: [{
-                            label: '24K Gold Price (KWD)',
-                            data: Array.from({length: 30}, () => Math.random() * 5 + 28),
-                            borderColor: 'rgb(75, 192, 192)',
-                            tension: 0.1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: false
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Chart initialization failed:', error);
-            }
+            goldChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 30}, (_, i) => (i + 1) + 'వ రోజు'),
+                    datasets: [{
+                        label: '24K Gold Price (KWD)',
+                        data: Array.from({length: 30}, () => Math.random() * 5 + 28),
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: { y: { beginAtZero: false } }
+                }
+            });
         }
 
-        // Chart currency toggle
+        // Chart Currency Toggle
         document.querySelectorAll('.chart-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 if (!this.classList.contains('active')) {
@@ -435,35 +446,26 @@
                 vijayawada: { '24': 9167, '22': 8400, '18': 6873 }
             };
             
-            try {
-                const currency = location === 'kuwait' ? 'KWD' : 'INR';
-                const pricePerGram = prices[location][goldType];
-                const totalPrice = (pricePerGram * weight).toFixed(2);
-                document.getElementById('result').textContent = `${currency} ${totalPrice}`;
-            } catch (error) {
-                console.error('Calculator error:', error);
-                document.getElementById('result').textContent = 'ఎర్రర్: లెక్కింపు విఫలమైంది';
-            }
+            const currency = location === 'kuwait' ? 'KWD' : 'INR';
+            const pricePerGram = prices[location][goldType];
+            const totalPrice = (pricePerGram * weight).toFixed(2);
+            document.getElementById('result').textContent = `${currency} ${totalPrice}`;
         });
 
-        // Update last updated time
+        // Update Last Updated Time
         function updateLastUpdated() {
-            try {
-                const now = new Date();
-                const options = { 
-                    day: '2-digit', 
-                    month: '2-digit', 
-                    year: 'numeric',
-                    hour: '2-digit', 
-                    minute: '2-digit',
-                    hour12: true
-                };
-                const lastUpdated = document.getElementById('last-updated');
-                if (lastUpdated) {
-                    lastUpdated.textContent = now.toLocaleString('te-IN', options);
-                }
-            } catch (error) {
-                console.error('Time update error:', error);
+            const now = new Date();
+            const options = { 
+                day: '2-digit', 
+                month: '2-digit', 
+                year: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true
+            };
+            const lastUpdated = document.getElementById('last-updated');
+            if (lastUpdated) {
+                lastUpdated.textContent = now.toLocaleString('te-IN', options);
             }
         }
         
