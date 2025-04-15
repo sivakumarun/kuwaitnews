@@ -99,23 +99,3 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCommonComponents();
 });
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdownToggles = document.querySelectorAll('.nav-menu-horizontal .dropdown-toggle');
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const dropdown = toggle.closest('.dropdown');
-            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-            dropdown.classList.toggle('active');
-            dropdownMenu.style.display = dropdown.classList.contains('active') ? 'block' : 'none';
-            document.querySelectorAll('.nav-menu-horizontal .dropdown.active').forEach(otherDropdown => {
-                if (otherDropdown !== dropdown) {
-                    otherDropdown.classList.remove('active');
-                    otherDropdown.querySelector('.dropdown-menu').style.display = 'none';
-                }
-            });
-        });
-    });
-});
-</script>
