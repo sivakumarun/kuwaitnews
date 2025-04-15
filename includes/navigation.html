@@ -1,18 +1,21 @@
 <div class="nav-container">
     <nav>
-        <!-- Style Toggle Buttons -->
-        <div class="style-toggle">
-            <button class="style-btn vertical-btn active" title="Vertical View">
+        <!-- View Toggle -->
+        <div class="view-toggle">
+            <button class="view-btn vertical-view active" aria-label="Vertical View">
                 <i class="fas fa-list-ul"></i>
             </button>
-            <button class="style-btn horizontal-btn" title="Horizontal View">
+            <button class="view-btn horizontal-view" aria-label="Horizontal View">
+                <i class="fas fa-align-left"></i>
+            </button>
+            <button class="mobile-menu-btn" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
         <!-- Vertical Navigation -->
         <div class="nav-vertical">
-            <ul class="nav-menu-vertical">
+            <ul>
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -31,7 +34,7 @@
 
         <!-- Horizontal Navigation -->
         <div class="nav-horizontal">
-            <ul class="nav-menu-horizontal">
+            <ul>
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -47,19 +50,14 @@
                 <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
             </ul>
         </div>
-
-        <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" aria-label="Toggle mobile navigation">
-            <i class="fas fa-bars"></i>
-        </button>
     </nav>
 </div>
 
 <style>
-    /* Base Navigation Styles */
+    /* Base Styles */
     .nav-container {
         background: #1a3c34;
-        width: 100%;
+        color: white;
         position: relative;
     }
 
@@ -70,73 +68,78 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+    }
+
+    /* View Toggle */
+    .view-toggle {
+        display: flex;
+        gap: 0.5rem;
         align-items: center;
     }
 
-    /* Style Toggle Buttons */
-    .style-toggle {
-        display: flex;
-        gap: 0.5rem;
-        margin-right: 1rem;
-    }
-
-    .style-btn {
+    .view-btn {
         background: rgba(255,255,255,0.1);
         border: none;
         color: white;
         padding: 0.5rem;
         border-radius: 4px;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.2s;
     }
 
-    .style-btn:hover {
+    .view-btn:hover {
         background: rgba(255,255,255,0.2);
     }
 
-    .style-btn.active {
+    .view-btn.active {
         background: var(--accent);
     }
 
-    /* Vertical Navigation */
-    .nav-vertical {
-        display: block;
-        width: 250px;
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        cursor: pointer;
     }
 
-    .nav-menu-vertical {
+    /* Navigation Styles */
+    .nav-vertical,
+    .nav-horizontal {
+        transition: all 0.3s ease;
+    }
+
+    .nav-vertical ul,
+    .nav-horizontal ul {
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+
+    /* Vertical Navigation */
+    .nav-vertical ul {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        width: 250px;
     }
 
-    .nav-menu-vertical .nav-link {
+    .nav-vertical .nav-link {
         display: block;
         padding: 0.8rem 1rem;
         border-radius: 4px;
-        transition: all 0.3s;
     }
 
     /* Horizontal Navigation */
-    .nav-horizontal {
-        display: none;
-        flex-grow: 1;
-        overflow-x: auto;
-    }
-
-    .nav-menu-horizontal {
-        list-style: none;
-        margin: 0;
-        padding: 0.5rem 0;
+    .nav-horizontal ul {
         display: flex;
         gap: 0.5rem;
-        white-space: nowrap;
+        flex-wrap: wrap;
     }
 
-    .nav-menu-horizontal .nav-link {
+    .nav-horizontal .nav-link {
         display: inline-block;
         padding: 0.6rem 1rem;
         border-radius: 4px;
@@ -150,7 +153,7 @@
     .dropdown-toggle {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 0.3rem;
     }
 
     .dropdown-menu {
@@ -162,8 +165,7 @@
         border-radius: 4px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         min-width: 200px;
-        z-index: 1000;
-        list-style: none;
+        z-index: 100;
         padding: 0.5rem 0;
     }
 
@@ -176,51 +178,40 @@
         white-space: nowrap;
     }
 
-    /* Common Link Styles */
+    /* Link Styles */
     .nav-link {
-        font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
+        font-family: 'Noto Sans Telugu', sans-serif;
         font-size: 0.9rem;
-        font-weight: 500;
         color: white;
         text-decoration: none;
+        transition: all 0.2s;
     }
 
     .nav-link:hover,
     .nav-link.active {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Mobile Menu Button */
-    .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.2rem;
-        color: white;
-        padding: 0.5rem;
-        cursor: pointer;
+        background: rgba(255,255,255,0.1);
     }
 
     /* Active States */
-    .show-vertical .nav-vertical {
+    .vertical-active .nav-vertical {
         display: block;
     }
 
-    .show-vertical .nav-horizontal {
+    .vertical-active .nav-horizontal {
         display: none;
     }
 
-    .show-horizontal .nav-horizontal {
+    .horizontal-active .nav-horizontal {
         display: block;
     }
 
-    .show-horizontal .nav-vertical {
+    .horizontal-active .nav-vertical {
         display: none;
     }
 
     /* Responsive Styles */
     @media (max-width: 768px) {
-        .style-toggle {
+        .view-toggle .view-btn {
             display: none;
         }
 
@@ -230,48 +221,44 @@
 
         .nav-vertical,
         .nav-horizontal {
-            width: 100%;
             display: none;
-        }
-
-        .nav-menu-horizontal {
-            flex-direction: column;
-            white-space: normal;
-        }
-
-        .nav-menu-horizontal .nav-link {
-            display: block;
-        }
-
-        .nav-container.mobile-menu-open .nav-vertical,
-        .nav-container.mobile-menu-open .nav-horizontal {
-            display: block;
             width: 100%;
+        }
+
+        .nav-vertical ul,
+        .nav-horizontal ul {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .mobile-open .nav-vertical,
+        .mobile-open .nav-horizontal {
+            display: block;
         }
     }
 </style>
 
 <script>
-    // Toggle between vertical and horizontal styles
-    document.querySelector('.vertical-btn').addEventListener('click', function() {
-        document.querySelector('.nav-container').classList.add('show-vertical');
-        document.querySelector('.nav-container').classList.remove('show-horizontal');
-        document.querySelector('.vertical-btn').classList.add('active');
-        document.querySelector('.horizontal-btn').classList.remove('active');
+    // Initialize with vertical view
+    document.querySelector('.nav-container').classList.add('vertical-active');
+
+    // View toggle functionality
+    document.querySelector('.vertical-view').addEventListener('click', function() {
+        document.querySelector('.nav-container').classList.remove('horizontal-active');
+        document.querySelector('.nav-container').classList.add('vertical-active');
+        document.querySelector('.vertical-view').classList.add('active');
+        document.querySelector('.horizontal-view').classList.remove('active');
     });
 
-    document.querySelector('.horizontal-btn').addEventListener('click', function() {
-        document.querySelector('.nav-container').classList.add('show-horizontal');
-        document.querySelector('.nav-container').classList.remove('show-vertical');
-        document.querySelector('.horizontal-btn').classList.add('active');
-        document.querySelector('.vertical-btn').classList.remove('active');
+    document.querySelector('.horizontal-view').addEventListener('click', function() {
+        document.querySelector('.nav-container').classList.remove('vertical-active');
+        document.querySelector('.nav-container').classList.add('horizontal-active');
+        document.querySelector('.horizontal-view').classList.add('active');
+        document.querySelector('.vertical-view').classList.remove('active');
     });
 
     // Mobile menu toggle
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-        document.querySelector('.nav-container').classList.toggle('mobile-menu-open');
+        document.querySelector('.nav-container').classList.toggle('mobile-open');
     });
-
-    // Initialize with vertical view
-    document.querySelector('.nav-container').classList.add('show-vertical');
 </script>
