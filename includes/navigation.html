@@ -41,11 +41,6 @@
             <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
     </nav>
-
-    <!-- Mobile Menu Button -->
-    <button class="mobile-menu-btn" aria-label="Menu">
-        <i class="fas fa-bars"></i>
-    </button>
 </div>
 
 <style>
@@ -59,58 +54,62 @@
         max-width: 1400px;
         margin: 0 auto;
         padding: 0;
+        height: 50px; /* Fixed height for alignment */
+        align-items: center; /* Vertical center alignment */
     }
 
     /* Vertical Navigation */
     .vertical-nav {
         width: 250px;
+        height: 100%;
         position: relative;
         background: #1a3c34;
         border-right: 1px solid rgba(255,255,255,0.1);
-        transition: width 0.3s ease;
-    }
-
-    .vertical-nav.collapsed {
-        width: 50px;
-    }
-
-    .vertical-nav.collapsed .vertical-nav-content {
-        opacity: 0;
-        pointer-events: none;
+        display: flex;
+        align-items: center;
     }
 
     .toggle-vertical-nav {
         background: transparent;
         border: none;
         color: white;
-        padding: 1rem;
+        padding: 0 15px;
+        height: 100%;
         cursor: pointer;
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .vertical-nav-content {
-        padding: 1rem 1rem 1rem 3rem;
-        transition: opacity 0.3s ease;
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
     .vertical-nav ul {
         list-style: none;
         margin: 0;
         padding: 0;
+        width: 100%;
+    }
+
+    .vertical-nav li {
+        position: relative;
     }
 
     .vertical-nav .nav-link {
         display: block;
-        padding: 0.8rem 0;
+        padding: 0 15px;
+        line-height: 50px;
+        white-space: nowrap;
     }
 
     /* Horizontal Navigation */
     .horizontal-nav {
         flex-grow: 1;
-        padding: 0 1rem;
+        height: 100%;
         overflow-x: auto;
     }
 
@@ -120,37 +119,30 @@
         padding: 0;
         display: flex;
         height: 100%;
-        align-items: center;
-        gap: 0.5rem;
+    }
+
+    .horizontal-nav li {
+        position: relative;
     }
 
     .horizontal-nav .nav-link {
-        display: inline-block;
-        padding: 1rem 0.8rem;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        height: 100%;
         white-space: nowrap;
     }
 
     /* Dropdown Styles */
-    .dropdown {
-        position: relative;
-    }
-
-    .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-    }
-
     .dropdown-menu {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         background: #2e6b5e;
-        border-radius: 0 0 4px 4px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         min-width: 200px;
         z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .dropdown:hover .dropdown-menu {
@@ -158,9 +150,8 @@
     }
 
     .dropdown-menu .nav-link {
-        padding: 0.8rem 1rem;
-        display: block;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 10px 15px;
+        line-height: normal;
     }
 
     /* Link Styles */
@@ -177,70 +168,32 @@
         background: rgba(255,255,255,0.1);
     }
 
-    /* Mobile Menu Button */
-    .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.2rem;
-        padding: 1rem;
-        cursor: pointer;
-    }
-
     /* Mobile Styles */
     @media (max-width: 768px) {
         .nav-container {
             flex-direction: column;
+            height: auto;
         }
 
         .vertical-nav {
             width: 100%;
+            height: 50px;
             border-right: none;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .vertical-nav.collapsed {
-            width: 100%;
-            height: 50px;
-            overflow: hidden;
-        }
-
-        .toggle-vertical-nav {
-            right: 0;
-            left: auto;
-        }
-
-        .vertical-nav-content {
-            padding: 1rem;
-        }
-
         .horizontal-nav {
-            display: none;
             width: 100%;
-            padding: 0;
         }
 
         .horizontal-nav ul {
             flex-direction: column;
             height: auto;
-            align-items: stretch;
         }
 
         .horizontal-nav .nav-link {
-            padding: 1rem;
+            padding: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .mobile-menu-btn {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .mobile-open .horizontal-nav {
-            display: block;
         }
     }
 </style>
@@ -248,11 +201,7 @@
 <script>
     // Toggle vertical navigation
     document.querySelector('.toggle-vertical-nav').addEventListener('click', function() {
-        document.querySelector('.vertical-nav').classList.toggle('collapsed');
-    });
-
-    // Toggle mobile menu
-    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-        document.querySelector('.nav-container').classList.toggle('mobile-open');
+        const verticalNav = document.querySelector('.vertical-nav');
+        verticalNav.style.width = verticalNav.style.width === '50px' ? '250px' : '50px';
     });
 </script>
