@@ -1,6 +1,27 @@
 <div class="nav-container">
     <nav>
-        <div class="menu-wrapper">
+        <!-- Desktop Vertical Navigation -->
+        <div class="desktop-categories">
+            <h3 class="categories-title">Categories <i class="fas fa-bars toggle-categories"></i></h3>
+            <ul class="categories-list vertical">
+                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                    </ul>
+                </li>
+                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Horizontal Navigation -->
+        <div class="mobile-nav">
             <button class="menu-btn" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -20,29 +41,13 @@
                 <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
             </ul>
         </div>
-        <ul class="nav-menu-toggle hidden">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                </ul>
-            </li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
     </nav>
 </div>
 
 <style>
-    /* Navigation Styles - All in one place */
+    /* Base Navigation Styles */
     .nav-container {
         background: #1a3c34;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: 100%;
     }
 
@@ -50,11 +55,46 @@
         max-width: 1400px;
         margin: 0 auto;
         padding: 0.5rem 1rem;
+        display: flex;
     }
 
-    .menu-wrapper {
+    /* Desktop Vertical Categories */
+    .desktop-categories {
+        width: 250px;
+        background: #1a3c34;
+        padding: 1rem;
+    }
+
+    .categories-title {
+        color: white;
+        font-size: 1.1rem;
+        margin: 0 0 1rem;
+        padding: 0.5rem;
+        cursor: pointer;
         display: flex;
+        justify-content: space-between;
         align-items: center;
+    }
+
+    .categories-list.vertical {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 5px;
+    }
+
+    .categories-list.vertical .nav-link {
+        display: block;
+        padding: 0.8rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+
+    /* Mobile Horizontal Navigation */
+    .mobile-nav {
+        display: none;
         width: 100%;
     }
 
@@ -63,10 +103,9 @@
         background: none;
         border: none;
         font-size: 1.2rem;
+        color: white;
+        padding: 0.5rem;
         cursor: pointer;
-        color: #ffffff;
-        padding: 0.4rem;
-        margin-right: 0.5rem;
     }
 
     .nav-menu-horizontal {
@@ -74,41 +113,19 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        gap: 4px;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-
-    .nav-menu-toggle {
-        display: none;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .nav-menu-toggle.active {
-        display: flex;
-    }
-
-    .nav-link {
-        font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #ffffff;
-        text-decoration: none;
-        padding: 0.5rem 0.7rem;
-        display: block;
-        border-radius: 4px;
+        gap: 5px;
+        overflow-x: auto;
         white-space: nowrap;
+        padding: 0.5rem 0;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-        background: rgba(255, 255, 255, 0.1);
+    .nav-menu-horizontal .nav-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        border-radius: 4px;
     }
 
+    /* Dropdown Styles */
     .dropdown {
         position: relative;
     }
@@ -124,10 +141,10 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background: #1a3c34;
+        background: #2e6b5e;
         border-radius: 4px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        min-width: 180px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        min-width: 200px;
         z-index: 1000;
         list-style: none;
         padding: 0.5rem 0;
@@ -137,9 +154,42 @@
         display: block;
     }
 
-    @media (max-width: 768px) {
-        .menu-btn {
+    .dropdown-menu .nav-link {
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
+    }
+
+    /* Common Link Styles */
+    .nav-link {
+        font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: white;
+        text-decoration: none;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Toggle Functionality */
+    .categories-collapsed .categories-list {
+        display: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .desktop-categories {
+            display: none;
+        }
+
+        .mobile-nav {
             display: block;
+        }
+
+        .menu-btn {
+            display: inline-block;
         }
 
         .nav-menu-horizontal {
@@ -148,20 +198,24 @@
 
         .nav-menu-horizontal.active {
             display: flex;
-            flex-direction: column;
         }
+    }
 
-        .dropdown-menu {
-            position: static;
+    @media (min-width: 993px) {
+        .mobile-nav {
             display: none;
-            background: #2e6b5e;
-            box-shadow: none;
-            margin-left: 1rem;
-        }
-
-        .dropdown-menu.active {
-            display: flex;
-            flex-direction: column;
         }
     }
 </style>
+
+<script>
+    // Toggle categories list
+    document.querySelector('.toggle-categories').addEventListener('click', function() {
+        document.querySelector('.desktop-categories').classList.toggle('categories-collapsed');
+    });
+
+    // Toggle mobile menu
+    document.querySelector('.menu-btn').addEventListener('click', function() {
+        document.querySelector('.nav-menu-horizontal').classList.toggle('active');
+    });
+</script>
