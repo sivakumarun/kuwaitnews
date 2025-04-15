@@ -1,11 +1,11 @@
 <div class="nav-container">
-    <!-- Vertical Categories with Toggle -->
-    <div class="vertical-categories">
-        <button class="toggle-categories" id="toggleCategoriesBtn" aria-label="Toggle categories">
-            <i class="fas fa-bars"></i> <span class="toggle-text">Categories</span>
+    <!-- Vertical Navigation -->
+    <div class="vertical-nav">
+        <button class="toggle-vertical-nav" id="toggleVerticalNav">
+            <i class="fas fa-list-ul"></i> <span>Vertical Menu</span>
         </button>
-        <div class="categories-wrapper">
-            <ul class="categories-list">
+        <div class="vertical-nav-content">
+            <ul>
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -25,97 +25,113 @@
 
     <!-- Horizontal Navigation -->
     <nav class="horizontal-nav">
-        <ul>
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu vertical-dropdown">
-                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                </ul>
-            </li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
+        <button class="toggle-horizontal-nav" id="toggleHorizontalNav">
+            <i class="fas fa-bars"></i> <span>Horizontal Menu</span>
+        </button>
+        <div class="horizontal-nav-content">
+            <ul>
+                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                    </ul>
+                </li>
+                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            </ul>
+        </div>
     </nav>
 </div>
 
 <style>
-    /* Base Navigation Styles */
+    /* Base Styles */
     .nav-container {
-        background: #1a3c34;
         display: flex;
+        flex-direction: column;
+        background: #1a3c34;
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
-        position: relative;
-        height: 50px;
     }
 
-    /* Vertical Categories */
-    .vertical-categories {
-        width: 250px;
+    /* Vertical Navigation */
+    .vertical-nav {
+        width: 100%;
+        position: relative;
         background: #1a3c34;
-        position: relative;
-        height: 100%;
-        border-right: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .toggle-categories {
+    .toggle-vertical-nav {
         background: #1a3c34;
         border: none;
         color: white;
-        padding: 0 15px;
+        padding: 15px;
         width: 100%;
-        height: 100%;
+        text-align: left;
         cursor: pointer;
-        font-weight: 500;
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .toggle-text {
-        white-space: nowrap;
-    }
-
-    .categories-wrapper {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #1a3c34;
-        z-index: 100;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    .vertical-nav-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
     }
 
-    .vertical-categories.active .categories-wrapper {
-        max-height: 500px;
+    .vertical-nav.active .vertical-nav-content {
+        max-height: 1000px;
     }
 
-    .categories-list {
+    .vertical-nav ul {
         list-style: none;
         margin: 0;
         padding: 0;
     }
 
-    .categories-list .nav-link {
+    .vertical-nav .nav-link {
         display: block;
-        padding: 12px 15px;
+        padding: 12px 20px;
         border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     /* Horizontal Navigation */
     .horizontal-nav {
-        flex-grow: 1;
-        height: 100%;
+        width: 100%;
+        position: relative;
+        background: #1a3c34;
+    }
+
+    .toggle-horizontal-nav {
+        background: #1a3c34;
+        border: none;
+        color: white;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .horizontal-nav-content {
+        max-height: 0;
         overflow-x: auto;
+        overflow-y: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .horizontal-nav.active .horizontal-nav-content {
+        max-height: 1000px;
     }
 
     .horizontal-nav ul {
@@ -123,14 +139,12 @@
         margin: 0;
         padding: 0;
         display: flex;
-        height: 100%;
+        min-width: max-content;
     }
 
     .horizontal-nav .nav-link {
-        display: flex;
-        align-items: center;
-        padding: 0 15px;
-        height: 100%;
+        display: block;
+        padding: 15px 20px;
         white-space: nowrap;
     }
 
@@ -145,7 +159,7 @@
         gap: 5px;
     }
 
-    .dropdown-menu, .vertical-dropdown {
+    .dropdown-menu {
         display: none;
         position: absolute;
         top: 100%;
@@ -153,18 +167,14 @@
         background: #2e6b5e;
         min-width: 200px;
         z-index: 100;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    .dropdown:hover .dropdown-menu,
-    .dropdown:hover .vertical-dropdown {
+    .dropdown:hover .dropdown-menu {
         display: block;
     }
 
-    .dropdown-menu .nav-link,
-    .vertical-dropdown .nav-link {
-        padding: 12px 15px;
-        display: block;
+    .dropdown-menu .nav-link {
+        padding: 12px 20px;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
@@ -182,61 +192,82 @@
         background: rgba(255,255,255,0.1);
     }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
+    /* Desktop Styles */
+    @media (min-width: 769px) {
         .nav-container {
-            flex-direction: column;
-            height: auto;
-        }
-
-        .vertical-categories {
-            width: 100%;
+            flex-direction: row;
             height: 50px;
-            border-right: none;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .categories-wrapper {
-            position: static;
-            box-shadow: none;
+        .vertical-nav {
+            width: 250px;
+            height: 100%;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            border-bottom: none;
+        }
+
+        .toggle-vertical-nav,
+        .toggle-horizontal-nav {
+            display: none;
+        }
+
+        .vertical-nav-content,
+        .horizontal-nav-content {
+            max-height: none !important;
+            overflow: visible !important;
+            height: 100%;
+        }
+
+        .vertical-nav ul {
+            height: 100%;
+        }
+
+        .vertical-nav .nav-link {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 15px;
+            border-bottom: none;
         }
 
         .horizontal-nav {
-            width: 100%;
+            flex-grow: 1;
+            height: 100%;
         }
 
         .horizontal-nav ul {
-            flex-direction: column;
+            height: 100%;
         }
 
         .horizontal-nav .nav-link {
-            padding: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .dropdown-menu, .vertical-dropdown {
-            position: static;
-            box-shadow: none;
-            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 15px;
         }
     }
 </style>
 
 <script>
-// Simple and reliable toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.getElementById('toggleCategoriesBtn');
-    const verticalCategories = document.querySelector('.vertical-categories');
+    // Toggle vertical navigation
+    const toggleVertical = document.getElementById('toggleVerticalNav');
+    const verticalNav = document.querySelector('.vertical-nav');
     
-    if (toggleBtn && verticalCategories) {
-        toggleBtn.addEventListener('click', function() {
-            verticalCategories.classList.toggle('active');
+    if (toggleVertical && verticalNav) {
+        toggleVertical.addEventListener('click', function() {
+            verticalNav.classList.toggle('active');
         });
     }
+
+    // Toggle horizontal navigation
+    const toggleHorizontal = document.getElementById('toggleHorizontalNav');
+    const horizontalNav = document.querySelector('.horizontal-nav');
     
-    // Ensure categories are visible by default on desktop
-    if (window.innerWidth > 768) {
-        verticalCategories.classList.add('active');
+    if (toggleHorizontal && horizontalNav) {
+        toggleHorizontal.addEventListener('click', function() {
+            horizontalNav.classList.toggle('active');
+        });
     }
 });
 </script>
