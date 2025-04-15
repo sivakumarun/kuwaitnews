@@ -1,5 +1,5 @@
 <div class="nav-container">
-    <!-- Vertical Categories (Toggleable) -->
+    <!-- Vertical Categories -->
     <div class="vertical-categories">
         <button class="toggle-categories" aria-label="Toggle categories">
             <i class="fas fa-bars"></i> Categories
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <!-- Horizontal Navigation (Main) -->
+    <!-- Horizontal Navigation -->
     <nav class="horizontal-nav">
         <ul>
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
@@ -56,28 +56,32 @@
         display: flex;
         align-items: center;
         position: relative;
-        padding: 0.5rem 1rem;
+        padding: 0;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
     /* Vertical Categories */
     .vertical-categories {
         width: 250px;
         position: relative;
-        margin-right: 1rem;
+        background: #1a3c34;
+        z-index: 10;
     }
 
     .toggle-categories {
-        background: #2e6b5e;
+        background: #1a3c34;
         border: none;
         color: white;
-        padding: 0.7rem 1rem;
-        border-radius: 4px;
+        padding: 1rem;
         cursor: pointer;
         font-weight: 500;
         display: flex;
         align-items: center;
         gap: 0.5rem;
         width: 100%;
+        text-align: left;
+        border-right: 1px solid rgba(255,255,255,0.1);
     }
 
     .categories-wrapper {
@@ -86,8 +90,7 @@
         left: 0;
         width: 100%;
         background: #1a3c34;
-        border-radius: 0 0 4px 4px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
         z-index: 100;
         overflow: hidden;
         max-height: 0;
@@ -101,18 +104,20 @@
     .categories-list {
         list-style: none;
         margin: 0;
-        padding: 0.5rem 0;
+        padding: 0;
     }
 
     .categories-list .nav-link {
         display: block;
-        padding: 0.7rem 1rem;
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     /* Horizontal Navigation */
     .horizontal-nav {
         flex-grow: 1;
         overflow-x: auto;
+        padding: 0 1rem;
     }
 
     .horizontal-nav ul {
@@ -125,7 +130,7 @@
 
     .horizontal-nav .nav-link {
         display: inline-block;
-        padding: 0.7rem 1rem;
+        padding: 1rem 0.8rem;
         white-space: nowrap;
     }
 
@@ -146,7 +151,7 @@
         top: 100%;
         left: 0;
         background: #2e6b5e;
-        border-radius: 4px;
+        border-radius: 0 0 4px 4px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         min-width: 200px;
         z-index: 100;
@@ -157,8 +162,9 @@
     }
 
     .dropdown-menu .nav-link {
-        padding: 0.7rem 1rem;
+        padding: 0.8rem 1rem;
         display: block;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     /* Link Styles */
@@ -167,7 +173,6 @@
         font-size: 0.9rem;
         color: white;
         text-decoration: none;
-        border-radius: 4px;
         transition: background 0.2s;
     }
 
@@ -183,7 +188,7 @@
         border: none;
         color: white;
         font-size: 1.2rem;
-        padding: 0.5rem;
+        padding: 1rem;
         cursor: pointer;
     }
 
@@ -191,19 +196,25 @@
     @media (max-width: 768px) {
         .nav-container {
             flex-direction: column;
-            align-items: stretch;
-            padding: 0.5rem;
+            padding: 0;
         }
 
         .vertical-categories {
             width: 100%;
-            margin-right: 0;
-            margin-bottom: 0.5rem;
+            order: 2;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .toggle-categories {
+            padding: 1rem;
+            border-right: none;
         }
 
         .horizontal-nav {
             display: none;
             width: 100%;
+            order: 3;
+            padding: 0;
         }
 
         .horizontal-nav ul {
@@ -211,11 +222,17 @@
             gap: 0;
         }
 
+        .horizontal-nav .nav-link {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
         .mobile-menu-btn {
             display: block;
             position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
+            top: 0;
+            right: 0;
+            order: 1;
         }
 
         .mobile-open .horizontal-nav {
@@ -225,11 +242,6 @@
         .categories-wrapper {
             position: static;
             box-shadow: none;
-            max-height: none;
-        }
-
-        .categories-show .categories-wrapper {
-            max-height: none;
         }
     }
 </style>
@@ -248,7 +260,7 @@
     // Close categories when clicking outside
     document.addEventListener('click', function(event) {
         const categories = document.querySelector('.vertical-categories');
-        if (!categories.contains(event.target)) {
+        if (!categories.contains(event.target) && !event.target.classList.contains('mobile-menu-btn')) {
             categories.classList.remove('categories-show');
         }
     });
