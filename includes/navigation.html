@@ -1,5 +1,5 @@
 <div class="nav-container">
-    <!-- Vertical Categories with Toggle -->
+    <!-- Vertical Categories with Working Toggle -->
     <div class="vertical-categories">
         <button class="toggle-categories" aria-label="Toggle categories">
             <i class="fas fa-bars"></i> <span class="toggle-text">Categories</span>
@@ -95,7 +95,7 @@
         transition: max-height 0.3s ease;
     }
 
-    .categories-show .categories-wrapper {
+    .vertical-categories.active .categories-wrapper {
         max-height: 500px;
     }
 
@@ -224,21 +224,25 @@
 
 <script>
     // Toggle vertical categories
-    const toggleBtn = document.querySelector('.toggle-categories');
-    const verticalCategories = document.querySelector('.vertical-categories');
-    
-    toggleBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        verticalCategories.classList.toggle('categories-show');
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.querySelector('.toggle-categories');
+        const verticalCategories = document.querySelector('.vertical-categories');
+        
+        if (toggleBtn && verticalCategories) {
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                verticalCategories.classList.toggle('active');
+            });
 
-    // Close categories when clicking outside
-    document.addEventListener('click', function() {
-        verticalCategories.classList.remove('categories-show');
-    });
+            // Close categories when clicking outside
+            document.addEventListener('click', function() {
+                verticalCategories.classList.remove('active');
+            });
 
-    // Prevent dropdown from closing when clicking inside
-    verticalCategories.addEventListener('click', function(e) {
-        e.stopPropagation();
+            // Prevent dropdown from closing when clicking inside
+            verticalCategories.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
     });
 </script>
