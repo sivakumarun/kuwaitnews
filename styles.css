@@ -1,46 +1,3 @@
-<div class="nav-container">
-    <nav>
-        <div class="menu-wrapper">
-            <button class="menu-btn" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu-horizontal">
-                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-                <!-- News Dropdown -->
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                    </ul>
-                </li>
-                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-            </ul>
-        </div>
-        <!-- Mobile Toggle Menu -->
-        <ul class="nav-menu-toggle hidden">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                </ul>
-            </li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
-    </nav>
-</div>
-
-styles.css
 /* styles.css */
 
 /* Base Styles */
@@ -1489,21 +1446,4 @@ body {
     color: #fff;
     margin: 0 10px;
     text-decoration: none;
-}
-
-.horizontal-categories .category {
-  position: relative;
-}
-
-.horizontal-categories .sub-categories {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  min-width: 150px;
-}
-
-.horizontal-categories .category:hover .sub-categories {
-  display: block;
 }
