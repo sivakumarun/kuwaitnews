@@ -78,11 +78,11 @@
         cursor: pointer;
         color: #ffffff;
         padding: 0.5rem;
-        transition: transform 0.2s ease;
     }
 
     .menu-btn:hover {
-        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
     }
 
     .view-toggle {
@@ -99,17 +99,18 @@
         padding: 0.5rem;
         cursor: pointer;
         opacity: 0.6;
-        transition: opacity 0.2s ease;
+        transition: opacity 0.2s ease, background 0.2s ease;
     }
 
     .view-btn.active {
         opacity: 1;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
     }
 
     .view-btn:hover {
         opacity: 1;
+        background: rgba(255, 255, 255, 0.1);
     }
 
     .nav-menu-horizontal,
@@ -119,29 +120,25 @@
         padding: 0;
         width: 100%;
         display: none;
+        transition: opacity 0.3s ease;
     }
 
     .nav-menu-horizontal.active,
     .nav-menu-vertical.active {
         display: flex;
+        opacity: 1;
     }
 
     .nav-menu-horizontal {
         flex-direction: row;
         gap: 0.5rem;
-        flex-wrap: nowrap;
+        align-items: center;
     }
 
     .nav-menu-vertical {
         flex-direction: column;
-        gap: 0.2rem;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out;
-    }
-
-    .nav-menu-vertical.active {
-        max-height: 600px;
+        gap: 0.3rem;
+        padding: 0.5rem 0;
     }
 
     .nav-link {
@@ -169,21 +166,17 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        cursor: pointer;
     }
 
     .dropdown-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
         background: #1a3c34;
         border-radius: 4px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        min-width: 180px;
         z-index: 1000;
-        list-style: none;
-        padding: 0.5rem 0;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -192,6 +185,15 @@
 
     .dropdown-menu .nav-link {
         padding: 0.5rem 1rem;
+    }
+
+    @media (min-width: 769px) {
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+        }
     }
 
     @media (max-width: 768px) {
@@ -206,11 +208,13 @@
         .nav-menu-horizontal,
         .nav-menu-vertical {
             display: none;
+            opacity: 0;
         }
 
         .nav-menu-horizontal.active,
         .nav-menu-vertical.active {
             display: flex;
+            opacity: 1;
         }
 
         .nav-menu-horizontal {
@@ -222,6 +226,7 @@
 
         .nav-menu-vertical {
             flex-direction: column;
+            gap: 0.2rem;
         }
 
         .nav-link {
@@ -231,18 +236,14 @@
 
         .dropdown-menu {
             position: static;
-            display: none;
             background: #2e6b5e;
             box-shadow: none;
             margin-left: 1rem;
-            max-height: 0;
-            transition: max-height 0.3s ease-in-out;
+            display: none;
         }
 
         .dropdown-menu.active {
-            display: flex;
-            flex-direction: column;
-            max-height: 300px;
+            display: block;
         }
     }
 </style>
@@ -256,9 +257,9 @@
         const verticalBtn = document.querySelector('.vertical-view');
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-        // Initialize view
-        const currentView = localStorage.getItem('navView') || 'horizontal';
-        if (currentView === 'horizontal') {
+        // Load saved view preference
+        const savedView = localStorage.getItem('navView') || 'horizontal';
+        if (savedView === 'horizontal') {
             navMenuHorizontal.classList.add('active');
             horizontalBtn.classList.add('active');
         } else {
@@ -270,12 +271,22 @@
         menuBtn.addEventListener('click', () => {
             const isHorizontalActive = navMenuHorizontal.classList.contains('active');
             const menu = isHorizontalActive ? navMenuHorizontal : navMenuVertical;
-            menu.classList.toggle('active');
-            menuBtn.querySelector('i').classList.toggle('fa-bars');
-            menuBtn.querySelector('i').classList.toggle('fa-times');
+            const isMenuActive = menu.classList.contains('active');
+            
+            if (window.innerWidth <= 768) {
+                if (isMenuActive) {
+                    menu.classList.remove('active');
+                    menuBtn.querySelector('i').classList.add('fa-bars');
+                    menuBtn.querySelector('i').classList.remove('fa-times');
+                } else {
+                    menu.classList.add('active');
+                    menuBtn.querySelector('i').classList.remove('fa-bars');
+                    menuBtn.querySelector('i').classList.add('fa-times');
+                }
+            }
         });
 
-        // Switch views
+        // Switch to horizontal view
         horizontalBtn.addEventListener('click', () => {
             navMenuVertical.classList.remove('active');
             navMenuHorizontal.classList.add('active');
@@ -289,6 +300,7 @@
             }
         });
 
+        // Switch to vertical view
         verticalBtn.addEventListener('click', () => {
             navMenuHorizontal.classList.remove('active');
             navMenuVertical.classList.add('active');
@@ -302,20 +314,45 @@
             }
         });
 
-        // Toggle dropdowns
+        // Handle dropdowns
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
+                const dropdownMenu = toggle.nextElementSibling;
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
-                    const dropdownMenu = toggle.nextElementSibling;
                     dropdownMenu.classList.toggle('active');
+                } else {
+                    dropdownMenu.classList.remove('active');
                 }
             });
         });
 
-        // Close menus when clicking outside
+        // Close menus on outside click (mobile only)
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && !navMenuHorizontal.contains(e.target) && !navMenuVertical.contains(e.target) && !menuBtn.contains(e.target)) {
+            if (window.innerWidth <= 768 && 
+                !navMenuHorizontal.contains(e.target) && 
+                !navMenuVertical.contains(e.target) && 
+                !menuBtn.contains(e.target) && 
+                !e.target.closest('.dropdown-toggle')) {
+                navMenuHorizontal.classList.remove('active');
+                navMenuVertical.classList.remove('active');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                dropdownToggles.forEach(toggle => {
+                    toggle.nextElementSibling.classList.remove('active');
+                });
+            }
+        });
+
+        // Ensure correct menu visibility on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                const isHorizontalActive = horizontalBtn.classList.contains('active');
+                navMenuHorizontal.classList.toggle('active', isHorizontalActive);
+                navMenuVertical.classList.toggle('active', !isHorizontalActive);
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            } else {
                 navMenuHorizontal.classList.remove('active');
                 navMenuVertical.classList.remove('active');
                 menuBtn.querySelector('i').classList.add('fa-bars');
