@@ -1,23 +1,11 @@
 <div class="nav-container">
-    <nav>
-        <!-- Desktop View Toggle -->
-        <div class="view-toggle-desktop">
-            <button class="view-btn vertical-view active" aria-label="Vertical View">
-                <i class="fas fa-list-ul"></i> Vertical
-            </button>
-            <button class="view-btn horizontal-view" aria-label="Horizontal View">
-                <i class="fas fa-bars"></i> Horizontal
-            </button>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" aria-label="Menu">
-            <i class="fas fa-bars"></i>
+    <!-- Vertical Categories Panel -->
+    <div class="vertical-categories-panel">
+        <button class="toggle-categories" aria-label="Toggle categories">
+            <i class="fas fa-list-ul"></i> Categories
         </button>
-
-        <!-- Vertical Navigation -->
-        <div class="nav-vertical">
-            <ul>
+        <div class="categories-wrapper">
+            <ul class="categories-list">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -33,26 +21,31 @@
                 <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
             </ul>
         </div>
+    </div>
 
-        <!-- Horizontal Navigation -->
-        <div class="nav-horizontal">
-            <ul>
-                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                    </ul>
-                </li>
-                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-            </ul>
-        </div>
+    <!-- Horizontal Navigation -->
+    <nav class="horizontal-nav">
+        <ul>
+            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                </ul>
+            </li>
+            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+        </ul>
     </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+    </button>
 </div>
 
 <style>
@@ -60,70 +53,90 @@
     .nav-container {
         background: #1a3c34;
         color: white;
+        display: flex;
         position: relative;
-        width: 100%;
-    }
-
-    nav {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+        padding: 0;
     }
 
-    /* View Toggle - Desktop */
-    .view-toggle-desktop {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+    /* Vertical Categories Panel */
+    .vertical-categories-panel {
+        width: 250px;
+        position: relative;
+        background: #1a3c34;
+        border-right: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Mobile Menu Button */
-    .mobile-menu-btn {
-        display: none;
-        background: none;
+    .toggle-categories {
+        background: #1a3c34;
         border: none;
         color: white;
-        font-size: 1.2rem;
-        padding: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
         cursor: pointer;
-        align-self: flex-end;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background 0.2s;
     }
 
-    /* Navigation Lists */
-    .nav-vertical ul,
-    .nav-horizontal ul {
+    .toggle-categories:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    .categories-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1a3c34;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        z-index: 100;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .categories-show .categories-wrapper {
+        max-height: 500px;
+    }
+
+    .categories-list {
         list-style: none;
         margin: 0;
         padding: 0;
     }
 
-    /* Vertical Navigation */
-    .nav-vertical ul {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .nav-vertical .nav-link {
+    .categories-list .nav-link {
         display: block;
         padding: 0.8rem 1rem;
-        border-radius: 4px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     /* Horizontal Navigation */
-    .nav-horizontal ul {
+    .horizontal-nav {
+        flex-grow: 1;
+        padding: 0 1rem;
+        overflow-x: auto;
+    }
+
+    .horizontal-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
         display: flex;
-        flex-wrap: wrap;
+        height: 100%;
+        align-items: center;
         gap: 0.5rem;
     }
 
-    .nav-horizontal .nav-link {
+    .horizontal-nav .nav-link {
         display: inline-block;
-        padding: 0.6rem 1rem;
-        border-radius: 4px;
+        padding: 1rem 0.8rem;
+        white-space: nowrap;
     }
 
     /* Dropdown Styles */
@@ -143,11 +156,10 @@
         top: 100%;
         left: 0;
         background: #2e6b5e;
-        border-radius: 4px;
+        border-radius: 0 0 4px 4px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         min-width: 200px;
         z-index: 100;
-        padding: 0.5rem 0;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -155,8 +167,9 @@
     }
 
     .dropdown-menu .nav-link {
-        padding: 0.6rem 1rem;
-        white-space: nowrap;
+        padding: 0.8rem 1rem;
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     /* Link Styles */
@@ -165,7 +178,7 @@
         font-size: 0.9rem;
         color: white;
         text-decoration: none;
-        transition: all 0.2s;
+        transition: background 0.2s;
     }
 
     .nav-link:hover,
@@ -173,94 +186,80 @@
         background: rgba(255,255,255,0.1);
     }
 
-    /* View Toggle Buttons */
-    .view-btn {
-        background: rgba(255,255,255,0.1);
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+        display: none;
+        background: none;
         border: none;
         color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        font-size: 1.2rem;
+        padding: 1rem;
         cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .view-btn:hover {
-        background: rgba(255,255,255,0.2);
-    }
-
-    .view-btn.active {
-        background: #e63946;
-    }
-
-    /* View States */
-    .vertical-active .nav-vertical {
-        display: block;
-    }
-
-    .vertical-active .nav-horizontal {
-        display: none;
-    }
-
-    .horizontal-active .nav-horizontal {
-        display: block;
-    }
-
-    .horizontal-active .nav-vertical {
-        display: none;
     }
 
     /* Mobile Styles */
     @media (max-width: 768px) {
-        .view-toggle-desktop {
+        .nav-container {
+            flex-direction: column;
+        }
+
+        .vertical-categories-panel {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .horizontal-nav {
             display: none;
+            width: 100%;
+            padding: 0;
+        }
+
+        .horizontal-nav ul {
+            flex-direction: column;
+            height: auto;
+            align-items: stretch;
+        }
+
+        .horizontal-nav .nav-link {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .mobile-menu-btn {
             display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
         }
 
-        .nav-vertical,
-        .nav-horizontal {
-            display: none;
-            width: 100%;
-        }
-
-        .nav-vertical ul,
-        .nav-horizontal ul {
-            flex-direction: column;
-        }
-
-        .mobile-open .nav-vertical,
-        .mobile-open .nav-horizontal {
+        .mobile-open .horizontal-nav {
             display: block;
+        }
+
+        .categories-wrapper {
+            position: static;
+            box-shadow: none;
         }
     }
 </style>
 
 <script>
-    // Initialize with vertical view
-    document.querySelector('.nav-container').classList.add('vertical-active');
-
-    // Desktop view toggle
-    document.querySelector('.vertical-view').addEventListener('click', function() {
-        document.querySelector('.nav-container').classList.remove('horizontal-active');
-        document.querySelector('.nav-container').classList.add('vertical-active');
-        document.querySelector('.vertical-view').classList.add('active');
-        document.querySelector('.horizontal-view').classList.remove('active');
+    // Toggle vertical categories
+    document.querySelector('.toggle-categories').addEventListener('click', function() {
+        document.querySelector('.vertical-categories-panel').classList.toggle('categories-show');
     });
 
-    document.querySelector('.horizontal-view').addEventListener('click', function() {
-        document.querySelector('.nav-container').classList.remove('vertical-active');
-        document.querySelector('.nav-container').classList.add('horizontal-active');
-        document.querySelector('.horizontal-view').classList.add('active');
-        document.querySelector('.vertical-view').classList.remove('active');
-    });
-
-    // Mobile menu toggle
+    // Toggle mobile menu
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
         document.querySelector('.nav-container').classList.toggle('mobile-open');
+    });
+
+    // Close categories when clicking outside
+    document.addEventListener('click', function(event) {
+        const categoriesPanel = document.querySelector('.vertical-categories-panel');
+        if (!categoriesPanel.contains(event.target) && !event.target.classList.contains('mobile-menu-btn')) {
+            categoriesPanel.classList.remove('categories-show');
+        }
     });
 </script>
