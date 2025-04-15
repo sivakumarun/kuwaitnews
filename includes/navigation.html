@@ -1,11 +1,11 @@
 <div class="nav-container">
-    <!-- Vertical Categories with Toggle -->
-    <div class="vertical-categories">
-        <button class="toggle-categories" aria-label="Toggle categories">
-            <i class="fas fa-bars"></i> Categories
+    <!-- Vertical Navigation with Toggle -->
+    <div class="vertical-nav">
+        <button class="toggle-vertical-nav" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
         </button>
-        <div class="categories-wrapper">
-            <ul class="categories-list">
+        <div class="vertical-nav-content">
+            <ul>
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -29,7 +29,7 @@
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu vertical-dropdown">
+                <ul class="dropdown-menu">
                     <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                     <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
                     <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
@@ -47,68 +47,70 @@
     /* Base Navigation Styles */
     .nav-container {
         background: #1a3c34;
+        color: white;
         display: flex;
+        position: relative;
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
-        position: relative;
+        padding: 0;
+        height: 50px; /* Fixed height for alignment */
+        align-items: center; /* Vertical center alignment */
     }
 
-    /* Vertical Categories */
-    .vertical-categories {
+    /* Vertical Navigation */
+    .vertical-nav {
         width: 250px;
-        background: #1a3c34;
+        height: 100%;
         position: relative;
-    }
-
-    .toggle-categories {
         background: #1a3c34;
-        border: none;
-        color: white;
-        padding: 15px;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        font-weight: 500;
+        border-right: 1px solid rgba(255,255,255,0.1);
         display: flex;
         align-items: center;
-        gap: 10px;
-        border-right: 1px solid rgba(255,255,255,0.1);
     }
 
-    .categories-wrapper {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #1a3c34;
-        z-index: 100;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+    .toggle-vertical-nav {
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0 15px;
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .categories-show .categories-wrapper {
-        max-height: 500px;
+    .vertical-nav-content {
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
-    .categories-list {
+    .vertical-nav ul {
         list-style: none;
         margin: 0;
         padding: 0;
+        width: 100%;
     }
 
-    .categories-list .nav-link {
+    .vertical-nav li {
+        position: relative;
+    }
+
+    .vertical-nav .nav-link {
         display: block;
-        padding: 12px 15px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 0 15px;
+        line-height: 50px;
+        white-space: nowrap;
     }
 
     /* Horizontal Navigation */
     .horizontal-nav {
         flex-grow: 1;
-        background: #1a3c34;
+        height: 100%;
+        overflow-x: auto;
     }
 
     .horizontal-nav ul {
@@ -117,6 +119,10 @@
         padding: 0;
         display: flex;
         height: 100%;
+    }
+
+    .horizontal-nav li {
+        position: relative;
     }
 
     .horizontal-nav .nav-link {
@@ -128,16 +134,6 @@
     }
 
     /* Dropdown Styles */
-    .dropdown {
-        position: relative;
-    }
-
-    .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
     .dropdown-menu {
         display: none;
         position: absolute;
@@ -149,27 +145,13 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    .vertical-dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #2e6b5e;
-        min-width: 200px;
-        z-index: 100;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .dropdown:hover .dropdown-menu,
-    .dropdown:hover .vertical-dropdown {
+    .dropdown:hover .dropdown-menu {
         display: block;
     }
 
-    .dropdown-menu .nav-link,
-    .vertical-dropdown .nav-link {
-        padding: 12px 15px;
-        display: block;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+    .dropdown-menu .nav-link {
+        padding: 10px 15px;
+        line-height: normal;
     }
 
     /* Link Styles */
@@ -190,47 +172,36 @@
     @media (max-width: 768px) {
         .nav-container {
             flex-direction: column;
+            height: auto;
         }
 
-        .vertical-categories {
+        .vertical-nav {
             width: 100%;
+            height: 50px;
+            border-right: none;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .categories-wrapper {
-            position: static;
-            box-shadow: none;
+        .horizontal-nav {
+            width: 100%;
         }
 
         .horizontal-nav ul {
             flex-direction: column;
+            height: auto;
         }
 
         .horizontal-nav .nav-link {
             padding: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-
-        .dropdown-menu,
-        .vertical-dropdown {
-            position: static;
-            box-shadow: none;
-            width: 100%;
-        }
     }
 </style>
 
 <script>
-    // Toggle vertical categories
-    document.querySelector('.toggle-categories').addEventListener('click', function() {
-        document.querySelector('.vertical-categories').classList.toggle('categories-show');
-    });
-
-    // Close categories when clicking outside
-    document.addEventListener('click', function(event) {
-        const categories = document.querySelector('.vertical-categories');
-        if (!categories.contains(event.target)) {
-            categories.classList.remove('categories-show');
-        }
+    // Toggle vertical navigation
+    document.querySelector('.toggle-vertical-nav').addEventListener('click', function() {
+        const verticalNav = document.querySelector('.vertical-nav');
+        verticalNav.style.width = verticalNav.style.width === '50px' ? '250px' : '50px';
     });
 </script>
