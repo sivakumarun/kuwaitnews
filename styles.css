@@ -1447,3 +1447,20 @@ body {
     margin: 0 10px;
     text-decoration: none;
 }
+
+.horizontal-categories .category {
+  position: relative;
+}
+
+.horizontal-categories .sub-categories {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 150px;
+}
+
+.horizontal-categories .category:hover .sub-categories {
+  display: block;
+}
