@@ -25,6 +25,9 @@
 
     <!-- Horizontal Navigation -->
     <nav class="horizontal-nav">
+        <button class="toggle-horizontal-nav" aria-label="Toggle horizontal navigation">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul>
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
@@ -56,6 +59,7 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        min-height: 50px;
     }
 
     /* Vertical Navigation */
@@ -65,7 +69,8 @@
         border-right: 1px solid rgba(255, 255, 255, 0.1);
         transition: width 0.3s ease;
         flex-shrink: 0;
-        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
     }
 
     .vertical-nav.collapsed {
@@ -76,23 +81,25 @@
         background: transparent;
         border: none;
         color: white;
-        padding: 0 15px;
+        padding: 0;
         height: 50px;
+        width: 50px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
         font-size: 1.5rem;
     }
 
     .vertical-nav-content {
-        display: flex;
-        flex-direction: column;
+        width: 200px;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
 
     .vertical-nav.collapsed .vertical-nav-content {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .vertical-nav ul {
@@ -118,6 +125,19 @@
     .horizontal-nav {
         flex-grow: 1;
         background: #1a3c34;
+        display: flex;
+        align-items: center;
+    }
+
+    .toggle-horizontal-nav {
+        display: none;
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0 15px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 1.5rem;
     }
 
     .horizontal-nav ul {
@@ -126,7 +146,14 @@
         padding: 0;
         display: flex;
         align-items: center;
+        width: 100%;
         height: 50px;
+        transition: transform 0.3s ease;
+    }
+
+    .horizontal-nav.collapsed ul {
+        transform: translateY(-100%);
+        display: none;
     }
 
     .horizontal-nav li {
@@ -193,45 +220,66 @@
     @media (max-width: 768px) {
         .nav-container {
             flex-direction: column;
+            align-items: stretch;
         }
 
         .vertical-nav {
             width: 100%;
             border-right: none;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-direction: row;
+            align-items: center;
         }
 
         .vertical-nav.collapsed {
             width: 100%;
-            height: 50px;
         }
 
-        .vertical-nav:not(.collapsed) .vertical-nav-content {
-            display: flex;
-        }
-
-        .vertical-nav.collapsed .vertical-nav-content {
+        .vertical-nav-content {
+            width: auto;
+            flex-grow: 1;
             display: none;
         }
 
+        .vertical-nav:not(.collapsed) .vertical-nav-content {
+            display: block;
+            opacity: 1;
+        }
+
         .toggle-vertical-nav {
-            width: 100%;
-            justify-content: flex-start;
+            width: 50px;
+        }
+
+        .vertical-nav ul {
+            display: flex;
+            flex-direction: column;
         }
 
         .horizontal-nav {
             width: 100%;
         }
 
+        .toggle-horizontal-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
         .horizontal-nav ul {
-            flex-direction: row;
-            flex-wrap: wrap;
+            display: none;
+            flex-direction: column;
             height: auto;
             padding: 10px 0;
+            transform: translateY(0);
+        }
+
+        .horizontal-nav:not(.collapsed) ul {
+            display: flex;
         }
 
         .horizontal-nav .nav-link {
             padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dropdown-menu {
@@ -244,25 +292,45 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.querySelector('.toggle-vertical-nav');
+        const verticalToggleBtn = document.querySelector('.toggle-vertical-nav');
         const verticalNav = document.querySelector('.vertical-nav');
+        const horizontalToggleBtn = document.querySelector('.toggle-horizontal-nav');
+        const horizontalNav = document.querySelector('.horizontal-nav');
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-        // Load saved toggle state
-        const isCollapsed = localStorage.getItem('verticalNavCollapsed') === 'true';
-        if (isCollapsed) {
+        // Load saved toggle states
+        const isVerticalCollapsed = localStorage.getItem('verticalNavCollapsed') === 'true';
+        if (isVerticalCollapsed) {
             verticalNav.classList.add('collapsed');
-            toggleBtn.querySelector('i').classList.remove('fa-bars');
-            toggleBtn.querySelector('i').classList.add('fa-times');
+            verticalToggleBtn.querySelector('i').classList.remove('fa-bars');
+            verticalToggleBtn.querySelector('i').classList.add('fa-times');
+        }
+
+        const isHorizontalCollapsed = localStorage.getItem('horizontalNavCollapsed') === 'true';
+        if (isHorizontalCollapsed) {
+            horizontalNav.classList.add('collapsed');
+            horizontalToggleBtn.querySelector('i').classList.remove('fa-bars');
+            horizontalToggleBtn.querySelector('i').classList.add('fa-times');
         }
 
         // Toggle vertical navigation
-        toggleBtn.addEventListener('click', () => {
+        verticalToggleBtn.addEventListener('click', () => {
             verticalNav.classList.toggle('collapsed');
             const isNowCollapsed = verticalNav.classList.contains('collapsed');
-            toggleBtn.querySelector('i').classList.toggle('fa-bars', !isNowCollapsed);
-            toggleBtn.querySelector('i').classList.toggle('fa-times', isNowCollapsed);
+            verticalToggleBtn.querySelector('i').classList.toggle('fa-bars', !isNowCollapsed);
+            verticalToggleBtn.querySelector('i').classList.toggle('fa-times', isNowCollapsed);
             localStorage.setItem('verticalNavCollapsed', isNowCollapsed);
+        });
+
+        // Toggle horizontal navigation (mobile only)
+        horizontalToggleBtn.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                horizontalNav.classList.toggle('collapsed');
+                const isNowCollapsed = horizontalNav.classList.contains('collapsed');
+                horizontalToggleBtn.querySelector('i').classList.toggle('fa-bars', !isNowCollapsed);
+                horizontalToggleBtn.querySelector('i').classList.toggle('fa-times', isNowCollapsed);
+                localStorage.setItem('horizontalNavCollapsed', isNowCollapsed);
+            }
         });
 
         // Handle dropdowns
@@ -273,8 +341,7 @@
                     const dropdownMenu = toggle.nextElementSibling;
                     dropdownMenu.classList.toggle('active');
                 } else {
-                    const dropdownMenu = toggle.nextElementSibling;
-                    dropdownMenu.classList.remove('active');
+                    toggle.nextElementSibling.classList.remove('active');
                 }
             });
         });
@@ -285,6 +352,19 @@
                 dropdownToggles.forEach(toggle => {
                     toggle.nextElementSibling.classList.remove('active');
                 });
+            }
+        });
+
+        // Adjust visibility on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                horizontalNav.classList.remove('collapsed');
+                horizontalToggleBtn.querySelector('i').classList.add('fa-bars');
+                horizontalToggleBtn.querySelector('i').classList.remove('fa-times');
+                localStorage.setItem('horizontalNavCollapsed', false);
+                verticalNav.classList.toggle('collapsed', localStorage.getItem('verticalNavCollapsed') === 'true');
+            } else {
+                horizontalNav.classList.toggle('collapsed', localStorage.getItem('horizontalNavCollapsed') === 'true');
             }
         });
     });
