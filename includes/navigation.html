@@ -1,8 +1,8 @@
 <div class="nav-container">
-    <!-- Vertical Navigation -->
+    <!-- Vertical Navigation (Left Side) -->
     <div class="vertical-nav">
-        <button class="toggle-vertical-nav" id="toggleVerticalNav">
-            <i class="fas fa-list-ul"></i> <span>Vertical Menu</span>
+        <button class="toggle-nav" id="toggleVerticalNav">
+            <i class="fas fa-bars"></i> <span>Categories</span>
         </button>
         <div class="vertical-nav-content">
             <ul>
@@ -23,51 +23,47 @@
         </div>
     </div>
 
-    <!-- Horizontal Navigation -->
+    <!-- Horizontal Navigation (Right Side) -->
     <nav class="horizontal-nav">
-        <button class="toggle-horizontal-nav" id="toggleHorizontalNav">
-            <i class="fas fa-bars"></i> <span>Horizontal Menu</span>
-        </button>
-        <div class="horizontal-nav-content">
-            <ul>
-                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                    </ul>
-                </li>
-                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-            </ul>
-        </div>
+        <ul>
+            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                </ul>
+            </li>
+            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+        </ul>
     </nav>
 </div>
 
 <style>
-    /* Base Styles */
+    /* Base Navigation Container */
     .nav-container {
-        display: flex;
-        flex-direction: column;
         background: #1a3c34;
+        display: flex;
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
-    }
-
-    /* Vertical Navigation */
-    .vertical-nav {
-        width: 100%;
         position: relative;
-        background: #1a3c34;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .toggle-vertical-nav {
+    /* Vertical Navigation Styles */
+    .vertical-nav {
+        width: 250px;
+        background: #1a3c34;
+        position: relative;
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .toggle-nav {
+        display: none;
         background: #1a3c34;
         border: none;
         color: white;
@@ -75,19 +71,12 @@
         width: 100%;
         text-align: left;
         cursor: pointer;
-        display: flex;
         align-items: center;
         gap: 10px;
     }
 
     .vertical-nav-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-    }
-
-    .vertical-nav.active .vertical-nav-content {
-        max-height: 1000px;
+        padding: 10px 0;
     }
 
     .vertical-nav ul {
@@ -102,36 +91,10 @@
         border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* Horizontal Navigation */
+    /* Horizontal Navigation Styles */
     .horizontal-nav {
-        width: 100%;
-        position: relative;
-        background: #1a3c34;
-    }
-
-    .toggle-horizontal-nav {
-        background: #1a3c34;
-        border: none;
-        color: white;
-        padding: 15px;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .horizontal-nav-content {
-        max-height: 0;
+        flex-grow: 1;
         overflow-x: auto;
-        overflow-y: hidden;
-        transition: max-height 0.3s ease;
-    }
-
-    .horizontal-nav.active .horizontal-nav-content {
-        max-height: 1000px;
     }
 
     .horizontal-nav ul {
@@ -139,16 +102,18 @@
         margin: 0;
         padding: 0;
         display: flex;
-        min-width: max-content;
+        height: 100%;
     }
 
     .horizontal-nav .nav-link {
-        display: block;
-        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        height: 100%;
         white-space: nowrap;
     }
 
-    /* Dropdown Styles */
+    /* Dropdown Styles (for both navigations) */
     .dropdown {
         position: relative;
     }
@@ -167,6 +132,7 @@
         background: #2e6b5e;
         min-width: 200px;
         z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .dropdown:hover .dropdown-menu {
@@ -192,65 +158,55 @@
         background: rgba(255,255,255,0.1);
     }
 
-    /* Desktop Styles */
-    @media (min-width: 769px) {
+    /* Mobile Styles */
+    @media (max-width: 768px) {
         .nav-container {
-            flex-direction: row;
-            height: 50px;
+            flex-direction: column;
         }
 
         .vertical-nav {
-            width: 250px;
-            height: 100%;
-            border-right: 1px solid rgba(255,255,255,0.1);
-            border-bottom: none;
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .toggle-vertical-nav,
-        .toggle-horizontal-nav {
-            display: none;
-        }
-
-        .vertical-nav-content,
-        .horizontal-nav-content {
-            max-height: none !important;
-            overflow: visible !important;
-            height: 100%;
-        }
-
-        .vertical-nav ul {
-            height: 100%;
-        }
-
-        .vertical-nav .nav-link {
+        .toggle-nav {
             display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 0 15px;
-            border-bottom: none;
         }
 
-        .horizontal-nav {
-            flex-grow: 1;
-            height: 100%;
+        .vertical-nav-content {
+            display: none;
+            padding: 0;
+        }
+
+        .vertical-nav.active .vertical-nav-content {
+            display: block;
         }
 
         .horizontal-nav ul {
-            height: 100%;
+            flex-direction: column;
         }
 
         .horizontal-nav .nav-link {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 0 15px;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dropdown-menu {
+            position: static;
+            box-shadow: none;
+            display: none;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
         }
     }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle vertical navigation
+    // Toggle vertical navigation on mobile
     const toggleVertical = document.getElementById('toggleVerticalNav');
     const verticalNav = document.querySelector('.vertical-nav');
     
@@ -260,14 +216,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Toggle horizontal navigation
-    const toggleHorizontal = document.getElementById('toggleHorizontalNav');
-    const horizontalNav = document.querySelector('.horizontal-nav');
-    
-    if (toggleHorizontal && horizontalNav) {
-        toggleHorizontal.addEventListener('click', function() {
-            horizontalNav.classList.toggle('active');
+    // Make dropdowns work on mobile
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const dropdown = this.closest('.dropdown');
+                dropdown.classList.toggle('active');
+            }
         });
-    }
+    });
 });
 </script>
