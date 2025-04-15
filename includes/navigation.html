@@ -8,7 +8,10 @@
             <ul>
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="nav-link dropdown-toggle">
+                        <span>వార్తలు</span>
+                        <i class="fas fa-caret-right"></i>
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                         <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -119,6 +122,19 @@
         line-height: 30px;
         white-space: nowrap;
         font-size: 0.9rem;
+    }
+
+    .vertical-nav .dropdown-toggle {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 10px 15px;
+    }
+
+    .vertical-nav .dropdown-toggle i {
+        font-size: 0.8rem;
+        margin-top: 2px;
     }
 
     /* Horizontal Navigation */
@@ -253,6 +269,11 @@
         .vertical-nav ul {
             display: flex;
             flex-direction: column;
+        }
+
+        .vertical-nav .dropdown-toggle {
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .horizontal-nav {
