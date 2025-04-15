@@ -1,7 +1,7 @@
 <div class="nav-container">
-    <!-- Vertical Categories with Working Toggle -->
+    <!-- Vertical Categories with Toggle -->
     <div class="vertical-categories">
-        <button class="toggle-categories" aria-label="Toggle categories">
+        <button class="toggle-categories" id="toggleCategoriesBtn" aria-label="Toggle categories">
             <i class="fas fa-bars"></i> <span class="toggle-text">Categories</span>
         </button>
         <div class="categories-wrapper">
@@ -223,26 +223,20 @@
 </style>
 
 <script>
-    // Toggle vertical categories
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggleBtn = document.querySelector('.toggle-categories');
-        const verticalCategories = document.querySelector('.vertical-categories');
-        
-        if (toggleBtn && verticalCategories) {
-            toggleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                verticalCategories.classList.toggle('active');
-            });
-
-            // Close categories when clicking outside
-            document.addEventListener('click', function() {
-                verticalCategories.classList.remove('active');
-            });
-
-            // Prevent dropdown from closing when clicking inside
-            verticalCategories.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
-    });
+// Simple and reliable toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggleCategoriesBtn');
+    const verticalCategories = document.querySelector('.vertical-categories');
+    
+    if (toggleBtn && verticalCategories) {
+        toggleBtn.addEventListener('click', function() {
+            verticalCategories.classList.toggle('active');
+        });
+    }
+    
+    // Ensure categories are visible by default on desktop
+    if (window.innerWidth > 768) {
+        verticalCategories.classList.add('active');
+    }
+});
 </script>
