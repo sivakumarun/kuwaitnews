@@ -1,5 +1,5 @@
 <div class="nav-container">
-    <!-- Vertical Navigation (Left Side) -->
+    <!-- Vertical Navigation -->
     <div class="vertical-nav">
         <button class="toggle-nav" id="toggleVerticalNav">
             <i class="fas fa-bars"></i> <span>Categories</span>
@@ -23,8 +23,8 @@
         </div>
     </div>
 
-    <!-- Horizontal Navigation (Right Side) -->
-    <nav class="horizontal-nav">
+    <!-- Horizontal Navigation -->
+    <div class="horizontal-nav">
         <ul>
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
@@ -40,11 +40,11 @@
             <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
             <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
         </ul>
-    </nav>
+    </div>
 </div>
 
 <style>
-    /* Base Navigation Container */
+    /* Base Styles */
     .nav-container {
         background: #1a3c34;
         display: flex;
@@ -54,7 +54,7 @@
         position: relative;
     }
 
-    /* Vertical Navigation Styles */
+    /* Vertical Navigation */
     .vertical-nav {
         width: 250px;
         background: #1a3c34;
@@ -91,7 +91,7 @@
         border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* Horizontal Navigation Styles */
+    /* Horizontal Navigation */
     .horizontal-nav {
         flex-grow: 1;
         overflow-x: auto;
@@ -113,7 +113,7 @@
         white-space: nowrap;
     }
 
-    /* Dropdown Styles (for both navigations) */
+    /* Dropdown Styles */
     .dropdown {
         position: relative;
     }
@@ -181,6 +181,10 @@
 
         .vertical-nav.active .vertical-nav-content {
             display: block;
+        }
+
+        .horizontal-nav {
+            width: 100%;
         }
 
         .horizontal-nav ul {
