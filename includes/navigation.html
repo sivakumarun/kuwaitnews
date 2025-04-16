@@ -67,6 +67,8 @@
         background: #1a3c34;
         min-height: fit-content;
         padding: 0.5rem 0;
+        position: relative;
+        z-index: 1001;
     }
 
     .menu-btn {
@@ -90,6 +92,7 @@
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
+        position: relative;
     }
 
     .nav-menu-toggle {
@@ -161,7 +164,7 @@
         left: 0;
         min-width: 180px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 1002;
+        z-index: 1003;
     }
 
     .dropdown.open .dropdown-menu {
@@ -170,7 +173,7 @@
         margin-top: 0.3rem;
         padding: 0.5rem 0;
         box-shadow: none;
-        z-index: 1002;
+        z-index: 1003;
     }
 
     .dropdown-menu .nav-link {
@@ -229,7 +232,7 @@
             top: 100%;
             left: 0;
             margin-left: 0;
-            z-index: 1002;
+            z-index: 1003;
         }
 
         .nav-menu-toggle {
