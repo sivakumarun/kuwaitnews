@@ -1,11 +1,10 @@
 <div class="nav-container">
-    <!-- Vertical Navigation with Toggle -->
-    <div class="vertical-nav">
-        <button class="toggle-vertical-nav" aria-label="Toggle vertical navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="vertical-nav-content">
-            <ul>
+    <nav>
+        <div class="menu-wrapper">
+            <button class="menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu-horizontal">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -21,11 +20,7 @@
                 <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
             </ul>
         </div>
-    </div>
-
-    <!-- Horizontal Navigation -->
-    <nav class="horizontal-nav">
-        <ul>
+        <ul class="nav-menu-toggle hidden">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -44,248 +39,129 @@
 </div>
 
 <style>
-    /* Base Navigation Styles */
+    /* Navigation Styles - All in one place */
     .nav-container {
         background: #1a3c34;
-        color: white;
-        display: flex;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: 100%;
+    }
+
+    nav {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+        padding: 0.5rem 1rem;
     }
 
-    /* Vertical Navigation */
-    .vertical-nav {
-        width: 250px;
-        background: #1a3c34;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-        transition: width 0.3s ease;
-        flex-shrink: 0;
-        overflow: hidden;
-    }
-
-    .vertical-nav.collapsed {
-        width: 50px;
-    }
-
-    .toggle-vertical-nav {
-        background: transparent;
-        border: none;
-        color: white;
-        padding: 0 15px;
-        height: 50px;
-        cursor: pointer;
+    .menu-wrapper {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 50px;
-        font-size: 1.5rem;
-    }
-
-    .vertical-nav-content {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .vertical-nav.collapsed .vertical-nav-content {
-        display: none;
-    }
-
-    .vertical-nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
         width: 100%;
     }
 
-    .vertical-nav li {
-        position: relative;
+    .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #ffffff;
+        padding: 0.4rem;
+        margin-right: 0.5rem;
     }
 
-    .vertical-nav .nav-link {
-        display: block;
-        padding: 10px 15px;
-        line-height: 30px;
-        white-space: nowrap;
-        font-size: 0.9rem;
-    }
-
-    /* Horizontal Navigation */
-    .horizontal-nav {
-        flex-grow: 1;
-        background: #1a3c34;
-    }
-
-    .horizontal-nav ul {
+    .nav-menu-horizontal {
+        display: flex;
         list-style: none;
         margin: 0;
         padding: 0;
-        display: flex;
-        align-items: center;
-        height: 50px;
+        gap: 4px;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
-    .horizontal-nav li {
+    .nav-menu-toggle {
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu-toggle.active {
+        display: flex;
+    }
+
+    .nav-link {
+        font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 0.5rem 0.7rem;
+        display: block;
+        border-radius: 4px;
+        white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown {
         position: relative;
     }
 
-    .horizontal-nav .nav-link {
+    .dropdown-toggle {
         display: flex;
         align-items: center;
-        padding: 0 15px;
-        height: 100%;
-        white-space: nowrap;
-        font-size: 0.9rem;
+        gap: 5px;
     }
 
-    /* Dropdown Styles */
     .dropdown-menu {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
-        background: #2e6b5e;
-        min-width: 200px;
-        z-index: 100;
+        background: #1a3c34;
+        border-radius: 4px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        min-width: 180px;
+        z-index: 1000;
         list-style: none;
-        padding: 0;
-        margin: 0;
+        padding: 0.5rem 0;
     }
 
     .dropdown:hover .dropdown-menu {
         display: block;
     }
 
-    .dropdown-menu.active {
-        display: block;
-    }
-
-    .dropdown-menu .nav-link {
-        padding: 10px 15px;
-        line-height: normal;
-    }
-
-    /* Link Styles */
-    .nav-link {
-        font-family: 'Noto Sans Telugu', sans-serif;
-        color: white;
-        text-decoration: none;
-        transition: background 0.2s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    /* Mobile Styles */
     @media (max-width: 768px) {
-        .nav-container {
-            flex-direction: column;
+        .menu-btn {
+            display: block;
         }
 
-        .vertical-nav {
-            width: 100%;
-            border-right: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .vertical-nav.collapsed {
-            width: 100%;
-            height: 50px;
-        }
-
-        .vertical-nav:not(.collapsed) .vertical-nav-content {
-            display: flex;
-        }
-
-        .vertical-nav.collapsed .vertical-nav-content {
+        .nav-menu-horizontal {
             display: none;
         }
 
-        .toggle-vertical-nav {
-            width: 100%;
-            justify-content: flex-start;
-        }
-
-        .horizontal-nav {
-            width: 100%;
-        }
-
-        .horizontal-nav ul {
-            flex-direction: row;
-            flex-wrap: wrap;
-            height: auto;
-            padding: 10px 0;
-        }
-
-        .horizontal-nav .nav-link {
-            padding: 10px 15px;
+        .nav-menu-horizontal.active {
+            display: flex;
+            flex-direction: column;
         }
 
         .dropdown-menu {
             position: static;
-            margin-left: 15px;
+            display: none;
+            background: #2e6b5e;
             box-shadow: none;
+            margin-left: 1rem;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+            flex-direction: column;
         }
     }
 </style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.querySelector('.toggle-vertical-nav');
-        const verticalNav = document.querySelector('.vertical-nav');
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-        // Load saved toggle state
-        const isCollapsed = localStorage.getItem('verticalNavCollapsed') === 'true';
-        if (isCollapsed) {
-            verticalNav.classList.add('collapsed');
-            toggleBtn.querySelector('i').classList.remove('fa-bars');
-            toggleBtn.querySelector('i').classList.add('fa-times');
-        }
-
-        // Toggle vertical navigation
-        toggleBtn.addEventListener('click', () => {
-            verticalNav.classList.toggle('collapsed');
-            const isNowCollapsed = verticalNav.classList.contains('collapsed');
-            toggleBtn.querySelector('i').classList.toggle('fa-bars', !isNowCollapsed);
-            toggleBtn.querySelector('i').classList.toggle('fa-times', isNowCollapsed);
-            localStorage.setItem('verticalNavCollapsed', isNowCollapsed);
-        });
-
-        // Handle dropdowns
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    const dropdownMenu = toggle.nextElementSibling;
-                    dropdownMenu.classList.toggle('active');
-                } else {
-                    const dropdownMenu = toggle.nextElementSibling;
-                    dropdownMenu.classList.remove('active');
-                }
-            });
-        });
-
-        // Close dropdowns on outside click (mobile only)
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
-                dropdownToggles.forEach(toggle => {
-                    toggle.nextElementSibling.classList.remove('active');
-                });
-            }
-        });
-    });
-</script>
