@@ -168,13 +168,16 @@
     }
 
     .dropdown.open .dropdown-menu {
-        display: block;
-        margin-left: 3rem;
-        margin-top: 0.3rem;
-        padding: 0.5rem 0;
-        box-shadow: none;
-        z-index: 1003;
-    }
+        .nav-menu-toggle .dropdown.open .dropdown-menu {
+    position: relative;
+    margin-left: 1rem;
+    margin-top: 0;
+    padding: 0.2rem 0 0.2rem 1rem;
+    box-shadow: none;
+    z-index: 1;
+    background: rgba(0,0,0,0.1);
+    border-left: 2px solid rgba(255,255,255,0.2);
+}
 
     .dropdown-menu .nav-link {
         padding: 0.5rem 1rem;
