@@ -95,7 +95,7 @@
     .nav-menu-toggle {
         display: none;
         flex-direction: column;
-        margin-top: 4px;
+        margin-top: 6px;
         padding: 0.5rem 0;
         background: #1a3c34;
         max-height: 0;
@@ -106,7 +106,7 @@
         max-width: 100%;
         position: absolute;
         top: 100%;
-        left: 1rem;
+        left: 0.5rem;
         z-index: 1001;
     }
 
@@ -151,6 +151,7 @@
         list-style: none;
         padding: 0.5rem 0;
         z-index: 1000;
+        width: fit-content;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -164,15 +165,14 @@
 
     .dropdown.open .dropdown-menu {
         display: block;
-        margin-left: 1.5rem;
-        margin-top: 0.3rem;
+        position: relative;
+        left: 2rem;
         padding: 0.5rem 0;
-        width: fit-content;
         box-shadow: none;
     }
 
     .dropdown-menu .nav-link {
-        padding: 0.6rem 1rem;
+        padding: 0.5rem 1rem;
     }
 
     /* Responsive Styles */
@@ -187,9 +187,8 @@
         }
 
         .nav-menu-toggle {
-            margin-top: 2px;
-            padding: 0.4rem 0;
-            left: 1rem;
+            margin-top: 4px;
+            left: 0.5rem;
         }
 
         .nav-menu-toggle.active {
@@ -197,8 +196,11 @@
         }
 
         .dropdown.open .dropdown-menu {
-            margin-left: 1.2rem;
-            margin-top: 0.2rem;
+            left: 1.5rem;
+        }
+
+        .dropdown-menu .nav-link {
+            padding: 0.4rem 1rem;
         }
     }
 
