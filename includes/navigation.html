@@ -1,3 +1,200 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>కువైట్ న్యూస్</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== NAVIGATION STYLES ==== */
+        .nav-container {
+            background: #1a3c34;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+
+        .menu-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #ffffff;
+            padding: 0.4rem;
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu-horizontal {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 4px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            width: 100%;
+        }
+
+        .nav-menu-horizontal::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-menu-toggle {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .nav-menu-toggle.active {
+            display: flex;
+        }
+
+        .nav-link {
+            font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 0.7rem;
+            display: block;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1a3c34;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            min-width: 180px;
+            z-index: 1000;
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu-horizontal {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+
+            .nav-menu-toggle {
+                display: none;
+            }
+
+            .nav-menu-toggle.active {
+                display: flex;
+            }
+
+            .dropdown-menu {
+                position: static;
+                background: #2e6b5e;
+                box-shadow: none;
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==== NAVIGATION BAR ==== -->
+    <div class="nav-container">
+        <nav>
+            <div class="menu-wrapper">
+                <button class="menu-btn" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Horizontal Menu (Both Desktop and Mobile) -->
+                <ul class="nav-menu-horizontal">
+                    <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                            <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                            <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                            <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                    <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                    <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+                </ul>
+            </div>
+
+            <!-- Vertical Toggle Menu (Also visible on Desktop when button is clicked) -->
+            <ul class="nav-menu-toggle">
+                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                    </ul>
+                </li>
+                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- ==== JAVASCRIPT ==== -->
+    <script>
+        const menuBtn = document.querySelector('.menu-btn');
+        const navToggle = document.querySelector('.nav-menu-toggle');
+
+        menuBtn.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
+
+
 /* Base styles for navigation */
 .nav-container {
     background: #1a3c34;
