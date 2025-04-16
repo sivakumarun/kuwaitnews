@@ -4,7 +4,6 @@
             <button class="menu-btn" aria-label="Toggle vertical menu" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
-            <!-- Horizontal menu moved inside menu-wrapper -->
             <ul class="nav-menu-horizontal">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
@@ -63,6 +62,8 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap;
+        background: #1a3c34;
+        padding: 0.5rem 0;
     }
 
     .menu-btn {
@@ -96,12 +97,14 @@
         background: #1a3c34;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+        opacity: 0;
     }
 
     .nav-menu-toggle.active {
         display: flex;
-        max-height: 600px;
+        max-height: 700px;
+        opacity: 1;
     }
 
     .nav-link {
