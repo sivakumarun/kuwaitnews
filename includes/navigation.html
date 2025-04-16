@@ -4,24 +4,23 @@
             <button class="menu-btn" aria-label="Toggle vertical menu" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- Horizontal menu moved inside menu-wrapper -->
+            <ul class="nav-menu-horizontal">
+                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
+                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
+                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
+                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
+                    </ul>
+                </li>
+                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
+                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
+                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
+            </ul>
         </div>
-
-        <!-- Horizontal menu -->
-        <ul class="nav-menu-horizontal">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                </ul>
-            </li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
 
         <!-- Vertical toggle menu -->
         <ul class="nav-menu-toggle" id="toggleMenu">
@@ -64,7 +63,6 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap;
-        margin-bottom: 0.8rem;
     }
 
     .menu-btn {
@@ -74,6 +72,7 @@
         cursor: pointer;
         color: #ffffff;
         padding: 0.5rem;
+        margin-right: 1rem;
     }
 
     .nav-menu-horizontal,
@@ -81,19 +80,18 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        width: 100%;
     }
 
     .nav-menu-horizontal {
         display: flex;
-        gap: 8px;
+        gap: 6px;
         flex-wrap: wrap;
     }
 
     .nav-menu-toggle {
         display: none;
         flex-direction: column;
-        margin-top: 16px;
+        margin-top: 4px;
         padding: 0.5rem 0;
         background: #1a3c34;
         max-height: 0;
@@ -112,7 +110,7 @@
         font-weight: 500;
         color: #ffffff;
         text-decoration: none;
-        padding: 0.7rem 1rem;
+        padding: 0.6rem 1rem;
         display: block;
         border-radius: 4px;
         white-space: nowrap;
@@ -130,7 +128,7 @@
     .dropdown-toggle {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 5px;
         cursor: pointer;
     }
 
@@ -144,7 +142,7 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         min-width: 180px;
         list-style: none;
-        padding: 0.6rem 0;
+        padding: 0.5rem 0;
         z-index: 1000;
     }
 
@@ -157,7 +155,7 @@
         position: static;
         box-shadow: none;
         background: #2e6b5e;
-        margin-left: 1.2rem;
+        margin-left: 1rem;
         padding: 0.5rem 0;
     }
 
@@ -169,6 +167,7 @@
     @media (max-width: 768px) {
         .menu-btn {
             display: block;
+            margin-right: 0.5rem;
         }
 
         .nav-menu-horizontal {
@@ -176,20 +175,12 @@
         }
 
         .nav-menu-toggle {
-            margin-top: 12px;
+            margin-top: 2px;
             padding: 0.4rem 0;
         }
 
         .nav-menu-toggle.active {
             display: flex;
-        }
-
-        .nav-link {
-            padding: 0.6rem 1rem;
-        }
-
-        .dropdown-menu {
-            margin-left: 1rem;
         }
     }
 
