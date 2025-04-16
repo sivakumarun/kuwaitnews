@@ -161,6 +161,7 @@
         left: 0;
         min-width: 180px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1002;
     }
 
     .dropdown.open .dropdown-menu {
@@ -169,6 +170,7 @@
         margin-top: 0.3rem;
         padding: 0.5rem 0;
         box-shadow: none;
+        z-index: 1002;
     }
 
     .dropdown-menu .nav-link {
@@ -220,6 +222,14 @@
 
         .nav-menu-horizontal .dropdown-menu {
             min-width: 160px;
+        }
+
+        .nav-menu-horizontal .dropdown.open .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-left: 0;
+            z-index: 1002;
         }
 
         .nav-menu-toggle {
