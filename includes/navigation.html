@@ -4,10 +4,10 @@
             <button class="menu-btn" aria-label="Toggle vertical menu" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul class="nav-menu-horizontal">
+            <ul class="nav-menu-horizontal" id="horizontalMenu">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                         <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -95,7 +95,7 @@
     .nav-menu-toggle {
         display: none;
         flex-direction: column;
-        margin-top: 6px;
+        margin-top: 2px;
         padding: 0.5rem 0;
         background: #1a3c34;
         max-height: 0;
@@ -106,7 +106,7 @@
         max-width: 100%;
         position: absolute;
         top: 100%;
-        left: 0.5rem;
+        left: 0.3rem;
         z-index: 1001;
     }
 
@@ -165,8 +165,8 @@
 
     .dropdown.open .dropdown-menu {
         display: block;
-        position: relative;
-        left: 2rem;
+        margin-left: 3rem;
+        margin-top: 0.3rem;
         padding: 0.5rem 0;
         box-shadow: none;
     }
@@ -180,15 +180,27 @@
         .menu-btn {
             display: block;
             margin-right: 0.5rem;
+            padding: 0.4rem;
         }
 
         .nav-menu-horizontal {
-            display: none;
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu-horizontal .nav-link {
+            font-size: 0.85rem;
+            padding: 0.5rem 0.8rem;
+        }
+
+        .nav-menu-horizontal .dropdown-menu {
+            min-width: 160px;
         }
 
         .nav-menu-toggle {
-            margin-top: 4px;
-            left: 0.5rem;
+            margin-top: 1px;
+            left: 0.3rem;
         }
 
         .nav-menu-toggle.active {
@@ -196,7 +208,8 @@
         }
 
         .dropdown.open .dropdown-menu {
-            left: 1.5rem;
+            margin-left: 2.5rem;
+            margin-top: 0.3rem;
         }
 
         .dropdown-menu .nav-link {
