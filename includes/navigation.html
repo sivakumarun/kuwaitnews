@@ -24,44 +24,44 @@
     }
 
     .menu-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; /* This pushes menu to the right */
+    gap: 10px;
+}
 
     .menu-btn {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #ffffff;
-      display: block;
-    }
-
-    .nav-menu-horizontal,
-    .nav-menu-toggle {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 0.4rem;
+    margin: 0; /* remove margin */
+}
 
     .nav-menu-horizontal {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: flex-end; /* Align menu items to the right */
+}
 
     .nav-menu-toggle {
-      display: none;
-      flex-direction: column;
-      margin-top: 10px;
-    }
-
-    .nav-menu-toggle.active {
-      display: flex;
-    }
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0; /* remove space above vertical menu */
+}
 
     .nav-link {
       font-size: 0.9rem;
