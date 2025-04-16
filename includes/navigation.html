@@ -25,7 +25,7 @@
         <ul class="nav-menu-toggle" id="toggleMenu">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-down"></i></a>
+                <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-right"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                     <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -49,12 +49,14 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        height: fit-content;
     }
 
     nav {
         max-width: 1400px;
         margin: 0 auto;
         padding: 0.5rem 1rem;
+        position: relative;
     }
 
     .menu-wrapper {
@@ -63,6 +65,7 @@
         justify-content: flex-start;
         flex-wrap: wrap;
         background: #1a3c34;
+        min-height: fit-content;
         padding: 0.5rem 0;
     }
 
@@ -99,6 +102,12 @@
         overflow: hidden;
         transition: max-height 0.4s ease, opacity 0.4s ease;
         opacity: 0;
+        width: fit-content;
+        max-width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 1rem;
+        z-index: 1001;
     }
 
     .nav-menu-toggle.active {
@@ -137,13 +146,8 @@
 
     .dropdown-menu {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #1a3c34;
+        background: #2e6b5e;
         border-radius: 4px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        min-width: 180px;
         list-style: none;
         padding: 0.5rem 0;
         z-index: 1000;
@@ -151,15 +155,20 @@
 
     .dropdown:hover .dropdown-menu {
         display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 180px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .dropdown.open .dropdown-menu {
         display: block;
-        position: static;
-        box-shadow: none;
-        background: #2e6b5e;
-        margin-left: 1rem;
+        margin-left: 1.5rem;
+        margin-top: 0.3rem;
         padding: 0.5rem 0;
+        width: fit-content;
+        box-shadow: none;
     }
 
     .dropdown-menu .nav-link {
@@ -180,10 +189,16 @@
         .nav-menu-toggle {
             margin-top: 2px;
             padding: 0.4rem 0;
+            left: 1rem;
         }
 
         .nav-menu-toggle.active {
             display: flex;
+        }
+
+        .dropdown.open .dropdown-menu {
+            margin-left: 1.2rem;
+            margin-top: 0.2rem;
         }
     }
 
