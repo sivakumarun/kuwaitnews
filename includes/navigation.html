@@ -177,16 +177,40 @@
 
     /* Responsive Styles */
     @media (max-width: 768px) {
+        .menu-wrapper {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .menu-btn {
             display: block;
             margin-right: 0.5rem;
             padding: 0.4rem;
+            flex-shrink: 0;
         }
 
         .nav-menu-horizontal {
             display: flex;
             gap: 4px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-menu-horizontal::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .nav-menu-horizontal::-webkit-scrollbar-thumb {
+            background: #2e6b5e;
+            border-radius: 4px;
+        }
+
+        .nav-menu-horizontal::-webkit-scrollbar-track {
+            background: #1a3c34;
         }
 
         .nav-menu-horizontal .nav-link {
