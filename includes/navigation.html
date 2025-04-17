@@ -161,22 +161,25 @@
         display: block;
         position: absolute;
         top: 100%;
-        left: 10;
+        left: 0;
         min-width: 180px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 1003;
     }
 
-    .nav-menu-toggle .dropdown.open .dropdown-menu {
-    position: relative;
-    margin-left: 10rem;
-    margin-top: 0;
-    padding: 0.2rem 0 0.2rem 1rem;
-    box-shadow: none;
-    z-index: 1;
-    background: rgba(0,0,0,0.1);
-    border-left: 2px solid rgba(255,255,255,0.2);
-}
+    /* Specific rule for vertical menu dropdown to position sub-menu to the right */
+    ul.nav-menu-toggle li.dropdown.open .dropdown-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin: 0;
+        padding: 0.5rem 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1003;
+        background: #2e6b5e;
+        border-left: 2px solid rgba(255, 255, 255, 0.2);
+    }
 
     .dropdown-menu .nav-link {
         padding: 0.5rem 1rem;
@@ -246,9 +249,10 @@
             display: flex;
         }
 
-        .dropdown.open .dropdown-menu {
-            margin-left: 2.5rem;
-            margin-top: 0.3rem;
+        ul.nav-menu-toggle li.dropdown.open .dropdown-menu {
+            top: 0;
+            left: 100%;
+            padding: 0.5rem 0;
         }
 
         .dropdown-menu .nav-link {
