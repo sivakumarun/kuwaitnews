@@ -167,9 +167,9 @@
         z-index: 1003;
     }
 
-    /* Specific rule for vertical menu dropdown to position sub-menu to the right */
-    ul.nav-menu-toggle li.dropdown.open .dropdown-menu {
-        display: block;
+    /* Specific rule for vertical menu dropdown to ensure display and position */
+    ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
+        display: block !important;
         position: absolute;
         top: 0;
         left: 100%;
@@ -179,6 +179,7 @@
         z-index: 1003;
         background: #2e6b5e;
         border-left: 2px solid rgba(255, 255, 255, 0.2);
+        min-width: 180px;
     }
 
     .dropdown-menu .nav-link {
@@ -249,7 +250,8 @@
             display: flex;
         }
 
-        ul.nav-menu-toggle li.dropdown.open .dropdown-menu {
+        ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
+            display: block !important;
             top: 0;
             left: 100%;
             padding: 0.5rem 0;
@@ -284,6 +286,16 @@
     function toggleDropdown(event) {
         event.preventDefault();
         const parent = event.target.closest('.dropdown');
-        parent.classList.toggle('open');
+        if (parent) {
+            // Close other open dropdowns
+            const allDropdowns = document.querySelectorAll('.nav-menu-toggle .dropdown');
+            allDropdowns.forEach(dropdown => {
+                if (dropdown !== parent) {
+                    dropdown.classList.remove('open');
+                }
+            });
+            // Toggle the clicked dropdown
+            parent.classList.toggle('open');
+        }
     }
 </script>
