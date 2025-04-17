@@ -68,37 +68,3 @@ body {
     white-space: nowrap;
 }
 
-.search-container {
-    min-width: 180px;
-    flex-shrink: 0;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: #f5f5f5;
-    border-radius: 4px;
-    overflow: hidden;
-    transition: all 0.3s;
-}
-
-.search-input {
-    padding: 0.6rem;
-    border: none;
-    background: transparent;
-    outline: none;
-    width: 100%;
-    transition: width 0.3s;
-}
-
-.search-btn {
-    padding: 0.6rem 0.8rem;
-    border: none;
-    background: transparent;
-    color: #555;
-    cursor: pointer;
-}
-
-.search-btn:hover {
-    color: var(--accent);
-}
