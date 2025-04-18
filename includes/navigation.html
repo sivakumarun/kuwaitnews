@@ -94,19 +94,16 @@
     .nav-menu-toggle {
         display: none;
         flex-direction: column;
-        margin-top: 0px;
+        margin-top: 0;
         padding: 0.5rem 0;
         background: #333333;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease, opacity 0.4s ease;
         opacity: 0;
-        width: fit-content;
-        max-width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0.0rem;
-        z-index: 1001;
+        width: 100%;
+        position: relative;
+        z-index: 1000;
     }
 
     .nav-menu-toggle.active {
@@ -166,16 +163,15 @@
     /* Specific rule for vertical menu dropdown to ensure display and position */
     ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
         display: block !important;
-        position: absolute;
+        position: relative;
         top: 0;
-        left: 100%;
+        left: 0;
         margin: 0;
         padding: 0.5rem 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 1003;
+        box-shadow: none;
         background: #4a4a4a;
-        border-left: 2px solid rgba(255, 255, 255, 0.2);
-        min-width: 180px;
+        border-left: none;
+        min-width: 100%;
     }
 
     .dropdown-menu .nav-link {
@@ -238,8 +234,8 @@
         }
 
         .nav-menu-toggle {
-            margin-top: 0px;
-            left: 0.0rem;
+            margin-top: 0;
+            position: relative;
         }
 
         .nav-menu-toggle.active {
@@ -248,9 +244,11 @@
 
         ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
             display: block !important;
+            position: relative;
             top: 0;
-            left: 100%;
+            left: 0;
             padding: 0.5rem 0;
+            min-width: 100%;
         }
 
         .dropdown-menu .nav-link {
