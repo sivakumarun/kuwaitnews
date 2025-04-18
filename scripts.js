@@ -1,4 +1,4 @@
-// Function to load HTML components (header/nav)
+// scripts.js
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
         console.log(`Attempting to load ${url}`);
@@ -20,7 +20,6 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
     }
 }
 
-// Main function to load components
 async function loadCommonComponents() {
     try {
         // Clear any existing top-wrapper to prevent duplicates
@@ -43,7 +42,6 @@ async function loadCommonComponents() {
         // Initialize menu toggle for vertical list
         const menuBtn = document.querySelector('.menu-btn');
         const navMenuToggle = document.querySelector('.nav-menu-toggle');
-        
         if (menuBtn && navMenuToggle) {
             menuBtn.addEventListener('click', () => {
                 const isActive = navMenuToggle.classList.toggle('active');
@@ -52,22 +50,28 @@ async function loadCommonComponents() {
             });
         }
 
-        // Initialize dropdown toggle for mobile
+        // Initialize dropdown toggle for both horizontal and vertical menus
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                const dropdownMenu = toggle.nextElementSibling;
-                if (window.innerWidth <= 768) {
-                    dropdownMenu.classList.toggle('active');
+                const dropdown = toggle.closest('.dropdown');
+                if (dropdown) {
+                    // Close other open dropdowns
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                        }
+                    });
+                    // Toggle the current dropdown
+                    dropdown.classList.toggle('open');
                 }
             });
         });
 
-        // Initialize search bar
+        // Initialize search bar (if present)
         const searchBtn = document.querySelector('.search-btn');
         const searchInput = document.querySelector('.search-input');
-        
         if (searchBtn && searchInput) {
             searchBtn.addEventListener('click', (e) => {
                 e.preventDefault();
