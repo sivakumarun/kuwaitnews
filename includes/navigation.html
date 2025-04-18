@@ -54,8 +54,7 @@
         max-width: 1400px;
         margin: 0 auto;
         padding: 0 1rem;
-        display: flex;
-        flex-wrap: wrap;
+        position: relative;
     }
 
     .menu-wrapper {
@@ -91,19 +90,25 @@
     }
 
     .nav-menu-toggle {
-        width: auto; /* Changed from 100% to fit content */
-        max-width: 300px; /* Prevent overflow */
+        position: absolute;
+        top: 48px; /* Below menu-wrapper */
+        left: 0;
+        width: fit-content; /* Auto fit to content */
         background: #333333;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease, opacity 0.3s ease;
         opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        transform: translateY(-10px); /* Slide effect */
+        z-index: 1001;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .nav-menu-toggle.active {
         max-height: 500px;
         opacity: 1;
-        padding: 0.5rem 0;
+        transform: translateY(0);
+        padding: 0.5rem;
     }
 
     .nav-link {
@@ -141,12 +146,16 @@
         list-style: none;
         padding: 0.5rem 0;
         z-index: 1001;
-        min-width: 180px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        min-width: 100%;
+        opacity: 0;
+        transform: translateY(-5px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     .dropdown.open .dropdown-menu {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .dropdown-menu .nav-link {
@@ -164,6 +173,7 @@
             position: absolute;
             top: 100%;
             left: 0;
+            min-width: 180px;
         }
 
         .menu-btn {
@@ -172,8 +182,10 @@
 
         .nav-menu-toggle {
             display: block;
-            width: auto; /* Fit content */
+            width: fit-content; /* Auto fit to content */
             max-width: 300px; /* Prevent overflow */
+            top: 48px;
+            left: 1rem;
         }
 
         .nav-menu-toggle .dropdown-menu {
@@ -239,8 +251,10 @@
 
         .nav-menu-toggle {
             display: block;
-            width: auto; /* Fit content */
-            max-width: 100%; /* Full width on mobile for readability */
+            width: fit-content; /* Auto fit to content */
+            max-width: 90%; /* Allow flexibility on small screens */
+            top: 48px;
+            left: 1rem;
         }
 
         .nav-menu-toggle .dropdown-menu {
