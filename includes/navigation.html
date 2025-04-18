@@ -46,7 +46,6 @@
         width: 100%;
         position: relative;
         z-index: 1000;
-        overflow: visible;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
@@ -61,8 +60,7 @@
         align-items: center;
         background: #333333;
         padding: 0.5rem 0;
-        position: relative;
-        min-height: 48px; /* Ensure dropdown positions below */
+        min-height: 48px;
     }
 
     .menu-btn {
@@ -73,6 +71,7 @@
         color: #ffffff;
         padding: 0.5rem;
         margin-right: 0.5rem;
+        display: none;
     }
 
     .nav-menu-horizontal,
@@ -166,17 +165,12 @@
         }
 
         .nav-menu-toggle {
-            display: none; /* Hidden on desktop */
+            display: none;
         }
     }
 
     /* Mobile Styles */
     @media (max-width: 768px) {
-        .menu-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
         .menu-btn {
             display: block;
             flex-shrink: 0;
@@ -208,24 +202,22 @@
             padding: 0.5rem 0.8rem;
         }
 
+        /* Disable dropdown in horizontal menu on mobile */
+        .nav-menu-horizontal .dropdown-toggle {
+            cursor: default;
+            pointer-events: none; /* Prevent clicks */
+        }
+
         .nav-menu-horizontal .dropdown-menu {
-            position: absolute;
-            top: 48px; /* Matches .menu-wrapper min-height */
-            left: 0;
-            width: 100%;
-            min-width: unset;
-            max-width: 200px;
+            display: none !important; /* Ensure dropdown never shows */
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
-            display: block;
-            position: absolute;
-            top: 48px;
-            left: 0;
+            display: none !important;
         }
 
         .nav-menu-toggle {
-            display: block; /* Visible on mobile via toggle */
+            display: block;
         }
 
         .nav-menu-toggle .dropdown-menu {
