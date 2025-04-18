@@ -1,18 +1,12 @@
-// scripts.js
+// Function to load HTML components
 async function loadComponent(url, targetElement, position = 'beforeend') {
     try {
-        console.log(`Attempting to load ${url}`);
         const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Failed to load ${url}: ${response.statusText}`);
-        }
+        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.statusText}`);
         const html = await response.text();
         const target = document.querySelector(targetElement);
-        if (!target) {
-            throw new Error(`Target element '${targetElement}' not found`);
-        }
+        if (!target) throw new Error(`Target element '${targetElement}' not found`);
         target.insertAdjacentHTML(position, html);
-        console.log(`Successfully loaded ${url}`);
         return true;
     } catch (error) {
         console.error('Error loading component:', error.message);
@@ -20,6 +14,7 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
     }
 }
 
+// Main function to load components
 async function loadCommonComponents() {
     try {
         // Clear any existing top-wrapper to prevent duplicates
@@ -27,9 +22,7 @@ async function loadCommonComponents() {
         if (existingWrapper) existingWrapper.remove();
 
         // Create wrapper structure
-        document.body.insertAdjacentHTML('afterbegin', `
-            <div class="top-wrapper"></div>
-        `);
+        document.body.insertAdjacentHTML('afterbegin', `<div class="top-wrapper"></div>`);
 
         // Load header
         const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
@@ -69,18 +62,7 @@ async function loadCommonComponents() {
             });
         });
 
-        // Initialize search bar (if present)
-        const searchBtn = document.querySelector('.search-btn');
-        const searchInput = document.querySelector('.search-input');
-        if (searchBtn && searchInput) {
-            searchBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                searchInput.focus();
-            });
-        }
-
         document.dispatchEvent(new Event('commonComponentsLoaded'));
-        console.log('Common components loaded successfully');
     } catch (error) {
         console.error('Error in loadCommonComponents:', error);
     }
@@ -97,6 +79,5 @@ document.head.appendChild(style);
 
 // Start the process
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM content loaded, starting component load');
     loadCommonComponents();
 });
