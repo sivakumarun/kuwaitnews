@@ -1,3 +1,39 @@
+/* Mobile-first navigation styles */
+.nav-menu-horizontal {
+    display: none;
+}
+
+.nav-menu-vertical {
+    display: none;
+    flex-direction: column;
+}
+
+@media (min-width: 769px) {
+    .nav-menu-horizontal {
+        display: flex;
+    }
+    .menu-btn {
+        display: none;
+    }
+}
+
+/* Dropdown fixes */
+.nav-menu-horizontal .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.nav-menu-vertical .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.dropdown.open .dropdown-menu {
+    max-height: 500px;
+}
+
 /* Base Styles */
 :root {
     --primary: #1a3c34;
