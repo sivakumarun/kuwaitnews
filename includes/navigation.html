@@ -23,7 +23,7 @@
 
         <!-- Vertical toggle menu -->
         <ul class="nav-menu-toggle" id="toggleMenu">
-            <li><a href="/kuwaitnews juice/index.html" class="nav-link">హోమ్</a></li>
+            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-right"></i></a>
                 <ul class="dropdown-menu">
@@ -46,6 +46,7 @@
         background: #333333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: 100%;
+        overflow: visible; /* Prevent clipping of dropdowns */
     }
 
     nav {
@@ -53,6 +54,7 @@
         margin: 0 auto;
         padding: 0.5rem 1rem;
         position: relative;
+        overflow: visible; /* Ensure dropdowns are not clipped */
     }
 
     .menu-wrapper {
@@ -146,7 +148,7 @@
         border-radius: 4px;
         list-style: none;
         padding: 0.5rem 0;
-        z-index: 1000;
+        z-index: 1005; /* Higher z-index to ensure visibility */
         width: fit-content;
     }
 
@@ -161,7 +163,7 @@
         left: 0;
         min-width: 180px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 1003;
+        z-index: 1005;
     }
 
     /* Specific rule for vertical menu dropdown to ensure display and position */
@@ -226,20 +228,21 @@
         }
 
         .nav-menu-horizontal .dropdown-menu {
-            min-width: 100%;
-            top: calc(100% + 0.5rem); /* Adjusted to push below header */
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Push below header */
             left: 0;
+            min-width: 100%;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1003;
+            z-index: 1005;
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
             display: block;
             position: absolute;
-            top: calc(100% + 0.5rem); /* Ensure it appears below header */
+            top: calc(100% + 0.5rem);
             left: 0;
             margin-left: 0;
-            z-index: 1003;
+            z-index: 1005;
         }
 
         .nav-menu-toggle {
@@ -281,12 +284,15 @@
 </style>
 
 <script>
-    function toggleMenu() {
+    // Ensure toggleMenu and toggleDropdown are defined globally
+    window.toggleMenu = function() {
         const toggle = document.getElementById("toggleMenu");
-        toggle.classList.toggle("active");
-    }
+        if (toggle) {
+            toggle.classList.toggle("active");
+        }
+    };
 
-    function toggleDropdown(event) {
+    window.toggleDropdown = function(event) {
         event.preventDefault();
         const parent = event.target.closest('.dropdown');
         if (parent) {
@@ -300,5 +306,16 @@
             // Toggle the clicked dropdown
             parent.classList.toggle('open');
         }
-    }
+    };
+
+    // Re-attach event listeners after DOM load to handle injected content
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', toggleDropdown);
+        });
+        const menuBtn = document.querySelector('.menu-btn');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', toggleMenu);
+        }
+    });
 </script>
