@@ -61,8 +61,6 @@ async function loadCommonComponents() {
                 }
             });
         });
-
-        document.dispatchEvent(new Event('commonComponentsLoaded'));
     } catch (error) {
         console.error('Error in loadCommonComponents:', error);
     }
@@ -73,6 +71,8 @@ const style = document.createElement('style');
 style.textContent = `
     .top-wrapper {
         width: 100%;
+        position: relative;
+        z-index: 1000;
     }
 `;
 document.head.appendChild(style);
