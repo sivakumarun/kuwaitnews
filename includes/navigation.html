@@ -1,13 +1,13 @@
 <div class="nav-container">
     <nav>
         <div class="menu-wrapper">
-            <button class="menu-btn" aria-label="Toggle vertical menu" onclick="toggleMenu()">
+            <button class="menu-btn" aria-label="Toggle vertical menu">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu-horizontal" id="horizontalMenu">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                         <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -25,7 +25,7 @@
         <ul class="nav-menu-toggle" id="toggleMenu">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-right"></i></a>
+                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-right"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                     <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -46,7 +46,7 @@
         background: #333333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: 100%;
-        overflow: visible; /* Prevent clipping of dropdowns */
+        overflow: visible;
     }
 
     nav {
@@ -54,7 +54,7 @@
         margin: 0 auto;
         padding: 0.5rem 1rem;
         position: relative;
-        overflow: visible; /* Ensure dropdowns are not clipped */
+        overflow: visible;
     }
 
     .menu-wrapper {
@@ -148,7 +148,7 @@
         border-radius: 4px;
         list-style: none;
         padding: 0.5rem 0;
-        z-index: 1005; /* Higher z-index to ensure visibility */
+        z-index: 1005;
         width: fit-content;
     }
 
@@ -166,7 +166,6 @@
         z-index: 1005;
     }
 
-    /* Specific rule for vertical menu dropdown to ensure display and position */
     ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
         display: block !important;
         position: relative;
@@ -229,7 +228,7 @@
 
         .nav-menu-horizontal .dropdown-menu {
             position: absolute;
-            top: calc(100% + 0.5rem); /* Push below header */
+            top: calc(100% + 0.5rem);
             left: 0;
             min-width: 100%;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -282,40 +281,3 @@
         }
     }
 </style>
-
-<script>
-    // Ensure toggleMenu and toggleDropdown are defined globally
-    window.toggleMenu = function() {
-        const toggle = document.getElementById("toggleMenu");
-        if (toggle) {
-            toggle.classList.toggle("active");
-        }
-    };
-
-    window.toggleDropdown = function(event) {
-        event.preventDefault();
-        const parent = event.target.closest('.dropdown');
-        if (parent) {
-            // Close other open dropdowns
-            const allDropdowns = document.querySelectorAll('.dropdown');
-            allDropdowns.forEach(dropdown => {
-                if (dropdown !== parent) {
-                    dropdown.classList.remove('open');
-                }
-            });
-            // Toggle the clicked dropdown
-            parent.classList.toggle('open');
-        }
-    };
-
-    // Re-attach event listeners after DOM load to handle injected content
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', toggleDropdown);
-        });
-        const menuBtn = document.querySelector('.menu-btn');
-        if (menuBtn) {
-            menuBtn.addEventListener('click', toggleMenu);
-        }
-    });
-</script>
