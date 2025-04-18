@@ -43,21 +43,42 @@ async function loadCommonComponents() {
             });
         }
 
-        // Initialize dropdown toggle for both horizontal and vertical menus
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        // Initialize dropdown toggle for vertical menu only
+        const dropdownToggles = document.querySelectorAll('.nav-menu-toggle .dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 const dropdown = toggle.closest('.dropdown');
                 if (dropdown) {
                     // Close other open dropdowns
-                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                    document.querySelectorAll('.nav-menu-toggle .dropdown').forEach(otherDropdown => {
                         if (otherDropdown !== dropdown) {
                             otherDropdown.classList.remove('open');
                         }
                     });
                     // Toggle the current dropdown
                     dropdown.classList.toggle('open');
+                }
+            });
+        });
+
+        // Initialize dropdown toggle for horizontal menu on desktop only
+        const horizontalDropdownToggles = document.querySelectorAll('.nav-menu-horizontal .dropdown-toggle');
+        horizontalDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth > 768) { // Only on desktop
+                    e.preventDefault();
+                    const dropdown = toggle.closest('.dropdown');
+                    if (dropdown) {
+                        // Close other open dropdowns
+                        document.querySelectorAll('.nav-menu-horizontal .dropdown').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        // Toggle the current dropdown
+                        dropdown.classList.toggle('open');
+                    }
                 }
             });
         });
