@@ -1,235 +1,83 @@
-<div class="nav-container">
-    <nav>
-        <div class="menu-wrapper">
-            <button class="menu-btn" aria-label="Toggle vertical menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu-horizontal" id="horizontalMenu">
-                <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                        <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                        <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                        <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                    </ul>
-                </li>
-                <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-                <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-                <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-            </ul>
-        </div>
-
-        <!-- Vertical toggle menu -->
-        <ul class="nav-menu-toggle" id="toggleMenu">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-right"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
-                    <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
-                    <li><a href="/kuwaitnews/news/telangana.html" class="nav-link">తెలంగాణ</a></li>
-                    <li><a href="/kuwaitnews/news/india.html" class="nav-link">భారత</a></li>
-                </ul>
-            </li>
-            <li><a href="/kuwaitnews/sports.html" class="nav-link">క్రీడలు</a></li>
-            <li><a href="/kuwaitnews/gold-price.html" class="nav-link">గోల్డ్ ధర</a></li>
-            <li><a href="/kuwaitnews/money-exchange-rate.html" class="nav-link">మనీ ఎక్స్ఛేంజ్ రేటు</a></li>
-        </ul>
-    </nav>
-</div>
-
-<style>
-    /* Base Navigation Styles */
-    .nav-container {
-        background: #333333;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        position: relative;
-        z-index: 1000;
-        overflow: visible;
+// Function to load HTML components
+async function loadComponent(url, targetElement, position = 'beforeend') {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.statusText}`);
+        const html = await response.text();
+        const target = document.querySelector(targetElement);
+        if (!target) throw new Error(`Target element '${targetElement}' not found`);
+        target.insertAdjacentHTML(position, html);
+        return true;
+    } catch (error) {
+        console.error('Error loading component:', error.message);
+        return false;
     }
+}
 
-    nav {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0.5rem 1rem;
+// Main function to load components
+async function loadCommonComponents() {
+    try {
+        // Clear any existing top-wrapper to prevent duplicates
+        const existingWrapper = document.querySelector('.top-wrapper');
+        if (existingWrapper) existingWrapper.remove();
+
+        // Create wrapper structure
+        document.body.insertAdjacentHTML('afterbegin', `<div class="top-wrapper"></div>`);
+
+        // Load header
+        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
+        if (!headerLoaded) throw new Error('Header failed to load');
+
+        // Load navigation
+        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
+        if (!navLoaded) throw new Error('Navigation failed to load');
+
+        // Initialize menu toggle for vertical list
+        const menuBtn = document.querySelector('.menu-btn');
+        const navMenuToggle = document.querySelector('.nav-menu-toggle');
+        if (menuBtn && navMenuToggle) {
+            menuBtn.addEventListener('click', () => {
+                const isActive = navMenuToggle.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isActive);
+                menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+        }
+
+        // Initialize dropdown toggle for both horizontal and vertical menus
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdown = toggle.closest('.dropdown');
+                if (dropdown) {
+                    // Close other open dropdowns
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                        }
+                    });
+                    // Toggle the current dropdown
+                    dropdown.classList.toggle('open');
+                }
+            });
+        });
+
+        document.dispatchEvent(new Event('commonComponentsLoaded'));
+    } catch (error) {
+        console.error('Error in loadCommonComponents:', error);
     }
+}
 
-    .menu-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        background: #333333;
-        padding: 0.5rem 0;
-        position: relative;
-        min-height: 48px; /* Ensure enough space for dropdown positioning */
-    }
-
-    .menu-btn {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: #ffffff;
-        padding: 0.5rem;
-        margin-right: 1rem;
-    }
-
-    .nav-menu-horizontal,
-    .nav-menu-toggle {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-menu-horizontal {
-        display: flex;
-        gap: 6px;
-    }
-
-    .nav-menu-toggle {
-        display: none;
-        flex-direction: column;
-        background: #333333;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.4s ease;
-        opacity: 0;
+// Add global styles
+const style = document.createElement('style');
+style.textContent = `
+    .top-wrapper {
         width: 100%;
     }
+`;
+document.head.appendChild(style);
 
-    .nav-menu-toggle.active {
-        display: flex;
-        max-height: 700px;
-        opacity: 1;
-    }
-
-    .nav-link {
-        font-family: 'Noto Sans Telugu', 'Open Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #ffffff;
-        text-decoration: none;
-        padding: 0.6rem 1rem;
-        display: block;
-        border-radius: 4px;
-        white-space: nowrap;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .dropdown {
-        position: relative;
-    }
-
-    .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        cursor: pointer;
-    }
-
-    .dropdown-menu {
-        display: none;
-        background: #4a4a4a;
-        border-radius: 4px;
-        list-style: none;
-        padding: 0.5rem 0;
-        z-index: 1001;
-        min-width: 180px;
-    }
-
-    .dropdown.open .dropdown-menu {
-        display: block;
-    }
-
-    .dropdown-menu .nav-link {
-        padding: 0.5rem 1rem;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        .menu-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .menu-btn {
-            display: block;
-            flex-shrink: 0;
-        }
-
-        .nav-menu-horizontal {
-            display: flex;
-            gap: 4px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .nav-menu-horizontal::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .nav-menu-horizontal::-webkit-scrollbar-thumb {
-            background: #4a4a4a;
-            border-radius: 4px;
-        }
-
-        .nav-menu-horizontal::-webkit-scrollbar-track {
-            background: #333333;
-        }
-
-        .nav-menu-horizontal .nav-link {
-            font-size: 0.85rem;
-            padding: 0.5rem 0.8rem;
-        }
-
-        .nav-menu-horizontal .dropdown-menu {
-            position: absolute;
-            top: 48px; /* Match .menu-wrapper min-height to position below header */
-            left: 0;
-            min-width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-        }
-
-        .nav-menu-horizontal .dropdown.open .dropdown-menu {
-            display: block;
-            position: absolute;
-            top: 48px;
-            left: 0;
-            margin: 0;
-            z-index: 1001;
-        }
-
-        ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
-            display: block;
-            position: relative;
-            top: 0;
-            left: 0;
-            padding: 0.5rem 0;
-            min-width: 100%;
-            box-shadow: none;
-        }
-
-        .dropdown-menu .nav-link {
-            padding: 0.4rem 1rem;
-        }
-    }
-
-    @media (min-width: 769px) {
-        .nav-menu-horizontal {
-            display: flex;
-        }
-
-        .nav-menu-toggle {
-            display: none;
-        }
-    }
-</style>
+// Start the process
+document.addEventListener('DOMContentLoaded', () => {
+    loadCommonComponents();
+});
