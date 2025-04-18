@@ -7,7 +7,7 @@
             <ul class="nav-menu-horizontal" id="horizontalMenu">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <a href="/kuwaitnews/news/kuwait.html" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                         <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -47,12 +47,15 @@
         position: relative;
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: visible;
     }
 
     nav {
         max-width: 1400px;
         margin: 0 auto;
         padding: 0 1rem;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .menu-wrapper {
@@ -61,6 +64,7 @@
         background: #333333;
         padding: 0.5rem 0;
         min-height: 48px;
+        width: 100%;
     }
 
     .menu-btn {
@@ -71,7 +75,6 @@
         color: #ffffff;
         padding: 0.5rem;
         margin-right: 0.5rem;
-        display: none;
     }
 
     .nav-menu-horizontal,
@@ -88,10 +91,8 @@
     }
 
     .nav-menu-toggle {
-        display: none;
-        flex-direction: column;
-        background: #333333;
         width: 100%;
+        background: #333333;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -99,7 +100,6 @@
     }
 
     .nav-menu-toggle.active {
-        display: flex;
         max-height: 500px;
         opacity: 1;
         padding: 0.5rem 0;
@@ -156,6 +156,7 @@
     @media (min-width: 769px) {
         .nav-menu-horizontal {
             display: flex;
+            width: 100%;
         }
 
         .nav-menu-horizontal .dropdown-menu {
@@ -164,8 +165,26 @@
             left: 0;
         }
 
+        .menu-btn {
+            display: block;
+        }
+
         .nav-menu-toggle {
-            display: none;
+            display: block;
+            width: 100%;
+        }
+
+        .nav-menu-toggle .dropdown-menu {
+            position: relative;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            box-shadow: none;
+        }
+
+        .nav-menu-toggle .dropdown.open .dropdown-menu {
+            display: block;
+            padding: 0.5rem 0;
         }
     }
 
@@ -204,12 +223,12 @@
 
         /* Disable dropdown in horizontal menu on mobile */
         .nav-menu-horizontal .dropdown-toggle {
-            cursor: default;
-            pointer-events: none; /* Prevent clicks */
+            cursor: pointer; /* Allow clicks for navigation */
+            pointer-events: auto;
         }
 
         .nav-menu-horizontal .dropdown-menu {
-            display: none !important; /* Ensure dropdown never shows */
+            display: none !important;
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
@@ -230,9 +249,6 @@
 
         .nav-menu-toggle .dropdown.open .dropdown-menu {
             display: block;
-            position: relative;
-            top: 0;
-            left: 0;
             padding: 0.5rem 0;
         }
     }
