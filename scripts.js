@@ -36,22 +36,41 @@ async function loadCommonComponents() {
         const menuBtn = document.querySelector('.menu-btn');
         const navMenuToggle = document.querySelector('.nav-menu-toggle');
         if (menuBtn && navMenuToggle) {
+            // Click handler for toggle
             menuBtn.addEventListener('click', () => {
                 const isActive = navMenuToggle.classList.toggle('active');
                 menuBtn.setAttribute('aria-expanded', isActive);
                 menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
 
-            // Close vertical menu on mouse leave (desktop only)
+            // Hover handler for desktop
             if (window.innerWidth >= 769) {
+                menuBtn.addEventListener('mouseenter', () => {
+                    navMenuToggle.classList.add('active');
+                    menuBtn.setAttribute('aria-expanded', 'true');
+                    menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                });
+
+                menuBtn.addEventListener('mouseleave', () => {
+                    // Only close if not clicked open
+                    if (!navMenuToggle.classList.contains('active')) {
+                        navMenuToggle.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+
                 navMenuToggle.addEventListener('mouseleave', () => {
-                    navMenuToggle.classList.remove('active');
-                    menuBtn.setAttribute('aria-expanded', 'false');
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    // Close any open dropdowns
-                    document.querySelectorAll('.nav-menu-toggle .dropdown').forEach(dropdown => {
-                        dropdown.classList.remove('open');
-                    });
+                    // Only close if not clicked open
+                    if (!menuBtn.matches(':hover')) {
+                        navMenuToggle.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        // Close any open dropdowns
+                        document.querySelectorAll('.nav-menu-toggle .dropdown').forEach(dropdown => {
+                            dropdown.classList.remove('open');
+                        });
+                    }
                 });
             }
         }
@@ -79,6 +98,16 @@ async function loadCommonComponents() {
                 }
             });
         });
+
+        // Close horizontal menu dropdown on mouse leave (desktop only)
+        if (window.innerWidth >= 769) {
+            const horizontalDropdowns = document.querySelectorAll('.nav-menu-horizontal .dropdown');
+            horizontalDropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseleave', () => {
+                    dropdown.classList.remove('open');
+                });
+            });
+        }
     } catch (error) {
         console.error('Error in loadCommonComponents:', error);
     }
