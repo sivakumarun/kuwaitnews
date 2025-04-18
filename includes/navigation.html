@@ -4,7 +4,7 @@
             <button class="menu-btn" aria-label="Toggle vertical menu">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul class="nav-menu-horizontal" id="horizontalMenu">
+            <ul class="nav-menu-horizontal">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
@@ -21,8 +21,8 @@
             </ul>
         </div>
 
-        <!-- Vertical toggle menu -->
-        <ul class="nav-menu-toggle" id="toggleMenu">
+        <!-- Vertical menu (always visible but collapsible) -->
+        <ul class="nav-menu-vertical">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-right"></i></a>
@@ -48,13 +48,14 @@
         width: 100%;
         position: relative;
         z-index: 1000;
-        overflow: visible;
     }
 
     nav {
         max-width: 1400px;
         margin: 0 auto;
         padding: 0.5rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .menu-wrapper {
@@ -64,7 +65,7 @@
         background: #333333;
         padding: 0.5rem 0;
         position: relative;
-        min-height: 48px;
+        width: 100%;
     }
 
     .menu-btn {
@@ -75,11 +76,10 @@
         color: #ffffff;
         padding: 0.5rem;
         margin-right: 1rem;
-        display: none;
     }
 
     .nav-menu-horizontal,
-    .nav-menu-toggle {
+    .nav-menu-vertical {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -88,23 +88,20 @@
     .nav-menu-horizontal {
         display: flex;
         gap: 6px;
+        overflow-x: auto;
+        flex-grow: 1;
     }
 
-    .nav-menu-toggle {
+    .nav-menu-vertical {
         display: none;
         flex-direction: column;
         background: #333333;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.4s ease;
-        opacity: 0;
         width: 100%;
+        padding: 0.5rem 0;
     }
 
-    .nav-menu-toggle.active {
+    .nav-menu-vertical.active {
         display: flex;
-        max-height: 700px;
-        opacity: 1;
     }
 
     .nav-link {
@@ -135,7 +132,8 @@
         cursor: pointer;
     }
 
-    .dropdown-menu {
+    /* Horizontal dropdown */
+    .nav-menu-horizontal .dropdown-menu {
         display: none;
         position: absolute;
         background: #4a4a4a;
@@ -144,6 +142,17 @@
         padding: 0.5rem 0;
         z-index: 1001;
         min-width: 180px;
+        top: 100%;
+        left: 0;
+    }
+
+    /* Vertical dropdown */
+    .nav-menu-vertical .dropdown-menu {
+        display: none;
+        background: #3a3a3a;
+        list-style: none;
+        padding: 0;
+        margin-left: 1rem;
     }
 
     .dropdown.open .dropdown-menu {
@@ -156,53 +165,63 @@
 
     /* Responsive Styles */
     @media (max-width: 768px) {
-        .menu-btn {
-            display: block;
-        }
-
         .nav-menu-horizontal {
             display: none;
         }
-
-        .nav-menu-toggle {
+        
+        .menu-btn {
+            display: block;
+        }
+        
+        .nav-menu-vertical {
+            display: none;
+        }
+        
+        .nav-menu-vertical.active {
             display: flex;
         }
-
-        .dropdown-menu {
-            position: static;
-            display: none;
-            background: #3a3a3a;
-            box-shadow: none;
-            width: 100%;
-        }
-
-        .dropdown.open .dropdown-menu {
-            display: block;
-            position: static;
-            margin-top: 0;
-        }
-
+        
         .dropdown-toggle i.fas {
             transition: transform 0.3s ease;
         }
-
+        
         .dropdown.open .dropdown-toggle i.fas {
             transform: rotate(90deg);
         }
     }
 
     @media (min-width: 769px) {
+        .menu-btn {
+            display: none;
+        }
+        
         .nav-menu-horizontal {
             display: flex;
         }
-
-        .nav-menu-toggle {
+        
+        .nav-menu-vertical {
             display: none !important;
-        }
-
-        .dropdown-menu {
-            top: 100%;
-            left: 0;
         }
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle vertical menu
+    const menuBtn = document.querySelector('.menu-btn');
+    const verticalMenu = document.querySelector('.nav-menu-vertical');
+    
+    menuBtn.addEventListener('click', function() {
+        verticalMenu.classList.toggle('active');
+    });
+
+    // Handle dropdown toggles for both menus
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = this.parentElement;
+            dropdown.classList.toggle('open');
+        });
+    });
+});
+</script>
