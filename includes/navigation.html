@@ -222,15 +222,17 @@
         }
 
         .nav-menu-horizontal .dropdown-menu {
-            min-width: 160px;
+            min-width: 100%;
+            margin-top: 0.5rem; /* Added margin to push dropdown below header */
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
-            position: absolute;
-            top: 100%;
+            position: relative; /* Changed to relative to stack below parent */
+            top: 0;
             left: 0;
             margin-left: 0;
             z-index: 1003;
+            box-shadow: none; /* Removed shadow for cleaner mobile view */
         }
 
         .nav-menu-toggle {
@@ -282,7 +284,7 @@
         const parent = event.target.closest('.dropdown');
         if (parent) {
             // Close other open dropdowns
-            const allDropdowns = document.querySelectorAll('.nav-menu-toggle .dropdown');
+            const allDropdowns = document.querySelectorAll('.nav-menu-horizontal .dropdown, .nav-menu-toggle .dropdown');
             allDropdowns.forEach(dropdown => {
                 if (dropdown !== parent) {
                     dropdown.classList.remove('open');
