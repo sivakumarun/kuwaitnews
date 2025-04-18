@@ -46,27 +46,21 @@
         background: #333333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: 100%;
-        overflow: visible;
+        position: relative;
+        z-index: 1000;
     }
 
     nav {
         max-width: 1400px;
         margin: 0 auto;
         padding: 0.5rem 1rem;
-        position: relative;
-        overflow: visible;
     }
 
     .menu-wrapper {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        flex-wrap: wrap;
         background: #333333;
-        min-height: fit-content;
-        padding: 0;
-        position: relative;
-        z-index: 1001;
     }
 
     .menu-btn {
@@ -89,23 +83,17 @@
     .nav-menu-horizontal {
         display: flex;
         gap: 6px;
-        flex-wrap: wrap;
-        position: relative;
     }
 
     .nav-menu-toggle {
         display: none;
         flex-direction: column;
-        margin-top: 0;
-        padding: 0.5rem 0;
         background: #333333;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease, opacity 0.4s ease;
         opacity: 0;
         width: 100%;
-        position: relative;
-        z-index: 1000;
     }
 
     .nav-menu-toggle.active {
@@ -148,35 +136,12 @@
         border-radius: 4px;
         list-style: none;
         padding: 0.5rem 0;
-        z-index: 1005;
-        width: fit-content;
+        z-index: 1001;
+        min-width: 180px;
     }
 
     .dropdown.open .dropdown-menu {
         display: block;
-    }
-
-    .dropdown:hover .dropdown-menu {
-        display: block;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        min-width: 180px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 1005;
-    }
-
-    ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
-        display: block !important;
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0;
-        padding: 0.5rem 0;
-        box-shadow: none;
-        background: #4a4a4a;
-        border-left: none;
-        min-width: 100%;
     }
 
     .dropdown-menu .nav-link {
@@ -186,15 +151,12 @@
     /* Responsive Styles */
     @media (max-width: 768px) {
         .menu-wrapper {
-            flex-wrap: nowrap;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
         .menu-btn {
             display: block;
-            margin-right: 0.5rem;
-            padding: 0.4rem;
             flex-shrink: 0;
         }
 
@@ -203,9 +165,7 @@
             gap: 4px;
             flex-wrap: nowrap;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
             white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .nav-menu-horizontal::-webkit-scrollbar {
@@ -228,38 +188,30 @@
 
         .nav-menu-horizontal .dropdown-menu {
             position: absolute;
-            top: calc(100% + 0.5rem);
+            top: 100%;
             left: 0;
             min-width: 100%;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1005;
+            z-index: 1001;
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
             display: block;
             position: absolute;
-            top: calc(100% + 0.5rem);
+            top: 100%;
             left: 0;
-            margin-left: 0;
-            z-index: 1005;
-        }
-
-        .nav-menu-toggle {
-            margin-top: 0;
-            position: relative;
-        }
-
-        .nav-menu-toggle.active {
-            display: flex;
+            margin: 0;
+            z-index: 1001;
         }
 
         ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
-            display: block !important;
+            display: block;
             position: relative;
             top: 0;
             left: 0;
             padding: 0.5rem 0;
             min-width: 100%;
+            box-shadow: none;
         }
 
         .dropdown-menu .nav-link {
@@ -274,10 +226,6 @@
 
         .nav-menu-toggle {
             display: none;
-        }
-
-        .nav-menu-toggle.active {
-            display: flex;
         }
     }
 </style>
