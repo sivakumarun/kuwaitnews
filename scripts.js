@@ -41,6 +41,19 @@ async function loadCommonComponents() {
                 menuBtn.setAttribute('aria-expanded', isActive);
                 menuBtn.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
+
+            // Close vertical menu on mouse leave (desktop only)
+            if (window.innerWidth >= 769) {
+                navMenuToggle.addEventListener('mouseleave', () => {
+                    navMenuToggle.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    // Close any open dropdowns
+                    document.querySelectorAll('.nav-menu-toggle .dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                });
+            }
         }
 
         // Initialize dropdown toggle for both menus
@@ -50,7 +63,7 @@ async function loadCommonComponents() {
                 const dropdown = toggle.closest('.dropdown');
                 const isHorizontal = toggle.closest('.nav-menu-horizontal');
                 if (isHorizontal && window.innerWidth <= 768) {
-                    // In mobile horizontal menu, allow default navigation (no dropdown)
+                    // In mobile horizontal menu, allow default navigation
                     return;
                 }
                 e.preventDefault();
