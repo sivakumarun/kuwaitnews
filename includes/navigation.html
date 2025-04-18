@@ -23,7 +23,7 @@
 
         <!-- Vertical toggle menu -->
         <ul class="nav-menu-toggle" id="toggleMenu">
-            <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
+            <li><a href="/kuwaitnews juice/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">వార్తలు <i class="fas fa-caret-right"></i></a>
                 <ul class="dropdown-menu">
@@ -150,6 +150,10 @@
         width: fit-content;
     }
 
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
     .dropdown:hover .dropdown-menu {
         display: block;
         position: absolute;
@@ -223,16 +227,19 @@
 
         .nav-menu-horizontal .dropdown-menu {
             min-width: 100%;
-            margin-top: 0.5rem; /* Added margin to push dropdown below header */
+            top: calc(100% + 0.5rem); /* Adjusted to push below header */
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1003;
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
-            position: relative; /* Changed to relative to stack below parent */
-            top: 0;
+            display: block;
+            position: absolute;
+            top: calc(100% + 0.5rem); /* Ensure it appears below header */
             left: 0;
             margin-left: 0;
             z-index: 1003;
-            box-shadow: none; /* Removed shadow for cleaner mobile view */
         }
 
         .nav-menu-toggle {
@@ -284,7 +291,7 @@
         const parent = event.target.closest('.dropdown');
         if (parent) {
             // Close other open dropdowns
-            const allDropdowns = document.querySelectorAll('.nav-menu-horizontal .dropdown, .nav-menu-toggle .dropdown');
+            const allDropdowns = document.querySelectorAll('.dropdown');
             allDropdowns.forEach(dropdown => {
                 if (dropdown !== parent) {
                     dropdown.classList.remove('open');
