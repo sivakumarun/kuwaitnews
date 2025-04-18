@@ -21,7 +21,6 @@
             </ul>
         </div>
 
-        <!-- Vertical toggle menu -->
         <ul class="nav-menu-toggle" id="toggleMenu">
             <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
             <li class="dropdown">
@@ -41,30 +40,29 @@
 </div>
 
 <style>
-    /* Base Navigation Styles */
+    /* Navigation Styles */
     .nav-container {
         background: #333333;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: 100%;
         position: relative;
         z-index: 1000;
         overflow: visible;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     nav {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0.5rem 1rem;
+        padding: 0 1rem;
     }
 
     .menu-wrapper {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
         background: #333333;
         padding: 0.5rem 0;
         position: relative;
-        min-height: 48px; /* Ensure enough space for dropdown positioning */
+        min-height: 48px; /* Ensure dropdown positions below */
     }
 
     .menu-btn {
@@ -74,7 +72,7 @@
         cursor: pointer;
         color: #ffffff;
         padding: 0.5rem;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
 
     .nav-menu-horizontal,
@@ -87,23 +85,25 @@
     .nav-menu-horizontal {
         display: flex;
         gap: 6px;
+        align-items: center;
     }
 
     .nav-menu-toggle {
         display: none;
         flex-direction: column;
         background: #333333;
+        width: 100%;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.4s ease;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
         opacity: 0;
-        width: 100%;
     }
 
     .nav-menu-toggle.active {
         display: flex;
-        max-height: 700px;
+        max-height: 500px;
         opacity: 1;
+        padding: 0.5rem 0;
     }
 
     .nav-link {
@@ -142,6 +142,7 @@
         padding: 0.5rem 0;
         z-index: 1001;
         min-width: 180px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .dropdown.open .dropdown-menu {
@@ -152,7 +153,24 @@
         padding: 0.5rem 1rem;
     }
 
-    /* Responsive Styles */
+    /* Desktop Styles */
+    @media (min-width: 769px) {
+        .nav-menu-horizontal {
+            display: flex;
+        }
+
+        .nav-menu-horizontal .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-menu-toggle {
+            display: none; /* Hidden on desktop */
+        }
+    }
+
+    /* Mobile Styles */
     @media (max-width: 768px) {
         .menu-wrapper {
             overflow-x: auto;
@@ -192,11 +210,11 @@
 
         .nav-menu-horizontal .dropdown-menu {
             position: absolute;
-            top: 48px; /* Match .menu-wrapper min-height to position below header */
+            top: 48px; /* Matches .menu-wrapper min-height */
             left: 0;
-            min-width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
+            width: 100%;
+            min-width: unset;
+            max-width: 200px;
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
@@ -204,32 +222,26 @@
             position: absolute;
             top: 48px;
             left: 0;
-            margin: 0;
-            z-index: 1001;
         }
 
-        ul.nav-menu-toggle li.dropdown.open > .dropdown-menu {
+        .nav-menu-toggle {
+            display: block; /* Visible on mobile via toggle */
+        }
+
+        .nav-menu-toggle .dropdown-menu {
+            position: relative;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            box-shadow: none;
+        }
+
+        .nav-menu-toggle .dropdown.open .dropdown-menu {
             display: block;
             position: relative;
             top: 0;
             left: 0;
             padding: 0.5rem 0;
-            min-width: 100%;
-            box-shadow: none;
-        }
-
-        .dropdown-menu .nav-link {
-            padding: 0.4rem 1rem;
-        }
-    }
-
-    @media (min-width: 769px) {
-        .nav-menu-horizontal {
-            display: flex;
-        }
-
-        .nav-menu-toggle {
-            display: none;
         }
     }
 </style>
