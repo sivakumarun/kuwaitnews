@@ -43,42 +43,26 @@ async function loadCommonComponents() {
             });
         }
 
-        // Initialize dropdown toggle for vertical menu only
-        const dropdownToggles = document.querySelectorAll('.nav-menu-toggle .dropdown-toggle');
+        // Initialize dropdown toggle for both menus
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
-                e.preventDefault();
                 const dropdown = toggle.closest('.dropdown');
+                const isHorizontal = toggle.closest('.nav-menu-horizontal');
+                if (isHorizontal && window.innerWidth <= 768) {
+                    // In mobile horizontal menu, allow default navigation (no dropdown)
+                    return;
+                }
+                e.preventDefault();
                 if (dropdown) {
                     // Close other open dropdowns
-                    document.querySelectorAll('.nav-menu-toggle .dropdown').forEach(otherDropdown => {
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
                         if (otherDropdown !== dropdown) {
                             otherDropdown.classList.remove('open');
                         }
                     });
                     // Toggle the current dropdown
                     dropdown.classList.toggle('open');
-                }
-            });
-        });
-
-        // Initialize dropdown toggle for horizontal menu on desktop only
-        const horizontalDropdownToggles = document.querySelectorAll('.nav-menu-horizontal .dropdown-toggle');
-        horizontalDropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                if (window.innerWidth > 768) { // Only on desktop
-                    e.preventDefault();
-                    const dropdown = toggle.closest('.dropdown');
-                    if (dropdown) {
-                        // Close other open dropdowns
-                        document.querySelectorAll('.nav-menu-horizontal .dropdown').forEach(otherDropdown => {
-                            if (otherDropdown !== dropdown) {
-                                otherDropdown.classList.remove('open');
-                            }
-                        });
-                        // Toggle the current dropdown
-                        dropdown.classList.toggle('open');
-                    }
                 }
             });
         });
