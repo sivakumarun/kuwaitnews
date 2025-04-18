@@ -91,15 +91,15 @@
 
     .nav-menu-toggle {
         position: absolute;
-        top: 48px; /* Below menu-wrapper */
+        top: 48px;
         left: 0;
-        width: fit-content; /* Auto fit to content */
+        width: fit-content;
         background: #333333;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
         transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-        transform: translateY(-10px); /* Slide effect */
+        transform: translateY(-10px);
         z-index: 1001;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
@@ -180,12 +180,28 @@
             display: block;
         }
 
+        .menu-btn:hover ~ .nav-menu-toggle,
+        .nav-menu-toggle:hover {
+            max-height: 500px;
+            opacity: 1;
+            transform: translateY(0);
+            padding: 0.5rem;
+        }
+
         .nav-menu-toggle {
             display: block;
-            width: fit-content; /* Auto fit to content */
-            max-width: 300px; /* Prevent overflow */
+            width: fit-content;
+            max-width: 300px;
             top: 48px;
-            left: 0rem;
+            left: 1rem;
+        }
+
+        .nav-menu-toggle .dropdown:hover .dropdown-menu,
+        .nav-menu-toggle .dropdown.open .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            padding: 0.5rem 0;
         }
 
         .nav-menu-toggle .dropdown-menu {
@@ -194,11 +210,6 @@
             left: 0;
             min-width: 100%;
             box-shadow: none;
-        }
-
-        .nav-menu-toggle .dropdown.open .dropdown-menu {
-            display: block;
-            padding: 0.5rem 0;
         }
     }
 
@@ -235,7 +246,6 @@
             padding: 0.5rem 0.8rem;
         }
 
-        /* Disable dropdown in horizontal menu on mobile */
         .nav-menu-horizontal .dropdown-toggle {
             cursor: pointer;
             pointer-events: auto;
@@ -251,10 +261,10 @@
 
         .nav-menu-toggle {
             display: block;
-            width: fit-content; /* Auto fit to content */
-            max-width: 90%; /* Allow flexibility on small screens */
+            width: fit-content;
+            max-width: 90%;
             top: 48px;
-            left: 0rem;
+            left: 1rem;
         }
 
         .nav-menu-toggle .dropdown-menu {
