@@ -81,13 +81,14 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        background: transparent; /* Inherit gradient from parent */
+        background: transparent;
     }
 
     .nav-menu-horizontal {
         display: flex;
         gap: 6px;
         align-items: center;
+        position: relative;
     }
 
     .nav-menu-toggle {
@@ -246,12 +247,12 @@
         }
 
         .nav-menu-horizontal::-webkit-scrollbar-thumb {
-            background: hsl(210, 10%, 45%); /* Match dropdown end */
+            background: hsl(210, 10%, 45%);
             border-radius: 4px;
         }
 
         .nav-menu-horizontal::-webkit-scrollbar-track {
-            background: hsl(0, 0%, 25%); /* Match main nav start */
+            background: hsl(0, 0%, 25%);
         }
 
         .nav-menu-horizontal .nav-link {
@@ -264,6 +265,11 @@
             pointer-events: auto;
         }
 
+        .nav-menu-horizontal .dropdown {
+            position: relative;
+            z-index: 1002;
+        }
+
         .nav-menu-horizontal .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -272,10 +278,10 @@
             max-width: 200px;
             background: linear-gradient(to bottom, hsl(0, 0%, 35%), hsl(210, 10%, 45%));
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
+            z-index: 1002;
             display: none;
             opacity: 0;
-            transform: translateY(-5px);
+            transform: translateY(0);
             transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
