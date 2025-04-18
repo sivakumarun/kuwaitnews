@@ -91,7 +91,8 @@
     }
 
     .nav-menu-toggle {
-        width: 100%;
+        width: auto; /* Changed from 100% to fit content */
+        max-width: 300px; /* Prevent overflow */
         background: #333333;
         max-height: 0;
         overflow: hidden;
@@ -171,7 +172,8 @@
 
         .nav-menu-toggle {
             display: block;
-            width: 100%;
+            width: auto; /* Fit content */
+            max-width: 300px; /* Prevent overflow */
         }
 
         .nav-menu-toggle .dropdown-menu {
@@ -223,7 +225,7 @@
 
         /* Disable dropdown in horizontal menu on mobile */
         .nav-menu-horizontal .dropdown-toggle {
-            cursor: pointer; /* Allow clicks for navigation */
+            cursor: pointer;
             pointer-events: auto;
         }
 
@@ -237,6 +239,8 @@
 
         .nav-menu-toggle {
             display: block;
+            width: auto; /* Fit content */
+            max-width: 100%; /* Full width on mobile for readability */
         }
 
         .nav-menu-toggle .dropdown-menu {
