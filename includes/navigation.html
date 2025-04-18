@@ -7,7 +7,7 @@
             <ul class="nav-menu-horizontal" id="horizontalMenu">
                 <li><a href="/kuwaitnews/index.html" class="nav-link">హోమ్</a></li>
                 <li class="dropdown">
-                    <a href="/kuwaitnews/news/kuwait.html" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="nav-link dropdown-toggle">వార్తలు <i class="fas fa-caret-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="/kuwaitnews/news/kuwait.html" class="nav-link">కువైట్</a></li>
                         <li><a href="/kuwaitnews/news/andhra-pradesh.html" class="nav-link">ఆంధ్రప్రదేశ్</a></li>
@@ -197,8 +197,7 @@
             width: fit-content;
             max-width: 300px;
             top: 36px;
-            left: 0
-                rem;
+            left: 1rem;
         }
 
         .nav-menu-toggle .dropdown-menu {
@@ -220,6 +219,14 @@
 
     /* Mobile Styles */
     @media (max-width: 768px) {
+        .nav-container {
+            background: linear-gradient(to right, hsl(0, 0%, 25%), hsl(210, 10%, 35%));
+        }
+
+        .menu-wrapper {
+            background: linear-gradient(to right, hsl(0, 0%, 25%), hsl(210, 10%, 35%));
+        }
+
         .menu-btn {
             display: block;
             flex-shrink: 0;
@@ -231,6 +238,7 @@
             flex-wrap: nowrap;
             overflow-x: auto;
             white-space: nowrap;
+            background: transparent;
         }
 
         .nav-menu-horizontal::-webkit-scrollbar {
@@ -257,11 +265,24 @@
         }
 
         .nav-menu-horizontal .dropdown-menu {
-            display: none !important;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: fit-content;
+            max-width: 200px;
+            background: linear-gradient(to bottom, hsl(0, 0%, 35%), hsl(210, 10%, 45%));
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
         .nav-menu-horizontal .dropdown.open .dropdown-menu {
-            display: none !important;
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .nav-menu-toggle {
@@ -269,7 +290,8 @@
             width: fit-content;
             max-width: 90%;
             top: 36px;
-            left: 0rem;
+            left: 1rem;
+            background: linear-gradient(to right, hsl(0, 0%, 25%), hsl(210, 10%, 35%));
         }
 
         .nav-menu-toggle .dropdown-menu {
@@ -278,6 +300,7 @@
             left: 0;
             min-width: 100%;
             box-shadow: none;
+            background: linear-gradient(to bottom, hsl(0, 0%, 35%), hsl(210, 10%, 45%));
         }
 
         .nav-menu-toggle .dropdown.open .dropdown-menu {
