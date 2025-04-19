@@ -13,18 +13,24 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
     }
 }
 
-async function fetchNews(category = null) {
-    try {
-        // Use the global newsData variable defined in news.js
-        if (typeof newsData === 'undefined') {
-            throw new Error('newsData is not defined. Ensure news.js is loaded.');
+async function fetchNews(category = null, retries = 3, delay = 100) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            if (typeof window.newsData === 'undefined') {
+                if (i === retries - 1) {
+                    throw new Error('newsData is not defined after retries. Ensure news.js is loaded.');
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                continue;
+            }
+            console.log('Fetched news data:', window.newsData);
+            return category ? window.newsData.filter(article => article.category === category) : window.newsData;
+        } catch (error) {
+            console.error('Error fetching news:', error.message);
+            return [];
         }
-        console.log('Fetched news data:', newsData); // Debug log
-        return category ? newsData.filter(article => article.category === category) : newsData;
-    } catch (error) {
-        console.error('Error fetching news:', error.message);
-        return [];
     }
+    return [];
 }
 
 async function renderNews(category = null) {
@@ -35,7 +41,7 @@ async function renderNews(category = null) {
     }
 
     const articles = await fetchNews(category);
-    console.log('Articles to render:', articles); // Debug log
+    console.log('Articles to render:', articles);
     if (articles.length === 0) {
         newsContainer.innerHTML = '<p>వార్తలు అందుబాటులో లేవు.</p>';
         return;
