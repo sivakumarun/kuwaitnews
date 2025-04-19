@@ -13,6 +13,52 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
     }
 }
 
+async function fetchNews(category = null) {
+    try {
+        const response = await fetch('./data/news.json'); // Relative path from scripts.js
+        if (!response.ok) throw new Error(`Failed to load news data: ${response.statusText}`);
+        const newsData = await response.json();
+        console.log('Fetched news data:', newsData); // Debug log
+        return category ? newsData.filter(article => article.category === category) : newsData;
+    } catch (error) {
+        console.error('Error fetching news:', error.message);
+        return [];
+    }
+}
+
+async function renderNews(category = null) {
+    const newsContainer = document.querySelector('.news-grid');
+    if (!newsContainer) {
+        console.error('News container (.news-grid) not found');
+        return;
+    }
+
+    const articles = await fetchNews(category);
+    console.log('Articles to render:', articles); // Debug log
+    if (articles.length === 0) {
+        newsContainer.innerHTML = '<p>వార్తలు అందుబాటులో లేవు.</p>';
+        return;
+    }
+
+    newsContainer.innerHTML = articles.map(article => `
+        <article class="news-card" id="${article.id}">
+            <img src="${article.image}" alt="${article.alt}" class="news-image">
+            <div class="news-body">
+                <h3 class="news-title">${article.title}</h3>
+                <div class="news-meta">
+                    <span><i class="far fa-calendar-alt"></i> ${article.date}</span>
+                    <span><i class="far fa-clock"></i> ${article.time}</span>
+                </div>
+                <p class="news-excerpt">${article.excerpt}</p>
+                <div class="full-text">
+                    <p>${article.fullText}</p>
+                </div>
+                <a href="#" class="read-more" onclick="toggleReadMore('${article.id}')">మరిన్ని చదవండి <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+    `).join('');
+}
+
 async function loadCommonComponents() {
     try {
         const existingWrapper = document.querySelector('.top-wrapper');
@@ -108,6 +154,10 @@ async function loadCommonComponents() {
                 });
             }
         });
+
+        // Render news based on page
+        const pageCategory = document.body.dataset.category || null;
+        renderNews(pageCategory);
     } catch (error) {
         console.error('Error in loadCommonComponents:', error);
     }
