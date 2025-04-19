@@ -15,9 +15,9 @@ async function loadComponent(url, targetElement, position = 'beforeend') {
 
 async function fetchNews(category = null) {
     try {
-        // Use the global newsData variable defined in news.json
+        // Use the global newsData variable defined in news.js
         if (typeof newsData === 'undefined') {
-            throw new Error('newsData is not defined. Ensure news.json is loaded.');
+            throw new Error('newsData is not defined. Ensure news.js is loaded.');
         }
         console.log('Fetched news data:', newsData); // Debug log
         return category ? newsData.filter(article => article.category === category) : newsData;
