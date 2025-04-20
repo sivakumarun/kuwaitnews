@@ -73,10 +73,10 @@ async function loadCommonComponents() {
 
         document.body.insertAdjacentHTML('afterbegin', `<div class="top-wrapper"></div>`);
 
-        const headerLoaded = await loadComponent('/kuwaitnews/includes/header.html', '.top-wrapper');
+        const headerLoaded = await loadComponent('/includes/header.html', '.top-wrapper');
         if (!headerLoaded) throw new Error('Header failed to load');
 
-        const navLoaded = await loadComponent('/kuwaitnews/includes/navigation.html', '.top-wrapper');
+        const navLoaded = await loadComponent('/includes/navigation.html', '.top-wrapper');
         if (!navLoaded) throw new Error('Navigation failed to load');
 
         const menuBtn = document.querySelector('.menu-btn');
